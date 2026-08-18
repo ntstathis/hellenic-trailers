@@ -1,0 +1,6 @@
+# OS / OneDrive clutter
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+.git_broken_backup/
