@@ -5,20 +5,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hellenic Trailers - Official Lamberet Representative in Greece</title>
   <meta name="description" content="Hellenic Trailers is the official Lamberet representative in Greece. Refrigerated semi-trailers, trucks, and vans. Sales, service, and spare parts in Mandra, Attica.">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Hellenic Trailers">
+  <meta property="og:locale" content="el_GR">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:title" content="Hellenic Trailers - Official Lamberet Representative in Greece">
+  <meta property="og:description" content="Hellenic Trailers is the official Lamberet representative in Greece. Refrigerated semi-trailers, trucks, and vans. Sales, service, and spare parts in Mandra, Attica.">
+  <meta property="og:url" content="https://hellenictrailers.gr/">
+  <meta property="og:image" content="https://hellenictrailers.gr/images/mitsopoulos-super-beef.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=8">
+  <!-- Hero background is the LCP element, so fetch it early -->
+  <link rel="preload" as="image" href="images/mitsopoulos-super-beef.jpeg" fetchpriority="high">
+
+  <!-- Google uses this block for the local business panel.
+       Still to add once available: vatID and geo coordinates. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AutoPartsStore",
+    "name": "Hellenic Trailers",
+    "description": "Official Lamberet representative in Greece. Refrigerated semi-trailers, truck bodies, vans, sales, service and genuine spare parts.",
+    "url": "https://hellenictrailers.gr/",
+    "logo": "https://hellenictrailers.gr/images/logo-mark.svg",
+    "image": "https://hellenictrailers.gr/images/mitsopoulos-super-beef.jpeg",
+    "telephone": "+30-210-3471032",
+    "email": "ikaragiotis@hellenictrailers.gr",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Θέση Κάτω Πάτημα",
+      "addressLocality": "Μάνδρα",
+      "addressRegion": "Αττική",
+      "postalCode": "19600",
+      "addressCountry": "GR"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "17:00"
+    }],
+    "areaServed": { "@type": "Country", "name": "Greece" },
+    "brand": { "@type": "Brand", "name": "Lamberet" }
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Μετάβαση στο περιεχόμενο</a>
 
   <!-- Top Bar -->
   <div class="top-bar">
     <div class="container">
       <div class="top-bar-left">
-        <span>&#9742; <a href="tel:+302105550000" data-i18n="topbar.phone">+30 210 555 0000</a></span>
-        <span>&#9993; <a href="mailto:info@hellenictrailers.gr" data-i18n="topbar.email">info@hellenictrailers.gr</a></span>
-        <span>&#9201; <span data-i18n="topbar.hours">Mon-Fri: 08:00 - 17:00</span></span>
+        <span class="tb-phone"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <a href="tel:+302103471032" data-i18n="topbar.phone">+30 210 3471032</a></span>
+        <span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> <a href="mailto:ikaragiotis@hellenictrailers.gr" data-i18n="topbar.email">ikaragiotis@hellenictrailers.gr</a></span>
+        <span><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <span data-i18n="topbar.hours">Δευ-Παρ: 09:00 - 17:00</span></span>
       </div>
       <div class="lang-switch">
         <button data-lang="el" class="active">GR</button>
@@ -31,39 +76,40 @@
   <header>
     <div class="container header-main">
       <a href="index.html" class="logo">
-        <div class="logo-icon"></div>
+        <img class="logo-icon" src="images/logo-mark.svg" alt="" width="120" height="52" decoding="async">
         <div class="logo-text">
-          <h1>HELLENIC TRAILERS</h1>
-          <span data-i18n="logo.tagline">Official Lamberet Representative in Greece</span>
+          <span class="logo-name">HELLENIC TRAILERS</span>
+          <span data-i18n="logo.tagline">Επίσημος Αντιπρόσωπος Lamberet στην Ελλάδα</span>
         </div>
       </a>
-      <button class="mobile-toggle" aria-label="Menu">
+      <button class="mobile-toggle" type="button" data-i18n-aria="a11y.menu" aria-label="Μενού" aria-expanded="false" aria-controls="primary-nav">
         <span></span><span></span><span></span>
       </button>
-      <nav>
-        <ul>
-          <li><a href="index.html" class="active" data-i18n="nav.home">Home</a></li>
-          <li><a href="about.html" data-i18n="nav.about">About</a></li>
-          <li><a href="products.html" data-i18n="nav.products">Products</a></li>
-          <li><a href="services.html" data-i18n="nav.services">Services</a></li>
-          <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
-          <li><a href="news.html" data-i18n="nav.news">News</a></li>
-          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+      <nav data-i18n-aria="a11y.mainnav" aria-label="Κύρια πλοήγηση">
+        <ul id="primary-nav">
+          <li><a href="index.html" class="active" aria-current="page" data-i18n="nav.home">Αρχική</a></li>
+          <li><a href="about.html" data-i18n="nav.about">Η Εταιρεία</a></li>
+          <li><a href="products.html" data-i18n="nav.products">Προϊόντα</a></li>
+          <li><a href="services.html" data-i18n="nav.services">Υπηρεσίες</a></li>
+          <li><a href="news.html" data-i18n="nav.news">Νέα</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Επικοινωνία</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
+  <main id="main">
+
   <!-- Hero -->
   <section class="hero">
     <div class="container">
       <div class="hero-content">
-        <div class="hero-badge" data-i18n="hero.badge">&#10052; Official Lamberet Partner in Greece</div>
-        <h1 data-i18n="hero.title">Refrigerated Transport Solutions for Greece</h1>
-        <p data-i18n="hero.subtitle">Hellenic Trailers is the exclusive representative of Lamberet in Greece, offering the complete range of Europe's leading refrigerated vehicle manufacturer. Based at the Theologis Group facilities in Mandra, we provide sales, service, and spare parts for the entire Lamberet product line.</p>
+        <div class="hero-badge" data-i18n="hero.badge">❄ Επίσημος Συνεργάτης Lamberet στην Ελλάδα</div>
+        <h1 data-i18n="hero.title">Λύσεις Ψυκτικής Μεταφοράς για την Ελλάδα</h1>
+        <p data-i18n="hero.subtitle">Η Hellenic Trailers είναι ο αποκλειστικός αντιπρόσωπος της Lamberet στην Ελλάδα, προσφέροντας την πλήρη γκάμα του κορυφαίου Ευρωπαίου κατασκευαστή ψυκτικών οχημάτων. Με έδρα τις εγκαταστάσεις του Theologis Group στη Μάνδρα, παρέχουμε πωλήσεις, σέρβις και ανταλλακτικά για όλη τη γκάμα Lamberet.</p>
         <div class="hero-buttons">
-          <a href="products.html" class="btn btn-primary" data-i18n="hero.cta1">View Products</a>
-          <a href="contact.html" class="btn btn-secondary" data-i18n="hero.cta2">Contact Us</a>
+          <a href="products.html" class="btn btn-primary" data-i18n="hero.cta1">Δείτε τα Προϊόντα</a>
+          <a href="contact.html" class="btn btn-secondary" data-i18n="hero.cta2">Επικοινωνήστε</a>
         </div>
       </div>
     </div>
@@ -73,30 +119,30 @@
   <section class="section">
     <div class="container">
       <div class="section-header">
-        <h2 data-i18n="features.title">Why Choose Hellenic Trailers</h2>
-        <p data-i18n="features.subtitle">Your trusted partner for refrigerated transport solutions in Greece</p>
+        <h2 data-i18n="features.title">Γιατί να Επιλέξετε την Hellenic Trailers</h2>
+        <p data-i18n="features.subtitle">Ο έμπιστος συνεργάτης σας για λύσεις ψυκτικής μεταφοράς στην Ελλάδα</p>
       </div>
       <div class="features-grid">
         <div class="feature-card">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="32" height="32"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
           </div>
-          <h3 data-i18n="features.1.title">Official Lamberet Dealer</h3>
-          <p data-i18n="features.1.text">As the exclusive Lamberet representative in Greece, we offer the full product range backed by factory support and genuine parts.</p>
+          <h3 data-i18n="features.1.title">Επίσημος Αντιπρόσωπος Lamberet</h3>
+          <p data-i18n="features.1.text">Ως αποκλειστικός αντιπρόσωπος Lamberet στην Ελλάδα, προσφέρουμε την πλήρη γκάμα προϊόντων με εργοστασιακή υποστήριξη και γνήσια ανταλλακτικά.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="32" height="32"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
           </div>
-          <h3 data-i18n="features.2.title">Expert Service & Support</h3>
-          <p data-i18n="features.2.text">Located at the Theologis Group 15,000 m&#178; facilities in Mandra, with over 40 years of industry experience in repairs and maintenance.</p>
+          <h3 data-i18n="features.2.title">Εξειδικευμένο Σέρβις & Υποστήριξη</h3>
+          <p data-i18n="features.2.text">Στις εγκαταστάσεις 15.000 τ.μ. του Theologis Group στη Μάνδρα, με πάνω από 40 χρόνια εμπειρίας στις επισκευές και τη συντήρηση.</p>
         </div>
         <div class="feature-card">
           <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="32" height="32"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/><line x1="12" y1="9" x2="12" y2="15"/><line x1="9" y1="12" x2="15" y2="12"/></svg>
           </div>
-          <h3 data-i18n="features.3.title">Complete Cold Chain</h3>
-          <p data-i18n="features.3.text">From small vans to full-size semi-trailers, we cover every cold chain need with mono and multi-temperature solutions.</p>
+          <h3 data-i18n="features.3.title">Πλήρης Ψυκτική Αλυσίδα</h3>
+          <p data-i18n="features.3.text">Από μικρά βαν μέχρι πλήρη νταλίκες, καλύπτουμε κάθε ανάγκη ψυκτικής αλυσίδας με λύσεις μονής και πολλαπλής θερμοκρασίας.</p>
         </div>
       </div>
     </div>
@@ -107,20 +153,20 @@
     <div class="container">
       <div class="stats-grid">
         <div class="stat-item">
-          <h3 data-i18n="stats.1.number">40+</h3>
-          <p data-i18n="stats.1.label">Years of Experience</p>
+          <div class="stat-number" data-i18n="stats.1.number">40+</div>
+          <p data-i18n="stats.1.label">Χρόνια Εμπειρίας</p>
         </div>
         <div class="stat-item">
-          <h3 data-i18n="stats.2.number">15,000</h3>
-          <p data-i18n="stats.2.label">m&#178; Facilities</p>
+          <div class="stat-number" data-i18n="stats.2.number">15.000</div>
+          <p data-i18n="stats.2.label">τ.μ. Εγκαταστάσεις</p>
         </div>
         <div class="stat-item">
-          <h3 data-i18n="stats.3.number">#1</h3>
-          <p data-i18n="stats.3.label">in European Refrigerated Vehicles</p>
+          <div class="stat-number" data-i18n="stats.3.number">#1</div>
+          <p data-i18n="stats.3.label">στα Ευρωπαϊκά Ψυκτικά Οχήματα</p>
         </div>
         <div class="stat-item">
-          <h3 data-i18n="stats.4.number">1935</h3>
-          <p data-i18n="stats.4.label">Lamberet Founded</p>
+          <div class="stat-number" data-i18n="stats.4.number">1935</div>
+          <p data-i18n="stats.4.label">Ίδρυση Lamberet</p>
         </div>
       </div>
     </div>
@@ -130,49 +176,53 @@
   <section class="section section-alt">
     <div class="container">
       <div class="section-header">
-        <h2 data-i18n="products.title">Lamberet Product Range</h2>
-        <p data-i18n="products.subtitle">The complete range of refrigerated transport solutions from Europe's leading manufacturer</p>
+        <h2 data-i18n="products.title">Γκάμα Προϊόντων Lamberet</h2>
+        <p data-i18n="products.subtitle">Η πλήρης γκάμα ψυκτικών λύσεων μεταφοράς από τον κορυφαίο κατασκευαστή της Ευρώπης</p>
       </div>
       <div class="products-grid">
         <div class="product-card">
-          <div class="product-image"><img src="https://www.lamberet.fr/uk/upload_vehicule/277SR2_-_GreenLiner_2022_deco_bd.png" alt="Lamberet SR2 Semi-Trailer"></div>
+          <div class="product-image"><img src="https://www.lamberet.fr/uk/upload_vehicule/277SR2_-_GreenLiner_2022_deco_bd.png" alt="Lamberet SR2 Semi-Trailer" loading="lazy" decoding="async"></div>
           <div class="product-info">
-            <h3 data-i18n="products.semi.title">Refrigerated Semi-Trailers</h3>
-            <p data-i18n="products.semi.text">The SR2 range offers industry-leading insulation and reliability for long-haul temperature-controlled transport.</p>
-            <span class="product-tag" data-i18n="products.semi.tag1">Mono-Temperature</span>
-            <span class="product-tag" data-i18n="products.semi.tag2">Multi-Temperature</span>
+            <h3 data-i18n="products.semi.title">Ψυκτικά Ημιρυμουλκούμενα</h3>
+            <p data-i18n="products.semi.text">Η σειρά SR2 προσφέρει κορυφαία μόνωση και αξιοπιστία για μεταφορές ελεγχόμενης θερμοκρασίας μεγάλων αποστάσεων. Διαθέσιμη σε εκδόσεις Green Liner, Heavy Duty, Super Beef, Super Duplex, Super City και CX System.</p>
+            <span class="product-tag" data-i18n="products.semi.tag1">Μονής Θερμοκρασίας</span>
+            <span class="product-tag" data-i18n="products.semi.tag2">Πολλαπλής Θερμοκρασίας</span>
+            <a class="product-cta" href="contact.html?subject=sales&model=Lamberet+SR2"><span data-i18n="products.cta">Ζητήστε προσφορά</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </div>
         </div>
         <div class="product-card">
-          <div class="product-image"><img src="https://www.lamberet.fr/uk/upload_vehicule/515RENAULT_porteur.png" alt="Lamberet Truck Body"></div>
+          <div class="product-image"><img src="https://www.lamberet.fr/uk/upload_vehicule/515RENAULT_porteur.png" alt="Lamberet Truck Body" loading="lazy" decoding="async"></div>
           <div class="product-info">
-            <h3 data-i18n="products.truck.title">Truck Bodies</h3>
-            <p data-i18n="products.truck.text">Rigid truck bodies designed for urban and regional distribution, with exceptional insulation performance.</p>
-            <span class="product-tag" data-i18n="products.truck.tag1">Urban Distribution</span>
-            <span class="product-tag" data-i18n="products.truck.tag2">Regional</span>
+            <h3 data-i18n="products.truck.title">Υπερκατασκευές Φορτηγών</h3>
+            <p data-i18n="products.truck.text">Υπερκατασκευές φορτηγών σχεδιασμένες για αστική και περιφερειακή διανομή, με εξαιρετική μόνωση και αντοχή για καθημερινές λειτουργίες ψυκτικής αλυσίδας.</p>
+            <span class="product-tag" data-i18n="products.truck.tag1">Αστική Διανομή</span>
+            <span class="product-tag" data-i18n="products.truck.tag2">Περιφερειακή</span>
+            <a class="product-cta" href="contact.html?subject=sales&model=Lamberet+Truck+Body"><span data-i18n="products.cta">Ζητήστε προσφορά</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </div>
         </div>
         <div class="product-card">
-          <div class="product-image"><img src="https://www.lamberet.fr/uk/vignette_vehicule_500/RENAULT_Trafic_arriere_bd.jpg" alt="Lamberet Refrigerated Van - Insulated Interior"></div>
+          <div class="product-image"><img src="https://www.lamberet.fr/uk/vignette_vehicule_500/RENAULT_Trafic_arriere_bd.jpg" alt="Lamberet Refrigerated Van - Insulated Interior" loading="lazy" decoding="async"></div>
           <div class="product-info">
-            <h3 data-i18n="products.van.title">Refrigerated Vans</h3>
-            <p data-i18n="products.van.text">Compact refrigerated van conversions for last-mile delivery and small-scale cold chain transport.</p>
-            <span class="product-tag" data-i18n="products.van.tag1">Last-Mile</span>
-            <span class="product-tag" data-i18n="products.van.tag2">Pharma</span>
+            <h3 data-i18n="products.van.title">Ψυκτικά Βαν</h3>
+            <p data-i18n="products.van.text">Ψυκτικές μετατροπές βαν για παράδοση τελευταίου χιλιομέτρου και μεταφορά ψυκτικής αλυσίδας μικρής κλίμακας. Ιδανικό για αστική διανομή τροφίμων και φαρμακευτική εφοδιαστική.</p>
+            <span class="product-tag" data-i18n="products.van.tag1">Τελευταίο Χιλιόμετρο</span>
+            <span class="product-tag" data-i18n="products.van.tag2">Φαρμακευτική</span>
+            <a class="product-cta" href="contact.html?subject=sales&model=Lamberet+Refrigerated+Van"><span data-i18n="products.cta">Ζητήστε προσφορά</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </div>
         </div>
         <div class="product-card">
-          <div class="product-image"><img src="https://lamberet.fr/uk/upload_kerstner/CJ103EARS.jpg" alt="Kerstner Refrigeration Unit"></div>
+          <div class="product-image"><img src="https://lamberet.fr/uk/upload_kerstner/CJ103EARS.jpg" alt="Kerstner Refrigeration Unit" loading="lazy" decoding="async"></div>
           <div class="product-info">
-            <h3 data-i18n="products.kerstner.title">Kerstner Refrigeration Units</h3>
-            <p data-i18n="products.kerstner.text">Electric refrigeration units by Kerstner, a Lamberet subsidiary.</p>
-            <span class="product-tag" data-i18n="products.kerstner.tag1">Electric</span>
-            <span class="product-tag" data-i18n="products.kerstner.tag2">Silent</span>
+            <h3 data-i18n="products.kerstner.title">Ψυκτικά Μηχανήματα Kerstner</h3>
+            <p data-i18n="products.kerstner.text">Ηλεκτρικά ψυκτικά μηχανήματα Kerstner, θυγατρική της Lamberet. Η μεγαλύτερη γκάμα ηλεκτρικών ψυκτικών μηχανημάτων για βαν, με ενσωματωμένη τεχνολογία εξάτμισης στην οροφή και αθόρυβη λειτουργία.</p>
+            <span class="product-tag" data-i18n="products.kerstner.tag1">Ηλεκτρικό</span>
+            <span class="product-tag" data-i18n="products.kerstner.tag2">Αθόρυβο</span>
+            <a class="product-cta" href="contact.html?subject=sales&model=Kerstner"><span data-i18n="products.cta">Ζητήστε προσφορά</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
           </div>
         </div>
       </div>
       <div style="text-align:center; margin-top:40px;">
-        <a href="products.html" class="btn btn-outline" data-i18n="hero.cta1">View Products</a>
+        <a href="products.html" class="btn btn-outline" data-i18n="hero.cta1">Δείτε τα Προϊόντα</a>
       </div>
     </div>
   </section>
@@ -180,9 +230,9 @@
   <!-- CTA -->
   <section class="cta-section">
     <div class="container">
-      <h2 data-i18n="cta.title">Ready to Upgrade Your Fleet?</h2>
-      <p data-i18n="cta.text">Contact us today for a personalized quote on the Lamberet range.</p>
-      <a href="contact.html" class="btn btn-primary" data-i18n="cta.button">Get a Quote</a>
+      <h2 data-i18n="cta.title">Έτοιμοι να Αναβαθμίσετε τον Στόλο σας;</h2>
+      <p data-i18n="cta.text">Επικοινωνήστε μαζί μας σήμερα για εξατομικευμένη προσφορά.</p>
+      <a href="contact.html" class="btn btn-primary" data-i18n="cta.button">Ζητήστε Προσφορά</a>
     </div>
   </section>
 
@@ -190,13 +240,15 @@
   <section class="partners-banner">
     <div class="container">
       <div class="partners-logos" style="align-items: center;">
-        <div class="partner-logo" style="display:flex; align-items:center; justify-content:center; min-height:60px;"><img src="https://stathis.com.gr/wp-content/uploads/2024/01/Logo-Stathis-1.png" alt="Stathis" style="max-height:48px; width:auto;"></div>
-        <div class="partner-logo" style="display:flex; align-items:center; justify-content:center; min-height:60px;"><img src="https://theologisgroup.com/wp-content/uploads/2020/02/THEOLOGIS-GROUP-silver2.png" alt="Theologis Group" style="max-height:48px; width:auto;"></div>
-        <div class="partner-logo" style="display:flex; align-items:center; justify-content:center; min-height:60px;"><img src="https://systemssa.gr/wp-content/uploads/2018/02/logosystems.png" alt="Systems SA" style="max-height:48px; width:auto;"></div>
-        <div class="partner-logo" style="display:flex; align-items:center; justify-content:center; min-height:60px;"><img src="https://www.lamberet.fr/uk/index_2024/images/Logo_Lamberet.png" alt="Lamberet" style="max-height:48px; width:auto;"></div>
+        <div class="partner-logo" style="display:flex; align-items:center; justify-content:center; min-height:60px;"><img src="https://stathis.com.gr/wp-content/uploads/2024/01/Logo-Stathis-1.png" alt="Stathis" style="max-height:48px; width:auto;" loading="lazy" decoding="async"></div>
+        <div class="partner-logo" style="display:flex; align-items:center; justify-content:center; min-height:60px;"><img src="https://theologisgroup.com/wp-content/uploads/2020/02/THEOLOGIS-GROUP-silver2.png" alt="Theologis Group" style="max-height:48px; width:auto;" loading="lazy" decoding="async"></div>
+        <div class="partner-logo" style="display:flex; align-items:center; justify-content:center; min-height:60px;"><img src="https://systemssa.gr/wp-content/uploads/2018/02/logosystems.png" alt="Systems SA" style="max-height:48px; width:auto;" loading="lazy" decoding="async"></div>
+        <div class="partner-logo" style="display:flex; align-items:center; justify-content:center; min-height:60px;"><img src="https://www.lamberet.fr/uk/index_2024/images/Logo_Lamberet.png" alt="Lamberet" style="max-height:48px; width:auto;" loading="lazy" decoding="async"></div>
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- Footer -->
   <footer>
@@ -204,41 +256,52 @@
       <div class="footer-grid">
         <div class="footer-about">
           <div class="footer-logo">HELLENIC TRAILERS</div>
-          <p data-i18n="footer.about">Hellenic Trailers is the official Lamberet representative in Greece, providing sales, service, and support for the full range of refrigerated transport vehicles from our facilities in Mandra.</p>
+          <p data-i18n="footer.about">Η Hellenic Trailers είναι ο επίσημος αντιπρόσωπος Lamberet στην Ελλάδα, παρέχοντας πωλήσεις, σέρβις και υποστήριξη για την πλήρη γκάμα ψυκτικών οχημάτων μεταφοράς από τις εγκαταστάσεις μας στη Μάνδρα.</p>
         </div>
         <div>
-          <h4 data-i18n="footer.links">Quick Links</h4>
+          <h4 data-i18n="footer.links">Γρήγοροι Σύνδεσμοι</h4>
           <ul class="footer-links">
-            <li><a href="about.html" data-i18n="nav.about">About</a></li>
-            <li><a href="products.html" data-i18n="nav.products">Products</a></li>
-            <li><a href="services.html" data-i18n="nav.services">Services</a></li>
-            <li><a href="gallery.html" data-i18n="nav.gallery">Gallery</a></li>
+            <li><a href="about.html" data-i18n="nav.about">Η Εταιρεία</a></li>
+            <li><a href="products.html" data-i18n="nav.products">Προϊόντα</a></li>
+            <li><a href="services.html" data-i18n="nav.services">Υπηρεσίες</a></li>
           </ul>
         </div>
         <div>
-          <h4 data-i18n="footer.services.title">Services</h4>
+          <h4 data-i18n="footer.services.title">Υπηρεσίες</h4>
           <ul class="footer-links">
-            <li><a href="services.html" data-i18n="services.sales.title">Sales & Consultation</a></li>
-            <li><a href="services.html" data-i18n="services.maintenance.title">Maintenance & Repairs</a></li>
-            <li><a href="services.html" data-i18n="services.parts.title">Genuine Spare Parts</a></li>
-            <li><a href="services.html" data-i18n="services.bodyshop.title">Body Shop & Constructions</a></li>
+            <li><a href="services.html" data-i18n="services.sales.title">Πωλήσεις & Συμβουλευτική</a></li>
+            <li><a href="services.html" data-i18n="services.maintenance.title">Συντήρηση & Επισκευές</a></li>
+            <li><a href="services.html" data-i18n="services.parts.title">Γνήσια Ανταλλακτικά</a></li>
+            <li><a href="services.html" data-i18n="services.bodyshop.title">Φανοποιείο & Κατασκευές</a></li>
           </ul>
         </div>
         <div class="footer-contact">
-          <h4 data-i18n="footer.contact.title">Contact Info</h4>
-          <p>&#128205; Mandra, Attica, Greece</p>
-          <p>&#9742; +30 210 555 0000</p>
-          <p>&#9993; info@hellenictrailers.gr</p>
-          <p>&#9201; Mon-Fri: 08:00 - 17:00</p>
+          <h4 data-i18n="footer.contact.title">Στοιχεία Επικοινωνίας</h4>
+          <p><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> <span data-i18n="footer.address">Θέση Κάτω Πάτημα, Μάνδρα 196 00</span></p>
+          <p><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <a href="tel:+302103471032" data-i18n="topbar.phone">+30 210 3471032</a></p>
+          <p><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> <a href="mailto:ikaragiotis@hellenictrailers.gr" data-i18n="topbar.email">ikaragiotis@hellenictrailers.gr</a></p>
+          <p><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <span data-i18n="topbar.hours">Δευ-Παρ: 09:00 - 17:00</span></p>
         </div>
       </div>
       <div class="footer-bottom">
-        <span data-i18n="footer.rights">&copy; 2026 Hellenic Trailers. All rights reserved.</span>
-        <span data-i18n="footer.lamberet">Official Lamberet Representative in Greece</span>
+        <span data-i18n="footer.rights">© 2026 Hellenic Trailers. Με επιφύλαξη παντός δικαιώματος.</span>
+        <span data-i18n="footer.lamberet">Επίσημος Αντιπρόσωπος Lamberet στην Ελλάδα</span>
       </div>
     </div>
   </footer>
 
-  <script src="js/translations.js"></script>
+  <!-- Mobile call/quote bar -->
+  <div class="mobile-actionbar">
+    <a class="ab-call" href="tel:+302103471032">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span data-i18n="a11y.call">Κλήση</span>
+    </a>
+    <a class="ab-quote" href="contact.html">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <span data-i18n="cta.button">Ζητήστε Προσφορά</span>
+    </a>
+  </div>
+
+  <script src="js/translations.js?v=8"></script>
 </body>
 </html>
