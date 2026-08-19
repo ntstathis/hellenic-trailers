@@ -280,6 +280,14 @@ const translations = {
     en: 'I would like a quote for: {model}\n\n',
     el: 'Θα ήθελα προσφορά για: {model}\n\n'
   },
+  'form.mailto.opening': {
+    en: 'Opening your email app with the message ready to send. If nothing happens, email us directly at {email} or call {phone}.',
+    el: 'Ανοίγει η εφαρμογή email σας με το μήνυμα έτοιμο. Αν δεν ανοίξει, στείλτε μας απευθείας στο {email} ή καλέστε στο {phone}.'
+  },
+  'form.mailto.subject': {
+    en: 'Website enquiry: {subject}',
+    el: 'Αίτημα από την ιστοσελίδα: {subject}'
+  },
 };
 
 // ============================================
@@ -450,6 +458,41 @@ function initContactForm() {
     status.textContent = t(msgKey);
   }
 
+  // Templated messages can't be re-translated by the generic [data-i18n] pass
+  function setStatusText(kind, text) {
+    if (!status) return;
+    status.className = 'form-status visible ' + kind;
+    status.removeAttribute('data-i18n');
+    status.textContent = text;
+  }
+
+  function sendViaMailClient() {
+    const to = form.getAttribute('data-fallback-email');
+    const tel = form.getAttribute('data-fallback-phone') || '';
+    const val = (n) => { const f = fieldOf(n); return f ? f.value.trim() : ''; };
+
+    const subjectField = fieldOf('subject');
+    const subjectLabel = subjectField && subjectField.selectedIndex > -1
+      ? subjectField.options[subjectField.selectedIndex].text
+      : val('subject');
+
+    const body = [
+      t('contact.form.name') + ': ' + val('name'),
+      t('contact.form.email') + ': ' + val('email'),
+      t('contact.form.phone') + ': ' + (val('phone') || '-'),
+      t('contact.form.subject') + ': ' + subjectLabel,
+      '',
+      val('message')
+    ].join('\n');
+
+    const href = 'mailto:' + to
+      + '?subject=' + encodeURIComponent(t('form.mailto.subject').replace('{subject}', subjectLabel))
+      + '&body=' + encodeURIComponent(body);
+
+    setStatusText('info', t('form.mailto.opening').replace('{email}', to).replace('{phone}', tel));
+    window.location.href = href;
+  }
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     if (status) status.className = 'form-status';
@@ -478,11 +521,11 @@ function initContactForm() {
     if (summary) summary.classList.remove('visible');
 
     const endpoint = form.getAttribute('action');
-    // Until a real endpoint is configured, say so rather than faking success
+
+    // No form service configured yet: hand the message to the visitor's mail
+    // client with everything filled in, rather than dropping it.
     if (!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1) {
-      setStatus('error', 'form.failure');
-      console.warn('[hellenictrailers] Contact form endpoint is not configured yet. ' +
-                   'Replace YOUR_FORM_ID in the <form action> in contact.html.');
+      sendViaMailClient();
       return;
     }
 
