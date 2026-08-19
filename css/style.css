@@ -1211,6 +1211,13 @@ nav ul li a.active {
   color: var(--error);
 }
 
+.form-status.info {
+  border: 2px solid var(--primary);
+  border-left-width: 6px;
+  background: #f2f6fb;
+  color: var(--primary);
+}
+
 .btn[aria-busy="true"] {
   opacity: 0.7;
   pointer-events: none;

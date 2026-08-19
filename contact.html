@@ -18,7 +18,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=7">
+  <link rel="stylesheet" href="css/style.css?v=8">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Μετάβαση στο περιεχόμενο</a>
@@ -87,11 +87,17 @@
       </div>
       <div class="contact-grid">
         <div class="contact-form">
-          <!-- TODO: replace YOUR_FORM_ID with the real Formspree endpoint.
-               Sign up at https://formspree.io, create a form, paste its ID here.
-               Until then the form validates but reports a send failure rather
-               than pretending to succeed. -->
-          <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+          <!-- Replace YOUR_FORM_ID with the real Formspree endpoint to get
+               submissions delivered straight to the inbox (formspree.io, free
+               tier). Until that is set, the form falls back to opening the
+               visitor's mail client with every field filled in, using
+               data-fallback-email below. -->
+          <form id="contactForm"
+                action="https://formspree.io/f/YOUR_FORM_ID"
+                method="POST"
+                novalidate
+                data-fallback-email="ikaragiotis@hellenictrailers.gr"
+                data-fallback-phone="+30 210 3471032">
 
             <div class="form-status" role="status" aria-live="polite"></div>
 
@@ -240,6 +246,6 @@
     </a>
   </div>
 
-  <script src="js/translations.js?v=7"></script>
+  <script src="js/translations.js?v=8"></script>
 </body>
 </html>
