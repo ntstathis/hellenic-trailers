@@ -21,7 +21,13 @@
   --shadow-lg: 0 8px 40px rgba(0, 43, 92, 0.12);
   --radius: 8px;
   --radius-lg: 16px;
-  --transition: all 0.3s ease;
+  /* Scoped instead of `all` so the browser never watches layout properties */
+  --transition: color .25s ease, background-color .25s ease, border-color .25s ease,
+                box-shadow .25s ease, transform .25s ease, opacity .25s ease;
+  /* Passes 3:1 against both white (5.27:1) and --primary-dark (3.30:1) */
+  --focus-ring: #0b5cff;
+  --error: #c02626;
+  --success: #0f7a3d;
   --font-main: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --font-heading: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
   --max-width: 1200px;
@@ -61,6 +67,72 @@ a {
 
 a:hover {
   color: var(--accent);
+}
+
+/* --- Focus & motion --- */
+:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* Dark surfaces get a white ring instead — brand blue is too close to the navy */
+.top-bar :focus-visible,
+.hero :focus-visible,
+.page-banner :focus-visible,
+.stats-bar :focus-visible,
+.cta-section :focus-visible,
+footer :focus-visible {
+  outline-color: var(--white);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Inline icons (replaced emoji) --- */
+.ico {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  vertical-align: -0.125em;
+}
+
+.top-bar .ico,
+.footer-contact .ico {
+  width: 15px;
+  height: 15px;
+  opacity: 0.85;
+}
+
+.contact-info-icon .ico {
+  width: 22px;
+  height: 22px;
+  color: var(--primary);
+}
+
+/* --- Skip link --- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 2000;
+  background: var(--white);
+  color: var(--primary);
+  padding: 12px 20px;
+  font-weight: 700;
+  border-radius: 0 0 var(--radius) 0;
+  box-shadow: var(--shadow-lg);
+}
+
+.skip-link:focus {
+  left: 0;
 }
 
 .container {
@@ -183,15 +255,25 @@ p {
   background: none;
   border: 1px solid rgba(255,255,255,0.3);
   color: rgba(255,255,255,0.7);
-  padding: 2px 10px;
+  /* WCAG 2.2 target size: was 40x21, below the 24x24 minimum */
+  min-width: 44px;
+  min-height: 32px;
+  padding: 4px 12px;
   border-radius: 4px;
   cursor: pointer;
+  font-family: var(--font-main);
   font-size: 0.8rem;
   font-weight: 600;
   transition: var(--transition);
 }
 
-.lang-switch button:hover,
+.lang-switch button:hover {
+  background: rgba(255,255,255,0.18);
+  color: var(--white);
+  border-color: rgba(255,255,255,0.5);
+}
+
+/* Active must stay distinguishable from hover */
 .lang-switch button.active {
   background: var(--white);
   color: var(--primary);
@@ -219,41 +301,17 @@ header {
   gap: 12px;
 }
 
+/* Three-sphere brand mark (was a CSS-drawn placeholder) */
 .logo-icon {
-  width: 48px;
-  height: 48px;
-  background: var(--primary);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+  width: auto;
+  height: 42px;
+  flex-shrink: 0;
 }
 
-.logo-icon::before {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  border: 3px solid var(--white);
-  border-radius: 50%;
-  top: 6px;
-  left: 14px;
-}
-
-.logo-icon::after {
-  content: '';
-  position: absolute;
-  width: 30px;
-  height: 3px;
-  background: var(--accent);
-  bottom: 14px;
-  left: 9px;
-  border-radius: 2px;
-}
-
-.logo-text h1 {
+/* Was an <h1>, which gave every page two level-one headings */
+.logo-text .logo-name {
+  display: block;
+  font-family: var(--font-heading);
   font-size: 1.4rem;
   font-weight: 800;
   color: var(--primary);
@@ -294,8 +352,13 @@ nav ul li a.active {
 .mobile-toggle {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   cursor: pointer;
+  /* 44x44 touch target */
+  width: 44px;
+  height: 44px;
   padding: 8px;
   background: none;
   border: none;
@@ -306,16 +369,40 @@ nav ul li a.active {
   height: 3px;
   background: var(--primary);
   border-radius: 3px;
-  transition: var(--transition);
+  transition: transform .25s ease, opacity .2s ease;
+}
+
+/* Morph to an X so the open state is visible, not just implied */
+.mobile-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
 }
 
 /* ============================================
    HERO SECTION
    ============================================ */
 .hero {
-  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  /* Solid colour first so text is never unreadable if the photo 404s or is slow */
+  background-color: var(--primary-dark);
+  background-image:
+    linear-gradient(100deg,
+      rgba(0, 26, 58, 0.94) 0%,
+      rgba(0, 26, 58, 0.88) 38%,
+      rgba(0, 43, 92, 0.62) 70%,
+      rgba(0, 43, 92, 0.45) 100%),
+    url('../images/mitsopoulos-super-beef.jpeg');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
   color: var(--white);
-  padding: 100px 0 80px;
+  padding: 112px 0 96px;
   position: relative;
   overflow: hidden;
 }
@@ -327,7 +414,8 @@ nav ul li a.active {
   right: -20%;
   width: 80%;
   height: 200%;
-  background: radial-gradient(ellipse, rgba(200, 16, 46, 0.15) 0%, transparent 60%);
+  /* Softened now that a photo sits behind it */
+  background: radial-gradient(ellipse, rgba(200, 16, 46, 0.08) 0%, transparent 60%);
   pointer-events: none;
 }
 
@@ -482,7 +570,7 @@ nav ul li a.active {
   color: var(--white);
 }
 
-.stat-item h3 {
+.stat-number {
   font-size: 2.8rem;
   color: var(--white);
   margin-bottom: 4px;
@@ -506,11 +594,35 @@ nav ul li a.active {
   overflow: hidden;
   box-shadow: var(--shadow);
   transition: var(--transition);
+  display: flex;
+  flex-direction: column;
 }
 
-.product-card:hover {
+.product-card:hover,
+.product-card:focus-within {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+}
+
+/* Per-model quote CTA — the cards used to be dead ends */
+.product-cta {
+  margin-top: auto;
+  padding-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--accent);
+  align-self: flex-start;
+}
+
+.product-cta svg {
+  transition: transform .25s ease;
+}
+
+.product-card:hover .product-cta svg {
+  transform: translateX(4px);
 }
 
 .product-image {
@@ -548,6 +660,9 @@ nav ul li a.active {
 
 .product-info {
   padding: 28px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
 .product-info h3 {
@@ -992,6 +1107,122 @@ nav ul li a.active {
   min-height: 120px;
 }
 
+.form-group .required-mark {
+  color: var(--accent);
+  margin-left: 2px;
+}
+
+.form-group .hint {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+/* --- Validation --- */
+.field-error {
+  display: none;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--error);
+}
+
+.form-group.has-error .field-error {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-group.has-error input,
+.form-group.has-error textarea,
+.form-group.has-error select {
+  border-color: var(--error);
+  background: #fff7f7;
+}
+
+.form-group.has-error input:focus,
+.form-group.has-error textarea:focus,
+.form-group.has-error select:focus {
+  box-shadow: 0 0 0 3px rgba(192, 38, 38, 0.15);
+}
+
+/* Focusable summary at the top of the form, linking to each bad field */
+.error-summary {
+  display: none;
+  border: 2px solid var(--error);
+  border-left-width: 6px;
+  background: #fff7f7;
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 24px;
+}
+
+.error-summary.visible {
+  display: block;
+}
+
+.error-summary h3 {
+  font-size: 1.05rem;
+  color: var(--error);
+  margin-bottom: 8px;
+}
+
+.error-summary ul {
+  list-style: none;
+  margin: 0;
+}
+
+.error-summary li {
+  margin-top: 4px;
+}
+
+.error-summary a {
+  color: var(--error);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.form-status {
+  display: none;
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 24px;
+  font-weight: 600;
+}
+
+.form-status.visible {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.form-status.success {
+  border: 2px solid var(--success);
+  border-left-width: 6px;
+  background: #f2fbf5;
+  color: var(--success);
+}
+
+.form-status.error {
+  border: 2px solid var(--error);
+  border-left-width: 6px;
+  background: #fff7f7;
+  color: var(--error);
+}
+
+.form-status.info {
+  border: 2px solid var(--primary);
+  border-left-width: 6px;
+  background: #f2f6fb;
+  color: var(--primary);
+}
+
+.btn[aria-busy="true"] {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
 .contact-info-card {
   display: flex;
   gap: 16px;
@@ -1151,13 +1382,25 @@ footer h4 {
   margin-bottom: 8px;
 }
 
+/* Without this the global `a { color: var(--primary) }` renders navy on navy */
+.footer-contact a {
+  color: inherit;
+}
+
+.footer-contact a:hover {
+  color: var(--white);
+}
+
 .footer-bottom {
   padding: 24px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
   font-size: 0.85rem;
-  color: rgba(255,255,255,0.4);
+  /* was 0.4 — only 3.72:1, below the 4.5:1 minimum. Now 6.8:1 */
+  color: rgba(255,255,255,0.6);
 }
 
 /* ============================================
@@ -1209,7 +1452,7 @@ footer h4 {
 }
 
 .breadcrumb span {
-  color: rgba(255,255,255,0.4);
+  color: rgba(255,255,255,0.6);
   margin: 0 8px;
 }
 
@@ -1237,52 +1480,48 @@ footer h4 {
   object-fit: cover;
 }
 
-.timeline {
-  margin-top: 48px;
-}
 
-.timeline-item {
-  display: flex;
-  gap: 24px;
-  padding-bottom: 40px;
-  position: relative;
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  left: 23px;
-  top: 48px;
-  bottom: 0;
-  width: 2px;
-  background: var(--border);
-}
-
-.timeline-item:last-child::before {
+/* ============================================
+   MOBILE ACTION BAR
+   Phone was hidden entirely below 768px — the worst
+   place to remove tap-to-call for a fleet business.
+   ============================================ */
+.mobile-actionbar {
   display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1500;
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -4px 20px rgba(0, 43, 92, 0.12);
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  gap: 10px;
 }
 
-.timeline-dot {
-  flex-shrink: 0;
-  width: 48px;
-  height: 48px;
-  background: var(--primary);
-  border-radius: 50%;
-  display: flex;
+.mobile-actionbar a {
+  flex: 1;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--white);
+  gap: 8px;
+  min-height: 48px;
+  border-radius: var(--radius);
   font-weight: 700;
-  font-size: 0.8rem;
-  z-index: 1;
+  font-size: 0.95rem;
+  letter-spacing: 0.2px;
 }
 
-.timeline-content h3 {
-  margin-bottom: 6px;
+.mobile-actionbar .ab-call {
+  background: var(--accent);
+  color: var(--white);
 }
 
-.timeline-content p {
-  font-size: 0.93rem;
+.mobile-actionbar .ab-quote {
+  background: var(--white);
+  color: var(--primary);
+  border: 2px solid var(--primary);
 }
 
 /* ============================================
@@ -1307,7 +1546,43 @@ footer h4 {
 @media (max-width: 768px) {
   html { font-size: 15px; }
 
-  .top-bar-left { display: none; }
+  /* Keep the phone number — hide only email and hours */
+  .top-bar-left {
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .top-bar-left span:not(.tb-phone) {
+    display: none;
+  }
+
+  .top-bar-left .tb-phone {
+    white-space: nowrap;
+  }
+
+  .lang-switch button {
+    min-height: 40px;
+  }
+
+  /* Sticky call/quote bar, plus room so it never covers the footer */
+  .mobile-actionbar {
+    display: flex;
+  }
+
+  body {
+    padding-bottom: 76px;
+  }
+
+  /* Text spans the full width here, so the photo needs a heavier scrim */
+  .hero {
+    background-image:
+      linear-gradient(180deg,
+        rgba(0, 26, 58, 0.93) 0%,
+        rgba(0, 26, 58, 0.88) 55%,
+        rgba(0, 43, 92, 0.80) 100%),
+      url('../images/mitsopoulos-super-beef.jpeg');
+    background-position: center;
+  }
 
   .mobile-toggle {
     display: flex;
@@ -1321,9 +1596,14 @@ footer h4 {
     right: 0;
     background: var(--white);
     flex-direction: column;
-    padding: 16px;
+    align-items: stretch;
+    gap: 0;
+    padding: 8px 16px 16px;
     box-shadow: var(--shadow-lg);
     border-top: 2px solid var(--accent);
+    /* Long menus must scroll rather than run off the viewport */
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
   }
 
   nav ul.open {
@@ -1331,9 +1611,14 @@ footer h4 {
   }
 
   nav ul li a {
-    padding: 12px 16px;
+    padding: 14px 16px;
     width: 100%;
     display: block;
+    border-bottom: 1px solid var(--border);
+  }
+
+  nav ul li:last-child a {
+    border-bottom: none;
   }
 
   .hero { padding: 60px 0 50px; }
@@ -1370,6 +1655,11 @@ footer h4 {
 
   .hero-buttons {
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-buttons .btn {
+    justify-content: center;
   }
 
   .section { padding: 56px 0; }
@@ -1380,7 +1670,7 @@ footer h4 {
     grid-template-columns: 1fr;
   }
 
-  .stat-item h3 {
+  .stat-number {
     font-size: 2.2rem;
   }
 }
