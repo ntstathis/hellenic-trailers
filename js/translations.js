@@ -14,9 +14,9 @@ const translations = {
   'nav.contact': { en: 'Contact', el: 'Επικοινωνία' },
 
   // Top bar
-  'topbar.phone': { en: '+30 210 555 0000', el: '+30 210 555 0000' },
-  'topbar.email': { en: 'info@hellenictrailers.gr', el: 'info@hellenictrailers.gr' },
-  'topbar.hours': { en: 'Mon-Fri: 08:00 - 17:00', el: 'Δευ-Παρ: 08:00 - 17:00' },
+  'topbar.phone': { en: '+30 210 3471032', el: '+30 210 3471032' },
+  'topbar.email': { en: 'ikaragiotis@hellenictrailers.gr', el: 'ikaragiotis@hellenictrailers.gr' },
+  'topbar.hours': { en: 'Mon-Fri: 09:00 - 17:00', el: 'Δευ-Παρ: 09:00 - 17:00' },
 
   // Logo
   'logo.tagline': { en: 'Official Lamberet Representative in Greece', el: 'Επίσημος Αντιπρόσωπος Lamberet στην Ελλάδα' },
@@ -147,13 +147,13 @@ const translations = {
   'contact.form.message': { en: 'Message', el: 'Μήνυμα' },
   'contact.form.send': { en: 'Send Message', el: 'Αποστολή Μηνύματος' },
   'contact.info.address.title': { en: 'Visit Us', el: 'Επισκεφτείτε μας' },
-  'contact.info.address.text': { en: 'Theologis Group Facilities\nMandra, Attica, Greece', el: 'Εγκαταστάσεις Theologis Group\nΜάνδρα, Αττική, Ελλάδα' },
+  'contact.info.address.text': { en: 'Kato Patima\nMandra 196 00, Attica, Greece', el: 'Θέση Κάτω Πάτημα\nΜάνδρα 196 00, Αττική' },
   'contact.info.phone.title': { en: 'Call Us', el: 'Καλέστε μας' },
-  'contact.info.phone.text': { en: '+30 210 555 0000', el: '+30 210 555 0000' },
+  'contact.info.phone.text': { en: '+30 210 3471032', el: '+30 210 3471032' },
   'contact.info.email.title': { en: 'Email Us', el: 'Στείλτε Email' },
-  'contact.info.email.text': { en: 'info@hellenictrailers.gr', el: 'info@hellenictrailers.gr' },
+  'contact.info.email.text': { en: 'ikaragiotis@hellenictrailers.gr', el: 'ikaragiotis@hellenictrailers.gr' },
   'contact.info.hours.title': { en: 'Working Hours', el: 'Ώρες Λειτουργίας' },
-  'contact.info.hours.text': { en: 'Monday - Friday: 08:00 - 17:00\nSaturday: 09:00 - 14:00', el: 'Δευτέρα - Παρασκευή: 08:00 - 17:00\nΣάββατο: 09:00 - 14:00' },
+  'contact.info.hours.text': { en: 'Monday - Friday: 09:00 - 17:00\nClosed Saturday and Sunday', el: 'Δευτέρα - Παρασκευή: 09:00 - 17:00\nΣάββατο και Κυριακή κλειστά' },
 
   // CTA
   'cta.title': { en: 'Ready to Upgrade Your Fleet?', el: 'Έτοιμοι να Αναβαθμίσετε τον Στόλο σας;' },
@@ -235,6 +235,42 @@ const translations = {
 
   // Breadcrumbs
   'breadcrumb.home': { en: 'Home', el: 'Αρχική' },
+
+  'footer.address': { en: 'Kato Patima, Mandra 196 00, Greece', el: 'Θέση Κάτω Πάτημα, Μάνδρα 196 00' },
+  'map.title': { en: 'Map of our location in Mandra', el: 'Χάρτης της τοποθεσίας μας στη Μάνδρα' },
+
+  // Accessibility / chrome
+  'a11y.skip': { en: 'Skip to content', el: 'Μετάβαση στο περιεχόμενο' },
+  'a11y.menu': { en: 'Menu', el: 'Μενού' },
+  'a11y.mainnav': { en: 'Main navigation', el: 'Κύρια πλοήγηση' },
+  'a11y.call': { en: 'Call', el: 'Κλήση' },
+  'a11y.langlabel': { en: 'Language', el: 'Γλώσσα' },
+
+  // Product card CTAs
+  'products.cta': { en: 'Request a quote', el: 'Ζητήστε προσφορά' },
+
+  // Form validation
+  'form.error.title': { en: 'There is a problem', el: 'Υπάρχει κάποιο πρόβλημα' },
+  'form.error.required': { en: 'This field is required', el: 'Το πεδίο είναι υποχρεωτικό' },
+  'form.error.name': { en: 'Enter your full name', el: 'Συμπληρώστε το ονοματεπώνυμό σας' },
+  'form.error.email': { en: 'Enter a valid email address', el: 'Συμπληρώστε έγκυρη διεύθυνση email' },
+  'form.error.phone': { en: 'Enter a valid phone number', el: 'Συμπληρώστε έγκυρο τηλέφωνο' },
+  'form.error.subject': { en: 'Choose a subject', el: 'Επιλέξτε θέμα' },
+  'form.error.message': { en: 'Enter your message', el: 'Γράψτε το μήνυμά σας' },
+  'form.sending': { en: 'Sending...', el: 'Αποστολή...' },
+  'form.success': {
+    en: 'Thank you — your message has been sent. We will get back to you shortly.',
+    el: 'Ευχαριστούμε — το μήνυμά σας στάλθηκε. Θα επικοινωνήσουμε σύντομα μαζί σας.'
+  },
+  'form.failure': {
+    en: 'Something went wrong. Please call us instead, or try again shortly.',
+    el: 'Κάτι πήγε στραβά. Καλέστε μας ή δοκιμάστε ξανά σε λίγο.'
+  },
+  'form.required.note': { en: 'Required fields are marked', el: 'Τα υποχρεωτικά πεδία σημειώνονται με' },
+  'form.prefill': {
+    en: 'I would like a quote for: {model}\n\n',
+    el: 'Θα ήθελα προσφορά για: {model}\n\n'
+  },
 };
 
 // ============================================
@@ -253,10 +289,8 @@ function setLanguage(lang) {
   localStorage.setItem('ht-lang', lang);
   document.documentElement.lang = lang === 'el' ? 'el' : 'en';
 
-  // Update all translatable elements
   document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    const text = t(key);
+    const text = t(el.getAttribute('data-i18n'));
     if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
       el.placeholder = text;
     } else if (el.tagName === 'OPTION') {
@@ -266,64 +300,235 @@ function setLanguage(lang) {
     }
   });
 
-  // Update active language button
+  // Labels that live on attributes rather than in a text node
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
+  });
+
+  document.querySelectorAll('[data-i18n-title]').forEach(el => {
+    el.setAttribute('title', t(el.getAttribute('data-i18n-title')));
+  });
+
   document.querySelectorAll('.lang-switch button').forEach(btn => {
-    btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+    const isActive = btn.getAttribute('data-lang') === lang;
+    btn.classList.toggle('active', isActive);
+    btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
   });
 }
 
 // ============================================
 // Mobile Navigation
 // ============================================
-function toggleMobileNav() {
-  const nav = document.querySelector('nav ul');
-  nav.classList.toggle('open');
+function initMobileNav() {
+  const toggle = document.querySelector('.mobile-toggle');
+  const nav = document.getElementById('primary-nav');
+  if (!toggle || !nav) return;
+
+  const setOpen = (open) => {
+    nav.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+
+  toggle.addEventListener('click', () => {
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+
+  // Tapping a destination should dismiss the menu
+  nav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => setOpen(false));
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  // Clicking outside closes it too
+  document.addEventListener('click', (e) => {
+    if (toggle.getAttribute('aria-expanded') !== 'true') return;
+    if (!nav.contains(e.target) && !toggle.contains(e.target)) setOpen(false);
+  });
+
+  // Leaving mobile width must not strand the menu in the open state
+  window.matchMedia('(min-width: 769px)').addEventListener('change', (e) => {
+    if (e.matches) setOpen(false);
+  });
+}
+
+// ============================================
+// Contact Form
+// ============================================
+const VALIDATORS = {
+  name: v => v.trim().length >= 2 || 'form.error.name',
+  email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'form.error.email',
+  phone: v => v.trim() === '' || /^[+\d][\d\s()\-.]{5,}$/.test(v.trim()) || 'form.error.phone',
+  subject: v => v !== '' || 'form.error.subject',
+  message: v => v.trim().length >= 10 || 'form.error.message'
+};
+
+function initContactForm() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  const summary = form.querySelector('.error-summary');
+  const summaryList = summary ? summary.querySelector('ul') : null;
+  const status = form.querySelector('.form-status');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  const fieldOf = (name) => form.querySelector('[name="' + name + '"]');
+
+  // Deep link from a product card: contact.html?subject=sales&model=Lamberet+SR2
+  const params = new URLSearchParams(window.location.search);
+  const subjectParam = params.get('subject');
+  const modelParam = params.get('model');
+  if (subjectParam) {
+    const select = fieldOf('subject');
+    if (select && Array.from(select.options).some(o => o.value === subjectParam)) {
+      select.value = subjectParam;
+    }
+  }
+  if (modelParam) {
+    const message = fieldOf('message');
+    if (message && !message.value) {
+      message.value = t('form.prefill').replace('{model}', modelParam);
+    }
+  }
+
+  function showFieldError(field, msgKey) {
+    const group = field.closest('.form-group');
+    group.classList.add('has-error');
+    field.setAttribute('aria-invalid', 'true');
+    const err = group.querySelector('.field-error');
+    if (err) {
+      err.setAttribute('data-i18n', msgKey);
+      err.textContent = t(msgKey);
+    }
+  }
+
+  function clearFieldError(field) {
+    field.closest('.form-group').classList.remove('has-error');
+    field.removeAttribute('aria-invalid');
+  }
+
+  function validateField(name) {
+    const field = fieldOf(name);
+    if (!field) return true;
+    const result = VALIDATORS[name](field.value);
+    if (result === true) {
+      clearFieldError(field);
+      return true;
+    }
+    showFieldError(field, result);
+    return false;
+  }
+
+  // Validate on blur — not on every keystroke, which fights the user mid-entry
+  Object.keys(VALIDATORS).forEach(name => {
+    const field = fieldOf(name);
+    if (!field) return;
+    field.addEventListener('blur', () => validateField(name));
+    field.addEventListener('input', () => {
+      if (field.closest('.form-group').classList.contains('has-error')) validateField(name);
+    });
+  });
+
+  function setStatus(kind, msgKey) {
+    if (!status) return;
+    status.className = 'form-status visible ' + kind;
+    status.setAttribute('data-i18n', msgKey);
+    status.textContent = t(msgKey);
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (status) status.className = 'form-status';
+
+    const failed = Object.keys(VALIDATORS).filter(name => !validateField(name));
+
+    if (failed.length) {
+      if (summary && summaryList) {
+        summaryList.innerHTML = '';
+        failed.forEach(name => {
+          const field = fieldOf(name);
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#' + field.id;
+          a.textContent = field.closest('.form-group').querySelector('.field-error').textContent;
+          a.addEventListener('click', (ev) => { ev.preventDefault(); field.focus(); });
+          li.appendChild(a);
+          summaryList.appendChild(li);
+        });
+        summary.classList.add('visible');
+        summary.focus();
+      }
+      return;
+    }
+
+    if (summary) summary.classList.remove('visible');
+
+    const endpoint = form.getAttribute('action');
+    // Until a real endpoint is configured, say so rather than faking success
+    if (!endpoint || endpoint.indexOf('YOUR_FORM_ID') !== -1) {
+      setStatus('error', 'form.failure');
+      console.warn('[hellenictrailers] Contact form endpoint is not configured yet. ' +
+                   'Replace YOUR_FORM_ID in the <form action> in contact.html.');
+      return;
+    }
+
+    const originalLabel = submitBtn.textContent;
+    submitBtn.setAttribute('aria-busy', 'true');
+    submitBtn.textContent = t('form.sending');
+
+    fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        setStatus('success', 'form.success');
+        form.reset();
+        Object.keys(VALIDATORS).forEach(n => {
+          const f = fieldOf(n);
+          if (f) clearFieldError(f);
+        });
+      })
+      .catch(err => {
+        setStatus('error', 'form.failure');
+        console.error('[hellenictrailers] Form submission failed:', err);
+      })
+      .finally(() => {
+        submitBtn.removeAttribute('aria-busy');
+        submitBtn.textContent = originalLabel;
+      });
+  });
 }
 
 // ============================================
 // Initialization
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
-  // Set initial language
   setLanguage(currentLang);
 
-  // Language switch buttons
   document.querySelectorAll('.lang-switch button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      setLanguage(btn.getAttribute('data-lang'));
-    });
+    btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
   });
 
-  // Mobile menu toggle
-  const mobileToggle = document.querySelector('.mobile-toggle');
-  if (mobileToggle) {
-    mobileToggle.addEventListener('click', toggleMobileNav);
-  }
+  initMobileNav();
+  initContactForm();
 
-  // Smooth scroll for anchor links
+  // Smooth scroll for in-page anchors, unless the user opted out of motion
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
-      if (href !== '#') {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }
+      if (href === '#' || href.length < 2) return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: reduced.matches ? 'auto' : 'smooth', block: 'start' });
     });
   });
-
-  // Contact form
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const lang = currentLang;
-      alert(lang === 'el'
-        ? 'Ευχαριστούμε! Θα επικοινωνήσουμε σύντομα μαζί σας.'
-        : 'Thank you! We will contact you shortly.');
-      form.reset();
-    });
-  }
 });

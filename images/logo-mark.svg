@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 52" width="120" height="52" role="img" aria-label="Hellenic Trailers">
+  <defs>
+    <radialGradient id="ht-blue" cx="35%" cy="28%" r="72%">
+      <stop offset="0%"   stop-color="#6FC0F2"/>
+      <stop offset="28%"  stop-color="#2E93DD"/>
+      <stop offset="62%"  stop-color="#0E63B4"/>
+      <stop offset="90%"  stop-color="#0A4A8C"/>
+      <stop offset="100%" stop-color="#08386B"/>
+    </radialGradient>
+    <radialGradient id="ht-silver" cx="35%" cy="28%" r="72%">
+      <stop offset="0%"   stop-color="#FFFFFF"/>
+      <stop offset="30%"  stop-color="#EDEFF1"/>
+      <stop offset="62%"  stop-color="#C9CFD4"/>
+      <stop offset="88%"  stop-color="#A2AAB1"/>
+      <stop offset="100%" stop-color="#848D95"/>
+    </radialGradient>
+    <!-- specular highlight shared by all three spheres -->
+    <radialGradient id="ht-gloss" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#FFFFFF" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- silver sphere sits behind, so the blues clip it to a lens shape -->
+  <circle cx="60" cy="26" r="25" fill="url(#ht-silver)"/>
+  <ellipse cx="52" cy="15" rx="12" ry="8" fill="url(#ht-gloss)"/>
+
+  <circle cx="26" cy="26" r="25" fill="url(#ht-blue)"/>
+  <ellipse cx="18" cy="15" rx="12" ry="8" fill="url(#ht-gloss)"/>
+
+  <circle cx="94" cy="26" r="25" fill="url(#ht-blue)"/>
+  <ellipse cx="86" cy="15" rx="12" ry="8" fill="url(#ht-gloss)"/>
+</svg>

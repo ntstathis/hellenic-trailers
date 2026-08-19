@@ -4,3 +4,5 @@ Thumbs.db
 desktop.ini
 *.tmp
 .git_broken_backup/
+# Local dev server config (Claude Code)
+.claude/
