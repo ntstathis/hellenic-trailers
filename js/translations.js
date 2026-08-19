@@ -103,7 +103,7 @@ const translations = {
   'services.bodyshop.li3': { en: 'Paint and finishing', el: 'Βαφή και φινίρισμα' },
 
   // Services - "Why our service" cards
-  'services.why.team.title': { en: 'Factory-Trained Team', el: 'Εργοστασιακά Εκπαιδευμένη Ομάδα' },
+  'services.why.team.title': { en: 'Factory-Trained Technicians', el: 'Εξειδικευμένοι Τεχνικοί' },
   'services.why.team.text': { en: 'Our technicians are trained by Lamberet to ensure your vehicles receive the highest quality of care and maintenance.', el: 'Οι τεχνικοί μας είναι εκπαιδευμένοι από τη Lamberet, ώστε τα οχήματά σας να λαμβάνουν την υψηλότερη ποιότητα φροντίδας και συντήρησης.' },
   'services.why.facilities.title': { en: '15,000 m² Facilities', el: 'Εγκαταστάσεις 15.000 τ.μ.' },
   'services.why.facilities.text': { en: 'State-of-the-art service center at the Theologis Group facilities in Mandra, fully equipped for all types of work.', el: 'Υπερσύγχρονο κέντρο σέρβις στις εγκαταστάσεις του Theologis Group στη Μάνδρα, πλήρως εξοπλισμένο για κάθε είδους εργασία.' },
