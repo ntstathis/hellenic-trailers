@@ -102,6 +102,14 @@ const translations = {
   'services.bodyshop.li2': { en: 'Custom builds', el: 'Κατασκευές κατά παραγγελία' },
   'services.bodyshop.li3': { en: 'Paint and finishing', el: 'Βαφή και φινίρισμα' },
 
+  // Services - "Why our service" cards
+  'services.why.team.title': { en: 'Factory-Trained Team', el: 'Εργοστασιακά Εκπαιδευμένη Ομάδα' },
+  'services.why.team.text': { en: 'Our technicians are trained by Lamberet to ensure your vehicles receive the highest quality of care and maintenance.', el: 'Οι τεχνικοί μας είναι εκπαιδευμένοι από τη Lamberet, ώστε τα οχήματά σας να λαμβάνουν την υψηλότερη ποιότητα φροντίδας και συντήρησης.' },
+  'services.why.facilities.title': { en: '15,000 m² Facilities', el: 'Εγκαταστάσεις 15.000 τ.μ.' },
+  'services.why.facilities.text': { en: 'State-of-the-art service center at the Theologis Group facilities in Mandra, fully equipped for all types of work.', el: 'Υπερσύγχρονο κέντρο σέρβις στις εγκαταστάσεις του Theologis Group στη Μάνδρα, πλήρως εξοπλισμένο για κάθε είδους εργασία.' },
+  'services.why.speed.title': { en: 'Fast Turnaround', el: 'Γρήγορη Παράδοση' },
+  'services.why.speed.text': { en: 'We understand downtime costs money. Our team is committed to getting your vehicles back on the road as quickly as possible.', el: 'Γνωρίζουμε ότι η ακινησία κοστίζει. Η ομάδα μας δεσμεύεται να επιστρέψει τα οχήματά σας στον δρόμο το συντομότερο δυνατό.' },
+
   // Gallery
   'gallery.title': { en: 'Gallery', el: 'Συλλογή Φωτογραφιών' },
   'gallery.subtitle': { en: 'See our facilities and Lamberet products in action', el: 'Δείτε τις εγκαταστάσεις μας και τα προϊόντα Lamberet' },
@@ -222,6 +230,7 @@ const translations = {
   'services.banner.text': { en: 'Full lifecycle support for your refrigerated fleet', el: 'Πλήρης υποστήριξη κύκλου ζωής για τον ψυκτικό σας στόλο' },
 
   // Gallery page
+  'gallery.placeholder.note': { en: 'Gallery images are placeholders. Replace with actual photos of your facilities, products, and completed projects.', el: 'Οι εικόνες της συλλογής είναι προσωρινές. Αντικαταστήστε τες με πραγματικές φωτογραφίες των εγκαταστάσεων, των προϊόντων και ολοκληρωμένων έργων.' },
   'gallery.banner.title': { en: 'Gallery', el: 'Συλλογή' },
   'gallery.banner.text': { en: 'Our facilities, products, and projects', el: 'Οι εγκαταστάσεις, τα προϊόντα και τα έργα μας' },
 
