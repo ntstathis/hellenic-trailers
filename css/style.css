@@ -914,68 +914,6 @@ nav ul li a.active {
   font-weight: 600;
 }
 
-/* --- Testimonials --- */
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-}
-
-.testimonial-card {
-  background: var(--white);
-  padding: 36px;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow);
-  position: relative;
-}
-
-.testimonial-card::before {
-  content: '"';
-  position: absolute;
-  top: 16px;
-  right: 24px;
-  font-size: 5rem;
-  color: rgba(0, 43, 92, 0.06);
-  font-family: Georgia, serif;
-  line-height: 1;
-}
-
-.testimonial-text {
-  font-style: italic;
-  color: var(--text-medium);
-  margin-bottom: 20px;
-  line-height: 1.8;
-}
-
-.testimonial-author {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.testimonial-avatar {
-  width: 48px;
-  height: 48px;
-  background: var(--primary);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--white);
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.testimonial-author-info strong {
-  display: block;
-  color: var(--primary);
-}
-
-.testimonial-author-info span {
-  font-size: 0.85rem;
-  color: var(--text-light);
-}
-
 /* --- News --- */
 .news-grid {
   display: grid;
@@ -1669,7 +1607,6 @@ footer h4 {
   .products-grid,
   .services-grid,
   .founders-grid,
-  .testimonials-grid,
   .news-grid,
   .gallery-grid {
     grid-template-columns: 1fr;
