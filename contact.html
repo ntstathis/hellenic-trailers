@@ -87,9 +87,9 @@
       </div>
       <div class="contact-grid">
         <div class="contact-form">
-          <!-- Replace YOUR_FORM_ID with the real Formspree endpoint to get
-               submissions delivered straight to the inbox (formspree.io, free
-               tier). Until that is set, the form falls back to opening the
+          <!-- Replace YOUR_FORM_ID with the real Formspree form ID (formspree.io)
+               to get submissions delivered to the inbox and stored in the
+               dashboard. Until that is set, the form falls back to opening the
                visitor's mail client with every field filled in, using
                data-fallback-email below. -->
           <form id="contactForm"
@@ -104,6 +104,12 @@
             <div class="error-summary" role="alert" tabindex="-1" aria-labelledby="error-summary-title">
               <h3 id="error-summary-title" data-i18n="form.error.title">Υπάρχει κάποιο πρόβλημα</h3>
               <ul></ul>
+            </div>
+
+            <!-- Spam trap: positioned off-screen, so only bots ever fill it in -->
+            <div class="hp-field" aria-hidden="true">
+              <label for="cf-gotcha">Leave this field empty</label>
+              <input type="text" id="cf-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
             </div>
 
             <div class="form-group">
@@ -140,6 +146,15 @@
               <label for="cf-message"><span data-i18n="contact.form.message">Μήνυμα</span><span class="required-mark" aria-hidden="true">*</span></label>
               <textarea id="cf-message" name="message" rows="5" required aria-describedby="cf-message-error"></textarea>
               <p class="field-error" id="cf-message-error"></p>
+            </div>
+
+            <div class="form-group form-consent">
+              <label class="consent-label" for="cf-consent">
+                <input type="checkbox" id="cf-consent" name="consent" value="yes" required aria-describedby="cf-consent-error">
+                <span><span data-i18n="contact.form.consent">Συμφωνώ να αποθηκευτούν και να χρησιμοποιηθούν τα στοιχεία μου ώστε η Hellenic Trailers να απαντήσει στο αίτημά μου.</span><span class="required-mark" aria-hidden="true">*</span></span>
+              </label>
+              <p class="hint" data-i18n="contact.form.consent.note">Τα στοιχεία σας δεν κοινοποιούνται ποτέ σε τρίτους. Επικοινωνήστε μαζί μας οποιαδήποτε στιγμή για τη διαγραφή τους.</p>
+              <p class="field-error" id="cf-consent-error"></p>
             </div>
 
             <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" data-i18n="contact.form.send">Αποστολή Μηνύματος</button>
