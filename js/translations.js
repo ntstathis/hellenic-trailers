@@ -220,8 +220,8 @@ const translations = {
   'gallery.banner.text': { en: 'Our facilities, products, and projects', el: 'Οι εγκαταστάσεις, τα προϊόντα και τα έργα μας' },
 
   // News page
-  'news.banner.title': { en: 'News & Testimonials', el: 'Νέα & Μαρτυρίες' },
-  'news.banner.text': { en: 'Latest updates and client feedback', el: 'Τελευταίες ενημερώσεις και σχόλια πελατών' },
+  'news.banner.title': { en: 'News', el: 'Νέα' },
+  'news.banner.text': { en: 'Latest updates from Hellenic Trailers', el: 'Τελευταίες ενημερώσεις από την Hellenic Trailers' },
 
   // Contact page
   'contact.banner.title': { en: 'Contact', el: 'Επικοινωνία' },
