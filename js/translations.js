@@ -125,15 +125,6 @@ const translations = {
   'news.4.title': { en: 'Super Beef Meat Chamber Delivery to Farma Mitsopoulos', el: 'Παράδοση Super Beef κρεατάδικου θαλάμου στη Φάρμα Μητσόπουλος' },
   'news.4.text': { en: 'We successfully delivered a Lamberet SR2 Super Beef semi-trailer to Farma Mitsopoulos. The chamber is specifically designed for hanging meat transport with reinforced roof structure and optimized interior configuration.', el: 'Με επιτυχία ολοκληρώθηκε η παράδοση ενός ημιρυμουλκούμενου Lamberet SR2 Super Beef στη Φάρμα Μητσόπουλος. Ο θάλαμος είναι ειδικά σχεδιασμένος για τη μεταφορά κρεμαστών κρεάτων με ενισχυμένη δομή οροφής και βελτιστοποιημένη εσωτερική διαμόρφωση.' },
 
-  // Testimonials
-  'testimonials.title': { en: 'What Our Clients Say', el: 'Τι Λένε οι Πελάτες μας' },
-  'testimonials.1.text': { en: 'Hellenic Trailers provided us with the perfect cold chain solution for our nationwide food distribution network. The Lamberet SR2 trailers are exceptional in quality and reliability.', el: 'Η Hellenic Trailers μας παρείχε την τέλεια λύση ψυκτικής αλυσίδας για το πανελλαδικό δίκτυο διανομής τροφίμων μας. Τα ρυμουλκούμενα Lamberet SR2 είναι εξαιρετικά σε ποιότητα και αξιοπιστία.' },
-  'testimonials.1.name': { en: 'Giorgos K.', el: 'Γιώργος Κ.' },
-  'testimonials.1.role': { en: 'Fleet Manager, Fresh Foods S.A.', el: 'Διευθυντής Στόλου, Fresh Foods Α.Ε.' },
-  'testimonials.2.text': { en: 'The after-sales service from the team at Theologis Group is outstanding. Fast response times and genuine parts keep our fleet running smoothly every day.', el: 'Η υποστήριξη μετά την πώληση από την ομάδα στο Theologis Group είναι εξαιρετική. Γρήγοροι χρόνοι ανταπόκρισης και γνήσια ανταλλακτικά κρατούν τον στόλο μας σε άριστη λειτουργία.' },
-  'testimonials.2.name': { en: 'Maria P.', el: 'Μαρία Π.' },
-  'testimonials.2.role': { en: 'Operations Director, MedPharma Logistics', el: 'Διευθύντρια Λειτουργιών, MedPharma Logistics' },
-
   // Contact
   'contact.title': { en: 'Contact Us', el: 'Επικοινωνήστε Μαζί μας' },
   'contact.subtitle': { en: 'Get in touch for quotes, inquiries, or to schedule a visit', el: 'Επικοινωνήστε για προσφορές, ερωτήσεις ή για να προγραμματίσετε μια επίσκεψη' },
