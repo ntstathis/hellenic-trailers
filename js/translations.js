@@ -288,6 +288,22 @@ const translations = {
     en: 'Website enquiry: {subject}',
     el: 'Αίτημα από την ιστοσελίδα: {subject}'
   },
+  'form.email.subject': {
+    en: 'Website enquiry: {subject} — {name}',
+    el: 'Αίτημα από την ιστοσελίδα: {subject} — {name}'
+  },
+  'contact.form.consent': {
+    en: 'I agree that my details may be stored and used so that Hellenic Trailers can respond to my enquiry.',
+    el: 'Συμφωνώ να αποθηκευτούν και να χρησιμοποιηθούν τα στοιχεία μου ώστε η Hellenic Trailers να απαντήσει στο αίτημά μου.'
+  },
+  'contact.form.consent.note': {
+    en: 'Your details are never shared with third parties. Write to us at any time to have them deleted.',
+    el: 'Τα στοιχεία σας δεν κοινοποιούνται ποτέ σε τρίτους. Επικοινωνήστε μαζί μας οποιαδήποτε στιγμή για τη διαγραφή τους.'
+  },
+  'form.error.consent': {
+    en: 'Please tick the box so that we may reply to you',
+    el: 'Επιλέξτε το πεδίο για να μπορέσουμε να σας απαντήσουμε'
+  },
 };
 
 // ============================================
@@ -382,7 +398,8 @@ const VALIDATORS = {
   email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'form.error.email',
   phone: v => v.trim() === '' || /^[+\d][\d\s()\-.]{5,}$/.test(v.trim()) || 'form.error.phone',
   subject: v => v !== '' || 'form.error.subject',
-  message: v => v.trim().length >= 10 || 'form.error.message'
+  message: v => v.trim().length >= 10 || 'form.error.message',
+  consent: v => v === true || 'form.error.consent'
 };
 
 function initContactForm() {
@@ -432,7 +449,8 @@ function initContactForm() {
   function validateField(name) {
     const field = fieldOf(name);
     if (!field) return true;
-    const result = VALIDATORS[name](field.value);
+    const value = field.type === 'checkbox' ? field.checked : field.value;
+    const result = VALIDATORS[name](value);
     if (result === true) {
       clearFieldError(field);
       return true;
@@ -445,6 +463,11 @@ function initContactForm() {
   Object.keys(VALIDATORS).forEach(name => {
     const field = fieldOf(name);
     if (!field) return;
+    // A checkbox has no meaningful blur state — it flips or it doesn't
+    if (field.type === 'checkbox') {
+      field.addEventListener('change', () => validateField(name));
+      return;
+    }
     field.addEventListener('blur', () => validateField(name));
     field.addEventListener('input', () => {
       if (field.closest('.form-group').classList.contains('has-error')) validateField(name);
@@ -497,6 +520,15 @@ function initContactForm() {
     e.preventDefault();
     if (status) status.className = 'form-status';
 
+    // Spam trap: bots fill in every field they find, people never see this one.
+    // Show the normal success message so the bot learns nothing from being caught.
+    const honeypot = fieldOf('_gotcha');
+    if (honeypot && honeypot.value !== '') {
+      setStatus('success', 'form.success');
+      form.reset();
+      return;
+    }
+
     const failed = Object.keys(VALIDATORS).filter(name => !validateField(name));
 
     if (failed.length) {
@@ -533,10 +565,17 @@ function initContactForm() {
     submitBtn.setAttribute('aria-busy', 'true');
     submitBtn.textContent = t('form.sending');
 
+    // A readable subject line, so enquiries can be triaged from the inbox list
+    const payload = new FormData(form);
+    const chosen = fieldOf('subject');
+    payload.set('_subject', t('form.email.subject')
+      .replace('{subject}', chosen && chosen.selectedIndex > -1 ? chosen.options[chosen.selectedIndex].text : '')
+      .replace('{name}', fieldOf('name').value.trim()));
+
     fetch(endpoint, {
       method: 'POST',
       headers: { 'Accept': 'application/json' },
-      body: new FormData(form)
+      body: payload
     })
       .then(res => {
         if (!res.ok) throw new Error('HTTP ' + res.status);
