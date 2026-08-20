@@ -120,12 +120,6 @@ const translations = {
   'news.1.date': { en: 'March 2026', el: 'Μάρτιος 2026' },
   'news.1.title': { en: 'Hellenic Trailers Launches as Lamberet Greece', el: 'Η Hellenic Trailers ξεκινά ως Lamberet Greece' },
   'news.1.text': { en: 'We are proud to announce our partnership with Lamberet as their official representative in Greece.', el: 'Είμαστε υπερήφανοι που ανακοινώνουμε τη συνεργασία μας με τη Lamberet ως επίσημος αντιπρόσωπος στην Ελλάδα.' },
-  'news.2.date': { en: 'February 2026', el: 'Φεβρουάριος 2026' },
-  'news.2.title': { en: 'SR2 Green Liner Now Available in Greece', el: 'Το SR2 Green Liner Διαθέσιμο στην Ελλάδα' },
-  'news.2.text': { en: 'The latest SR2 Green Liner semi-trailer is now available for order through Hellenic Trailers.', el: 'Το τελευταίο ημιρυμουλκούμενο SR2 Green Liner είναι πλέον διαθέσιμο για παραγγελία.' },
-  'news.3.date': { en: 'January 2026', el: 'Ιανουάριος 2026' },
-  'news.3.title': { en: 'New 15,000 m² Service Center in Mandra', el: 'Νέο Κέντρο Σέρβις 15.000 τ.μ. στη Μάνδρα' },
-  'news.3.text': { en: 'Our state-of-the-art service center at the Theologis Group facilities is fully operational.', el: 'Το υπερσύγχρονο κέντρο σέρβις μας στις εγκαταστάσεις του Theologis Group λειτουργεί πλήρως.' },
 
   'news.4.date': { en: 'May 2026', el: 'Μάιος 2026' },
   'news.4.title': { en: 'Super Beef Meat Chamber Delivery to Farma Mitsopoulos', el: 'Παράδοση Super Beef κρεατάδικου θαλάμου στη Φάρμα Μητσόπουλος' },
