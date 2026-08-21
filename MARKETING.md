@@ -23,7 +23,7 @@ tokens and API keys live only in the Claude Code environment settings (see
 | Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector + group done — signup page & sender verification pending (step C) |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ⬜ step E below |
 | Google Business Profile | Claude prepares the post text, you paste it | ⬜ step F below |
-| Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ⬜ step D below |
+| Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ token wired on all pages (2026-08-21) |
 | Contact form | Formspree (the site's JS already supports it) | ⬜ step D below |
 
 ---
@@ -130,10 +130,10 @@ the REST API directly.
   verification → *HTML file* shows a `googleXXXX.html` filename — give it to
   Claude to commit) so verification survives DNS changes.
 
-- **Cloudflare Web Analytics** (free, cookieless — no cookie banner needed):
-  <https://dash.cloudflare.com> → Web Analytics → *Add a site* →
-  `hellenictrailers.gr` (choose the JS-snippet option; the DNS does not move).
-  From the snippet, copy the `token` value → Wiring checklist #5.
+- **Cloudflare Web Analytics** — ✅ done: site added and the beacon snippet is
+  wired on all 7 pages (2026-08-21). Visitor numbers, top pages and referrers
+  appear at <https://dash.cloudflare.com> → Web Analytics, from the first
+  visit after deployment.
 - **Formspree** (makes the contact form actually submit instead of opening the
   visitor's mail program): <https://formspree.io> → free account → *New form*
   (send submissions to `ikaragiotis@hellenictrailers.gr`) → copy the form's ID
@@ -202,7 +202,7 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | 2 | Instagram profile URL | `REPLACE-WITH-INSTAGRAM-URL` | footer of all 7 `*.html` |
 | 3 | LinkedIn page URL | `REPLACE-WITH-LINKEDIN-URL` | footer of all 7 `*.html` |
 | 4 | MailerLite hosted signup URL | `REPLACE-WITH-MAILERLITE-SIGNUP-URL` | footer of all 7 `*.html` + signup section in `news.html` |
-| 5 | Cloudflare Analytics token | `REPLACE-WITH-CF-TOKEN` | before `</body>` in all 7 `*.html` |
+| 5 | Cloudflare Analytics token | ✅ wired (2026-08-21) | before `</body>` in all 7 `*.html` |
 | 6 | Formspree form ID | `YOUR_FORM_ID` | `contact.html` form `action` |
 | 7 | Social URLs in structured data | add a `"sameAs": [FB, IG, LinkedIn]` array | JSON-LD block in `index.html` |
 | 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
