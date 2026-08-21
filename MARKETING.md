@@ -20,7 +20,7 @@ tokens and API keys live only in the Claude Code environment settings (see
 | Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done |
 | Facebook | Claude posts via the Meta Graph API | ⬜ steps A + B below |
 | Instagram | Claude posts via the Meta Graph API | ⬜ steps A + B below (IG Business account required) |
-| Newsletter | Claude creates + sends campaigns via the MailerLite connector | ⬜ step C below |
+| Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector + group done — signup page & sender verification pending (step C) |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ⬜ step E below |
 | Google Business Profile | Claude prepares the post text, you paste it | ⬜ step F below |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ⬜ step D below |
@@ -90,17 +90,27 @@ a free tier of 1,000 subscribers / 12,000 emails per month, campaign statistics
 Claude can read back for analysis, and it handles the EU-required consent,
 double opt-in and unsubscribe automatically.
 
-1. Create a free account at <https://www.mailerlite.com> (sign up as
-   Hellenic Trailers, `ikaragiotis@hellenictrailers.gr` as sender/reply-to).
-2. Create one **group** named `Hellenic Trailers Newsletter`.
-3. Under *Forms*, create a signup form for that group, set its language to
-   Greek, keep **double opt-in enabled**, and copy the **hosted form URL** —
-   this goes into the site's signup links (Wiring checklist #4).
-4. Import existing contacts **only if they have agreed to receive email from
+Status 2026-08-21: the account exists (stathis@stathis.com.gr), the Claude
+connector is authorized, the group `Hellenic Trailers Newsletter`
+(id `196439632318039915`) is created, and the owner is subscribed to it as a
+built-in QA recipient. Remaining: steps 3, 4, 5 and 7 below.
+
+1. ~~Create a free account at mailerlite.com~~ — **done**.
+2. ~~Create one group named `Hellenic Trailers Newsletter`~~ — **done**
+   (id `196439632318039915`).
+3. Create the public signup page: in MailerLite go to **Sites → Landing
+   pages**, create a simple signup page connected to that group — Greek text,
+   **double opt-in on** — publish it and copy its URL. This goes into the
+   site's signup links (Wiring checklist #4). The free plan includes landing
+   pages (with MailerLite branding).
+4. Verify the sender address so campaigns can come from
+   `ikaragiotis@hellenictrailers.gr`: MailerLite → Account settings →
+   *Senders* → add it and click the link in the confirmation email it
+   receives. (Step 7 domain authentication also covers this.)
+5. Import existing contacts **only if they have agreed to receive email from
    you** (GDPR); tag the import with where the consent came from.
-5. In <https://claude.ai> → Settings → Connectors, add/authorize **MailerLite**
-   so Claude can create and send campaigns.
-6. Optional but recommended for deliverability: authenticate the
+6. ~~Authorize the MailerLite connector in claude.ai~~ — **done**.
+7. Optional but recommended for deliverability: authenticate the
    `hellenictrailers.gr` domain in MailerLite (two DNS records — do this if you
    have access to the domain's DNS; emails then stop showing "via mailerlite").
 

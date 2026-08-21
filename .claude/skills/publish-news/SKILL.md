@@ -26,7 +26,7 @@ step 5.**
 | Facebook Page URL | `TO-BE-FILLED` |
 | Instagram profile URL | `TO-BE-FILLED` |
 | LinkedIn page URL | `TO-BE-FILLED` |
-| Newsletter | MailerLite connector (claude.ai); group `Hellenic Trailers Newsletter` (id `TO-BE-FILLED`); sender Hellenic Trailers `<ikaragiotis@hellenictrailers.gr>`; hosted signup URL `TO-BE-FILLED` |
+| Newsletter | MailerLite connector (claude.ai, authorized 2026-08-21 as stathis@stathis.com.gr); group `Hellenic Trailers Newsletter` (id `196439632318039915`); sender Hellenic Trailers `<ikaragiotis@hellenictrailers.gr>`; hosted signup URL `TO-BE-FILLED` |
 | Owner setup guide | `MARKETING.md` (token creation/regeneration, connector authorization) |
 
 When a `TO-BE-FILLED` value becomes known during a run, update this file and
