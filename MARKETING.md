@@ -79,11 +79,13 @@ In <https://claude.ai/code> → your environment's settings (docs:
    - `META_PAGE_ACCESS_TOKEN` = the Page token from step A (mark it as a secret)
    - `FB_PAGE_ID` and `IG_USER_ID` — numeric IDs; Claude computes and gives you
      both when you finish step A, or ask Claude "look up my page IDs".
-2. **Network access** — allow the domain `graph.facebook.com` (the sandbox
-   blocks it by default; without this Claude cannot reach the Meta API), and
-   ideally also `hellenictrailers.gr` (lets Claude check the live site
-   directly; without it Claude falls back to GitHub's Pages build status).
-   Only add `connect.mailerlite.com` too if the fallback in step C is needed.
+2. **Network access** — the sandbox refuses every domain that is not allowed
+   here, so add:
+   - `graph.facebook.com` — required for Facebook/Instagram posting;
+   - `api.cloudflare.com` — if Claude should read the analytics (step D);
+   - `hellenictrailers.gr` — recommended, lets Claude check the live site
+     directly instead of falling back to GitHub's Pages build status;
+   - `connect.mailerlite.com` — only if the API fallback in step C is needed.
 
 ## C. Newsletter: MailerLite (once, ~15 min)
 
@@ -134,6 +136,19 @@ the REST API directly.
   wired on all 7 pages (2026-08-21). Visitor numbers, top pages and referrers
   appear at <https://dash.cloudflare.com> → Web Analytics, from the first
   visit after deployment.
+
+  *Optional — let Claude read the numbers instead of visiting the dashboard:*
+  1. Cloudflare → **My Profile → API Tokens → Create Token → Custom token**,
+     with the single permission **Account → Account Analytics → Read**, scoped
+     to your account. Copy the token (it is shown only once).
+  2. In <https://claude.ai/code> → this environment's settings: add it as the
+     secret `CLOUDFLARE_API_TOKEN`, and under network access allow
+     `api.cloudflare.com`.
+  Both steps are yours to do — Claude cannot edit environment settings or the
+  network policy, and until the domain is allowed every request to Cloudflare
+  is refused by the gateway. Never paste the token into a chat message or any
+  file in this repository: it belongs only in the environment secret store. If
+  it ever does get exposed, roll it in the same API Tokens screen.
 - **Formspree** (makes the contact form actually submit instead of opening the
   visitor's mail program): <https://formspree.io> → free account → *New form*
   (send submissions to `ikaragiotis@hellenictrailers.gr`) → copy the form's ID
@@ -215,7 +230,8 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | Facebook Page ID / IG account ID | env vars `FB_PAGE_ID` / `IG_USER_ID` (public identifiers, also recorded in the skill) | IDs only |
 | MailerLite access | claude.ai connector authorization (OAuth) | never |
 | MailerLite API key (fallback only) | env secret `MAILERLITE_API_KEY` | **never** |
-| Cloudflare Analytics token | pasted in the HTML pages (it is a public, write-only beacon token — safe) | yes |
+| Cloudflare beacon token | pasted in the HTML pages (public, write-only — safe by design) | yes |
+| Cloudflare API token (optional, for reading stats) | env secret `CLOUDFLARE_API_TOKEN` | **never** |
 | Formspree form ID | pasted in `contact.html` (public by design) | yes |
 
 ## Asking for the numbers later
