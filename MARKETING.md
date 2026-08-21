@@ -45,6 +45,54 @@ actually has to sit down and do it:
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
+## Asked for, not started
+
+Two things the owner has asked to be reminded about. Neither is site setup —
+both are new capabilities, and both need a decision about **where the data
+lives** before any work starts.
+
+### 1. Import the existing customers into the mailing list
+
+The owner sends Claude the current customer list (a spreadsheet, an export,
+even a photographed sheet) and Claude loads it into the MailerLite group
+`Hellenic Trailers Newsletter`.
+
+Blocked on two things:
+
+- **Consent (GDPR).** A list of people you have done business with is not
+  automatically a list you may email marketing to. In the EU the usual lawful
+  basis for an existing customer is the *soft opt-in*: they bought something
+  comparable from you, you tell them clearly how to unsubscribe, and every
+  message carries that link. That covers most of a B2B customer list, but it
+  is a judgement per contact, not a blanket yes — and contacts who only ever
+  asked for a quote are **not** covered. Tag every import with where the
+  consent came from, so the record exists if it is ever questioned.
+- **Step C must be finished first** (sender verification), otherwise the first
+  campaign to a real list lands in spam and burns the domain's reputation.
+
+### 2. An `/offer` skill, and a customer/potential database
+
+The owner wants a skill that prepares a quotation, and — every time an offer
+goes out — records the customer and an estimate of their potential, building
+up a picture of the pipeline over time.
+
+**Before any of this is built, decide where that database lives.** It must not
+be this repository: **this repo is public**, so customer names, contacts, what
+they were quoted and what they might be worth would be visible to anyone. That
+is a commercial leak and, for named individuals, a personal-data breach.
+
+Workable homes, roughly in order of least new machinery:
+
+| Where | Good | Less good |
+|---|---|---|
+| MailerLite fields on each subscriber | already connected, no new account | built for email, not for deal values |
+| A spreadsheet in the company's Dropbox / SharePoint | familiar, private, Claude can already reach both | no structure enforced; easy to end up with three versions |
+| A **private** GitHub repository | versioned, same tooling as the site | one more repo to manage |
+
+Whichever is chosen, the skill should write to it automatically at the moment
+an offer is sent, rather than relying on anyone to update it afterwards — a
+record kept by hand stops being kept within a month.
+
 ### Iosif's list
 
 Three of the six are his. In the order to do them:

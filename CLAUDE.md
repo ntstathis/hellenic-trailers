@@ -16,11 +16,17 @@
   tools available here have no delete-branch operation. Branch cleanup is done
   by hand at <https://github.com/ntstathis/hellenic-trailers/branches>.
 
-## Secrets
+## Secrets and customer data
 
 This repository is **public**. Never commit tokens, API keys or account
 identifiers. Credentials live only in the Claude Code cloud environment
 variables — see [`MARKETING.md`](MARKETING.md), "Where credentials live".
+
+The same rule covers **customer data**: names, contact details, what a customer
+was quoted, what a deal might be worth. None of it belongs in this repository
+at any time, not even briefly. When work needs to record such data — the
+planned offer/pipeline database, a customer import — it goes somewhere private,
+and the choice of where is the owner's to make.
 
 ## Publishing
 
