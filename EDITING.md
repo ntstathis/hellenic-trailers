@@ -294,7 +294,7 @@ almost normal at a glance; the language switch is how you notice.
 In both cases:
 
 1. Don't try to fix it under pressure, and don't make more edits on top
-2. Tell Nikos straight away, saying what file you edited and roughly what you
+2. Tell Stathis straight away, saying what file you edited and roughly what you
    changed
 3. It can be rolled back to the previous working version immediately
 
