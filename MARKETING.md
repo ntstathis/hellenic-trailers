@@ -24,7 +24,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector + group done — signup page & sender verification pending (step C) |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ⬜ step E below |
 | Google Business Profile | Claude prepares the post text, you paste it | ⬜ step F below |
-| Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ token wired on all pages (2026-08-21) |
+| Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
 | Contact form | Formspree (the site's JS already supports it) | ⬜ step D below |
 
 ---
@@ -190,11 +190,20 @@ the REST API directly.
      `dash.cloudflare.com/<32-character-account-id>/...`. It is an identifier,
      not a secret, but it stays out of this public repository all the same.
 
-  Status 2026-08-21: token added and verified from a session
-  (`/user/tokens/verify` → *valid and active*), `api.cloudflare.com` reachable
-  from the environment. Waiting only on `CLOUDFLARE_ACCOUNT_ID` before Claude
-  can report visits and top pages. The Web Analytics site tag is the beacon
-  token already in the pages: `32787cacf1cb44068e51c728ad9a984d`.
+  Status 2026-08-21: ✅ **working end to end.** The token verifies, the
+  `api.cloudflare.com` domain is allowed in the `Hellenic Trailers`
+  environment, and a session successfully read the Web Analytics data through
+  the GraphQL API. Just ask for the numbers in a chat — see "Asking for the
+  numbers later" below.
+
+  How Claude reads them, for reference: `POST https://api.cloudflare.com/client/v4/graphql`
+  with the `rumPageloadEventsAdaptiveGroups` dataset, filtered on
+  `siteTag: "32787cacf1cb44068e51c728ad9a984d"` (the Web Analytics site tag —
+  the same beacon token that is in the pages) inside
+  `viewer { accounts(filter: {accountTag: <CLOUDFLARE_ACCOUNT_ID>}) }`.
+  `count` is page views and `sum { visits }` is visits. Note the REST endpoint
+  `/rum/site_info/list` returns 403 with this narrow token — that is expected
+  and does not matter, the site tag is known from the pages.
 
   Steps 1–3 are yours to do — Claude cannot edit environment settings or the
   network policy, and until the domain is allowed every request to Cloudflare
