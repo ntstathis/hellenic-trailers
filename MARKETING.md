@@ -32,23 +32,43 @@ that environment, so keep it personal and scope tokens narrowly).
 
 ## To do next
 
-In the order that gives the most back for the effort:
+In the order that gives the most back for the effort. **Who** is whoever
+actually has to sit down and do it:
 
-1. **WhatsApp Business on +30 695 704 5716** (step G) — the button is already
-   live on the site, so enquiries can arrive now. ~10 min.
-2. **Meta app + Page token** (steps A and B) — the last piece before
-   `/publish-news` posts to Facebook and Instagram automatically. ~45 min, and
-   the fiddliest item on this list.
-3. **GitHub account for Iosif** (`ikaragiotis@hellenictrailers.gr`) so he can
-   work on the website too — see step H below. ~10 min.
-4. **MailerLite signup page and sender verification** (step C, items 3, 4 and 7)
-   — until the signup page exists, nobody new can join the newsletter list.
-5. **Formspree form id** (step D) — the contact form still falls back to opening
-   the visitor's own mail program instead of submitting.
-6. **Google Business Profile** (step F) — independent of everything else, and
-   the biggest free local-search lever you have.
+| # | Task | Who | Time |
+|---|---|---|---|
+| 1 | **WhatsApp Business** on +30 695 704 5716 (step G) — the button is already live on the site, so enquiries can arrive now | Iosif | ~10 min |
+| 2 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer | Stathis | ~45 min |
+| 3 | **GitHub account** so Iosif can edit the site too (step H) | Iosif creates it, Stathis approves | ~10 min |
+| 4 | **MailerLite signup page + sender verification** (step C items 3, 4, 7) — until the signup page exists, nobody new can join the list | Iosif | ~15 min |
+| 5 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
+| 6 | **Google Business Profile** (step F) — the biggest free local-search lever there is | either | ~30 min + wait |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
+
+### Iosif's list
+
+Three of the six are his. In the order to do them:
+
+1. **WhatsApp Business** on **+30 695 704 5716** (step G). The button is
+   already live on all 7 pages of the site, so a customer can message that
+   number today — right now it arrives in a personal WhatsApp with no business
+   profile, no opening hours and no away message behind it. This is the one
+   worth doing first.
+2. **GitHub account** (step H): sign up at <https://github.com/signup> with
+   `ikaragiotis@hellenictrailers.gr`, turn on two-factor authentication, and
+   send Stathis the username — Stathis then adds him to the repository and he
+   accepts the emailed invitation. After that he can edit the website himself
+   following [`EDITING.md`](EDITING.md).
+3. **MailerLite** (step C): build the public signup landing page with double
+   opt-in, then verify `ikaragiotis@hellenictrailers.gr` as the sender address
+   — the confirmation email lands in his inbox, so only he can click it.
+
+   ⚠️ **Check access first.** The MailerLite account is registered to
+   `stathis@stathis.com.gr`. Iosif needs to get into that account to build the
+   landing page — either Stathis shares the login, or Iosif is invited as a
+   second user (MailerLite's free plan may not allow extra users; if it does
+   not, either share the login or Stathis does this step instead).
 
 ---
 
@@ -149,7 +169,7 @@ interface, and it relies on hovering, which touch screens do not do.
 running keeps the values it started with, so open a new Claude Code session
 after saving the dialog.
 
-## C. Newsletter: MailerLite (once, ~15 min)
+## C. Newsletter: MailerLite (once, ~15 min) — **Iosif**
 
 MailerLite was chosen because it has a native Claude connector (no middleman),
 a free tier of 1,000 subscribers / 12,000 emails per month, campaign statistics
@@ -303,7 +323,7 @@ and in the results panel for searches like «ψυκτικά ημιρυμουλκ
 6. `/publish-news` also hands you a short version of each news item formatted
    as a Google post («Ενημερώσεις») — paste it from the profile dashboard.
 
-## G. WhatsApp click-to-chat (live on the site — set up the app, ~10 min)
+## G. WhatsApp click-to-chat (live on the site — set up the app, ~10 min) — **Iosif**
 
 Every page carries a WhatsApp button that opens a chat to **+30 695 704 5716**
 with the enquiry already typed, so a visitor only has to press send:
@@ -329,7 +349,7 @@ To change the number or the wording later, ask Claude — the number lives in
 `WHATSAPP_URL` in `js/translations.js` and in the `href` of each button, and
 the messages are the `wa.msg.*` keys in the same file.
 
-## H. Give Iosif access to the website (~10 min)
+## H. Give Iosif access to the website (~10 min) — **Iosif signs up, Stathis approves**
 
 The website lives in the GitHub repository, so Iosif
 (`ikaragiotis@hellenictrailers.gr`) needs a GitHub account before he can edit
