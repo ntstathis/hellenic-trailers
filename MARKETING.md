@@ -22,7 +22,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Facebook | Claude posts via the Meta Graph API | ⬜ steps A + B below |
 | Instagram | Claude posts via the Meta Graph API | ⬜ steps A + B below (IG Business account required) |
 | Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector + group done — signup page & sender verification pending (step C) |
-| LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ page created + linked from the site (2026-08-21) — fill in the profile, step E |
+| LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ⬜ step F below |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
 | WhatsApp | Visitors tap a button on the site and message +30 695 704 5716 | ✅ live on the site — set up WhatsApp Business, step G |
@@ -46,9 +46,7 @@ In the order that gives the most back for the effort:
 5. **Formspree form id** (step D) — the contact form still falls back to opening
    the visitor's own mail program instead of submitting.
 6. **Google Business Profile** (step F) — independent of everything else, and
-   the biggest free local-search lever you have. Also finish filling in the
-   **LinkedIn page** (step E): it exists and is linked from the site, but an
-   empty profile converts badly.
+   the biggest free local-search lever you have.
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -257,7 +255,7 @@ the REST API directly.
   JavaScript already detects a real ID and switches from the mail-client
   fallback automatically.
 
-## E. LinkedIn company page (once, ~15 min)
+## E. LinkedIn company page — ✅ done
 
 The strongest channel for your actual buyers (fleet operators, logistics
 managers). LinkedIn's posting API requires a lengthy partner approval, so
@@ -265,16 +263,14 @@ posting stays a 30-second manual paste: `/publish-news` hands you the finished
 post text each time.
 
 Status 2026-08-21: ✅ the page exists at
-<https://www.linkedin.com/company/hellenic-trailers/> (company id `111771053`)
-and is wired into the footer of all 7 pages and into the `sameAs` structured
-data. Remaining: items 2 and 4 below.
+<https://www.linkedin.com/company/hellenic-trailers/> (company id `111771053`),
+the profile is filled in, and it is wired into the footer of all 7 pages and
+into the `sameAs` structured data. Nothing is outstanding — item 4 below is
+ongoing audience-building, not setup.
 
 1. ~~Create the page~~ — **done**.
-2. Fill in the profile if it is still empty: logo (`images/logo-mark.svg`
-   exported as PNG), tagline «Επίσημος Αντιπρόσωπος Lamberet στην Ελλάδα»,
-   website `https://hellenictrailers.gr`, industry *Truck Transportation*,
-   location Μάνδρα Αττικής. A page with no logo and no description converts
-   badly, so this is worth the ten minutes.
+2. ~~Fill in the profile~~ — **done**: logo, tagline, website, industry and
+   location are all in.
 3. ~~Give the page a readable address~~ — **done**:
    `linkedin.com/company/hellenic-trailers`. If it is ever changed again, send
    Claude the new one; LinkedIn keeps redirecting the old address, but the
