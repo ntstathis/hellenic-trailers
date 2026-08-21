@@ -22,7 +22,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Facebook | Claude posts via the Meta Graph API | ⬜ steps A + B below |
 | Instagram | Claude posts via the Meta Graph API | ⬜ steps A + B below (IG Business account required) |
 | Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector + group done — signup page & sender verification pending (step C) |
-| LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ⬜ step E below |
+| LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ page created + linked from the site (2026-08-21) — fill in the profile, step E |
 | Google Business Profile | Claude prepares the post text, you paste it | ⬜ step F below |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
 | WhatsApp | Visitors tap a button on the site and message +30 695 704 5716 | ✅ live on the site — set up WhatsApp Business, step G |
@@ -45,9 +45,10 @@ In the order that gives the most back for the effort:
    — until the signup page exists, nobody new can join the newsletter list.
 5. **Formspree form id** (step D) — the contact form still falls back to opening
    the visitor's own mail program instead of submitting.
-6. **LinkedIn company page** (step E) and **Google Business Profile** (step F) —
-   independent of everything else, and the Google one is the biggest free
-   local-search lever.
+6. **Google Business Profile** (step F) — independent of everything else, and
+   the biggest free local-search lever you have. Also finish filling in the
+   **LinkedIn page** (step E): it exists and is linked from the site, but an
+   empty profile converts badly.
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -263,12 +264,21 @@ managers). LinkedIn's posting API requires a lengthy partner approval, so
 posting stays a 30-second manual paste: `/publish-news` hands you the finished
 post text each time.
 
-1. <https://www.linkedin.com/company/setup/new/> — create **Hellenic Trailers**.
-2. Logo (`images/logo-mark.svg` exported as PNG), tagline «Επίσημος
-   Αντιπρόσωπος Lamberet στην Ελλάδα», website `https://hellenictrailers.gr`,
-   industry *Truck Transportation*, location Μάνδρα Αττικής.
-3. Copy the page URL (`https://www.linkedin.com/company/...`) → Wiring
-   checklist #3.
+Status 2026-08-21: ✅ the page exists (company id `111771053`) and
+<https://www.linkedin.com/company/111771053/> is wired into the footer of all
+7 pages and into the `sameAs` structured data. Remaining: items 2 and 4 below.
+
+1. ~~Create the page~~ — **done**.
+2. Fill in the profile if it is still empty: logo (`images/logo-mark.svg`
+   exported as PNG), tagline «Επίσημος Αντιπρόσωπος Lamberet στην Ελλάδα»,
+   website `https://hellenictrailers.gr`, industry *Truck Transportation*,
+   location Μάνδρα Αττικής. A page with no logo and no description converts
+   badly, so this is worth the ten minutes.
+3. *Optional:* give the page a readable address — LinkedIn admin → **Settings
+   → Page info → Public URL** — turning
+   `linkedin.com/company/111771053` into something like
+   `linkedin.com/company/hellenic-trailers`. Send Claude the new address and it
+   swaps it in; the numeric one keeps working either way.
 4. Invite the founding companies' employees and your customers' fleet managers
    to follow the page; repost each news item there.
 
@@ -364,11 +374,11 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 |---|---|---|---|
 | 1 | Facebook Page URL | `REPLACE-WITH-FACEBOOK-PAGE-URL` | footer of all 7 `*.html` |
 | 2 | Instagram profile URL | `REPLACE-WITH-INSTAGRAM-URL` | footer of all 7 `*.html` |
-| 3 | LinkedIn page URL | `REPLACE-WITH-LINKEDIN-URL` | footer of all 7 `*.html` |
+| 3 | LinkedIn page URL | ✅ wired (2026-08-21) | footer of all 7 `*.html` |
 | 4 | MailerLite hosted signup URL | `REPLACE-WITH-MAILERLITE-SIGNUP-URL` | footer of all 7 `*.html` + signup section in `news.html` |
 | 5 | Cloudflare Analytics token | ✅ wired (2026-08-21) | before `</body>` in all 7 `*.html` |
 | 6 | Formspree form ID | `YOUR_FORM_ID` | `contact.html` form `action` |
-| 7 | Social URLs in structured data | add a `"sameAs": [FB, IG, LinkedIn]` array | JSON-LD block in `index.html` |
+| 7 | Social URLs in structured data | 🔶 `sameAs` array added with LinkedIn — add FB + IG when they exist | JSON-LD block in `index.html` |
 | 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
 | 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 7 `*.html` |
 
