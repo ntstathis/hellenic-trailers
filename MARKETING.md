@@ -42,7 +42,6 @@ actually has to sit down and do it:
 | 3 | **GitHub account** so Iosif can edit the site too (step H) | Iosif creates it, Stathis approves | ~10 min |
 | 4 | **MailerLite signup page + sender verification** (step C items 3, 4, 7) — until the signup page exists, nobody new can join the list | Iosif | ~15 min |
 | 5 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
-| 6 | **Google review link** (step F item 5) — the short link that turns a happy customer into a public review | Stathis | ~2 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -310,8 +309,9 @@ field points at `https://hellenictrailers.gr`. Public listing:
 `hasMap` structured data on the homepage, and the contact-page map now shows
 the listing itself rather than a plain address pin.
 
-Still open: the **review link** (item 5) and the **geo coordinates** for the
-structured data — see the note at the end of this section.
+Everything here is wired: the listing is embedded on the contact page, its
+coordinates and `hasMap` are in the homepage structured data, and the review
+link is in item 5 below.
 
 1. ~~Create the profile~~ — **done**.
 2. Primary category: *Trailer dealer* (Αντιπροσωπεία τρέιλερ); add secondary
@@ -321,29 +321,31 @@ structured data — see the note at the end of this section.
    services (Πωλήσεις ψυκτικών οχημάτων, Συντήρηση & Επισκευές, Γνήσια
    Ανταλλακτικά Lamberet), photos of the facilities and deliveries.
 4. Complete Google's verification (postcard/phone/video — whatever it offers).
-5. After each delivery, ask the satisfied customer for a review. Template:
+5. After each delivery, ask the satisfied customer for a review. The review
+   link is **<https://g.page/r/CXUUZGTpL2iSEBM/review>** — it opens the review
+   box directly, so the customer does not have to search for you. Ready to send
+   as it is, by WhatsApp or email:
 
    > Καλησπέρα σας! Σας ευχαριστούμε για την εμπιστοσύνη σας στη Hellenic
    > Trailers. Αν μείνατε ικανοποιημένοι από την παράδοση και την εξυπηρέτηση,
-   > θα μας βοηθούσε πολύ μια σύντομη αξιολόγηση στο Google: [σύνδεσμος από το
-   > προφίλ σας]. Ευχαριστούμε θερμά!
+   > θα μας βοηθούσε πολύ μια σύντομη αξιολόγηση στο Google:
+   > https://g.page/r/CXUUZGTpL2iSEBM/review
+   > Ευχαριστούμε θερμά!
+
+   Reviews are the single strongest factor in local ranking, so it is worth
+   asking every time rather than occasionally.
 
 6. `/publish-news` also hands you a short version of each news item formatted
    as a Google post («Ενημερώσεις») — paste it from the profile dashboard.
 
-### Two small things still missing here
+### The listing's details, for reference
 
-- **The review link.** In the Business Profile: *Ask for reviews* → copy the
-  short link (it looks like `https://g.page/r/…`). Send it to Claude and it
-  goes into the customer template in item 5 above, so asking for a review after
-  a delivery becomes a copy-paste.
-- **The geo coordinates**, for the homepage's structured data — the code has
-  carried a note about these since the site was built. Easiest way: open the
-  listing in Google Maps **on a computer** and copy the address bar; the URL
-  contains `@37.xxxxx,23.xxxxx` and those two numbers are all Claude needs.
-  On a phone: long-press the map pin and the coordinates appear in the search
-  box. Not urgent — Google already has the real location from the verified
-  profile; this only makes the site's own markup agree with it.
+- ~~The review link~~ — **done**, in item 5 above.
+- ~~The geo coordinates~~ — **done**: `38.0724313, 23.5185569`, now in the
+  homepage structured data.
+
+The listing's own details, for reference: it is registered as **Hellenic
+Trailers IKE - Lamberet Official Partner**, Plus Code `3GF9+2G Μαγούλα`.
 
 ## G. WhatsApp click-to-chat (live on the site — set up the app, ~10 min) — **Iosif**
 
