@@ -39,8 +39,8 @@ In the order that gives the most back for the effort:
 2. **Meta app + Page token** (steps A and B) — the last piece before
    `/publish-news` posts to Facebook and Instagram automatically. ~45 min, and
    the fiddliest item on this list.
-3. **GitHub account for `ikaragiotis@hellenictrailers.gr`** so he can work on
-   the website too — see step H below. ~10 min.
+3. **GitHub account for Iosif** (`ikaragiotis@hellenictrailers.gr`) so he can
+   work on the website too — see step H below. ~10 min.
 4. **MailerLite signup page and sender verification** (step C, items 3, 4 and 7)
    — until the signup page exists, nobody new can join the newsletter list.
 5. **Formspree form id** (step D) — the contact form still falls back to opening
@@ -308,10 +308,11 @@ To change the number or the wording later, ask Claude — the number lives in
 `WHATSAPP_URL` in `js/translations.js` and in the `href` of each button, and
 the messages are the `wa.msg.*` keys in the same file.
 
-## H. Give ikaragiotis@hellenictrailers.gr access to the website (~10 min)
+## H. Give Iosif access to the website (~10 min)
 
-The website lives in the GitHub repository, so a second person needs a GitHub
-account before they can edit content or approve changes.
+The website lives in the GitHub repository, so Iosif
+(`ikaragiotis@hellenictrailers.gr`) needs a GitHub account before he can edit
+content or approve changes.
 
 1. He creates a free account at <https://github.com/signup> using
    `ikaragiotis@hellenictrailers.gr`, and turns on two-factor authentication
