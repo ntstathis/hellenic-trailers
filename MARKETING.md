@@ -80,7 +80,9 @@ In <https://claude.ai/code> → your environment's settings (docs:
    - `FB_PAGE_ID` and `IG_USER_ID` — numeric IDs; Claude computes and gives you
      both when you finish step A, or ask Claude "look up my page IDs".
 2. **Network access** — allow the domain `graph.facebook.com` (the sandbox
-   blocks it by default; without this Claude cannot reach the Meta API).
+   blocks it by default; without this Claude cannot reach the Meta API), and
+   ideally also `hellenictrailers.gr` (lets Claude check the live site
+   directly; without it Claude falls back to GitHub's Pages build status).
    Only add `connect.mailerlite.com` too if the fallback in step C is needed.
 
 ## C. Newsletter: MailerLite (once, ~15 min)
@@ -119,7 +121,15 @@ Fallback if the connector ever proves insufficient: create a MailerLite API key
 `connect.mailerlite.com` in the environment network settings — Claude then uses
 the REST API directly.
 
-## D. Analytics + contact form (once, ~15 min)
+## D. Analytics, Search Console + contact form (once, ~15 min)
+
+- **Google Search Console** — ✅ property created and verified by the owner
+  (2026-08-21). It shows how the site appears in Google search (queries,
+  clicks, indexing). One follow-up: once the sitemap is live on the site,
+  open Search Console → *Sitemaps* (Χάρτες ιστότοπου), enter `sitemap.xml`
+  and Submit. Optional hardening: add a second verification method (Settings →
+  Ownership verification → *HTML file* shows a `googleXXXX.html` filename —
+  give it to Claude to commit) so verification survives DNS changes.
 
 - **Cloudflare Web Analytics** (free, cookieless — no cookie banner needed):
   <https://dash.cloudflare.com> → Web Analytics → *Add a site* →
