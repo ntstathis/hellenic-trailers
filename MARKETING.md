@@ -8,8 +8,9 @@ lives. The day-to-day publishing itself is automated — see
 the news text).
 
 **No secrets are ever stored in this repository.** The repository is public, so
-tokens and API keys live only in the Claude Code environment settings (see
-"Where credentials live" below).
+tokens and API keys live only in the Claude Code environment variables (see
+"Where credentials live" below — note that these are readable by anyone using
+that environment, so keep it personal and scope tokens narrowly).
 
 ---
 
@@ -68,22 +69,61 @@ in Meta Business Suite (business.facebook.com) → Settings → *Linked accounts
 
 The Page token was invalidated — this happens after a Facebook password change,
 a security checkup, or removing the app. Fix: repeat steps 3–5 above (5 minutes,
-the app already exists) and update the `META_PAGE_ACCESS_TOKEN` secret.
+the app already exists) and update the `META_PAGE_ACCESS_TOKEN` variable.
 
 ## B. Claude environment configuration (once, ~5 min)
 
-In <https://claude.ai/code> → your environment's settings (docs:
-<https://code.claude.com/docs/en/claude-code-on-the-web>):
+**Use a computer for this step.** The Claude mobile app only *displays* the
+environment name; creating and editing environments exists in the web
+interface, and it relies on hovering, which touch screens do not do.
 
-1. **Environment variables** — add:
-   - `META_PAGE_ACCESS_TOKEN` = the Page token from step A (mark it as a secret)
-   - `FB_PAGE_ID` and `IG_USER_ID` — numeric IDs; Claude computes and gives you
-     both when you finish step A, or ask Claude "look up my page IDs".
-2. **Network access** — allow the domain `graph.facebook.com` (the sandbox
-   blocks it by default; without this Claude cannot reach the Meta API), and
-   ideally also `hellenictrailers.gr` (lets Claude check the live site
-   directly; without it Claude falls back to GitHub's Pages build status).
-   Only add `connect.mailerlite.com` too if the fallback in step C is needed.
+**How to open it** (there is no settings page or direct URL for this — docs:
+<https://code.claude.com/docs/en/cloud-environments>):
+
+1. Go to <https://claude.ai/code> in a desktop browser.
+2. In the row **above the message box**, click the **cloud icon showing the
+   environment's name** (usually `Default`).
+3. Click **Add cloud environment** and name it `Hellenic Trailers`. (Editing
+   the existing `Default` also works — hover over it and click the gear icon
+   that appears on the right — but this account has *two* environments named
+   `Default`, so a distinctly named one avoids editing the wrong one.)
+4. Select that environment in the same menu before starting a session that
+   needs these credentials.
+
+**What to fill in:**
+
+1. **Environment variables** — `.env` format, one `KEY=value` per line:
+   ```
+   META_PAGE_ACCESS_TOKEN=<the Page token from step A>
+   FB_PAGE_ID=<numeric id>
+   IG_USER_ID=<numeric id>
+   CLOUDFLARE_API_TOKEN=<only if you want Claude to read analytics, step D>
+   ```
+   Claude looks up the two numeric IDs for you once the token works.
+2. **Network access** — choose **Custom**, then list one domain per line in
+   **Allowed domains**:
+   ```
+   graph.facebook.com
+   api.cloudflare.com
+   hellenictrailers.gr
+   ```
+   Tick **"Also include default list of common package managers"**, otherwise
+   only these three domains remain reachable and ordinary tooling breaks.
+   Add `connect.mailerlite.com` only if the API fallback in step C is needed —
+   the MailerLite *connector* does not need any domain here, because connector
+   traffic goes through Anthropic's servers rather than the session's network.
+
+> **About storing tokens here.** Cloud environments have **no dedicated secrets
+> store**: environment variables are readable by anyone who uses that
+> environment, and the dialog says so. For a personal environment that means
+> only you — acceptable for these tokens — but scope every token as narrowly as
+> possible (the Cloudflare one needs *Account Analytics: Read* and nothing
+> else), never put them in this repository, and roll any token that has been
+> pasted somewhere else.
+
+**Changes apply to sessions you start afterwards.** A session that is already
+running keeps the values it started with, so open a new Claude Code session
+after saving the dialog.
 
 ## C. Newsletter: MailerLite (once, ~15 min)
 
@@ -117,7 +157,7 @@ built-in QA recipient. Remaining: steps 3, 4, 5 and 7 below.
    have access to the domain's DNS; emails then stop showing "via mailerlite").
 
 Fallback if the connector ever proves insufficient: create a MailerLite API key
-(Integrations → API), store it as env secret `MAILERLITE_API_KEY`, and allow
+(Integrations → API), store it as env var `MAILERLITE_API_KEY`, and allow
 `connect.mailerlite.com` in the environment network settings — Claude then uses
 the REST API directly.
 
@@ -134,6 +174,18 @@ the REST API directly.
   wired on all 7 pages (2026-08-21). Visitor numbers, top pages and referrers
   appear at <https://dash.cloudflare.com> → Web Analytics, from the first
   visit after deployment.
+
+  *Optional — let Claude read the numbers instead of visiting the dashboard:*
+  1. Cloudflare → **My Profile → API Tokens → Create Token → Custom token**,
+     with the single permission **Account → Account Analytics → Read**, scoped
+     to your account. Copy the token (it is shown only once).
+  2. Add it as `CLOUDFLARE_API_TOKEN` and allow `api.cloudflare.com`, both in
+     the environment dialog described in step B.
+  Both steps are yours to do — Claude cannot edit environment settings or the
+  network policy, and until the domain is allowed every request to Cloudflare
+  is refused by the gateway. Never paste the token into a chat message or any
+  file in this repository; if it ever is exposed, roll it in the same API
+  Tokens screen.
 - **Formspree** (makes the contact form actually submit instead of opening the
   visitor's mail program): <https://formspree.io> → free account → *New form*
   (send submissions to `ikaragiotis@hellenictrailers.gr`) → copy the form's ID
@@ -211,12 +263,17 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 
 | Credential | Location | In the repo? |
 |---|---|---|
-| Meta Page access token | Claude environment secret `META_PAGE_ACCESS_TOKEN` | **never** |
+| Meta Page access token | environment variable `META_PAGE_ACCESS_TOKEN` | **never** |
 | Facebook Page ID / IG account ID | env vars `FB_PAGE_ID` / `IG_USER_ID` (public identifiers, also recorded in the skill) | IDs only |
-| MailerLite access | claude.ai connector authorization (OAuth) | never |
-| MailerLite API key (fallback only) | env secret `MAILERLITE_API_KEY` | **never** |
-| Cloudflare Analytics token | pasted in the HTML pages (it is a public, write-only beacon token — safe) | yes |
+| MailerLite access | claude.ai connector authorization (OAuth) — no token anywhere | never |
+| MailerLite API key (fallback only) | environment variable `MAILERLITE_API_KEY` | **never** |
+| Cloudflare beacon token | pasted in the HTML pages (public, write-only — safe by design) | yes |
+| Cloudflare API token (optional, for reading stats) | environment variable `CLOUDFLARE_API_TOKEN` | **never** |
 | Formspree form ID | pasted in `contact.html` (public by design) | yes |
+
+Environment variables are **not** a secrets vault: everyone who uses that
+environment can read them. Keep the environment personal, give every token the
+narrowest permission that works, and roll a token if it leaks.
 
 ## Asking for the numbers later
 
