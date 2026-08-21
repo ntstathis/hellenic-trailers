@@ -23,7 +23,7 @@
   <link rel="preload" as="image" href="images/mitsopoulos-super-beef.jpeg" fetchpriority="high">
 
   <!-- Google uses this block for the local business panel.
-       Still to add once available: vatID and geo coordinates. -->
+       Still to add once available: vatID. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -49,6 +49,11 @@
       "opens": "09:00",
       "closes": "17:00"
     }],
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 38.0724313,
+      "longitude": 23.5185569
+    },
     "areaServed": { "@type": "Country", "name": "Greece" },
     "brand": { "@type": "Brand", "name": "Lamberet" },
     "hasMap": "https://maps.app.goo.gl/2Cxz6ZVHtbEEnouh6",
