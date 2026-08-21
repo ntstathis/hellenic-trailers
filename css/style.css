@@ -1370,6 +1370,39 @@ footer h4 {
   color: var(--white);
 }
 
+.footer-social {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  color: rgba(255,255,255,0.6);
+  transition: var(--transition);
+}
+
+.footer-social a:hover {
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.footer-social .ico {
+  width: 18px;
+  height: 18px;
+}
+
+/* Centers the button of the newsletter signup section on the news page */
+.newsletter-cta {
+  text-align: center;
+}
+
 .footer-bottom {
   padding: 24px 0;
   display: flex;
