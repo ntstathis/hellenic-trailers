@@ -171,6 +171,15 @@ const translations = {
   'newsletter.text': { en: 'Receive our news and deliveries by email. You can unsubscribe at any time.', el: 'Λαμβάνετε τα νέα και τις παραδόσεις μας με email. Μπορείτε να απεγγραφείτε ανά πάσα στιγμή.' },
   'newsletter.button': { en: 'Subscribe', el: 'Εγγραφή' },
 
+  // WhatsApp (the prefilled message is rebuilt per language - see setLanguage)
+  'wa.label': { en: 'WhatsApp', el: 'WhatsApp' },
+  'a11y.whatsapp': { en: 'Contact us on WhatsApp', el: 'Επικοινωνία στο WhatsApp' },
+  'wa.msg.general': { en: 'Hello, I would like information about Lamberet refrigerated vehicles.', el: 'Γεια σας, θα ήθελα πληροφορίες για τα ψυκτικά οχήματα Lamberet.' },
+  'wa.msg.products': { en: 'Hello, I am interested in the Lamberet product range.', el: 'Γεια σας, ενδιαφέρομαι για τη γκάμα προϊόντων Lamberet.' },
+  'wa.msg.services': { en: 'Hello, I would like information about Lamberet service and spare parts.', el: 'Γεια σας, θα ήθελα πληροφορίες για σέρβις και ανταλλακτικά Lamberet.' },
+  'contact.info.whatsapp.title': { en: 'Message us on WhatsApp', el: 'Γράψτε μας στο WhatsApp' },
+  'contact.info.whatsapp.text': { en: '+30 695 704 5716', el: '+30 695 704 5716' },
+
   // About page
   'about.banner.title': { en: 'The Company', el: 'Η Εταιρεία' },
   'about.banner.text': { en: 'Your trusted partner for Lamberet refrigerated transport in Greece', el: 'Ο έμπιστος συνεργάτης σας για ψυκτικές μεταφορές Lamberet στην Ελλάδα' },
@@ -305,6 +314,9 @@ const translations = {
 // ============================================
 let currentLang = localStorage.getItem('ht-lang') || 'el';
 
+// WhatsApp click-to-chat target; the message after ?text= is filled in per language
+const WHATSAPP_URL = 'https://wa.me/306957045716';
+
 function t(key) {
   const entry = translations[key];
   if (!entry) return key;
@@ -330,6 +342,11 @@ function setLanguage(lang) {
   // Labels that live on attributes rather than in a text node
   document.querySelectorAll('[data-i18n-aria]').forEach(el => {
     el.setAttribute('aria-label', t(el.getAttribute('data-i18n-aria')));
+  });
+
+  // WhatsApp links carry their prefilled message inside the URL, so rebuild it
+  document.querySelectorAll('[data-wa-msg]').forEach(el => {
+    el.href = WHATSAPP_URL + '?text=' + encodeURIComponent(t(el.getAttribute('data-wa-msg')));
   });
 
   document.querySelectorAll('[data-i18n-title]').forEach(el => {
