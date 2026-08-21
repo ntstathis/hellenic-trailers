@@ -152,13 +152,20 @@ and the email cannot be unsent.* Apply any requested edits and re-confirm.
    If pushing `main` is rejected (branch-restricted session): push a
    `news/<slug>` branch and open + merge a PR to `main` with the GitHub MCP
    tools (`create_pull_request`, `merge_pull_request`), then continue.
-2. **Deploy verification loop** (GitHub Pages usually deploys in ~2 min): every
-   20–30 s, up to 10 min, until **both**:
+2. **Deploy verification loop** (GitHub Pages usually deploys in ~2 min): poll
+   every 20–30 s, up to 10 min. Primary check — works even when the sandbox
+   network policy blocks the site's own domain: the **`pages build and
+   deployment` workflow run** for the pushed commit on
+   `ntstathis/hellenic-trailers` completed successfully (GitHub MCP
+   `actions_list` / `actions_get`). If `hellenictrailers.gr` is allowed in the
+   environment network policy, additionally confirm directly, until **both**:
    - `curl -s -o /dev/null -w '%{http_code}' "https://hellenictrailers.gr/images/<file>?cb=<epoch>"` → `200`;
    - `curl -s "https://hellenictrailers.gr/news.html?cb=<epoch>"` contains
      `news.N.title`.
-   On timeout: stop **before** any social step, report, and offer to resume —
-   the run is cleanly resumable because the site half is done.
+   A curl result of HTTP code `000` (CONNECT tunnel failed) means the domain is
+   blocked by the network policy — **not** a failed deploy; rely on the Pages
+   build check. On timeout: stop **before** any social step, report, and offer
+   to resume — the run is cleanly resumable because the site half is done.
 
 ## 7. Facebook post
 
