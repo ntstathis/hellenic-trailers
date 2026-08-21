@@ -223,6 +223,17 @@ The text you type between the tags is only a fallback — the real text comes fr
 `translations.js` — but keep it roughly the same so the page looks right for the
 split second before the script runs.
 
+### Add a news item the automated way
+
+Instead of the manual steps above, you can publish a news item everywhere at
+once: in a Claude Code chat on this repository, type `/publish-news`, attach
+the photo, and paste the news text (Greek is enough — it translates the rest).
+It edits both files correctly, resizes the photo, and after one approval also
+posts to Facebook, Instagram and the newsletter, and hands you ready-to-paste
+text for LinkedIn and Google. Channel setup is documented in
+[MARKETING.md](MARKETING.md). The manual procedure above remains valid — the
+two never conflict.
+
 ### Replace a gallery placeholder with a real photo
 
 The Gallery page currently shows **emoji placeholders**, not real photos:
