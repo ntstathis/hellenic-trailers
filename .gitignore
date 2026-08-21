@@ -4,5 +4,5 @@ Thumbs.db
 desktop.ini
 *.tmp
 .git_broken_backup/
-# Local dev server config (Claude Code)
-.claude/
+# Claude Code local state (the skills and news log in .claude/ ARE committed)
+.claude/settings.local.json
