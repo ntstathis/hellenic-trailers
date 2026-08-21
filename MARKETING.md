@@ -98,6 +98,7 @@ interface, and it relies on hovering, which touch screens do not do.
    FB_PAGE_ID=<numeric id>
    IG_USER_ID=<numeric id>
    CLOUDFLARE_API_TOKEN=<only if you want Claude to read analytics, step D>
+   CLOUDFLARE_ACCOUNT_ID=<goes with the token above, see step D>
    ```
    Claude looks up the two numeric IDs for you once the token works.
 2. **Network access** — choose **Custom**, then list one domain per line in
@@ -181,7 +182,21 @@ the REST API directly.
      to your account. Copy the token (it is shown only once).
   2. Add it as `CLOUDFLARE_API_TOKEN` and allow `api.cloudflare.com`, both in
      the environment dialog described in step B.
-  Both steps are yours to do — Claude cannot edit environment settings or the
+  3. Add `CLOUDFLARE_ACCOUNT_ID` as well. **This is required**: a token limited
+     to *Account Analytics: Read* cannot list the account it belongs to
+     (`/accounts` comes back empty), and every analytics query needs the id in
+     its filter. Find it in the dashboard URL — open
+     <https://dash.cloudflare.com>, and the address bar reads
+     `dash.cloudflare.com/<32-character-account-id>/...`. It is an identifier,
+     not a secret, but it stays out of this public repository all the same.
+
+  Status 2026-08-21: token added and verified from a session
+  (`/user/tokens/verify` → *valid and active*), `api.cloudflare.com` reachable
+  from the environment. Waiting only on `CLOUDFLARE_ACCOUNT_ID` before Claude
+  can report visits and top pages. The Web Analytics site tag is the beacon
+  token already in the pages: `32787cacf1cb44068e51c728ad9a984d`.
+
+  Steps 1–3 are yours to do — Claude cannot edit environment settings or the
   network policy, and until the domain is allowed every request to Cloudflare
   is refused by the gateway. Never paste the token into a chat message or any
   file in this repository; if it ever is exposed, roll it in the same API
