@@ -123,13 +123,12 @@ the REST API directly.
 
 ## D. Analytics, Search Console + contact form (once, ~15 min)
 
-- **Google Search Console** — ✅ property created and verified by the owner
-  (2026-08-21). It shows how the site appears in Google search (queries,
-  clicks, indexing). One follow-up: once the sitemap is live on the site,
-  open Search Console → *Sitemaps* (Χάρτες ιστότοπου), enter `sitemap.xml`
-  and Submit. Optional hardening: add a second verification method (Settings →
-  Ownership verification → *HTML file* shows a `googleXXXX.html` filename —
-  give it to Claude to commit) so verification survives DNS changes.
+- **Google Search Console** — ✅ done: property verified and `sitemap.xml`
+  submitted successfully (2026-08-21). It shows how the site appears in Google
+  search (queries, clicks, indexing); data starts appearing within a few days.
+  Optional hardening: add a second verification method (Settings → Ownership
+  verification → *HTML file* shows a `googleXXXX.html` filename — give it to
+  Claude to commit) so verification survives DNS changes.
 
 - **Cloudflare Web Analytics** (free, cookieless — no cookie banner needed):
   <https://dash.cloudflare.com> → Web Analytics → *Add a site* →
