@@ -264,9 +264,10 @@ managers). LinkedIn's posting API requires a lengthy partner approval, so
 posting stays a 30-second manual paste: `/publish-news` hands you the finished
 post text each time.
 
-Status 2026-08-21: ✅ the page exists (company id `111771053`) and
-<https://www.linkedin.com/company/111771053/> is wired into the footer of all
-7 pages and into the `sameAs` structured data. Remaining: items 2 and 4 below.
+Status 2026-08-21: ✅ the page exists at
+<https://www.linkedin.com/company/hellenic-trailers/> (company id `111771053`)
+and is wired into the footer of all 7 pages and into the `sameAs` structured
+data. Remaining: items 2 and 4 below.
 
 1. ~~Create the page~~ — **done**.
 2. Fill in the profile if it is still empty: logo (`images/logo-mark.svg`
@@ -274,11 +275,10 @@ Status 2026-08-21: ✅ the page exists (company id `111771053`) and
    website `https://hellenictrailers.gr`, industry *Truck Transportation*,
    location Μάνδρα Αττικής. A page with no logo and no description converts
    badly, so this is worth the ten minutes.
-3. *Optional:* give the page a readable address — LinkedIn admin → **Settings
-   → Page info → Public URL** — turning
-   `linkedin.com/company/111771053` into something like
-   `linkedin.com/company/hellenic-trailers`. Send Claude the new address and it
-   swaps it in; the numeric one keeps working either way.
+3. ~~Give the page a readable address~~ — **done**:
+   `linkedin.com/company/hellenic-trailers`. If it is ever changed again, send
+   Claude the new one; LinkedIn keeps redirecting the old address, but the
+   site should show the current one.
 4. Invite the founding companies' employees and your customers' fleet managers
    to follow the page; repost each news item there.
 
