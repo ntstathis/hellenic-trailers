@@ -345,7 +345,13 @@ link is in item 5 below.
   homepage structured data.
 
 The listing's own details, for reference: it is registered as **Hellenic
-Trailers IKE - Lamberet Official Partner**, Plus Code `3GF9+2G Μαγούλα`.
+Trailers IKE - Lamberet Official Partner**, Plus Code `3GF9+2G`.
+
+The postal address stays **Θέση Κάτω Πάτημα, Μάνδρα 196 00, Αττική** — on the
+site, in the structured data and on the Google listing. Google's Plus Code
+labels the locality nearest the map pin, which reads «Μαγούλα»; that is a map
+artefact, not the address, and nothing on the site should be changed to match
+it.
 
 ## G. WhatsApp click-to-chat (live on the site — set up the app, ~10 min) — **Iosif**
 
