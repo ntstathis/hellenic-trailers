@@ -73,15 +73,22 @@ the app already exists) and update the `META_PAGE_ACCESS_TOKEN` variable.
 
 ## B. Claude environment configuration (once, ~5 min)
 
+**Use a computer for this step.** The Claude mobile app only *displays* the
+environment name; creating and editing environments exists in the web
+interface, and it relies on hovering, which touch screens do not do.
+
 **How to open it** (there is no settings page or direct URL for this — docs:
 <https://code.claude.com/docs/en/cloud-environments>):
 
-1. Go to <https://claude.ai/code>.
+1. Go to <https://claude.ai/code> in a desktop browser.
 2. In the row **above the message box**, click the **cloud icon showing the
    environment's name** (usually `Default`).
-3. Hover over that environment in the menu and click the **settings (gear)
-   icon** on its right. The dialog has: *Name*, *Network access*,
-   *Environment variables*, *Setup script*.
+3. Click **Add cloud environment** and name it `Hellenic Trailers`. (Editing
+   the existing `Default` also works — hover over it and click the gear icon
+   that appears on the right — but this account has *two* environments named
+   `Default`, so a distinctly named one avoids editing the wrong one.)
+4. Select that environment in the same menu before starting a session that
+   needs these credentials.
 
 **What to fill in:**
 
