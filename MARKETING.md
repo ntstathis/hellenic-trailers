@@ -23,7 +23,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Instagram | Claude posts via the Meta Graph API | ⬜ steps A + B below (IG Business account required) |
 | Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector + group done — signup page & sender verification pending (step C) |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
-| Google Business Profile | Claude prepares the post text, you paste it | ⬜ step F below |
+| Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
 | WhatsApp | Visitors tap a button on the site and message +30 695 704 5716 | ✅ live on the site — set up WhatsApp Business, step G |
 | Contact form | Formspree (the site's JS already supports it) | ⬜ step D below |
@@ -42,7 +42,7 @@ actually has to sit down and do it:
 | 3 | **GitHub account** so Iosif can edit the site too (step H) | Iosif creates it, Stathis approves | ~10 min |
 | 4 | **MailerLite signup page + sender verification** (step C items 3, 4, 7) — until the signup page exists, nobody new can join the list | Iosif | ~15 min |
 | 5 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
-| 6 | **Google Business Profile** (step F) — the biggest free local-search lever there is | either | ~30 min + wait |
+| 6 | **Google review link** (step F item 5) — the short link that turns a happy customer into a public review | Stathis | ~2 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -298,14 +298,22 @@ ongoing audience-building, not setup.
 4. Invite the founding companies' employees and your customers' fleet managers
    to follow the page; repost each news item there.
 
-## F. Google Business Profile (once, ~30 min + verification wait)
+## F. Google Business Profile — ✅ done
 
 The biggest free local-search lever: it puts Hellenic Trailers on Google Maps
 and in the results panel for searches like «ψυκτικά ημιρυμουλκούμενα»,
 «σέρβις ψυγείων μεταφορών», «Lamberet Ελλάδα».
 
-1. <https://business.google.com> → *Add business* → **Hellenic Trailers**,
-   address Θέση Κάτω Πάτημα, Μάνδρα 196 00, Αττική.
+Status 2026-08-21: ✅ the profile is created, **verified**, and its website
+field points at `https://hellenictrailers.gr`. Public listing:
+<https://maps.app.goo.gl/2Cxz6ZVHtbEEnouh6>. On the site it is wired into the
+`hasMap` structured data on the homepage, and the contact-page map now shows
+the listing itself rather than a plain address pin.
+
+Still open: the **review link** (item 5) and the **geo coordinates** for the
+structured data — see the note at the end of this section.
+
+1. ~~Create the profile~~ — **done**.
 2. Primary category: *Trailer dealer* (Αντιπροσωπεία τρέιλερ); add secondary
    categories *Trailer repair shop* and *Truck accessories store* if offered.
 3. Fill everything: phone `+30 210 3471032`, website, hours Δευ–Παρ 09:00–17:00,
@@ -322,6 +330,20 @@ and in the results panel for searches like «ψυκτικά ημιρυμουλκ
 
 6. `/publish-news` also hands you a short version of each news item formatted
    as a Google post («Ενημερώσεις») — paste it from the profile dashboard.
+
+### Two small things still missing here
+
+- **The review link.** In the Business Profile: *Ask for reviews* → copy the
+  short link (it looks like `https://g.page/r/…`). Send it to Claude and it
+  goes into the customer template in item 5 above, so asking for a review after
+  a delivery becomes a copy-paste.
+- **The geo coordinates**, for the homepage's structured data — the code has
+  carried a note about these since the site was built. Easiest way: open the
+  listing in Google Maps **on a computer** and copy the address bar; the URL
+  contains `@37.xxxxx,23.xxxxx` and those two numbers are all Claude needs.
+  On a phone: long-press the map pin and the coordinates appear in the search
+  box. Not urgent — Google already has the real location from the verified
+  profile; this only makes the site's own markup agree with it.
 
 ## G. WhatsApp click-to-chat (live on the site — set up the app, ~10 min) — **Iosif**
 
