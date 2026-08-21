@@ -69,7 +69,7 @@ in Meta Business Suite (business.facebook.com) → Settings → *Linked accounts
 
 The Page token was invalidated — this happens after a Facebook password change,
 a security checkup, or removing the app. Fix: repeat steps 3–5 above (5 minutes,
-the app already exists) and update the `META_PAGE_ACCESS_TOKEN` secret.
+the app already exists) and update the `META_PAGE_ACCESS_TOKEN` variable.
 
 ## B. Claude environment configuration (once, ~5 min)
 
@@ -150,7 +150,7 @@ built-in QA recipient. Remaining: steps 3, 4, 5 and 7 below.
    have access to the domain's DNS; emails then stop showing "via mailerlite").
 
 Fallback if the connector ever proves insufficient: create a MailerLite API key
-(Integrations → API), store it as env secret `MAILERLITE_API_KEY`, and allow
+(Integrations → API), store it as env var `MAILERLITE_API_KEY`, and allow
 `connect.mailerlite.com` in the environment network settings — Claude then uses
 the REST API directly.
 
