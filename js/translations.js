@@ -162,6 +162,15 @@ const translations = {
   'footer.rights': { en: '© 2026 Hellenic Trailers. All rights reserved.', el: '© 2026 Hellenic Trailers. Με επιφύλαξη παντός δικαιώματος.' },
   'footer.lamberet': { en: 'Official Lamberet Representative in Greece', el: 'Επίσημος Αντιπρόσωπος Lamberet στην Ελλάδα' },
 
+  // Social & newsletter (used by the footer links once they are activated - see MARKETING.md)
+  'a11y.facebook': { en: 'Hellenic Trailers on Facebook', el: 'Η Hellenic Trailers στο Facebook' },
+  'a11y.instagram': { en: 'Hellenic Trailers on Instagram', el: 'Η Hellenic Trailers στο Instagram' },
+  'a11y.linkedin': { en: 'Hellenic Trailers on LinkedIn', el: 'Η Hellenic Trailers στο LinkedIn' },
+  'footer.newsletter': { en: 'Newsletter', el: 'Ενημερωτικό Δελτίο' },
+  'newsletter.title': { en: 'Subscribe to our Newsletter', el: 'Εγγραφείτε στο Ενημερωτικό μας Δελτίο' },
+  'newsletter.text': { en: 'Receive our news and deliveries by email. You can unsubscribe at any time.', el: 'Λαμβάνετε τα νέα και τις παραδόσεις μας με email. Μπορείτε να απεγγραφείτε ανά πάσα στιγμή.' },
+  'newsletter.button': { en: 'Subscribe', el: 'Εγγραφή' },
+
   // About page
   'about.banner.title': { en: 'The Company', el: 'Η Εταιρεία' },
   'about.banner.text': { en: 'Your trusted partner for Lamberet refrigerated transport in Greece', el: 'Ο έμπιστος συνεργάτης σας για ψυκτικές μεταφορές Lamberet στην Ελλάδα' },
