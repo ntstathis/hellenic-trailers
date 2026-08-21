@@ -25,7 +25,31 @@ that environment, so keep it personal and scope tokens narrowly).
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ⬜ step E below |
 | Google Business Profile | Claude prepares the post text, you paste it | ⬜ step F below |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
+| WhatsApp | Visitors tap a button on the site and message +30 695 704 5716 | ✅ live on the site — set up WhatsApp Business, step G |
 | Contact form | Formspree (the site's JS already supports it) | ⬜ step D below |
+
+---
+
+## To do next
+
+In the order that gives the most back for the effort:
+
+1. **WhatsApp Business on +30 695 704 5716** (step G) — the button is already
+   live on the site, so enquiries can arrive now. ~10 min.
+2. **Meta app + Page token** (steps A and B) — the last piece before
+   `/publish-news` posts to Facebook and Instagram automatically. ~45 min, and
+   the fiddliest item on this list.
+3. **GitHub account for `ikaragiotis@hellenictrailers.gr`** so he can work on
+   the website too — see step H below. ~10 min.
+4. **MailerLite signup page and sender verification** (step C, items 3, 4 and 7)
+   — until the signup page exists, nobody new can join the newsletter list.
+5. **Formspree form id** (step D) — the contact form still falls back to opening
+   the visitor's own mail program instead of submitting.
+6. **LinkedIn company page** (step E) and **Google Business Profile** (step F) —
+   independent of everything else, and the Google one is the biggest free
+   local-search lever.
+
+Send Claude any URL, id or token as you get it and it wires it into the site.
 
 ---
 
@@ -258,6 +282,54 @@ and in the results panel for searches like «ψυκτικά ημιρυμουλκ
 6. `/publish-news` also hands you a short version of each news item formatted
    as a Google post («Ενημερώσεις») — paste it from the profile dashboard.
 
+## G. WhatsApp click-to-chat (live on the site — set up the app, ~10 min)
+
+Every page carries a WhatsApp button that opens a chat to **+30 695 704 5716**
+with the enquiry already typed, so a visitor only has to press send:
+
+- **Desktop:** a green floating button, bottom right.
+- **Phone:** a green icon in the bottom bar, between «Κλήση» and «Ζητήστε
+  Προσφορά».
+- **Contact page:** a WhatsApp card next to address, phone, email and hours.
+
+The pre-filled message depends on the page — the products page mentions the
+Lamberet range, the services page mentions service and spare parts — and it is
+rewritten in English when a visitor switches the site to EN. These are plain
+`wa.me` links: no third-party script, no cookies, nothing is requested from
+Meta until someone actually taps, so there are no consent-banner implications.
+
+**What is left for you:** install **WhatsApp Business** (free, from the app
+store) on the phone holding that number, and fill in the business profile —
+name Hellenic Trailers, address in Μάνδρα, hours Δευ–Παρ 09:00–17:00, website,
+plus a greeting message and an away message for outside working hours.
+Otherwise enquiries land in a personal WhatsApp with no business context.
+
+To change the number or the wording later, ask Claude — the number lives in
+`WHATSAPP_URL` in `js/translations.js` and in the `href` of each button, and
+the messages are the `wa.msg.*` keys in the same file.
+
+## H. Give ikaragiotis@hellenictrailers.gr access to the website (~10 min)
+
+The website lives in the GitHub repository, so a second person needs a GitHub
+account before they can edit content or approve changes.
+
+1. He creates a free account at <https://github.com/signup> using
+   `ikaragiotis@hellenictrailers.gr`, and turns on two-factor authentication
+   (GitHub requires it for contributors).
+2. He sends you his GitHub username.
+3. You add him at
+   <https://github.com/ntstathis/hellenic-trailers/settings/access> →
+   **Add people** → his username → role **Write** (can edit content and merge;
+   choose **Admin** only if he should also manage settings and access).
+4. He accepts the invitation by email.
+
+Once he is in, he can edit the site through the GitHub website following
+[`EDITING.md`](EDITING.md), review and merge pull requests, and — with his own
+claude.ai account — run `/publish-news` on this repository himself. Note the
+publishing credentials are per-person: the Meta token and the environment
+variables described in step B live in *your* Claude environment, so he would
+either set up his own or leave publishing to you.
+
 ---
 
 ## Wiring checklist
@@ -282,6 +354,7 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | 6 | Formspree form ID | `YOUR_FORM_ID` | `contact.html` form `action` |
 | 7 | Social URLs in structured data | add a `"sameAs": [FB, IG, LinkedIn]` array | JSON-LD block in `index.html` |
 | 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
+| 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 7 `*.html` |
 
 ## Where credentials live
 
@@ -293,7 +366,9 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | MailerLite API key (fallback only) | environment variable `MAILERLITE_API_KEY` | **never** |
 | Cloudflare beacon token | pasted in the HTML pages (public, write-only — safe by design) | yes |
 | Cloudflare API token (optional, for reading stats) | environment variable `CLOUDFLARE_API_TOKEN` | **never** |
+| Cloudflare account id | environment variable `CLOUDFLARE_ACCOUNT_ID` (an identifier, not a secret, but kept out of the public repo) | **never** |
 | Formspree form ID | pasted in `contact.html` (public by design) | yes |
+| WhatsApp number | in the page links (public by design — it is a contact number) | yes |
 
 Environment variables are **not** a secrets vault: everyone who uses that
 environment can read them. Keep the environment personal, give every token the
@@ -307,6 +382,12 @@ Once channels are live, ask in a Claude Code chat on this repo, for example:
 - «Πόσους έφτασε το post για τη Φάρμα Μητσόπουλος;» — reach/impressions of the
   Facebook and Instagram posts via the Meta API.
 - «Πόση επισκεψιμότητα είχε το site αυτόν τον μήνα;» — from Cloudflare.
+- «Ποιες αναζητήσεις μας εμφανίζουν στο Google;» — Search Console has no
+  connector here, so that one you read yourself at
+  <https://search.google.com/search-console>.
+
+WhatsApp conversations are not measurable from here either: they arrive in the
+WhatsApp Business app, which keeps its own statistics on the phone.
 
 Every published item is recorded in `.claude/news-log.json` (date, titles, image,
 post links, campaign ID), so Claude can match a news item to its posts and
