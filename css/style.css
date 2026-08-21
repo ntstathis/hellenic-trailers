@@ -1537,6 +1537,48 @@ footer h4 {
 }
 
 /* ============================================
+   WHATSAPP QUICK CONTACT
+   ============================================ */
+/* Desktop only - on phones WhatsApp sits in the action bar instead */
+.wa-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 1400;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #25D366;
+  color: var(--white);
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  transition: var(--transition);
+}
+
+.wa-float:hover,
+.wa-float:focus-visible {
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.22);
+}
+
+.wa-float svg {
+  width: 22px;
+  height: 22px;
+}
+
+/* Icon-only in the action bar: three labelled buttons do not fit a small phone */
+.mobile-actionbar .ab-wa {
+  flex: 0 0 auto;
+  width: 56px;
+  background: #25D366;
+  color: var(--white);
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 1024px) {
@@ -1579,6 +1621,10 @@ footer h4 {
   /* Sticky call/quote bar, plus room so it never covers the footer */
   .mobile-actionbar {
     display: flex;
+  }
+
+  .wa-float {
+    display: none;
   }
 
   body {
