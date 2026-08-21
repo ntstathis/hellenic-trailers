@@ -197,13 +197,28 @@ the REST API directly.
   numbers later" below.
 
   How Claude reads them, for reference: `POST https://api.cloudflare.com/client/v4/graphql`
-  with the `rumPageloadEventsAdaptiveGroups` dataset, filtered on
-  `siteTag: "32787cacf1cb44068e51c728ad9a984d"` (the Web Analytics site tag —
-  the same beacon token that is in the pages) inside
-  `viewer { accounts(filter: {accountTag: <CLOUDFLARE_ACCOUNT_ID>}) }`.
-  `count` is page views and `sum { visits }` is visits. Note the REST endpoint
-  `/rum/site_info/list` returns 403 with this narrow token — that is expected
-  and does not matter, the site tag is known from the pages.
+  with the `rumPageloadEventsAdaptiveGroups` dataset inside
+  `viewer { accounts(filter: {accountTag: <CLOUDFLARE_ACCOUNT_ID>}) }`, filtered
+  on **`siteTag: "5829fd18257a47818306f7746413f7fd"`**. `count` is page views,
+  `sum { visits }` is visits; useful dimensions are `requestPath`,
+  `requestHost`, `countryName`, `refererHost`, `userAgentBrowser` and
+  `datetimeMinute`.
+
+  > ⚠️ **The site tag is not the beacon token.** Cloudflare Web Analytics uses
+  > two different identifiers for the same site, and mixing them up makes every
+  > query return an empty result with no error at all — it looks exactly like
+  > "no visitors yet":
+  >
+  > | Identifier | Value | Where it is used |
+  > |---|---|---|
+  > | Beacon **token** | `32787cacf1cb44068e51c728ad9a984d` | the `data-cf-beacon` attribute in the pages (public, write-only) |
+  > | Site **tag** | `5829fd18257a47818306f7746413f7fd` | the `siteTag` filter in the GraphQL API |
+  >
+  > The REST endpoint that lists both, `/rum/site_info/list`, returns 403 with a
+  > token scoped to *Account Analytics: Read* only. To recover the site tag
+  > without widening the token: query the dataset with **no** `siteTag` filter
+  > and group by `dimensions { siteTag requestHost }` — the tag serving
+  > `hellenictrailers.gr` is the right one.
 
   Steps 1–3 are yours to do — Claude cannot edit environment settings or the
   network policy, and until the domain is allowed every request to Cloudflare
