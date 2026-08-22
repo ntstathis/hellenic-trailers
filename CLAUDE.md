@@ -22,11 +22,23 @@ This repository is **public**. Never commit tokens, API keys or account
 identifiers. Credentials live only in the Claude Code cloud environment
 variables — see [`MARKETING.md`](MARKETING.md), "Where credentials live".
 
-The same rule covers **customer data**: names, contact details, what a customer
-was quoted, what a deal might be worth. None of it belongs in this repository
-at any time, not even briefly. When work needs to record such data — the
-planned offer/pipeline database, a customer import — it goes somewhere private,
-and the choice of where is the owner's to make.
+The same rule covers **customer data and company confidential information**:
+names, contact details, what a customer was quoted, what a deal might be worth,
+and anything out of the business plan, the cash flow or the price list —
+figures, margins, forecasts. None of it belongs in this repository at any time,
+not even briefly.
+
+Such material may be read from Dropbox, discussed in a chat and summarized back
+to the owner; what must not happen is any of it landing in a file here. When
+work needs to record it — the planned offer/pipeline database, a customer
+import, an analysis of the numbers — it goes somewhere private, and the choice
+of where is the owner's to make.
+
+## Connected accounts
+
+The Dropbox connector is authorized for the `Stathis` team account
+(stathis@stathis.com.gr), so company files can be read directly — ask the owner
+which folder rather than assuming. MailerLite is connected the same way.
 
 ## Publishing
 

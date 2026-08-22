@@ -93,6 +93,38 @@ Whichever is chosen, the skill should write to it automatically at the moment
 an offer is sent, rather than relying on anyone to update it afterwards — a
 record kept by hand stops being kept within a month.
 
+### 3. Give Claude the full picture of the business
+
+So far Claude only knows what is on the website. The owner wants to hand over
+the rest: how the company actually works, the **business plan**, and the
+**cash flow**. With that, Claude can reason about the business rather than just
+operate its marketing channels.
+
+- **Dropbox is already connected** — the claude.ai connector is authorized for
+  the `Stathis` team account (stathis@stathis.com.gr), so Claude can read files
+  there today. Nothing to set up: just say which folder to look in, e.g.
+  «διάβασε τον φάκελο Hellenic Trailers στο Dropbox».
+- **The business plan and the cash flow are confidential.** They may be read
+  from Dropbox, discussed in a chat, and summarized back — but nothing derived
+  from them (figures, margins, customer names, forecasts) may ever be written
+  into this repository, which is public. Anything Claude produces from them
+  belongs in Dropbox or in the chat.
+- Useful alongside those: the price list and margins, who the competitors are,
+  the sales cycle from enquiry to delivery, capacity limits, and which customer
+  segments are actually worth chasing.
+
+### 4. Ask Claude what it would do next
+
+A standing invitation from the owner: once the context above is in place, ask
+for a considered opinion on the next steps for the business — not just the
+marketing checklist, but where the effort is best spent.
+
+Worth doing **after** items 1–3, not before: an opinion formed only from the
+website would be generic advice, and the owner already knows more than that.
+With the plan, the cash flow and the customer list, the answer can be specific
+— which segment to push, what the marketing is actually expected to return, and
+which of these channels deserves the next hour.
+
 ### Iosif's list
 
 Three of the six are his. In the order to do them:
