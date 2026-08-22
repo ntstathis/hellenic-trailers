@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "permissions": {
+    "allow": [
+      "mcp__MailerLite__get_auth_status",
+      "mcp__MailerLite__list_subscribers",
+      "mcp__MailerLite__get_subscriber",
+      "mcp__MailerLite__get_subscriber_count",
+      "mcp__MailerLite__get_subscriber_activity",
+      "mcp__MailerLite__get_group_subscribers",
+      "mcp__MailerLite__add_subscriber",
+      "mcp__MailerLite__update_subscriber",
+      "mcp__MailerLite__assign_subscriber_to_group",
+      "mcp__MailerLite__import_subscribers_to_group",
+      "mcp__MailerLite__list_fields",
+      "mcp__MailerLite__create_field",
+      "mcp__MailerLite__list_campaigns",
+      "mcp__MailerLite__get_campaign",
+      "mcp__MailerLite__get_campaign_subscribers",
+      "mcp__MailerLite__get_campaign_links",
+      "mcp__MailerLite__list_forms",
+      "mcp__MailerLite__get_form",
+      "mcp__MailerLite__list_resources",
+
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__get_auth_status",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__list_subscribers",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__get_subscriber",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__get_subscriber_count",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__get_subscriber_activity",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__get_group_subscribers",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__add_subscriber",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__update_subscriber",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__assign_subscriber_to_group",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__import_subscribers_to_group",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__list_fields",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__create_field",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__list_campaigns",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__get_campaign",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__get_campaign_subscribers",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__get_campaign_links",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__list_forms",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__get_form",
+      "mcp__80ac8744-7f71-4f33-afac-c19613f6c3ec__list_resources"
+    ]
+  }
+}
