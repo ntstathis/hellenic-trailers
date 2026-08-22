@@ -117,9 +117,34 @@ Hellenic Trailers/
 └── 09_Εσωτερικά/          ← task lists, internal presentations
 ```
 
-Conventions: customer folders named consistently (surname first, mixed case,
-not ALL CAPS); offers named `Προσφορά_<CRM-ID>_<YYYY-MM-DD>_v1.pdf`; nothing
-left loose at the root.
+Customer folders are named consistently (surname first, mixed case, not ALL
+CAPS) and nothing is left loose at the root.
+
+**Offer file naming.** The folder already says who the customer is, so the
+customer name comes *out* of the filename and the date goes *in*, first, so a
+folder sorts chronologically. There are two distinct documents and they must
+not be conflated:
+
+| Document | New name |
+|---|---|
+| Lamberet's quotation **to** Hellenic Trailers (carries a reference like `GRC26071410001` or `SAS260701127-01`) | `Lamberet-Quotation_<YYYY-MM-DD>_<REF>[_<variant>].pdf` |
+| Hellenic Trailers' own offer/synthesis **to** the customer | `Προσφορά_<YYYY-MM-DD>_v<N>[_<variant>].pdf` |
+
+Rules:
+
+- **Never drop the Lamberet reference.** `GRC`/`SAS` + `YYMMDD` + sequence is
+  the key that ties a document to Lamberet's system and to the costings sheet.
+- **Take the date from the reference when there is one** — it is the real quote
+  date. The file's modified date is often days later, and for one January quote
+  it is three weeks later. Use the modified date only when no reference exists.
+- **Keep the variant, as a trailing slug**: `_CCR-LAMBERET`, `_without-niche`,
+  `_with-ferry-rings`, `_galvanised-chassis`, `_protected`. These distinguish
+  real alternatives that were sent to the customer and must survive.
+- **`v<N>` is the sequence within one customer**, oldest = v1, ordered by date.
+- Renaming happens **only in the copy**. The originals keep their names.
+
+Renaming also silently fixes typos that are currently in filenames —
+`GARGOMED`, `FREAGOS`, `KOUTSGIANNOPOULOS`, and `Προσοφρά` for `Προσφορά`.
 
 Two things found while surveying the source, worth fixing in the copy:
 - **One customer has two folders** under different spellings of the same
