@@ -2,6 +2,28 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "permissions": {
     "allow": [
+      "mcp__Dropbox__who_am_i",
+      "mcp__Dropbox__list_folder",
+      "mcp__Dropbox__search",
+      "mcp__Dropbox__fetch",
+      "mcp__Dropbox__get_file_metadata",
+      "mcp__Dropbox__file_preview",
+      "mcp__Dropbox__create_folder",
+      "mcp__Dropbox__create_file",
+      "mcp__Dropbox__copy",
+      "mcp__Dropbox__check_job_status",
+
+      "mcp__fdb6ee0e-1a3e-4e36-b89d-88612dcfd49c__who_am_i",
+      "mcp__fdb6ee0e-1a3e-4e36-b89d-88612dcfd49c__list_folder",
+      "mcp__fdb6ee0e-1a3e-4e36-b89d-88612dcfd49c__search",
+      "mcp__fdb6ee0e-1a3e-4e36-b89d-88612dcfd49c__fetch",
+      "mcp__fdb6ee0e-1a3e-4e36-b89d-88612dcfd49c__get_file_metadata",
+      "mcp__fdb6ee0e-1a3e-4e36-b89d-88612dcfd49c__file_preview",
+      "mcp__fdb6ee0e-1a3e-4e36-b89d-88612dcfd49c__create_folder",
+      "mcp__fdb6ee0e-1a3e-4e36-b89d-88612dcfd49c__create_file",
+      "mcp__fdb6ee0e-1a3e-4e36-b89d-88612dcfd49c__copy",
+      "mcp__fdb6ee0e-1a3e-4e36-b89d-88612dcfd49c__check_job_status",
+
       "mcp__MailerLite__get_auth_status",
       "mcp__MailerLite__list_subscribers",
       "mcp__MailerLite__get_subscriber",

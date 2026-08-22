@@ -93,6 +93,41 @@ Whichever is chosen, the skill should write to it automatically at the moment
 an offer is sent, rather than relying on anyone to update it afterwards — a
 record kept by hand stops being kept within a month.
 
+### 2b. The Dropbox reorganisation (agreed structure)
+
+The owner created a private folder, **`/Efstathios Ntounas/Hellenic Trailers`**,
+and asked for everything to be **copied** there and reorganised. The original
+supplier folder must be left **exactly as it is** — Iosif works from it and any
+move or rename would break his sync. Copy only: never move, rename or delete
+anything in the source.
+
+Agreed target structure (customer names are deliberately not listed here — this
+repository is public):
+
+```
+Hellenic Trailers/
+├── 01_Πελάτες/<one folder per customer>
+├── 02_Προσφορές/Πρότυπα/
+├── 03_Οικονομικά/{Κοστολόγια, Ταμειακή Ροή}/
+├── 04_Απόθεμα/            ← stock units, orders, supplier invoices
+├── 05_Marketing/{Event 2026, Έρευνα Αγοράς}/
+├── 06_Προμηθευτές/Carrier/
+├── 07_CRM/                ← CRM file, and the pipeline database when it exists
+├── 08_Νομικά & Εγκρίσεις/{Έγκριση Τύπου, Συμβάσεις}/
+└── 09_Εσωτερικά/          ← task lists, internal presentations
+```
+
+Conventions: customer folders named consistently (surname first, mixed case,
+not ALL CAPS); offers named `Προσφορά_<CRM-ID>_<YYYY-MM-DD>_v1.pdf`; nothing
+left loose at the root.
+
+Two things found while surveying the source, worth fixing in the copy:
+- **One customer has two folders** under different spellings of the same
+  company name — merge them into one.
+- Four top-level folders are not customers at all (a component supplier, offer
+  templates, stock, and type-approval paperwork) and belong in their own
+  sections rather than mixed in with the customer list.
+
 ### 3. Give Claude the full picture of the business
 
 So far Claude only knows what is on the website. The owner wants to hand over
