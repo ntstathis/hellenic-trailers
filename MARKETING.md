@@ -21,7 +21,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done |
 | Facebook | Claude posts via the Meta Graph API | ⬜ steps A + B below |
 | Instagram | Claude posts via the Meta Graph API | ⬜ steps A + B below (IG Business account required) |
-| Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector + group done — signup page & sender verification pending (step C) |
+| Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector, group + first contact import done (11 subscribers) — signup page & sender verification pending (step C) |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
@@ -40,24 +40,43 @@ actually has to sit down and do it:
 | 1 | **WhatsApp Business** on +30 695 704 5716 (step G) — the button is already live on the site, so enquiries can arrive now | Iosif | ~10 min |
 | 2 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer | Stathis | ~45 min |
 | 3 | **GitHub account** so Iosif can edit the site too (step H) | Iosif creates it, Stathis approves | ~10 min |
-| 4 | **MailerLite signup page + sender verification** (step C items 3, 4, 7) — until the signup page exists, nobody new can join the list | Iosif | ~15 min |
+| 4 | **MailerLite signup page + sender verification** (step C items 3, 4, 7) — until the signup page exists, nobody new can join the list; and now that the group holds real contacts, sender verification is the gate before the first campaign | Iosif | ~15 min |
 | 5 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
 ## Asked for, not started
 
-Two things the owner has asked to be reminded about. Neither is site setup —
-both are new capabilities, and both need a decision about **where the data
-lives** before any work starts.
+Things the owner has asked to be reminded about. None is site setup — they are
+new capabilities, and most need a decision about **where the data lives** before
+any work starts. Item 1 is now done, and is kept here as the record.
 
-### 1. Import the existing customers into the mailing list
+### 1. Import the existing customers into the mailing list — ✅ done (2026-08-23)
 
-The owner sends Claude the current customer list (a spreadsheet, an export,
-even a photographed sheet) and Claude loads it into the MailerLite group
-`Hellenic Trailers Newsletter`.
+Ten existing business contacts were imported into the MailerLite group
+`Hellenic Trailers Newsletter`, taking it to **11 active subscribers** (the
+eleventh is the owner's own QA address). The import ran with autoresponders
+**off** and resubscribe **off**, so **nothing was emailed** — every record
+shows `sent: 0`. Source: the customer folders in Dropbox, August 2026.
 
-Blocked on two things:
+Two custom subscriber fields were created to carry the record GDPR asks for:
+
+| Field | Key | What it holds |
+|---|---|---|
+| Deal stage | `deal_stage` | where that contact stands commercially |
+| Consent source | `consent_source` | where their data came from |
+
+**The import recorded the consent question; it did not settle it.** Judged by
+the soft opt-in test below, **3 of the 10** had bought comparable goods and are
+covered. The other **7** had only asked for a quote or did not buy, and are
+**not** covered. `deal_stage` is what makes that line queryable — build a
+segment on it and send marketing only to the covered contacts, until a signup
+page or a fresh opt-in brings the rest in properly.
+
+**Still blocking the first campaign:** step C sender verification. Sending to a
+real list before that is done lands in spam and burns the domain's reputation.
+
+The reasoning, kept because it governs every future import and every send:
 
 - **Consent (GDPR).** A list of people you have done business with is not
   automatically a list you may email marketing to. In the EU the usual lawful
@@ -67,8 +86,6 @@ Blocked on two things:
   is a judgement per contact, not a blanket yes — and contacts who only ever
   asked for a quote are **not** covered. Tag every import with where the
   consent came from, so the record exists if it is ever questioned.
-- **Step C must be finished first** (sender verification), otherwise the first
-  campaign to a real list lands in spam and burns the domain's reputation.
 
 ### 2. An `/offer` skill, and a customer/potential database
 
@@ -319,7 +336,8 @@ double opt-in and unsubscribe automatically.
 Status 2026-08-21: the account exists (stathis@stathis.com.gr), the Claude
 connector is authorized, the group `Hellenic Trailers Newsletter`
 (id `196439632318039915`) is created, and the owner is subscribed to it as a
-built-in QA recipient. Remaining: steps 3, 4, 5 and 7 below.
+built-in QA recipient. The first contact import ran on 2026-08-23 (step 5), so
+the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
 
 1. ~~Create a free account at mailerlite.com~~ — **done**.
 2. ~~Create one group named `Hellenic Trailers Newsletter`~~ — **done**
@@ -333,8 +351,11 @@ built-in QA recipient. Remaining: steps 3, 4, 5 and 7 below.
    `ikaragiotis@hellenictrailers.gr`: MailerLite → Account settings →
    *Senders* → add it and click the link in the confirmation email it
    receives. (Step 7 domain authentication also covers this.)
-5. Import existing contacts **only if they have agreed to receive email from
-   you** (GDPR); tag the import with where the consent came from.
+5. ~~Import existing contacts~~ — **done 2026-08-23**: 10 contacts imported,
+   group now at 11, nothing emailed. Tagged with `deal_stage` and
+   `consent_source` as GDPR requires. **The consent test still applies at send
+   time** — only 3 of the 10 are covered by soft opt-in, so segment on
+   `deal_stage` before any marketing campaign. See "Asked for, not started" §1.
 6. ~~Authorize the MailerLite connector in claude.ai~~ — **done**.
 7. Optional but recommended for deliverability: authenticate the
    `hellenictrailers.gr` domain in MailerLite (two DNS records — do this if you
