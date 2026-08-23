@@ -27,6 +27,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
 | WhatsApp | Visitors tap a button on the site and message +30 695 704 5716 | ✅ live on the site — set up WhatsApp Business, step G |
 | Contact form | Formspree (the site's JS already supports it) | ⬜ step D below |
+| YouTube | Videos of deliveries and service, embedded on the site and reused on Facebook/Instagram | ⬜ step I below |
 
 ---
 
@@ -42,6 +43,7 @@ actually has to sit down and do it:
 | 3 | **GitHub account** so Iosif can edit the site too (step H) | Iosif creates it, Stathis approves | ~10 min |
 | 4 | **MailerLite signup page + sender verification** (step C items 3, 4, 7) — until the signup page exists, nobody new can join the list; and now that the group holds real contacts, sender verification is the gate before the first campaign | Iosif | ~15 min |
 | 5 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
+| 6 | **YouTube channel** (step I) — a place for delivery and service video, which is what an equipment buyer actually searches for | Iosif | ~20 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -222,7 +224,7 @@ which of these channels deserves the next hour.
 
 ### Iosif's list
 
-Three of the six are his. In the order to do them:
+Four of the six are his. In the order to do them:
 
 1. **WhatsApp Business** on **+30 695 704 5716** (step G). The button is
    already live on all 7 pages of the site, so a customer can message that
@@ -243,6 +245,10 @@ Three of the six are his. In the order to do them:
    landing page — either Stathis shares the login, or Iosif is invited as a
    second user (MailerLite's free plan may not allow extra users; if it does
    not, either share the login or Stathis does this step instead).
+4. **YouTube channel** (step I): create the channel and fill in the profile.
+   Least urgent of the four, but the one with the longest runway — a channel
+   with nothing on it is worth nothing, so the sooner it exists the sooner
+   footage from deliveries starts accumulating somewhere useful.
 
 ---
 
@@ -581,6 +587,42 @@ publishing credentials are per-person: the Meta token and the environment
 variables described in step B live in *your* Claude environment, so he would
 either set up his own or leave publishing to you.
 
+## I. YouTube channel (once, ~20 min) — **Iosif**
+
+Why it earns its place: a fleet operator deciding on a refrigerated
+semi-trailer watches video. They want to see the doors open, the floor, the fridge unit
+running, a real delivery — things a photo cannot show. YouTube is also the
+cheapest video hosting there is, and a video embedded on the product pages
+keeps visitors on the site longer, which Google rewards.
+
+The channel is not a separate content job. It is a **place to put footage you
+are already taking**: every delivery photographed for `/publish-news` can be a
+60-second clip as well, filmed on a phone.
+
+1. Sign in with the **company Google account — the same one that owns the
+   Google Business Profile**. This matters: same account means the channel can
+   be linked to the profile later and the two reinforce each other in search.
+   Do not create it under a personal Gmail.
+2. <https://www.youtube.com/create_channel> → **Use a custom name** →
+   `Hellenic Trailers`. Claim the handle **`@hellenictrailers`** if it is free.
+3. Profile picture `images/logo-mark.svg` exported as PNG; banner a wide photo
+   of a delivered trailer. Description: the first paragraph of the site's
+   «Η Εταιρεία» page. Add the website link so it shows on the channel.
+4. Set the channel country to Greece and the default language to Greek.
+5. Send Claude the channel URL → Wiring checklist #10.
+
+What to put on it, in rough order of value:
+
+- **Delivery videos** — the customer's new trailer, walked around once. The
+  same clip works on Facebook, Instagram Reels and the website.
+- **Service and parts** — a genuine Lamberet part being fitted; this is what
+  reassures a buyer worried about after-sales support in Greece.
+- **Product walkthroughs** — SR2 Green Liner, SuperBeef, Duplex. These are the
+  ones that keep earning views long after they are posted.
+
+Keep them short, shoot vertical when the clip is for Reels, and always say the
+company name in the first five seconds.
+
 ---
 
 ## Wiring checklist
@@ -606,6 +648,7 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | 7 | Social URLs in structured data | 🔶 `sameAs` array added with LinkedIn — add FB + IG when they exist | JSON-LD block in `index.html` |
 | 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
 | 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 7 `*.html` |
+| 10 | YouTube channel URL | ⬜ needs a new footer icon (the social block currently has Facebook, Instagram and LinkedIn only) + add to `sameAs` | footer of all 7 `*.html` + JSON-LD in `index.html` |
 
 ## Where credentials live
 
