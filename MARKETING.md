@@ -134,8 +134,25 @@ Hellenic Trailers/
 └── 09_Εσωτερικά/          ← task lists, internal presentations
 ```
 
-Customer folders are named consistently (surname first, mixed case, not ALL
-CAPS) and nothing is left loose at the root.
+Customer folders are named consistently: **surname first, mixed case, not
+ALL CAPS**, and **one language throughout — Greek**, since these are Greek
+customers and the house rule is Greek for Greek customers. Two refinements
+that matter when applying it:
+
+- Where the source filenames already contain a Greek spelling of a customer's
+  name, **that spelling wins** over transliterating the Latin folder name.
+  The company already writes these names; inventing a second spelling would
+  create exactly the duplication the restructure removes.
+- **Latin brand names stay Latin** where the source never writes them in
+  Greek. A Latin brand inside Greek text is normal usage, not an
+  inconsistency, and three of the customers are brands of this kind.
+
+Nothing is left loose at the root.
+
+The customer-by-customer map from old folder name to new is **deliberately
+not in this repository** — it is 28 named customers and this repo is public.
+It lives with the data it describes, in `01_Πελάτες/README.md` inside the
+Dropbox folder.
 
 **Offer file naming.** The folder already says who the customer is, so the
 customer name comes *out* of the filename and the date goes *in*, first, so a
