@@ -391,6 +391,77 @@ the REST API directly.
 
 ## D. Analytics, Search Console + contact form (once, ~15 min)
 
+### The four measurement tools, and what the site should have
+
+They are constantly confused for one another, so, plainly: **they are not
+competitors.** Two of them answer *how do people find us*, two answer *what
+happens once they are here*, and one of the four is not measurement at all.
+
+| | What it is | The question it answers | On this site? |
+|---|---|---|---|
+| **Sitemap** | A plain XML file listing every page | «Google, these are all my pages — do not miss one» | ✅ `sitemap.xml`, submitted |
+| **Google Search Console** | Google's free SEO dashboard | Which searches show us, how often, who clicks, what is broken | ✅ verified 2026-08-21 |
+| **Cloudflare Web Analytics** | A tiny cookieless visitor counter | How many visitors, which pages, where they came from | ✅ on all 7 pages |
+| **Google Analytics 4** | Google's full behaviour-tracking platform | All of the above **plus** events, funnels, conversions, ad attribution | ❌ not installed — deliberately, see below |
+
+**The sitemap measures nothing.** It is a table of contents handed to search
+engines. It does not improve ranking; it guarantees no page is overlooked.
+Cheap insurance, and `robots.txt` points at it.
+
+**Search Console is *before* the click.** It is the only place the actual
+search terms are visible — «ψυκτικά ημιρυμουλκούμενα», «Lamberet Ελλάδα» —
+together with impressions, clicks, average position, indexing errors and
+inbound links. Google data only; it says nothing about what a visitor does
+once on the site, and it needs no script on the pages.
+
+**Cloudflare Web Analytics is *after* the click.** Visitors, page views, top
+pages, referrers, countries, devices. Two virtues that matter here: it sets
+**no cookies**, so no consent banner is legally required, and the script is
+small enough not to slow anything down. Its limit: it counts *pages*, not
+*actions* — it cannot natively say «someone tapped WhatsApp».
+
+**Google Analytics 4** does everything Cloudflare does, plus conversion
+events, funnels, audience segments and — the real reason it exists —
+attribution for Google Ads spend. The price is real: cookies and identifiers,
+so an EU consent banner on every visit; GDPR paperwork (usable under the
+EU–US Data Privacy Framework, but it must be configured and documented); a
+heavier script; a genuinely confusing interface; and because a large share of
+visitors decline consent, the resulting numbers are *less* complete than
+Cloudflare's on a site this size.
+
+#### The recommendation
+
+Search Console and an on-site analytics tool are **both** needed — they
+measure different halves of the same journey. The only real choice is
+Cloudflare *versus* Google Analytics for the second half.
+
+For hellenictrailers.gr — seven brochure pages for a B2B dealer whose measure
+of success is *a handful of serious enquiries a year*, not traffic volume —
+**keep what is here and do not add GA4.** GA4 earns its place when money is
+going into Google Ads and it matters which €50 of spend produced the lead.
+Revisit it on the day paid advertising starts; until then it buys a cookie
+banner and a compliance obligation in exchange for numbers nobody will act on.
+
+#### Worth more than GA4 — three things still missing
+
+1. **`gallery.html` is not in `sitemap.xml`.** The site has seven pages, the
+   sitemap lists six, and the missing one is arguably the best sales page a
+   trailer dealer has. One-line fix.
+2. **Enquiry counting.** The metric that actually matters, and nothing
+   measures it today. It can be had **without GA4 and without a cookie
+   banner**: route each call to action through its own URL — a `/whatsapp`
+   page that immediately redirects to the `wa.me` link, a `/thank-you` page
+   after a Formspree submit. A page view on `/whatsapp` in Cloudflare then
+   *is* a WhatsApp enquiry, and the analytics stop saying «180 visitors» and
+   start saying «180 visitors, 6 asked for a quote».
+3. **Bing Webmaster Tools.** Free, five minutes, imports directly from Search
+   Console. A small share of traffic, but zero effort — and Bing's index
+   feeds Copilot and ChatGPT search.
+
+All three are Claude's to do — ask in a chat on this repository.
+
+### Setup and status of each
+
 - **Google Search Console** — ✅ done: property verified and `sitemap.xml`
   submitted successfully (2026-08-21). It shows how the site appears in Google
   search (queries, clicks, indexing); data starts appearing within a few days.
