@@ -45,6 +45,7 @@ actually has to sit down and do it:
 | 5 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
 | 6 | **YouTube channel** (step I) — a place for delivery and service video, which is what an equipment buyer actually searches for | Iosif | ~20 min |
 | 7 | **Bing Webmaster Tools** (step J) — imports itself from Search Console in three minutes; the smallest item here and the only one that is pure gain | Stathis | ~3 min |
+| 8 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -443,23 +444,69 @@ going into Google Ads and it matters which €50 of spend produced the lead.
 Revisit it on the day paid advertising starts; until then it buys a cookie
 banner and a compliance obligation in exchange for numbers nobody will act on.
 
-#### Worth more than GA4 — three things still missing
+#### Worth more than GA4 — what is still missing
 
-1. **`gallery.html` is not in `sitemap.xml`.** The site has seven pages, the
-   sitemap lists six, and the missing one is arguably the best sales page a
-   trailer dealer has. One-line fix.
-2. **Enquiry counting.** The metric that actually matters, and nothing
-   measures it today. It can be had **without GA4 and without a cookie
-   banner**: route each call to action through its own URL — a `/whatsapp`
-   page that immediately redirects to the `wa.me` link, a `/thank-you` page
-   after a Formspree submit. A page view on `/whatsapp` in Cloudflare then
-   *is* a WhatsApp enquiry, and the analytics stop saying «180 visitors» and
-   start saying «180 visitors, 6 asked for a quote».
-3. **Bing Webmaster Tools.** Free, five minutes, imports directly from Search
-   Console. A small share of traffic, but zero effort — and Bing's index
-   feeds Copilot and ChatGPT search.
+**1. Enquiry counting — the metric that actually matters, and nothing measures
+it today.** Visitor numbers are not the point; a handful of serious enquiries a
+year is. It can be counted **without GA4 and without a cookie banner**, but not
+in the obvious way.
 
-All three are Claude's to do — ask in a chat on this repository.
+The obvious design — route the WhatsApp button through a `/whatsapp` page that
+redirects on to `wa.me` — is **rejected on purpose**. GitHub Pages is static,
+so that redirect has to happen in JavaScript, and on a phone the second
+navigation can be swallowed by an in-app browser (a visitor arriving from a
+Facebook or Instagram link) or lose the handoff to the WhatsApp app. That risks
+real enquiries to gain a number. Never worth it.
+
+What to build instead, in order of value:
+
+| | What | Risk | Status |
+|---|---|---|---|
+| a | **`thank-you.html`** — Formspree's `_next` parameter sends the visitor there after a successful submit. A real page load, so the Cloudflare beacon fires and the submission is counted. Also gives the visitor a proper confirmation, which the form does not do well today. | none — pure gain | page can be built now; **wiring blocked on the Formspree form id** (step D) |
+| b | **`js/track.js` — virtual page views.** On click of the WhatsApp, phone and email links, `history.pushState()` to `/enquiry/whatsapp`, `/enquiry/phone`, `/enquiry/email`, then restore the real URL a moment later. Cloudflare's beacon watches History API changes, so each registers as a page view in the top-pages list. | none — **the links themselves do not change**. They stay plain `<a href="https://wa.me/...">`, so if the script fails or is blocked the enquiry still goes through exactly as today. Tracking is additive and cannot break anything. | not started |
+
+Two things to be honest about. The virtual views are counted in the total page
+views, so that total stops being purely «pages read» — the `/enquiry/` prefix
+keeps it legible. And that Cloudflare's beacon picks up `pushState` needs
+**verifying rather than assuming**: the safe way is to ship it and check the
+dashboard the next day, which costs nothing because the links work regardless.
+
+Worth knowing before spending effort on (b): WhatsApp enquiries already
+half-report themselves. The pre-filled message differs per page — the products
+page mentions the Lamberet range, the services page mentions service and parts
+— so an arriving message already says which page it came from. What (b) adds is
+the *denominator*: how many people tapped. Real, but less valuable than (a).
+
+None of this sets a cookie or stores an identifier, so no consent banner is
+required.
+
+**2. The gallery page is an unfinished stub — and correctly hidden.**
+`gallery.html` exists but it is **not** simply «missing from the sitemap»:
+
+- it carries `<meta name="robots" content="noindex, follow">` — the only page
+  on the site that does;
+- it is linked from **nowhere** — no nav item, no footer link, nothing on the
+  other six pages;
+- its «photos» are **emoji placeholders** (🏭 🚛 ❄ 🚚 🔧). The three real
+  photographs in `images/` do not appear on it.
+
+So `sitemap.xml` listing six of the seven pages is **correct as it stands** —
+submitting a `noindex` URL would show up in Search Console as the error
+«Submitted URL marked 'noindex'». Do not «fix» the sitemap.
+
+The real task is to **finish the gallery**, and it starts with the owner: it
+needs roughly 8–12 real photographs — the facilities, a delivered SR2, an
+interior, the workshop, a genuine Lamberet part being fitted. For a trailer
+dealer these are the sales pitch; a fleet manager wants to see the doors open
+and the floor. Once the photos exist, the rest is Claude's: put the real images
+in, drop the `noindex`, add the page to the nav on all seven pages, and add it
+to `sitemap.xml`. Until the photos exist, leaving it hidden is the right state.
+
+**3. Bing Webmaster Tools** — step J below. Free, three minutes, imports itself
+from Search Console.
+
+Whose move: the photos for (2) are the owner's, and Bing (3) is the owner's.
+Everything else here is Claude's — ask in a chat on this repository.
 
 ### Setup and status of each
 
