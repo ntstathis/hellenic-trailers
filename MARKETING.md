@@ -44,6 +44,8 @@ actually has to sit down and do it:
 | 4 | **MailerLite signup page + sender verification** (step C items 3, 4, 7) — until the signup page exists, nobody new can join the list; and now that the group holds real contacts, sender verification is the gate before the first campaign | Iosif | ~15 min |
 | 5 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
 | 6 | **YouTube channel** (step I) — a place for delivery and service video, which is what an equipment buyer actually searches for | Iosif | ~20 min |
+| 7 | **Bing Webmaster Tools** (step J) — imports itself from Search Console in three minutes; the smallest item here and the only one that is pure gain | Stathis | ~3 min |
+| 8 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -391,6 +393,123 @@ the REST API directly.
 
 ## D. Analytics, Search Console + contact form (once, ~15 min)
 
+### The four measurement tools, and what the site should have
+
+They are constantly confused for one another, so, plainly: **they are not
+competitors.** Two of them answer *how do people find us*, two answer *what
+happens once they are here*, and one of the four is not measurement at all.
+
+| | What it is | The question it answers | On this site? |
+|---|---|---|---|
+| **Sitemap** | A plain XML file listing every page | «Google, these are all my pages — do not miss one» | ✅ `sitemap.xml`, submitted |
+| **Google Search Console** | Google's free SEO dashboard | Which searches show us, how often, who clicks, what is broken | ✅ verified 2026-08-21 |
+| **Cloudflare Web Analytics** | A tiny cookieless visitor counter | How many visitors, which pages, where they came from | ✅ on all 7 pages |
+| **Google Analytics 4** | Google's full behaviour-tracking platform | All of the above **plus** events, funnels, conversions, ad attribution | ❌ not installed — deliberately, see below |
+
+**The sitemap measures nothing.** It is a table of contents handed to search
+engines. It does not improve ranking; it guarantees no page is overlooked.
+Cheap insurance, and `robots.txt` points at it.
+
+**Search Console is *before* the click.** It is the only place the actual
+search terms are visible — «ψυκτικά ημιρυμουλκούμενα», «Lamberet Ελλάδα» —
+together with impressions, clicks, average position, indexing errors and
+inbound links. Google data only; it says nothing about what a visitor does
+once on the site, and it needs no script on the pages.
+
+**Cloudflare Web Analytics is *after* the click.** Visitors, page views, top
+pages, referrers, countries, devices. Two virtues that matter here: it sets
+**no cookies**, so no consent banner is legally required, and the script is
+small enough not to slow anything down. Its limit: it counts *pages*, not
+*actions* — it cannot natively say «someone tapped WhatsApp».
+
+**Google Analytics 4** does everything Cloudflare does, plus conversion
+events, funnels, audience segments and — the real reason it exists —
+attribution for Google Ads spend. The price is real: cookies and identifiers,
+so an EU consent banner on every visit; GDPR paperwork (usable under the
+EU–US Data Privacy Framework, but it must be configured and documented); a
+heavier script; a genuinely confusing interface; and because a large share of
+visitors decline consent, the resulting numbers are *less* complete than
+Cloudflare's on a site this size.
+
+#### The recommendation
+
+Search Console and an on-site analytics tool are **both** needed — they
+measure different halves of the same journey. The only real choice is
+Cloudflare *versus* Google Analytics for the second half.
+
+For hellenictrailers.gr — seven brochure pages for a B2B dealer whose measure
+of success is *a handful of serious enquiries a year*, not traffic volume —
+**keep what is here and do not add GA4.** GA4 earns its place when money is
+going into Google Ads and it matters which €50 of spend produced the lead.
+Revisit it on the day paid advertising starts; until then it buys a cookie
+banner and a compliance obligation in exchange for numbers nobody will act on.
+
+#### Worth more than GA4 — what is still missing
+
+**1. Enquiry counting — the metric that actually matters, and nothing measures
+it today.** Visitor numbers are not the point; a handful of serious enquiries a
+year is. It can be counted **without GA4 and without a cookie banner**, but not
+in the obvious way.
+
+The obvious design — route the WhatsApp button through a `/whatsapp` page that
+redirects on to `wa.me` — is **rejected on purpose**. GitHub Pages is static,
+so that redirect has to happen in JavaScript, and on a phone the second
+navigation can be swallowed by an in-app browser (a visitor arriving from a
+Facebook or Instagram link) or lose the handoff to the WhatsApp app. That risks
+real enquiries to gain a number. Never worth it.
+
+What to build instead, in order of value:
+
+| | What | Risk | Status |
+|---|---|---|---|
+| a | **`thank-you.html`** — Formspree's `_next` parameter sends the visitor there after a successful submit. A real page load, so the Cloudflare beacon fires and the submission is counted. Also gives the visitor a proper confirmation, which the form does not do well today. | none — pure gain | page can be built now; **wiring blocked on the Formspree form id** (step D) |
+| b | **`js/track.js` — virtual page views.** On click of the WhatsApp, phone and email links, `history.pushState()` to `/enquiry/whatsapp`, `/enquiry/phone`, `/enquiry/email`, then restore the real URL a moment later. Cloudflare's beacon watches History API changes, so each registers as a page view in the top-pages list. | none — **the links themselves do not change**. They stay plain `<a href="https://wa.me/...">`, so if the script fails or is blocked the enquiry still goes through exactly as today. Tracking is additive and cannot break anything. | not started |
+
+Two things to be honest about. The virtual views are counted in the total page
+views, so that total stops being purely «pages read» — the `/enquiry/` prefix
+keeps it legible. And that Cloudflare's beacon picks up `pushState` needs
+**verifying rather than assuming**: the safe way is to ship it and check the
+dashboard the next day, which costs nothing because the links work regardless.
+
+Worth knowing before spending effort on (b): WhatsApp enquiries already
+half-report themselves. The pre-filled message differs per page — the products
+page mentions the Lamberet range, the services page mentions service and parts
+— so an arriving message already says which page it came from. What (b) adds is
+the *denominator*: how many people tapped. Real, but less valuable than (a).
+
+None of this sets a cookie or stores an identifier, so no consent banner is
+required.
+
+**2. The gallery page is an unfinished stub — and correctly hidden.**
+`gallery.html` exists but it is **not** simply «missing from the sitemap»:
+
+- it carries `<meta name="robots" content="noindex, follow">` — the only page
+  on the site that does;
+- it is linked from **nowhere** — no nav item, no footer link, nothing on the
+  other six pages;
+- its «photos» are **emoji placeholders** (🏭 🚛 ❄ 🚚 🔧). The three real
+  photographs in `images/` do not appear on it.
+
+So `sitemap.xml` listing six of the seven pages is **correct as it stands** —
+submitting a `noindex` URL would show up in Search Console as the error
+«Submitted URL marked 'noindex'». Do not «fix» the sitemap.
+
+The real task is to **finish the gallery**, and it starts with the owner: it
+needs roughly 8–12 real photographs — the facilities, a delivered SR2, an
+interior, the workshop, a genuine Lamberet part being fitted. For a trailer
+dealer these are the sales pitch; a fleet manager wants to see the doors open
+and the floor. Once the photos exist, the rest is Claude's: put the real images
+in, drop the `noindex`, add the page to the nav on all seven pages, and add it
+to `sitemap.xml`. Until the photos exist, leaving it hidden is the right state.
+
+**3. Bing Webmaster Tools** — step J below. Free, three minutes, imports itself
+from Search Console.
+
+Whose move: the photos for (2) are the owner's, and Bing (3) is the owner's.
+Everything else here is Claude's — ask in a chat on this repository.
+
+### Setup and status of each
+
 - **Google Search Console** — ✅ done: property verified and `sitemap.xml`
   submitted successfully (2026-08-21). It shows how the site appears in Google
   search (queries, clicks, indexing); data starts appearing within a few days.
@@ -625,6 +744,42 @@ company name in the first five seconds.
 
 ---
 
+## J. Bing Webmaster Tools (once, ~3 min) — **Stathis**
+
+The same job Google Search Console does, for Bing: which searches surface the
+site, what is indexed, what is broken. Bing's share of Greek search is small,
+but the effort is close to zero and its index is what feeds Copilot and
+ChatGPT search, which is where a growing share of «ποιος πουλάει ψυκτικά
+ημιρυμουλκούμενα στην Ελλάδα» questions now get answered.
+
+**Do not add the site manually.** Bing imports it from Google Search Console,
+verification and sitemap included — no DNS record, no file to commit.
+
+1. Go to <https://www.bing.com/webmasters>.
+2. **Sign in → Continue with Google**, using the **same Google account that
+   verified Search Console** for hellenictrailers.gr. Any other account and
+   the import finds nothing.
+3. On the welcome screen choose **Import your sites from Google Search
+   Console** (not *Add site manually*).
+4. Approve the Google permission prompt, tick **hellenictrailers.gr**, confirm.
+5. The site arrives already verified, with `sitemap.xml` carried across. Check
+   **Sitemaps** in the left menu; if it is not listed, **Submit sitemap** and
+   paste `https://hellenictrailers.gr/sitemap.xml`.
+
+Data appears within a few days, exactly as Search Console did.
+
+**If the import is not offered** (wrong Google account, or Bing does not show
+the option): *Add site manually*, enter `https://hellenictrailers.gr`, and
+choose the **HTML meta tag** verification — `<meta name="msvalidate.01"
+content="..." />`. Send Claude the `content` string and it is committed into
+the pages (Wiring checklist #11). Ignore the DNS/CNAME option.
+
+Reading the numbers later is done at <https://www.bing.com/webmasters> — there
+is no connector for it here, so it is a dashboard you visit, like Search
+Console.
+
+---
+
 ## Wiring checklist
 
 The site already contains prepared, **commented-out** blocks for everything
@@ -649,6 +804,7 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
 | 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 7 `*.html` |
 | 10 | YouTube channel URL | ⬜ needs a new footer icon (the social block currently has Facebook, Instagram and LinkedIn only) + add to `sameAs` | footer of all 7 `*.html` + JSON-LD in `index.html` |
+| 11 | Bing `msvalidate.01` content string (**only** if the Search Console import is not offered — step J) | ⬜ not needed unless manual verification is required | `<head>` of `index.html` |
 
 ## Where credentials live
 
