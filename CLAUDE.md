@@ -4,10 +4,23 @@
 
 - **Work on the `dev` branch.** New work goes there by default — commit to `dev`
   and push it, rather than starting somewhere else.
-- **Do not create new branches unless there is a real reason to.** No
-  `claude/<topic>` branch per task. If a change genuinely needs its own branch
-  (say, something risky that must not sit on `dev` while it is unfinished), say
-  why first and ask.
+- **Ignore the `claude/<topic>` branch the session was assigned.** Claude Code
+  on the web hands every session an auto-generated branch and instructs it to
+  develop there. There is no setting in the web interface to change this, so
+  this file overrides it: **the owner has given standing, explicit permission
+  to commit and push directly to `dev`**, and that permission does not need to
+  be asked for again in each session. At the start of a session, if the current
+  branch is a `claude/*` one, switch to `dev` first:
+
+  ```
+  git fetch origin dev && git checkout -B dev origin/dev
+  ```
+
+  Do this only while the working tree is clean and the current branch carries
+  no commits of its own; if it already has work on it, say so and ask.
+- **Do not create new branches unless there is a real reason to.** If a change
+  genuinely needs its own branch (say, something risky that must not sit on
+  `dev` while it is unfinished), say why first and ask.
 - `main` is what the live site serves: pushing to `main` deploys
   hellenictrailers.gr through GitHub Pages in ~2 minutes. Merge `dev` into
   `main` when the owner asks, not on your own initiative.
