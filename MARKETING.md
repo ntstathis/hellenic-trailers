@@ -44,8 +44,7 @@ actually has to sit down and do it:
 | 4 | **MailerLite signup page + sender verification** (step C items 3, 4, 7) — until the signup page exists, nobody new can join the list; and now that the group holds real contacts, sender verification is the gate before the first campaign | Iosif | ~15 min |
 | 5 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
 | 6 | **YouTube channel** (step I) — a place for delivery and service video, which is what an equipment buyer actually searches for | Iosif | ~20 min |
-| 7 | **Bing Webmaster Tools** (step J) — imports itself from Search Console in three minutes; the smallest item here and the only one that is pure gain | Stathis | ~3 min |
-| 8 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
+| 7 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -502,11 +501,10 @@ and the floor. Once the photos exist, the rest is Claude's: put the real images
 in, drop the `noindex`, add the page to the nav on all seven pages, and add it
 to `sitemap.xml`. Until the photos exist, leaving it hidden is the right state.
 
-**3. Bing Webmaster Tools** — step J below. Free, three minutes, imports itself
-from Search Console.
+**3. ~~Bing Webmaster Tools~~ — ✅ done (2026-08-29).** See step J.
 
-Whose move: the photos for (2) are the owner's, and Bing (3) is the owner's.
-Everything else here is Claude's — ask in a chat on this repository.
+Whose move: the photos for (2) are the owner's. Everything else here is
+Claude's — ask in a chat on this repository.
 
 ### Setup and status of each
 
@@ -744,7 +742,14 @@ company name in the first five seconds.
 
 ---
 
-## J. Bing Webmaster Tools (once, ~3 min) — **Stathis**
+## J. Bing Webmaster Tools — ✅ done
+
+Status 2026-08-29: ✅ set up by the owner. The steps below are kept as the
+record of how it was done and what to do if verification is ever lost.
+
+Reading the numbers is a dashboard visit at <https://www.bing.com/webmasters>
+— there is no connector for it here, the same as Search Console. Data takes a
+few days to appear.
 
 The same job Google Search Console does, for Bing: which searches surface the
 site, what is indexed, what is broken. Bing's share of Greek search is small,
@@ -774,10 +779,6 @@ choose the **HTML meta tag** verification — `<meta name="msvalidate.01"
 content="..." />`. Send Claude the `content` string and it is committed into
 the pages (Wiring checklist #11). Ignore the DNS/CNAME option.
 
-Reading the numbers later is done at <https://www.bing.com/webmasters> — there
-is no connector for it here, so it is a dashboard you visit, like Search
-Console.
-
 ---
 
 ## Wiring checklist
@@ -804,7 +805,7 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
 | 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 7 `*.html` |
 | 10 | YouTube channel URL | ⬜ needs a new footer icon (the social block currently has Facebook, Instagram and LinkedIn only) + add to `sameAs` | footer of all 7 `*.html` + JSON-LD in `index.html` |
-| 11 | Bing `msvalidate.01` content string (**only** if the Search Console import is not offered — step J) | ⬜ not needed unless manual verification is required | `<head>` of `index.html` |
+| 11 | Bing `msvalidate.01` content string (step J) | ✅ not needed — verification came across with the Search Console import (2026-08-29) | `<head>` of `index.html` |
 
 ## Where credentials live
 
