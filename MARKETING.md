@@ -40,7 +40,7 @@ actually has to sit down and do it:
 |---|---|---|---|
 | 1 | **WhatsApp Business** on +30 695 704 5716 (step G) — the button is already live on the site, so enquiries can arrive now | Iosif | ~10 min |
 | 2 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer | Stathis | ~45 min |
-| 3 | **GitHub account** so Iosif can edit the site too (step H) | Iosif creates it, Stathis approves | ~10 min |
+| 3 | **GitHub invitation** for Iosif (step H) — his account `ikaragiotis` exists since 2026-08-29, so all that is left is the repository invitation | Stathis invites, Iosif accepts | ~2 min |
 | 4 | **MailerLite signup page + sender verification** (step C items 3, 4, 7) — until the signup page exists, nobody new can join the list; and now that the group holds real contacts, sender verification is the gate before the first campaign | Iosif | ~15 min |
 | 5 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
 | 6 | **YouTube channel** (step I) — a place for delivery and service video, which is what an equipment buyer actually searches for | Iosif | ~20 min |
@@ -232,11 +232,12 @@ Four of the six are his. In the order to do them:
    number today — right now it arrives in a personal WhatsApp with no business
    profile, no opening hours and no away message behind it. This is the one
    worth doing first.
-2. **GitHub account** (step H): sign up at <https://github.com/signup> with
-   `ikaragiotis@hellenictrailers.gr`, turn on two-factor authentication, and
-   send Stathis the username — Stathis then adds him to the repository and he
-   accepts the emailed invitation. After that he can edit the website himself
-   following [`EDITING.md`](EDITING.md).
+2. **GitHub account** (step H): ✅ done — the account is `ikaragiotis`
+   (<https://github.com/ikaragiotis>), created 2026-08-29. The rest is not his
+   to do: Stathis sends the repository invitation, Iosif accepts it from his
+   email, and after that he can edit the website himself following
+   [`EDITING.md`](EDITING.md). Worth checking that two-factor authentication is
+   on, if he skipped it at signup.
 3. **MailerLite** (step C): build the public signup landing page with double
    opt-in, then verify `ikaragiotis@hellenictrailers.gr` as the sender address
    — the confirmation email lands in his inbox, so only he can click it.
@@ -681,21 +682,29 @@ To change the number or the wording later, ask Claude — the number lives in
 `WHATSAPP_URL` in `js/translations.js` and in the `href` of each button, and
 the messages are the `wa.msg.*` keys in the same file.
 
-## H. Give Iosif access to the website (~10 min) — **Iosif signs up, Stathis approves**
+## H. Give Iosif access to the website (~2 min left) — **Stathis invites, Iosif accepts**
 
 The website lives in the GitHub repository, so Iosif
 (`ikaragiotis@hellenictrailers.gr`) needs a GitHub account before he can edit
 content or approve changes.
 
-1. He creates a free account at <https://github.com/signup> using
-   `ikaragiotis@hellenictrailers.gr`, and turns on two-factor authentication
-   (GitHub requires it for contributors).
-2. He sends you his GitHub username.
-3. You add him at
+1. ✅ He created a free account at <https://github.com/signup> using
+   `ikaragiotis@hellenictrailers.gr` — the username is **`ikaragiotis`**
+   (<https://github.com/ikaragiotis>), 2026-08-29. Two-factor authentication
+   should be on; GitHub requires it for contributors.
+2. ✅ He sent you the username.
+3. ⬜ You add him at
    <https://github.com/ntstathis/hellenic-trailers/settings/access> →
-   **Add people** → his username → role **Write** (can edit content and merge;
+   **Add people** → `ikaragiotis` → role **Write** (can edit content and merge;
    choose **Admin** only if he should also manage settings and access).
-4. He accepts the invitation by email.
+4. ⬜ He accepts the invitation, emailed to
+   `ikaragiotis@hellenictrailers.gr`; it expires after 7 days. Until he
+   accepts, nothing has changed — the collaborator list still shows only
+   `ntstathis`.
+
+Claude cannot send the invitation for you: the GitHub tools in a session can
+read the collaborator list but have no add-collaborator operation, so step 3 is
+a click in the browser. Claude can confirm afterwards whether he accepted.
 
 Once he is in, he can edit the site through the GitHub website following
 [`EDITING.md`](EDITING.md), review and merge pull requests, and — with his own
