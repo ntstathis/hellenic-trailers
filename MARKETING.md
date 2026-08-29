@@ -44,6 +44,7 @@ actually has to sit down and do it:
 | 4 | **MailerLite signup page + sender verification** (step C items 3, 4, 7) — until the signup page exists, nobody new can join the list; and now that the group holds real contacts, sender verification is the gate before the first campaign | Iosif | ~15 min |
 | 5 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
 | 6 | **YouTube channel** (step I) — a place for delivery and service video, which is what an equipment buyer actually searches for | Iosif | ~20 min |
+| 7 | **Bing Webmaster Tools** (step J) — imports itself from Search Console in three minutes; the smallest item here and the only one that is pure gain | Stathis | ~3 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -696,6 +697,42 @@ company name in the first five seconds.
 
 ---
 
+## J. Bing Webmaster Tools (once, ~3 min) — **Stathis**
+
+The same job Google Search Console does, for Bing: which searches surface the
+site, what is indexed, what is broken. Bing's share of Greek search is small,
+but the effort is close to zero and its index is what feeds Copilot and
+ChatGPT search, which is where a growing share of «ποιος πουλάει ψυκτικά
+ημιρυμουλκούμενα στην Ελλάδα» questions now get answered.
+
+**Do not add the site manually.** Bing imports it from Google Search Console,
+verification and sitemap included — no DNS record, no file to commit.
+
+1. Go to <https://www.bing.com/webmasters>.
+2. **Sign in → Continue with Google**, using the **same Google account that
+   verified Search Console** for hellenictrailers.gr. Any other account and
+   the import finds nothing.
+3. On the welcome screen choose **Import your sites from Google Search
+   Console** (not *Add site manually*).
+4. Approve the Google permission prompt, tick **hellenictrailers.gr**, confirm.
+5. The site arrives already verified, with `sitemap.xml` carried across. Check
+   **Sitemaps** in the left menu; if it is not listed, **Submit sitemap** and
+   paste `https://hellenictrailers.gr/sitemap.xml`.
+
+Data appears within a few days, exactly as Search Console did.
+
+**If the import is not offered** (wrong Google account, or Bing does not show
+the option): *Add site manually*, enter `https://hellenictrailers.gr`, and
+choose the **HTML meta tag** verification — `<meta name="msvalidate.01"
+content="..." />`. Send Claude the `content` string and it is committed into
+the pages (Wiring checklist #11). Ignore the DNS/CNAME option.
+
+Reading the numbers later is done at <https://www.bing.com/webmasters> — there
+is no connector for it here, so it is a dashboard you visit, like Search
+Console.
+
+---
+
 ## Wiring checklist
 
 The site already contains prepared, **commented-out** blocks for everything
@@ -720,6 +757,7 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
 | 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 7 `*.html` |
 | 10 | YouTube channel URL | ⬜ needs a new footer icon (the social block currently has Facebook, Instagram and LinkedIn only) + add to `sameAs` | footer of all 7 `*.html` + JSON-LD in `index.html` |
+| 11 | Bing `msvalidate.01` content string (**only** if the Search Console import is not offered — step J) | ⬜ not needed unless manual verification is required | `<head>` of `index.html` |
 
 ## Where credentials live
 
