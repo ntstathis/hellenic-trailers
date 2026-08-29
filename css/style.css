@@ -1547,15 +1547,24 @@ footer h4 {
   z-index: 1400;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 18px;
-  border-radius: 999px;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
   background: #25D366;
   color: var(--white);
-  font-weight: 700;
-  font-size: 0.95rem;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
   transition: var(--transition);
+}
+
+/* Text label is kept for screen readers (aria-label already covers it too) */
+.wa-float span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
 }
 
 .wa-float:hover,
