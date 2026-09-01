@@ -724,15 +724,15 @@ before going that way.
 
 **1. Install and verify.** WhatsApp Business from the app store → verify
 +30 695 704 5716 → accept the migration when offered → business name
-`Hellenic Trailers` → category:
+`Hellenic Trailers`.
 
-> Ημιρυμουλκούμενοι Ψυκτικοί Θάλαμοι
-
-WhatsApp's category is **chosen from its own list, not typed**, so that exact
-wording may not be on offer. If it is not, pick the nearest entry the app has
-(the automotive/vehicle one) and put the wording above at the **start of the
-description** in step 2, which is free text — that is the field customers
-actually read. The line matters more than which bucket WhatsApp files it under.
+**Category: «Άλλες επιχειρήσεις».** The intended one was «Ημιρυμουλκούμενοι
+Ψυκτικοί Θάλαμοι», but WhatsApp picks its category from a fixed list rather
+than a typed field and nothing close was offered, so the generic entry was
+taken (2026-09-01). That makes the **description carry the wording instead** —
+see step 2, and keep the trade wording in its first line, because with a
+category this generic the description is the only place a customer learns what
+the company actually sells.
 
 **2. Business profile** (Ρυθμίσεις → Εργαλεία επιχείρησης → Προφίλ
 επιχείρησης). Paste these as they are:
@@ -752,11 +752,13 @@ structured data, the contact form's fallback and both language strings). The
 mailbox has to be real and watched, since it is now the address the site hands
 out.
 
-Περιγραφή (fits WhatsApp's 256-character limit):
+Περιγραφή — 222 characters, inside WhatsApp's 256 limit. It leads with the
+trade because the category could not (see step 1):
 
-> Επίσημος αντιπρόσωπος Lamberet στην Ελλάδα. Πωλήσεις, σέρβις και ανταλλακτικά
-> για ψυκτικά ημιρυμουλκούμενα, αμαξώματα και οχήματα διανομής, από τις
-> εγκαταστάσεις μας στη Μάνδρα Αττικής.
+> Ημιρυμουλκούμενοι ψυκτικοί θάλαμοι. Επίσημος αντιπρόσωπος Lamberet στην
+> Ελλάδα — πωλήσεις, σέρβις και ανταλλακτικά για ψυκτικά ημιρυμουλκούμενα,
+> αμαξώματα και οχήματα διανομής, από τις εγκαταστάσεις μας στη Μάνδρα
+> Αττικής.
 
 Set the hours here **before** step 4 — the away message's «εκτός ωραρίου»
 schedule is driven by them.
