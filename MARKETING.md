@@ -271,10 +271,10 @@ wired into the site's footer and `sameAs` the same day. If it is ever changed
 again, send Claude the new address: Facebook keeps redirecting the old one, but
 the site should show the current one.
 
-One thing left on the Page itself, not blocking: **its town reads «Μαγούλα»**,
-the same map artefact as on the Google listing. On Facebook it is an editable
-field, so set it to **Μάνδρα** to match the site, the structured data and the
-Google listing.
+The Page's town read «Μαγούλα» — the same map artefact as on the Google
+listing — and was corrected to **Μάνδρα** on 2026-09-01, so the Page, the site,
+the structured data and the Google listing now agree. Nothing is outstanding on
+the Page.
 
 The numeric id `61591112507188` is very likely the Page ID that step B stores
 as `FB_PAGE_ID`, but do not assume it — Claude confirms it against
