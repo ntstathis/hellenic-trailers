@@ -721,7 +721,7 @@ before going that way.
 +30 695 704 5716 → accept the migration when offered → business name
 `Hellenic Trailers` → category:
 
-> Ψυκτικοί θάλαμοι για ρυμουλκούμενα & ημιρυμουλκούμενα φορτηγά
+> Ημιρυμουλκούμενοι Ψυκτικοί Θάλαμοι
 
 WhatsApp's category is **chosen from its own list, not typed**, so that exact
 wording may not be on offer. If it is not, pick the nearest entry the app has
