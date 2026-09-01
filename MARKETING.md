@@ -20,7 +20,7 @@ that environment, so keep it personal and scope tokens narrowly).
 |---|---|---|
 | Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done |
 | Facebook | Claude posts via the Meta Graph API | 🔶 Page live («Hellenic Trailers-Lamberet Partner», 259 likes) and linked from the site; automatic posting still needs steps A + B |
-| Instagram | Claude posts via the Meta Graph API | ⬜ the account does not exist yet — step A0, then steps A + B |
+| Instagram | Claude posts via the Meta Graph API | 🔶 account created and linked from the site (`@hellenictrailers`, 2026-09-01); automatic posting still needs steps A + B |
 | Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector, group + first contact import done (11 subscribers) — signup page & sender verification pending (step C) |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
@@ -39,7 +39,7 @@ actually has to sit down and do it:
 | # | Task | Who | Time |
 |---|---|---|---|
 | 1 | **Decide the WhatsApp number** (step G) — the app was set up and rolled back on 2026-09-01 because +30 695 704 5716 is Iosif's personal number, and a published company number should not belong to a person. Either a company SIM (then the business account moves there and the number changes on the site) or it stays as it is, knowingly | Stathis decides | ~5 min to decide |
-| 2 | **Create the company Instagram account** (step A0) — the Facebook Page exists, Instagram does not, and step A cannot publish to Instagram without it. Must be a Business account linked to the Page | Iosif | ~15 min |
+| 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ created 2026-09-01 as `@hellenictrailers`, wired into the site. **Still to confirm before step A:** that it is a *Business* account (not Creator) and linked to the Page in Meta Business Suite | Iosif | confirm |
 | 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. Do A0 first | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
 | 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site now hands out that address, so campaigns must come from it; nothing can be sent to the 11 subscribers until a sender is verified, and the account is registered to `stathis@stathis.com.gr`. The confirmation email goes to `info@`, so that mailbox has to be readable | Stathis | ~5 min |
@@ -280,10 +280,21 @@ The numeric id `61591112507188` is very likely the Page ID that step B stores
 as `FB_PAGE_ID`, but do not assume it — Claude confirms it against
 `me/accounts` once the token from step A exists.
 
-### A0. Create the company Instagram account (~15 min, on the phone)
+### A0. The company Instagram account — created 2026-09-01
 
-Do this before anything else in this section: without a Business Instagram
-linked to the Page, the token from step A cannot publish to Instagram at all.
+The account is **`@hellenictrailers`**,
+<https://www.instagram.com/hellenictrailers/>, wired into the site's footer and
+`sameAs` the same day. Note the handle differs from the Facebook one
+(`hellenictrailers.gr`), which is only cosmetic.
+
+**Two things still to confirm before step A**, because step A's token cannot
+publish to Instagram without them, and neither failure shows up until the token
+is tested: the account must be **Business** (not Creator), and it must be
+**linked to the Page in Meta Business Suite** — Settings → *Linked accounts* →
+Instagram, done from the Business Suite rather than the phone. Items 2 and 3
+below are how each is set.
+
+The steps as they were followed, kept as the record:
 
 1. **Sign up.** Instagram app → *Create new account*. Use a company email the
    company can actually open, since a confirmation code is sent to it — and
@@ -990,12 +1001,12 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | # | Value | Placeholder to replace | Where it lives |
 |---|---|---|---|
 | 1 | Facebook Page URL | ✅ wired (2026-09-01): `facebook.com/hellenictrailers.gr` | footer of all 7 `*.html` |
-| 2 | Instagram profile URL | `REPLACE-WITH-INSTAGRAM-URL` | footer of all 7 `*.html` |
+| 2 | Instagram profile URL | ✅ wired (2026-09-01): `instagram.com/hellenictrailers` | footer of all 7 `*.html` |
 | 3 | LinkedIn page URL | ✅ wired (2026-08-21) | footer of all 7 `*.html` |
 | 4 | MailerLite hosted signup URL | `REPLACE-WITH-MAILERLITE-SIGNUP-URL` | footer of all 7 `*.html` + signup section in `news.html` |
 | 5 | Cloudflare Analytics token | ✅ wired (2026-08-21) | before `</body>` in all 7 `*.html` |
 | 6 | Formspree form ID | `YOUR_FORM_ID` | `contact.html` form `action` |
-| 7 | Social URLs in structured data | 🔶 `sameAs` carries LinkedIn + Facebook — add Instagram when it exists | JSON-LD block in `index.html` |
+| 7 | Social URLs in structured data | ✅ done (2026-09-01): `sameAs` carries LinkedIn, Facebook and Instagram | JSON-LD block in `index.html` |
 | 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
 | 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 7 `*.html` |
 | 10 | YouTube channel URL | ⬜ needs a new footer icon (the social block currently has Facebook, Instagram and LinkedIn only) + add to `sameAs` | footer of all 7 `*.html` + JSON-LD in `index.html` |
