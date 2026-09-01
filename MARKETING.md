@@ -575,7 +575,8 @@ Claude's — ask in a chat on this repository.
   Tokens screen.
 - **Formspree** (makes the contact form actually submit instead of opening the
   visitor's mail program): <https://formspree.io> → free account → *New form*
-  (send submissions to `ikaragiotis@hellenictrailers.gr`) → copy the form's ID
+  (send submissions to `info@hellenictrailers.gr`, the address the site now
+  shows) → copy the form's ID
   (the part after `/f/` in its endpoint URL) → Wiring checklist #6. The site's
   JavaScript already detects a real ID and switches from the mail-client
   fallback automatically.
@@ -741,12 +742,11 @@ actually read. The line matters more than which bucket WhatsApp files it under.
 | Email | `info@hellenictrailers.gr` |
 | Φωτογραφία προφίλ | `images/logo-mark.svg` exported as a square PNG |
 
-Name, address, hours and website match the site and the Google listing exactly,
-so all three agree. **The email does not, yet:** the site, the structured data
-and the contact form all still show `ikaragiotis@hellenictrailers.gr`, so
-`info@hellenictrailers.gr` needs to exist as a real, monitored mailbox before
-it is given out here — and the site should then be changed over to it too, in
-one pass. Ask Claude when that is decided.
+These match the site and the Google listing exactly, so all three agree — the
+site moved to `info@hellenictrailers.gr` on 2026-09-01 (all 7 pages, the
+structured data, the contact form's fallback and both language strings). The
+mailbox has to be real and watched, since it is now the address the site hands
+out.
 
 Περιγραφή (fits WhatsApp's 256-character limit):
 
