@@ -266,16 +266,15 @@ the company Instagram account is a **Business (Professional) account linked to
 that Page**. The Page exists; the Instagram account does not yet — see A0.
 
 The Facebook Page is **«Hellenic Trailers-Lamberet Partner»**,
-<https://www.facebook.com/profile.php?id=61591112507188>, wired into the site's
-footer and `sameAs` on 2026-09-01. Two things worth fixing there while you are
-in it, neither blocking:
+<https://www.facebook.com/hellenictrailers.gr/> — username claimed 2026-09-01,
+wired into the site's footer and `sameAs` the same day. If it is ever changed
+again, send Claude the new address: Facebook keeps redirecting the old one, but
+the site should show the current one.
 
-- **Claim a username** so the address becomes `facebook.com/hellenictrailers`
-  instead of a numeric `profile.php?id=…`. Send Claude the new one and the site
-  is updated; the numeric address keeps working either way.
-- **The Page's town reads «Μαγούλα»**, the same map artefact as on the Google
-  listing. On Facebook it is an editable field, so set it to **Μάνδρα** to
-  match the site, the structured data and the Google listing.
+One thing left on the Page itself, not blocking: **its town reads «Μαγούλα»**,
+the same map artefact as on the Google listing. On Facebook it is an editable
+field, so set it to **Μάνδρα** to match the site, the structured data and the
+Google listing.
 
 The numeric id `61591112507188` is very likely the Page ID that step B stores
 as `FB_PAGE_ID`, but do not assume it — Claude confirms it against
@@ -990,7 +989,7 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 
 | # | Value | Placeholder to replace | Where it lives |
 |---|---|---|---|
-| 1 | Facebook Page URL | ✅ wired (2026-09-01): `facebook.com/profile.php?id=61591112507188` | footer of all 7 `*.html` |
+| 1 | Facebook Page URL | ✅ wired (2026-09-01): `facebook.com/hellenictrailers.gr` | footer of all 7 `*.html` |
 | 2 | Instagram profile URL | `REPLACE-WITH-INSTAGRAM-URL` | footer of all 7 `*.html` |
 | 3 | LinkedIn page URL | ✅ wired (2026-08-21) | footer of all 7 `*.html` |
 | 4 | MailerLite hosted signup URL | `REPLACE-WITH-MAILERLITE-SIGNUP-URL` | footer of all 7 `*.html` + signup section in `news.html` |
