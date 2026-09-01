@@ -41,10 +41,11 @@ actually has to sit down and do it:
 | 1 | **WhatsApp Business** on +30 695 704 5716 (step G) — the button is already live on the site, so enquiries can arrive now; step G now carries the profile, greeting and away-message texts ready to paste | Iosif | ~10 min |
 | 2 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer | Stathis | ~45 min |
 | 3 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
-| 4 | **MailerLite signup page + sender verification** (step C items 3, 4, 7) — until the signup page exists, nobody new can join the list; and now that the group holds real contacts, sender verification is the gate before the first campaign | Iosif | ~15 min |
-| 5 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
-| 6 | **YouTube channel** (step I) — a place for delivery and service video, which is what an equipment buyer actually searches for | Iosif | ~20 min |
-| 7 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
+| 4 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site now hands out that address, so campaigns must come from it; nothing can be sent to the 11 subscribers until a sender is verified, and the account is registered to `stathis@stathis.com.gr`. The confirmation email goes to `info@`, so that mailbox has to be readable | Stathis | ~5 min |
+| 5 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list | Iosif | ~10 min |
+| 6 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
+| 7 | **YouTube channel** (step I) — a place for delivery and service video, which is what an equipment buyer actually searches for | Iosif | ~20 min |
+| 8 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -242,9 +243,8 @@ Four of the six are his. In the order to do them:
    Worth checking that two-factor authentication is on, if he skipped it at
    signup.
 3. **MailerLite** (step C): build the public signup landing page with double
-   opt-in, then verify `info@hellenictrailers.gr` as the sender address — the
-   confirmation email lands in that mailbox, so it has to be working and read
-   before this step can finish.
+   opt-in. Sender verification is no longer on this list — it moved to Stathis
+   (item 4 of «To do next»), since the account is registered to his address.
 
    ⚠️ **Check access first.** The MailerLite account is registered to
    `stathis@stathis.com.gr`. Iosif needs to get into that account to build the
@@ -355,7 +355,7 @@ interface, and it relies on hovering, which touch screens do not do.
 running keeps the values it started with, so open a new Claude Code session
 after saving the dialog.
 
-## C. Newsletter: MailerLite (once, ~15 min) — **Iosif**
+## C. Newsletter: MailerLite (once, ~15 min) — **Iosif** (signup page), **Stathis** (sender)
 
 MailerLite was chosen because it has a native Claude connector (no middleman),
 a free tier of 1,000 subscribers / 12,000 emails per month, campaign statistics
@@ -376,7 +376,7 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    **double opt-in on** — publish it and copy its URL. This goes into the
    site's signup links (Wiring checklist #4). The free plan includes landing
    pages (with MailerLite branding).
-4. Verify the sender address so campaigns can come from
+4. **Stathis.** Verify the sender address so campaigns can come from
    `info@hellenictrailers.gr` — the address the site has shown since
    2026-09-01, and the one campaigns should come from so a reply lands where
    the enquiries do: MailerLite → Account settings → *Senders* → add it and
