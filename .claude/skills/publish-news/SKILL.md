@@ -26,7 +26,7 @@ step 5.**
 | Facebook Page URL | `TO-BE-FILLED` |
 | Instagram profile URL | `TO-BE-FILLED` |
 | LinkedIn page URL | `TO-BE-FILLED` |
-| Newsletter | MailerLite connector (claude.ai, authorized 2026-08-21 as stathis@stathis.com.gr); group `Hellenic Trailers Newsletter` (id `196439632318039915`); sender Hellenic Trailers `<ikaragiotis@hellenictrailers.gr>`; hosted signup URL `TO-BE-FILLED` |
+| Newsletter | MailerLite connector (claude.ai, authorized 2026-08-21 as stathis@stathis.com.gr); group `Hellenic Trailers Newsletter` (id `196439632318039915`); sender Hellenic Trailers `<info@hellenictrailers.gr>`; hosted signup URL `TO-BE-FILLED` |
 | WhatsApp | +30 695 704 5716, reached from buttons on every page (`WHATSAPP_URL` in `js/translations.js`); nothing to publish there — it is an inbound channel |
 | Owner setup guide | `MARKETING.md` (token creation/regeneration, connector authorization, the current to-do list) |
 
