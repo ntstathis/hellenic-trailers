@@ -689,6 +689,34 @@ number: this one is already published in 15 links across all 7 pages of the
 site, and on the Google listing. Take a backup first (WhatsApp → Settings →
 Chats → Chat backup) so the migration has something to restore from.
 
+**The change is reversible.** The number is not permanently marked as a
+business one — what changes is which of the two apps is registered to it, and
+that can be switched back. To go back: take a backup from inside WhatsApp
+Business, install ordinary WhatsApp, register the same number, and restore
+when it offers to. Three things to be careful about:
+
+- **Never use «Delete account» to switch back.** That erases the account for
+  good. The route is always backup → install the other app → verify the number.
+- **Back up before every switch, in both directions.** The two apps keep
+  separate backups (on Google Drive and on iCloud alike), so uninstalling
+  without one loses whatever did not migrate.
+- **Only what is business-specific is lost** on the way back: the business
+  profile, hours, automated messages, quick replies, labels and catalog. Chats
+  and contacts stay.
+
+The exact menu paths differ by app version and between Android and iPhone, but
+the shape holds: back up, one app at a time, same number verified.
+
+Reversible refers to the **WhatsApp Business app** — the one from the app
+store, which is all this step uses. Moving a number onto the **WhatsApp
+Business Platform (Cloud API)** is a different thing and is far harder to undo;
+we are not doing that.
+
+If you would rather keep the company number off your personal phone entirely,
+the clean alternative is a second SIM used only for the business — but that
+changes the number in 15 places on the site and on the Google listing, so ask
+before going that way.
+
 **1. Install and verify.** WhatsApp Business from the app store → verify
 +30 695 704 5716 → accept the migration when offered → business name
 `Hellenic Trailers` → category **Αυτοκίνητα / Μηχανοκίνητα οχήματα**.
