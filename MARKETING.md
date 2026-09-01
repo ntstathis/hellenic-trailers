@@ -242,8 +242,9 @@ Four of the six are his. In the order to do them:
    Worth checking that two-factor authentication is on, if he skipped it at
    signup.
 3. **MailerLite** (step C): build the public signup landing page with double
-   opt-in, then verify `ikaragiotis@hellenictrailers.gr` as the sender address
-   — the confirmation email lands in his inbox, so only he can click it.
+   opt-in, then verify `info@hellenictrailers.gr` as the sender address — the
+   confirmation email lands in that mailbox, so it has to be working and read
+   before this step can finish.
 
    ⚠️ **Check access first.** The MailerLite account is registered to
    `stathis@stathis.com.gr`. Iosif needs to get into that account to build the
@@ -376,9 +377,13 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    site's signup links (Wiring checklist #4). The free plan includes landing
    pages (with MailerLite branding).
 4. Verify the sender address so campaigns can come from
-   `ikaragiotis@hellenictrailers.gr`: MailerLite → Account settings →
-   *Senders* → add it and click the link in the confirmation email it
-   receives. (Step 7 domain authentication also covers this.)
+   `info@hellenictrailers.gr` — the address the site has shown since
+   2026-09-01, and the one campaigns should come from so a reply lands where
+   the enquiries do: MailerLite → Account settings → *Senders* → add it and
+   click the link in the confirmation email. **That email goes to `info@`**,
+   so whoever reads that mailbox has to click it. (Step 7 domain
+   authentication also covers this.) The older plan was to verify
+   `ikaragiotis@`; it was dropped when the site moved to `info@`.
 5. ~~Import existing contacts~~ — **done 2026-08-23**: 10 contacts imported,
    group now at 11, nothing emailed. Tagged with `deal_stage` and
    `consent_source` as GDPR requires. **The consent test still applies at send
