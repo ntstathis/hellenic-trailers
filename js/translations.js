@@ -166,6 +166,7 @@ const translations = {
   'a11y.facebook': { en: 'Hellenic Trailers on Facebook', el: 'Η Hellenic Trailers στο Facebook' },
   'a11y.instagram': { en: 'Hellenic Trailers on Instagram', el: 'Η Hellenic Trailers στο Instagram' },
   'a11y.linkedin': { en: 'Hellenic Trailers on LinkedIn', el: 'Η Hellenic Trailers στο LinkedIn' },
+  'a11y.youtube': { en: 'Hellenic Trailers on YouTube', el: 'Το κανάλι της Hellenic Trailers στο YouTube' },
   'footer.newsletter': { en: 'Newsletter', el: 'Ενημερωτικό Δελτίο' },
   'newsletter.title': { en: 'Subscribe to our Newsletter', el: 'Εγγραφείτε στο Ενημερωτικό μας Δελτίο' },
   'newsletter.text': { en: 'Receive our news and deliveries by email. You can unsubscribe at any time.', el: 'Λαμβάνετε τα νέα και τις παραδόσεις μας με email. Μπορείτε να απεγγραφείτε ανά πάσα στιγμή.' },

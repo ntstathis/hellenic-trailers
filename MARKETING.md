@@ -27,7 +27,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
 | WhatsApp | Visitors tap a button on the site and message +30 695 704 5716 | 🔶 button live on all 7 pages; WhatsApp Business was set up and rolled back the same day (2026-09-01), so enquiries reach a personal account — see step G |
 | Contact form | Formspree (the site's JS already supports it) | ⬜ step D below |
-| YouTube | Videos of deliveries and service, embedded on the site and reused on Facebook/Instagram | ⬜ step I below |
+| YouTube | Videos of deliveries and service, embedded on the site and reused on Facebook/Instagram | 🔶 channel created and linked from the site (`@HellenicTrailers`, 2026-09-01) — it has no video on it yet |
 
 ---
 
@@ -45,7 +45,7 @@ actually has to sit down and do it:
 | 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site now hands out that address, so campaigns must come from it; nothing can be sent to the 11 subscribers until a sender is verified, and the account is registered to `stathis@stathis.com.gr`. The confirmation email goes to `info@`, so that mailbox has to be readable | Stathis | ~5 min |
 | 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list | Iosif | ~10 min |
 | 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
-| 8 | **YouTube channel** (step I) — a place for delivery and service video, which is what an equipment buyer actually searches for | Iosif | ~20 min |
+| 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
 | 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
@@ -926,7 +926,17 @@ publishing credentials are per-person: the Meta token and the environment
 variables described in step B live in *your* Claude environment, so he would
 either set up his own or leave publishing to you.
 
-## I. YouTube channel (once, ~20 min) — **Iosif**
+## I. YouTube channel — ✅ created 2026-09-01
+
+The channel is **<https://www.youtube.com/@HellenicTrailers>** (channel id
+`UC6mb6akAiDPwRs09J3OKyRA`), linked from the footer of all 7 pages and listed
+in the homepage `sameAs`. The setup steps below are kept as the record; what
+the channel needs now is the first video, not more configuration.
+
+Worth confirming if it was rushed: that it was created under the **company
+Google account that owns the Google Business Profile** — same account is what
+lets the two be linked later — and that the country is Greece with Greek as the
+default language.
 
 Why it earns its place: a fleet operator deciding on a refrigerated
 semi-trailer watches video. They want to see the doors open, the floor, the fridge unit
@@ -948,7 +958,7 @@ are already taking**: every delivery photographed for `/publish-news` can be a
    of a delivered trailer. Description: the first paragraph of the site's
    «Η Εταιρεία» page. Add the website link so it shows on the channel.
 4. Set the channel country to Greece and the default language to Greek.
-5. Send Claude the channel URL → Wiring checklist #10.
+5. ~~Send Claude the channel URL~~ — done; wired 2026-09-01.
 
 What to put on it, in rough order of value:
 
@@ -1026,7 +1036,7 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | 7 | Social URLs in structured data | ✅ done (2026-09-01): `sameAs` carries LinkedIn, Facebook and Instagram | JSON-LD block in `index.html` |
 | 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
 | 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 7 `*.html` |
-| 10 | YouTube channel URL | ⬜ needs a new footer icon (the social block currently has Facebook, Instagram and LinkedIn only) + add to `sameAs` | footer of all 7 `*.html` + JSON-LD in `index.html` |
+| 10 | YouTube channel URL | ✅ wired (2026-09-01): `youtube.com/@HellenicTrailers`, with a new footer icon and an `a11y.youtube` label | footer of all 7 `*.html` + JSON-LD in `index.html` |
 | 11 | Bing `msvalidate.01` content string (step J) | ✅ not needed — verification came across with the Search Console import (2026-08-29) | `<head>` of `index.html` |
 
 ## Where credentials live
