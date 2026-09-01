@@ -15,7 +15,7 @@ const translations = {
 
   // Top bar
   'topbar.phone': { en: '+30 210 3471032', el: '+30 210 3471032' },
-  'topbar.email': { en: 'ikaragiotis@hellenictrailers.gr', el: 'ikaragiotis@hellenictrailers.gr' },
+  'topbar.email': { en: 'info@hellenictrailers.gr', el: 'info@hellenictrailers.gr' },
   'topbar.hours': { en: 'Mon-Fri: 09:00 - 17:00', el: 'Δευ-Παρ: 09:00 - 17:00' },
 
   // Logo
@@ -144,7 +144,7 @@ const translations = {
   'contact.info.phone.title': { en: 'Call Us', el: 'Καλέστε μας' },
   'contact.info.phone.text': { en: '+30 210 3471032', el: '+30 210 3471032' },
   'contact.info.email.title': { en: 'Email Us', el: 'Στείλτε Email' },
-  'contact.info.email.text': { en: 'ikaragiotis@hellenictrailers.gr', el: 'ikaragiotis@hellenictrailers.gr' },
+  'contact.info.email.text': { en: 'info@hellenictrailers.gr', el: 'info@hellenictrailers.gr' },
   'contact.info.hours.title': { en: 'Working Hours', el: 'Ώρες Λειτουργίας' },
   'contact.info.hours.text': { en: 'Monday - Friday: 09:00 - 17:00\nClosed Saturday and Sunday', el: 'Δευτέρα - Παρασκευή: 09:00 - 17:00\nΣάββατο και Κυριακή κλειστά' },
 

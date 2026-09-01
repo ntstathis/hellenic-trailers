@@ -38,7 +38,7 @@ actually has to sit down and do it:
 
 | # | Task | Who | Time |
 |---|---|---|---|
-| 1 | **WhatsApp Business** on +30 695 704 5716 (step G) — the button is already live on the site, so enquiries can arrive now | Iosif | ~10 min |
+| 1 | **WhatsApp Business** on +30 695 704 5716 (step G) — the button is already live on the site, so enquiries can arrive now; step G now carries the profile, greeting and away-message texts ready to paste | Iosif | ~10 min |
 | 2 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer | Stathis | ~45 min |
 | 3 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
 | 4 | **MailerLite signup page + sender verification** (step C items 3, 4, 7) — until the signup page exists, nobody new can join the list; and now that the group holds real contacts, sender verification is the gate before the first campaign | Iosif | ~15 min |
@@ -231,7 +231,10 @@ Four of the six are his. In the order to do them:
    already live on all 7 pages of the site, so a customer can message that
    number today — right now it arrives in a personal WhatsApp with no business
    profile, no opening hours and no away message behind it. This is the one
-   worth doing first.
+   worth doing first, and step G now spells it out screen by screen: every
+   profile field, the greeting, the away message and four quick replies, in
+   Greek, ready to paste. Read the migration warning at the top of it before
+   installing the app.
 2. **GitHub access** (step H): ✅ done — the account `ikaragiotis`
    (<https://github.com/ikaragiotis>), created 2026-08-29, accepted the
    repository invitation the same day and now shows as a `write` collaborator.
@@ -572,7 +575,8 @@ Claude's — ask in a chat on this repository.
   Tokens screen.
 - **Formspree** (makes the contact form actually submit instead of opening the
   visitor's mail program): <https://formspree.io> → free account → *New form*
-  (send submissions to `ikaragiotis@hellenictrailers.gr`) → copy the form's ID
+  (send submissions to `info@hellenictrailers.gr`, the address the site now
+  shows) → copy the form's ID
   (the part after `/f/` in its endpoint URL) → Wiring checklist #6. The site's
   JavaScript already detects a real ID and switches from the mail-client
   fallback automatically.
@@ -672,11 +676,122 @@ rewritten in English when a visitor switches the site to EN. These are plain
 `wa.me` links: no third-party script, no cookies, nothing is requested from
 Meta until someone actually taps, so there are no consent-banner implications.
 
-**What is left for you:** install **WhatsApp Business** (free, from the app
-store) on the phone holding that number, and fill in the business profile —
-name Hellenic Trailers, address in Μάνδρα, hours Δευ–Παρ 09:00–17:00, website,
-plus a greeting message and an away message for outside working hours.
-Otherwise enquiries land in a personal WhatsApp with no business context.
+### What is left for you (~10 min, on the phone holding the number)
+
+Install **WhatsApp Business** (free, from the app store) and fill in the
+profile. Until that is done, enquiries land in a personal WhatsApp with no
+business context — no profile, no hours, no away message.
+
+**Before you install, read this.** WhatsApp Business and ordinary WhatsApp
+cannot run on the same number at the same time. If +30 695 704 5716 is already
+on ordinary WhatsApp, installing Business offers to **migrate the account and
+the chat history** — accept it. Do not set the business up on a different
+number: this one is already published in 15 links across all 7 pages of the
+site, and on the Google listing. Take a backup first (WhatsApp → Settings →
+Chats → Chat backup) so the migration has something to restore from.
+
+**The change is reversible.** The number is not permanently marked as a
+business one — what changes is which of the two apps is registered to it, and
+that can be switched back. To go back: take a backup from inside WhatsApp
+Business, install ordinary WhatsApp, register the same number, and restore
+when it offers to. Three things to be careful about:
+
+- **Never use «Delete account» to switch back.** That erases the account for
+  good. The route is always backup → install the other app → verify the number.
+- **Back up before every switch, in both directions.** The two apps keep
+  separate backups (on Google Drive and on iCloud alike), so uninstalling
+  without one loses whatever did not migrate.
+- **Only what is business-specific is lost** on the way back: the business
+  profile, hours, automated messages, quick replies, labels and catalog. Chats
+  and contacts stay.
+
+The exact menu paths differ by app version and between Android and iPhone, but
+the shape holds: back up, one app at a time, same number verified.
+
+Reversible refers to the **WhatsApp Business app** — the one from the app
+store, which is all this step uses. Moving a number onto the **WhatsApp
+Business Platform (Cloud API)** is a different thing and is far harder to undo;
+we are not doing that.
+
+If you would rather keep the company number off your personal phone entirely,
+the clean alternative is a second SIM used only for the business — but that
+changes the number in 15 places on the site and on the Google listing, so ask
+before going that way.
+
+**1. Install and verify.** WhatsApp Business from the app store → verify
++30 695 704 5716 → accept the migration when offered → business name
+`Hellenic Trailers` → category:
+
+> Ημιρυμουλκούμενοι Ψυκτικοί Θάλαμοι
+
+WhatsApp's category is **chosen from its own list, not typed**, so that exact
+wording may not be on offer. If it is not, pick the nearest entry the app has
+(the automotive/vehicle one) and put the wording above at the **start of the
+description** in step 2, which is free text — that is the field customers
+actually read. The line matters more than which bucket WhatsApp files it under.
+
+**2. Business profile** (Ρυθμίσεις → Εργαλεία επιχείρησης → Προφίλ
+επιχείρησης). Paste these as they are:
+
+| Field | Value |
+|---|---|
+| Όνομα | `Hellenic Trailers` |
+| Διεύθυνση | `Θέση Κάτω Πάτημα, Μάνδρα 196 00, Αττική` |
+| Ωράριο | `Δευ–Παρ 09:00–17:00` · Σάββατο και Κυριακή κλειστά |
+| Ιστότοπος | `https://hellenictrailers.gr` |
+| Email | `info@hellenictrailers.gr` |
+| Φωτογραφία προφίλ | `images/logo-mark.svg` exported as a square PNG |
+
+These match the site and the Google listing exactly, so all three agree — the
+site moved to `info@hellenictrailers.gr` on 2026-09-01 (all 7 pages, the
+structured data, the contact form's fallback and both language strings). The
+mailbox has to be real and watched, since it is now the address the site hands
+out.
+
+Περιγραφή (fits WhatsApp's 256-character limit):
+
+> Επίσημος αντιπρόσωπος Lamberet στην Ελλάδα. Πωλήσεις, σέρβις και ανταλλακτικά
+> για ψυκτικά ημιρυμουλκούμενα, αμαξώματα και οχήματα διανομής, από τις
+> εγκαταστάσεις μας στη Μάνδρα Αττικής.
+
+Set the hours here **before** step 4 — the away message's «εκτός ωραρίου»
+schedule is driven by them.
+
+**3. Μήνυμα χαιρετισμού** (Εργαλεία επιχείρησης → Μήνυμα χαιρετισμού → send to
+everyone). The visitor arrives with a question already typed by the site's
+button, so the greeting only has to confirm they reached the right company:
+
+> Γεια σας, ευχαριστούμε που επικοινωνήσατε με τη Hellenic Trailers, επίσημο
+> αντιπρόσωπο Lamberet στην Ελλάδα. Πείτε μας τι σας ενδιαφέρει — ψυκτικό
+> ημιρυμουλκούμενο, αμάξωμα, σέρβις ή ανταλλακτικά — και θα σας απαντήσουμε το
+> συντομότερο δυνατό. Ωράριο: Δευ–Παρ 09:00–17:00.
+
+**4. Αυτόματο μήνυμα απουσίας** (Εργαλεία επιχείρησης → Μήνυμα απουσίας →
+schedule **«Εκτός ωραρίου λειτουργίας»**):
+
+> Ευχαριστούμε για το μήνυμά σας. Αυτή τη στιγμή είμαστε εκτός ωραρίου
+> (Δευ–Παρ 09:00–17:00) και θα σας απαντήσουμε την επόμενη εργάσιμη ημέρα. Για
+> κάτι επείγον, καλέστε μας στο +30 210 3471032.
+
+**5. Γρήγορες απαντήσεις** (optional, ~5 min — worth it, they are what makes
+the app faster than typing):
+
+| Shortcut | Text |
+|---|---|
+| `/διευθυνση` | Θέση Κάτω Πάτημα, Μάνδρα 196 00, Αττική (Plus Code 3GF9+2G). Δευ–Παρ 09:00–17:00. |
+| `/ωραριο` | Λειτουργούμε Δευτέρα έως Παρασκευή, 09:00–17:00. Σάββατο και Κυριακή είμαστε κλειστά. |
+| `/προσφορα` | Για να ετοιμάσουμε προσφορά χρειαζόμαστε: τύπο οχήματος, διαστάσεις, θερμοκρασία λειτουργίας και αν θέλετε ψυκτικό μηχάνημα. Στείλτε τα και επανερχόμαστε. |
+| `/σερβις` | Παρέχουμε σέρβις και γνήσια ανταλλακτικά Lamberet. Πείτε μας μοντέλο και αριθμό πλαισίου και ελέγχουμε διαθεσιμότητα. |
+
+**6. Ετικέτες** (Ετικέτες): `Νέο αίτημα`, `Προσφορά`, `Σέρβις`, `Πελάτης`.
+That is enough to see what is open at a glance. Note that this stays on the
+phone — it is not the pipeline database of "Asked for, not started" §2, and
+customer details from these chats must not be copied into this repository.
+
+**Nothing on the site changes when you are done.** The buttons, the number and
+the pre-filled messages are already live and correct — verified 2026-09-01:
+15 `wa.me/306957045716` links across the 7 pages plus `WHATSAPP_URL` in
+`js/translations.js`. Just tell Claude it is done so the checklist is updated.
 
 To change the number or the wording later, ask Claude — the number lives in
 `WHATSAPP_URL` in `js/translations.js` and in the `href` of each button, and
