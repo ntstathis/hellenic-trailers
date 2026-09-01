@@ -19,7 +19,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Channel | How it publishes | One-time setup |
 |---|---|---|
 | Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done |
-| Facebook | Claude posts via the Meta Graph API | ⬜ steps A + B below |
+| Facebook | Claude posts via the Meta Graph API | 🔶 Page live («Hellenic Trailers-Lamberet Partner», 259 likes) and linked from the site; automatic posting still needs steps A + B |
 | Instagram | Claude posts via the Meta Graph API | ⬜ the account does not exist yet — step A0, then steps A + B |
 | Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector, group + first contact import done (11 subscribers) — signup page & sender verification pending (step C) |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
@@ -264,6 +264,22 @@ his too:
 Prerequisites: you are an **admin of the Hellenic Trailers Facebook Page**, and
 the company Instagram account is a **Business (Professional) account linked to
 that Page**. The Page exists; the Instagram account does not yet — see A0.
+
+The Facebook Page is **«Hellenic Trailers-Lamberet Partner»**,
+<https://www.facebook.com/profile.php?id=61591112507188>, wired into the site's
+footer and `sameAs` on 2026-09-01. Two things worth fixing there while you are
+in it, neither blocking:
+
+- **Claim a username** so the address becomes `facebook.com/hellenictrailers`
+  instead of a numeric `profile.php?id=…`. Send Claude the new one and the site
+  is updated; the numeric address keeps working either way.
+- **The Page's town reads «Μαγούλα»**, the same map artefact as on the Google
+  listing. On Facebook it is an editable field, so set it to **Μάνδρα** to
+  match the site, the structured data and the Google listing.
+
+The numeric id `61591112507188` is very likely the Page ID that step B stores
+as `FB_PAGE_ID`, but do not assume it — Claude confirms it against
+`me/accounts` once the token from step A exists.
 
 ### A0. Create the company Instagram account (~15 min, on the phone)
 
@@ -974,13 +990,13 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 
 | # | Value | Placeholder to replace | Where it lives |
 |---|---|---|---|
-| 1 | Facebook Page URL | `REPLACE-WITH-FACEBOOK-PAGE-URL` | footer of all 7 `*.html` |
+| 1 | Facebook Page URL | ✅ wired (2026-09-01): `facebook.com/profile.php?id=61591112507188` | footer of all 7 `*.html` |
 | 2 | Instagram profile URL | `REPLACE-WITH-INSTAGRAM-URL` | footer of all 7 `*.html` |
 | 3 | LinkedIn page URL | ✅ wired (2026-08-21) | footer of all 7 `*.html` |
 | 4 | MailerLite hosted signup URL | `REPLACE-WITH-MAILERLITE-SIGNUP-URL` | footer of all 7 `*.html` + signup section in `news.html` |
 | 5 | Cloudflare Analytics token | ✅ wired (2026-08-21) | before `</body>` in all 7 `*.html` |
 | 6 | Formspree form ID | `YOUR_FORM_ID` | `contact.html` form `action` |
-| 7 | Social URLs in structured data | 🔶 `sameAs` array added with LinkedIn — add FB + IG when they exist | JSON-LD block in `index.html` |
+| 7 | Social URLs in structured data | 🔶 `sameAs` carries LinkedIn + Facebook — add Instagram when it exists | JSON-LD block in `index.html` |
 | 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
 | 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 7 `*.html` |
 | 10 | YouTube channel URL | ⬜ needs a new footer icon (the social block currently has Facebook, Instagram and LinkedIn only) + add to `sameAs` | footer of all 7 `*.html` + JSON-LD in `index.html` |
