@@ -20,7 +20,7 @@ that environment, so keep it personal and scope tokens narrowly).
 |---|---|---|
 | Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done |
 | Facebook | Claude posts via the Meta Graph API | 🔶 Page live («Hellenic Trailers-Lamberet Partner», 259 likes) and linked from the site; automatic posting still needs steps A + B |
-| Instagram | Claude posts via the Meta Graph API | 🔶 account created and linked from the site (`@hellenictrailers`, 2026-09-01); automatic posting still needs steps A + B |
+| Instagram | Claude posts via the Meta Graph API | 🔶 account created, Business, linked to the Page and linked from the site (`@hellenictrailers`, 2026-09-01); automatic posting now needs only steps A + B |
 | Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector, group + first contact import done (11 subscribers) — signup page & sender verification pending (step C) |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
@@ -39,8 +39,8 @@ actually has to sit down and do it:
 | # | Task | Who | Time |
 |---|---|---|---|
 | 1 | **Decide the WhatsApp number** (step G) — the app was set up and rolled back on 2026-09-01 because +30 695 704 5716 is Iosif's personal number, and a published company number should not belong to a person. Either a company SIM (then the business account moves there and the number changes on the site) or it stays as it is, knowingly | Stathis decides | ~5 min to decide |
-| 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ created 2026-09-01 as `@hellenictrailers`, wired into the site. **Still to confirm before step A:** that it is a *Business* account (not Creator) and linked to the Page in Meta Business Suite | Iosif | confirm |
-| 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. Do A0 first | Stathis | ~45 min |
+| 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ done (2026-09-01): created as `@hellenictrailers`, wired into the site, confirmed to be a Business account and linked to the Page in Meta Business Suite. Step A is unblocked | Iosif | done |
+| 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
 | 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site now hands out that address, so campaigns must come from it; nothing can be sent to the 11 subscribers until a sender is verified, and the account is registered to `stathis@stathis.com.gr`. The confirmation email goes to `info@`, so that mailbox has to be readable | Stathis | ~5 min |
 | 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list | Iosif | ~10 min |
@@ -263,7 +263,7 @@ his too:
 
 Prerequisites: you are an **admin of the Hellenic Trailers Facebook Page**, and
 the company Instagram account is a **Business (Professional) account linked to
-that Page**. The Page exists; the Instagram account does not yet — see A0.
+that Page**. Both are in place as of 2026-09-01 — see A0.
 
 The Facebook Page is **«Hellenic Trailers-Lamberet Partner»**,
 <https://www.facebook.com/hellenictrailers.gr/> — username claimed 2026-09-01,
@@ -287,12 +287,29 @@ The account is **`@hellenictrailers`**,
 `sameAs` the same day. Note the handle differs from the Facebook one
 (`hellenictrailers.gr`), which is only cosmetic.
 
-**Two things still to confirm before step A**, because step A's token cannot
-publish to Instagram without them, and neither failure shows up until the token
-is tested: the account must be **Business** (not Creator), and it must be
-**linked to the Page in Meta Business Suite** — Settings → *Linked accounts* →
-Instagram, done from the Business Suite rather than the phone. Items 2 and 3
-below are how each is set.
+**Both prerequisites for step A were checked on 2026-09-01 and hold:** the
+account is **Business** (not Creator), and it is **linked to the Page in Meta
+Business Suite**. Step A's token cannot publish to Instagram without either,
+and neither failure surfaces until the token is tested, which is why they are
+confirmed up front rather than discovered later.
+
+How each was checked, since it will be needed again after any account change:
+
+- **Business or Creator:** Instagram → ☰ → *Ρυθμίσεις και απόρρητο* → *Τύπος
+  λογαριασμού και εργαλεία*. The screen offers the type you are **not**, so
+  «Αλλαγή σε λογαριασμό δημιουργού» means the account is already Business. A
+  Business profile also shows the contact buttons and the address; a Creator
+  one shows no address.
+- **Linked to the Page:** business.facebook.com → the Hellenic Trailers Page →
+  Settings → *Λογαριασμοί* → *Λογαριασμοί Instagram*. The practical proof is to
+  start a post in Business Suite: if both the Page and the Instagram account
+  appear as destinations, this is the link the API needs.
+- **The trap:** connecting Instagram to a *personal* Facebook profile through
+  Accounts Center is a different link and does not count. The API needs the
+  connection to the **Page**.
+- **The definitive check** still belongs to step A: with the token in hand,
+  Claude reads the Page's `instagram_business_account`. An id means the chain
+  is genuinely right; empty means one of the two above is not.
 
 The steps as they were followed, kept as the record:
 
