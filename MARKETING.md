@@ -19,8 +19,8 @@ that environment, so keep it personal and scope tokens narrowly).
 | Channel | How it publishes | One-time setup |
 |---|---|---|
 | Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done |
-| Facebook | Claude posts via the Meta Graph API | ⬜ steps A + B below |
-| Instagram | Claude posts via the Meta Graph API | ⬜ steps A + B below (IG Business account required) |
+| Facebook | Claude posts via the Meta Graph API | 🔶 Page live («Hellenic Trailers-Lamberet Partner», 259 likes) and linked from the site; automatic posting still needs steps A + B |
+| Instagram | Claude posts via the Meta Graph API | ⬜ the account does not exist yet — step A0, then steps A + B |
 | Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector, group + first contact import done (11 subscribers) — signup page & sender verification pending (step C) |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
@@ -39,13 +39,14 @@ actually has to sit down and do it:
 | # | Task | Who | Time |
 |---|---|---|---|
 | 1 | **Decide the WhatsApp number** (step G) — the app was set up and rolled back on 2026-09-01 because +30 695 704 5716 is Iosif's personal number, and a published company number should not belong to a person. Either a company SIM (then the business account moves there and the number changes on the site) or it stays as it is, knowingly | Stathis decides | ~5 min to decide |
-| 2 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer | Stathis | ~45 min |
-| 3 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
-| 4 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site now hands out that address, so campaigns must come from it; nothing can be sent to the 11 subscribers until a sender is verified, and the account is registered to `stathis@stathis.com.gr`. The confirmation email goes to `info@`, so that mailbox has to be readable | Stathis | ~5 min |
-| 5 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list | Iosif | ~10 min |
-| 6 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
-| 7 | **YouTube channel** (step I) — a place for delivery and service video, which is what an equipment buyer actually searches for | Iosif | ~20 min |
-| 8 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
+| 2 | **Create the company Instagram account** (step A0) — the Facebook Page exists, Instagram does not, and step A cannot publish to Instagram without it. Must be a Business account linked to the Page | Iosif | ~15 min |
+| 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. Do A0 first | Stathis | ~45 min |
+| 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
+| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site now hands out that address, so campaigns must come from it; nothing can be sent to the 11 subscribers until a sender is verified, and the account is registered to `stathis@stathis.com.gr`. The confirmation email goes to `info@`, so that mailbox has to be readable | Stathis | ~5 min |
+| 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list | Iosif | ~10 min |
+| 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
+| 8 | **YouTube channel** (step I) — a place for delivery and service video, which is what an equipment buyer actually searches for | Iosif | ~20 min |
+| 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -228,7 +229,8 @@ which of these channels deserves the next hour.
 
 Two to go, plus one parked on a decision that is not his — and the sender
 verification that used to sit here has moved to Stathis, since the MailerLite
-account is registered to his address:
+account is registered to his address. The new Instagram account (step A0) is
+his too:
 
 1. **WhatsApp Business** on **+30 695 704 5716** (step G): set up and rolled
    back on 2026-09-01 — the number is his personal one. Nothing is left for him
@@ -261,10 +263,62 @@ account is registered to his address:
 
 Prerequisites: you are an **admin of the Hellenic Trailers Facebook Page**, and
 the company Instagram account is a **Business (Professional) account linked to
-that Page**. To convert/link Instagram (~5 min): Instagram app → Settings →
-Account → *Switch to professional account* → Business; then link it to the Page
-in Meta Business Suite (business.facebook.com) → Settings → *Linked accounts*
-(or Page Settings → Instagram).
+that Page**. The Page exists; the Instagram account does not yet — see A0.
+
+The Facebook Page is **«Hellenic Trailers-Lamberet Partner»**,
+<https://www.facebook.com/profile.php?id=61591112507188>, wired into the site's
+footer and `sameAs` on 2026-09-01. Two things worth fixing there while you are
+in it, neither blocking:
+
+- **Claim a username** so the address becomes `facebook.com/hellenictrailers`
+  instead of a numeric `profile.php?id=…`. Send Claude the new one and the site
+  is updated; the numeric address keeps working either way.
+- **The Page's town reads «Μαγούλα»**, the same map artefact as on the Google
+  listing. On Facebook it is an editable field, so set it to **Μάνδρα** to
+  match the site, the structured data and the Google listing.
+
+The numeric id `61591112507188` is very likely the Page ID that step B stores
+as `FB_PAGE_ID`, but do not assume it — Claude confirms it against
+`me/accounts` once the token from step A exists.
+
+### A0. Create the company Instagram account (~15 min, on the phone)
+
+Do this before anything else in this section: without a Business Instagram
+linked to the Page, the token from step A cannot publish to Instagram at all.
+
+1. **Sign up.** Instagram app → *Create new account*. Use a company email the
+   company can actually open, since a confirmation code is sent to it — and
+   **not** a personal address, or the account leaves with the person. Handle:
+   `hellenictrailers`, falling back to `hellenictrailers.gr` or
+   `hellenic.trailers` if it is taken. Whatever is claimed, tell Claude so the
+   site's footer and the `sameAs` data get the real URL (Wiring checklist #2
+   and #7).
+2. **Switch to a Business account** — not Creator; only Business can be
+   published to through the API. Settings → *Account type and tools* →
+   *Switch to professional account* → category **Automotive** (or the nearest
+   commercial-vehicle entry) → Business.
+3. **Link it to the Facebook Page** in Meta Business Suite
+   (business.facebook.com) → Settings → *Linked accounts* → Instagram → connect
+   and log in. Doing it from the Business Suite rather than the phone is what
+   makes the Page↔Instagram link the API can see. Verify afterwards that the
+   Page's own settings show the Instagram account attached.
+4. **Fill the profile:** name `Hellenic Trailers`, profile picture the logo
+   mark as a square PNG, website `https://hellenictrailers.gr`, and the contact
+   buttons — email `info@hellenictrailers.gr`, phone `+30 210 3471032`, address
+   `Θέση Κάτω Πάτημα, Μάνδρα 196 00, Αττική`.
+
+Bio (145 characters, inside Instagram's 150 limit):
+
+> Επίσημος αντιπρόσωπος Lamberet στην Ελλάδα
+> Ψυκτικά ημιρυμουλκούμενα, αμαξώματα & οχήματα διανομής
+> Πωλήσεις • Σέρβις • Ανταλλακτικά
+> Μάνδρα Αττικής
+
+An empty profile is worth little and looks abandoned, so post 3–4 photographs
+of delivered vehicles before the account is linked from the site. The same
+photographs are wanted for the gallery page anyway.
+
+Once it exists and is linked, the rest of this section applies unchanged.
 
 1. Go to <https://developers.facebook.com> and log in with the personal Facebook
    account that administers the Page. Accept the developer terms if asked.
@@ -936,13 +990,13 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 
 | # | Value | Placeholder to replace | Where it lives |
 |---|---|---|---|
-| 1 | Facebook Page URL | `REPLACE-WITH-FACEBOOK-PAGE-URL` | footer of all 7 `*.html` |
+| 1 | Facebook Page URL | ✅ wired (2026-09-01): `facebook.com/profile.php?id=61591112507188` | footer of all 7 `*.html` |
 | 2 | Instagram profile URL | `REPLACE-WITH-INSTAGRAM-URL` | footer of all 7 `*.html` |
 | 3 | LinkedIn page URL | ✅ wired (2026-08-21) | footer of all 7 `*.html` |
 | 4 | MailerLite hosted signup URL | `REPLACE-WITH-MAILERLITE-SIGNUP-URL` | footer of all 7 `*.html` + signup section in `news.html` |
 | 5 | Cloudflare Analytics token | ✅ wired (2026-08-21) | before `</body>` in all 7 `*.html` |
 | 6 | Formspree form ID | `YOUR_FORM_ID` | `contact.html` form `action` |
-| 7 | Social URLs in structured data | 🔶 `sameAs` array added with LinkedIn — add FB + IG when they exist | JSON-LD block in `index.html` |
+| 7 | Social URLs in structured data | 🔶 `sameAs` carries LinkedIn + Facebook — add Instagram when it exists | JSON-LD block in `index.html` |
 | 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
 | 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 7 `*.html` |
 | 10 | YouTube channel URL | ⬜ needs a new footer icon (the social block currently has Facebook, Instagram and LinkedIn only) + add to `sameAs` | footer of all 7 `*.html` + JSON-LD in `index.html` |
