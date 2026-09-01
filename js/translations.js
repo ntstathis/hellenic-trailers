@@ -174,9 +174,9 @@ const translations = {
   // WhatsApp (the prefilled message is rebuilt per language - see setLanguage)
   'wa.label': { en: 'WhatsApp', el: 'WhatsApp' },
   'a11y.whatsapp': { en: 'Contact us on WhatsApp', el: 'Επικοινωνία στο WhatsApp' },
-  'wa.msg.general': { en: 'Hello, I would like information about Lamberet refrigerated vehicles.', el: 'Γεια σας, θα ήθελα πληροφορίες για τα ψυκτικά οχήματα Lamberet.' },
-  'wa.msg.products': { en: 'Hello, I am interested in the Lamberet product range.', el: 'Γεια σας, ενδιαφέρομαι για τη γκάμα προϊόντων Lamberet.' },
-  'wa.msg.services': { en: 'Hello, I would like information about Lamberet service and spare parts.', el: 'Γεια σας, θα ήθελα πληροφορίες για σέρβις και ανταλλακτικά Lamberet.' },
+  'wa.msg.general': { en: 'Hello, I would like more information about your products.', el: 'Γεια σας, θα ήθελα περισσότερες πληροφορίες για τα προϊόντα σας.' },
+  'wa.msg.products': { en: 'Hello, I would like more information about your products.', el: 'Γεια σας, θα ήθελα περισσότερες πληροφορίες για τα προϊόντα σας.' },
+  'wa.msg.services': { en: 'Hello, I would like more information about your products.', el: 'Γεια σας, θα ήθελα περισσότερες πληροφορίες για τα προϊόντα σας.' },
   'contact.info.whatsapp.title': { en: 'Message us on WhatsApp', el: 'Γράψτε μας στο WhatsApp' },
   'contact.info.whatsapp.text': { en: '+30 695 704 5716', el: '+30 695 704 5716' },
 
