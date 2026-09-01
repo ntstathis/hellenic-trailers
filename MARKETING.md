@@ -54,7 +54,7 @@ Send Claude any URL, id or token as you get it and it wires it into the site.
 
 Things the owner has asked to be reminded about. None is site setup — they are
 new capabilities, and most need a decision about **where the data lives** before
-any work starts. Item 1 is now done, and is kept here as the record.
+any work starts. Items 1 and 2b are done, and are kept here as the record.
 
 ### 1. Import the existing customers into the mailing list — ✅ done (2026-08-23)
 
@@ -115,15 +115,17 @@ Whichever is chosen, the skill should write to it automatically at the moment
 an offer is sent, rather than relying on anyone to update it afterwards — a
 record kept by hand stops being kept within a month.
 
-### 2b. The Dropbox reorganisation (agreed structure)
+### 2b. The Dropbox reorganisation — ✅ done (2026-09-01)
 
-The owner created a private folder, **`/Efstathios Ntounas/Hellenic Trailers`**,
-and asked for everything to be **copied** there and reorganised. The original
-supplier folder must be left **exactly as it is** — Iosif works from it and any
-move or rename would break his sync. Copy only: never move, rename or delete
-anything in the source.
+The private folder **`/Efstathios Ntounas/Hellenic Trailers`** is now the working
+folder: it is reorganised, and **Iosif works from it**. The old source folder no
+longer needs protecting — the "copy only, never move or rename" rule that used
+to govern this section is spent, and is gone with it.
 
-Agreed target structure (customer names are deliberately not listed here — this
+The structure below is kept as the **standing convention**, not as a plan: it is
+where new files go, and what future folders are named after.
+
+Structure in place (customer names are deliberately not listed here — this
 repository is public):
 
 ```
@@ -180,18 +182,13 @@ Rules:
   `_with-ferry-rings`, `_galvanised-chassis`, `_protected`. These distinguish
   real alternatives that were sent to the customer and must survive.
 - **`v<N>` is the sequence within one customer**, oldest = v1, ordered by date.
-- Renaming happens **only in the copy**. The originals keep their names.
 
-Renaming also silently fixes the misspellings baked into the current
-filenames — three customer and company names are spelt wrong at source,
-as is `Προσοφρά` for `Προσφορά`.
-
-Two things found while surveying the source, worth fixing in the copy:
-- **One customer has two folders** under different spellings of the same
-  company name — merge them into one.
-- Four top-level folders are not customers at all (a component supplier, offer
-  templates, stock, and type-approval paperwork) and belong in their own
-  sections rather than mixed in with the customer list.
+The rename also fixed the misspellings baked into the old filenames — three
+customer and company names were spelt wrong, as was `Προσοφρά` for `Προσφορά`.
+The customer that had two folders under two spellings of the same company name
+is merged, and the four top-level folders that were not customers at all (a
+component supplier, offer templates, stock and type-approval paperwork) now sit
+in their own sections instead of among the customers.
 
 ### 3. Give Claude the full picture of the business
 
@@ -227,10 +224,10 @@ which of these channels deserves the next hour.
 
 ### Iosif's list
 
-Two to go, plus one parked on a decision that is not his — and the sender
+One to go, plus one parked on a decision that is not his. The sender
 verification that used to sit here has moved to Stathis, since the MailerLite
-account is registered to his address. The new Instagram account (step A0) is
-his too:
+account is registered to his address. The Instagram account (step A0) and the
+YouTube channel (step I) were both his, and both are done:
 
 1. **WhatsApp Business** on **+30 695 704 5716** (step G): set up and rolled
    back on 2026-09-01 — the number is his personal one. Nothing is left for him
@@ -252,10 +249,11 @@ his too:
    landing page — either Stathis shares the login, or Iosif is invited as a
    second user (MailerLite's free plan may not allow extra users; if it does
    not, either share the login or Stathis does this step instead).
-4. **YouTube channel** (step I): create the channel and fill in the profile.
-   Least urgent of the four, but the one with the longest runway — a channel
-   with nothing on it is worth nothing, so the sooner it exists the sooner
-   footage from deliveries starts accumulating somewhere useful.
+4. **YouTube channel** (step I): ✅ done — created 2026-09-01 as
+   `@HellenicTrailers` and linked from the footer of all 7 pages. What is left
+   is not setup but footage: the first delivery clip. A channel with nothing on
+   it is worth nothing, so the sooner filming starts the sooner it earns its
+   place.
 
 ---
 
@@ -1033,8 +1031,8 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | 4 | MailerLite hosted signup URL | `REPLACE-WITH-MAILERLITE-SIGNUP-URL` | footer of all 7 `*.html` + signup section in `news.html` |
 | 5 | Cloudflare Analytics token | ✅ wired (2026-08-21) | before `</body>` in all 7 `*.html` |
 | 6 | Formspree form ID | `YOUR_FORM_ID` | `contact.html` form `action` |
-| 7 | Social URLs in structured data | ✅ done (2026-09-01): `sameAs` carries LinkedIn, Facebook and Instagram | JSON-LD block in `index.html` |
-| 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
+| 7 | Social URLs in structured data | ✅ done (2026-09-01): `sameAs` carries LinkedIn, Facebook, Instagram and YouTube | JSON-LD block in `index.html` |
+| 8 | Channel URLs + Meta IDs + MailerLite group in the skill | ✅ Facebook, Instagram, LinkedIn and YouTube URLs filled in (2026-09-01); still `TO-BE-FILLED`: the MailerLite signup URL. The Meta IDs live in env vars, not here | `.claude/skills/publish-news/SKILL.md` |
 | 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 7 `*.html` |
 | 10 | YouTube channel URL | ✅ wired (2026-09-01): `youtube.com/@HellenicTrailers`, with a new footer icon and an `a11y.youtube` label | footer of all 7 `*.html` + JSON-LD in `index.html` |
 | 11 | Bing `msvalidate.01` content string (step J) | ✅ not needed — verification came across with the Search Console import (2026-08-29) | `<head>` of `index.html` |

@@ -23,10 +23,11 @@ step 5.**
 | Site base URL | `https://hellenictrailers.gr` |
 | Meta API | `https://graph.facebook.com` (unversioned paths — the app's default Graph version applies) |
 | Env vars (set in the Claude environment, never in the repo) | `META_PAGE_ACCESS_TOKEN` (secret), `FB_PAGE_ID`, `IG_USER_ID` |
-| Facebook Page URL | `TO-BE-FILLED` |
-| Instagram profile URL | `TO-BE-FILLED` |
-| LinkedIn page URL | `TO-BE-FILLED` |
+| Facebook Page URL | `https://www.facebook.com/hellenictrailers.gr/` |
+| Instagram profile URL | `https://www.instagram.com/hellenictrailers/` (`@hellenictrailers`, Business, linked to the Page) |
+| LinkedIn page URL | `https://www.linkedin.com/company/hellenic-trailers/` |
 | Newsletter | MailerLite connector (claude.ai, authorized 2026-08-21 as stathis@stathis.com.gr); group `Hellenic Trailers Newsletter` (id `196439632318039915`); sender Hellenic Trailers `<info@hellenictrailers.gr>`; hosted signup URL `TO-BE-FILLED` |
+| YouTube channel URL | `https://www.youtube.com/@HellenicTrailers` (channel id `UC6mb6akAiDPwRs09J3OKyRA`); nothing is published there automatically — it is a manual upload channel |
 | WhatsApp | +30 695 704 5716, reached from buttons on every page (`WHATSAPP_URL` in `js/translations.js`); nothing to publish there — it is an inbound channel |
 | Owner setup guide | `MARKETING.md` (token creation/regeneration, connector authorization, the current to-do list) |
 
