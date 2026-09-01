@@ -25,7 +25,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
-| WhatsApp | Visitors tap a button on the site and message +30 695 704 5716 | ✅ done — button live on all 7 pages, WhatsApp Business set up on the number (2026-09-01) |
+| WhatsApp | Visitors tap a button on the site and message +30 695 704 5716 | 🔶 button live on all 7 pages; WhatsApp Business was set up and rolled back the same day (2026-09-01), so enquiries reach a personal account — see step G |
 | Contact form | Formspree (the site's JS already supports it) | ⬜ step D below |
 | YouTube | Videos of deliveries and service, embedded on the site and reused on Facebook/Instagram | ⬜ step I below |
 
@@ -38,7 +38,7 @@ actually has to sit down and do it:
 
 | # | Task | Who | Time |
 |---|---|---|---|
-| 1 | ~~**WhatsApp Business** on +30 695 704 5716 (step G)~~ — ✅ done (2026-09-01): the app is set up on the number, so an enquiry from the site's button now lands in a business account with a profile, hours and an away message behind it | Iosif | done |
+| 1 | **Decide the WhatsApp number** (step G) — the app was set up and rolled back on 2026-09-01 because +30 695 704 5716 is Iosif's personal number, and a published company number should not belong to a person. Either a company SIM (then the business account moves there and the number changes on the site) or it stays as it is, knowingly | Stathis decides | ~5 min to decide |
 | 2 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer | Stathis | ~45 min |
 | 3 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
 | 4 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site now hands out that address, so campaigns must come from it; nothing can be sent to the 11 subscribers until a sender is verified, and the account is registered to `stathis@stathis.com.gr`. The confirmation email goes to `info@`, so that mailbox has to be readable | Stathis | ~5 min |
@@ -226,14 +226,15 @@ which of these channels deserves the next hour.
 
 ### Iosif's list
 
-Two down, two to go — and the sender verification that used to sit here has
-moved to Stathis, since the MailerLite account is registered to his address:
+Two to go, plus one parked on a decision that is not his — and the sender
+verification that used to sit here has moved to Stathis, since the MailerLite
+account is registered to his address:
 
-1. **WhatsApp Business** on **+30 695 704 5716** (step G): ✅ done
-   (2026-09-01). The button was already live on all 7 pages; now the number
-   behind it is a business account with a profile, opening hours and an away
-   message. Step G keeps the texts that went in, so they can be corrected or
-   restored without writing them again.
+1. **WhatsApp Business** on **+30 695 704 5716** (step G): set up and rolled
+   back on 2026-09-01 — the number is his personal one. Nothing is left for him
+   here until the number itself is decided (item 1 of «To do next»). Step G
+   keeps the texts that went in, so nothing has to be written twice if a
+   company number arrives.
 2. **GitHub access** (step H): ✅ done — the account `ikaragiotis`
    (<https://github.com/ikaragiotis>), created 2026-08-29, accepted the
    repository invitation the same day and now shows as a `write` collaborator.
@@ -663,7 +664,7 @@ labels the locality nearest the map pin, which reads «Μαγούλα»; that is
 artefact, not the address, and nothing on the site should be changed to match
 it.
 
-## G. WhatsApp click-to-chat — ✅ done
+## G. WhatsApp click-to-chat — ✅ live on the site; business account rolled back
 
 Every page carries a WhatsApp button that opens a chat to **+30 695 704 5716**
 with the enquiry already typed, so a visitor only has to press send:
@@ -673,18 +674,35 @@ with the enquiry already typed, so a visitor only has to press send:
   Προσφορά».
 - **Contact page:** a WhatsApp card next to address, phone, email and hours.
 
-The pre-filled message depends on the page — the products page mentions the
-Lamberet range, the services page mentions service and spare parts — and it is
-rewritten in English when a visitor switches the site to EN. These are plain
+The pre-filled message is the same on every page since 2026-09-01 —
+«Γεια σας, θα ήθελα περισσότερες πληροφορίες για τα προϊόντα σας.» — and it is
+rewritten in English when a visitor switches the site to EN. (It used to differ
+per page, naming the Lamberet range on the products page and service on the
+services page; the owner replaced all three with one line.) These are plain
 `wa.me` links: no third-party script, no cookies, nothing is requested from
 Meta until someone actually taps, so there are no consent-banner implications.
 
-### The setup, as it was done (2026-09-01) — **Iosif**
+To change it again: the three `wa.msg.*` keys in `js/translations.js` **and**
+the `?text=` of the 15 button `href`s, which carry the same sentence
+URL-encoded as the pre-JavaScript fallback. Both, or the two disagree.
 
-WhatsApp Business is installed on the number and the profile is filled in.
-Everything below is kept as the record: these are the exact values that went
-in, so they can be checked, corrected or put back after a phone change without
-being written from scratch.
+### WhatsApp Business: set up, then rolled back (2026-09-01)
+
+The app was installed on the number and the profile filled in, then the account
+was **returned to ordinary WhatsApp the same day** — the number is Iosif's
+personal one, and he chose not to run the business account on it for now. So
+enquiries from the site's button currently land in a personal WhatsApp again:
+no business profile, no opening hours, no greeting and no away message.
+
+**The decision this leaves open** is the one from the same conversation: the
+published company number belongs to a person, not the company. A dedicated
+company SIM (or eSIM on the same phone) would settle both — the business
+account gets a home, and the number stops leaving with whoever holds it. That
+costs money, so it is the owner's call; WhatsApp Business can migrate an
+account to a new number without re-doing the setup.
+
+Everything below is kept as the record of what went in, so none of it has to be
+written again if the business account is set up on a company number later.
 
 **Before you install, read this.** WhatsApp Business and ordinary WhatsApp
 cannot run on the same number at the same time. If +30 695 704 5716 is already
