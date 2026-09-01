@@ -719,11 +719,18 @@ before going that way.
 
 **1. Install and verify.** WhatsApp Business from the app store → verify
 +30 695 704 5716 → accept the migration when offered → business name
-`Hellenic Trailers` → category **Αυτοκίνητα / Μηχανοκίνητα οχήματα**.
+`Hellenic Trailers` → category:
+
+> Ψυκτικοί θάλαμοι για ρυμουλκούμενα & ημιρυμουλκούμενα φορτηγά
+
+WhatsApp's category is **chosen from its own list, not typed**, so that exact
+wording may not be on offer. If it is not, pick the nearest entry the app has
+(the automotive/vehicle one) and put the wording above at the **start of the
+description** in step 2, which is free text — that is the field customers
+actually read. The line matters more than which bucket WhatsApp files it under.
 
 **2. Business profile** (Ρυθμίσεις → Εργαλεία επιχείρησης → Προφίλ
-επιχείρησης). These values match the site and the Google listing exactly —
-paste them as they are, so the three agree:
+επιχείρησης). Paste these as they are:
 
 | Field | Value |
 |---|---|
@@ -731,8 +738,15 @@ paste them as they are, so the three agree:
 | Διεύθυνση | `Θέση Κάτω Πάτημα, Μάνδρα 196 00, Αττική` |
 | Ωράριο | `Δευ–Παρ 09:00–17:00` · Σάββατο και Κυριακή κλειστά |
 | Ιστότοπος | `https://hellenictrailers.gr` |
-| Email | `ikaragiotis@hellenictrailers.gr` |
+| Email | `info@hellenictrailers.gr` |
 | Φωτογραφία προφίλ | `images/logo-mark.svg` exported as a square PNG |
+
+Name, address, hours and website match the site and the Google listing exactly,
+so all three agree. **The email does not, yet:** the site, the structured data
+and the contact form all still show `ikaragiotis@hellenictrailers.gr`, so
+`info@hellenictrailers.gr` needs to exist as a real, monitored mailbox before
+it is given out here — and the site should then be changed over to it too, in
+one pass. Ask Claude when that is decided.
 
 Περιγραφή (fits WhatsApp's 256-character limit):
 
