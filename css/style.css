@@ -301,30 +301,22 @@ header {
   gap: 12px;
 }
 
-/* Three-sphere brand mark (was a CSS-drawn placeholder) */
-.logo-icon {
+/* The company logo, as supplied: three spheres over the wordmark. It carries
+   the name itself, so no text sits beside it any more — only the tagline. */
+.logo-full {
   width: auto;
-  height: 42px;
+  height: 72px;
   flex-shrink: 0;
 }
 
-/* Was an <h1>, which gave every page two level-one headings */
-.logo-text .logo-name {
-  display: block;
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  font-weight: 800;
-  color: var(--primary);
-  letter-spacing: 1px;
-  line-height: 1;
-}
-
-.logo-text span {
+.logo-tagline {
   font-size: 0.7rem;
   color: var(--silver);
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 500;
+  line-height: 1.4;
+  max-width: 230px;
 }
 
 nav ul {
