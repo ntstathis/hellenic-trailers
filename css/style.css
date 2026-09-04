@@ -305,7 +305,7 @@ header {
    the name itself, so no text sits beside it any more — only the tagline. */
 .logo-full {
   width: auto;
-  height: 62px;
+  height: 72px;
   flex-shrink: 0;
 }
 
