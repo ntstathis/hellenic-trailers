@@ -25,7 +25,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
-| WhatsApp | Visitors tap a button on the site and message +30 695 704 5716 | 🔶 button live on all 7 pages; WhatsApp Business was set up and rolled back the same day (2026-09-01), so enquiries reach a personal account — see step G |
+| WhatsApp | Visitors tap a button on the site and message +30 695 704 5716 | 🔶 button live on every page; enquiries still reach a personal account. **Decided 2026-09-04: a new company number is being taken out, with WhatsApp Business on it** — see step G |
 | Contact form | Formspree (the site's JS already supports it) | ⬜ step D below |
 | YouTube | Videos of deliveries and service, embedded on the site and reused on Facebook/Instagram | 🔶 channel created and linked from the site (`@HellenicTrailers`, 2026-09-01) — it has no video on it yet |
 
@@ -38,7 +38,7 @@ actually has to sit down and do it:
 
 | # | Task | Who | Time |
 |---|---|---|---|
-| 1 | **Decide the WhatsApp number** (step G) — the app was set up and rolled back on 2026-09-01 because +30 695 704 5716 is Iosif's personal number, and a published company number should not belong to a person. Either a company SIM (then the business account moves there and the number changes on the site) or it stays as it is, knowingly | Stathis decides | ~5 min to decide |
+| 1 | ~~**Decide the WhatsApp number**~~ — ✅ **decided 2026-09-04: take out a new company number and put WhatsApp Business on it.** The published number stops being a person's. What is left is not a decision but an errand: get the line, activate WhatsApp Business on it, then tell Claude the number and it changes everywhere in one go (step G lists every place) | Iosif gets the line; Claude does the site | ~30 min + the wait for the SIM |
 | 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ done (2026-09-01): created as `@hellenictrailers`, wired into the site, confirmed to be a Business account and linked to the Page in Meta Business Suite. Step A is unblocked | Iosif | done |
 | 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
@@ -224,18 +224,20 @@ which of these channels deserves the next hour.
 
 ### Iosif's list
 
-One to go, plus one parked on a decision that is not his. The sender
+Two live, one waiting on access that is not his to grant. The sender
 verification that used to sit here has moved to Stathis, since the MailerLite
 account is registered to his address — as of 2026-09-04 it is back on both
 their desks, to be done together (item 5 of «To do next»), because the same
 missing access blocks item 3 below. The Instagram account (step A0) and the
 YouTube channel (step I) were both his, and both are done:
 
-1. **WhatsApp Business** on **+30 695 704 5716** (step G): set up and rolled
-   back on 2026-09-01 — the number is his personal one. Nothing is left for him
-   here until the number itself is decided (item 1 of «To do next»). Step G
-   keeps the texts that went in, so nothing has to be written twice if a
-   company number arrives.
+1. **WhatsApp Business on a new company number** (step G): unblocked on
+   2026-09-04, when the decision was taken to take out a line for the company
+   rather than keep publishing his personal one. His to do: get the SIM,
+   activate WhatsApp Business on it, confirm a message from another phone
+   arrives, then hand Claude the number — the site changes in one commit, and
+   step G lists every place it appears. Step G also keeps the profile texts
+   that went in on 2026-09-01, so nothing has to be written twice.
 2. **GitHub access** (step H): ✅ done — the account `ikaragiotis`
    (<https://github.com/ikaragiotis>), created 2026-08-29, accepted the
    repository invitation the same day and now shows as a `write` collaborator.
@@ -836,7 +838,7 @@ labels the locality nearest the map pin, which reads «Μαγούλα»; that is
 artefact, not the address, and nothing on the site should be changed to match
 it.
 
-## G. WhatsApp click-to-chat — ✅ live on the site; business account rolled back
+## G. WhatsApp click-to-chat — ✅ live on the site; a company number is coming
 
 Every page carries a WhatsApp button that opens a chat to **+30 695 704 5716**
 with the enquiry already typed, so a visitor only has to press send:
@@ -857,6 +859,32 @@ Meta until someone actually taps, so there are no consent-banner implications.
 To change it again: the three `wa.msg.*` keys in `js/translations.js` **and**
 the `?text=` of the 15 button `href`s, which carry the same sentence
 URL-encoded as the pre-JavaScript fallback. Both, or the two disagree.
+
+### The company number — decided 2026-09-04
+
+The question left open on 2026-09-01 is answered: **a new number is being taken
+out for the company, and WhatsApp Business goes on that.** The site stops
+publishing a personal line, and the account stops depending on whose phone it
+is.
+
+Nothing on the site changes until the line is live — a `wa.me` link to a number
+that does not answer yet is worse than the current one, which does. The order
+is: get the SIM, activate WhatsApp Business on it, check that a message from
+another phone arrives, and only then swap the site over.
+
+**When the number arrives, hand it to Claude and it changes everywhere in one
+commit.** Everywhere means, as of 2026-09-04:
+
+| Where | Count | Note |
+|---|---|---|
+| `wa.me/306957045716` in the page `href`s | 18, across all 8 `*.html` | the pre-JavaScript fallback; each also carries the `?text=` message |
+| `WHATSAPP_URL` in `js/translations.js` | 1 | what the buttons are actually rebuilt from at runtime |
+| The displayed number `+30 695 704 5716` | 3 | `contact.html`, `thank-you.html`, and the `contact.info.whatsapp.text` key |
+| `.claude/skills/publish-news/SKILL.md` | 1 | the channel table |
+| Wiring checklist #9 | — | record the new number there |
+
+Also worth doing at the same time: the Google Business Profile and the Facebook
+Page both carry a phone number, and the old one should not outlive the change.
 
 ### WhatsApp Business: set up, then rolled back (2026-09-01)
 
