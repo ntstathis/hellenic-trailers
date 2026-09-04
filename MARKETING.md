@@ -583,13 +583,37 @@ What to build instead, in order of value:
 | | What | Risk | Status |
 |---|---|---|---|
 | a | **`thank-you.html`** — a real page load after a successful submit, so the Cloudflare beacon fires and the enquiry is counted. Also gives the visitor a proper confirmation, which the form did not do well before. | none — pure gain | ✅ **built and wired (2026-09-04)**; inert until the Formspree form id exists. See «The confirmation page» below |
-| b | **`js/track.js` — virtual page views.** On click of the WhatsApp, phone and email links, `history.pushState()` to `/enquiry/whatsapp`, `/enquiry/phone`, `/enquiry/email`, then restore the real URL a moment later. Cloudflare's beacon watches History API changes, so each registers as a page view in the top-pages list. | none — **the links themselves do not change**. They stay plain `<a href="https://wa.me/...">`, so if the script fails or is blocked the enquiry still goes through exactly as today. Tracking is additive and cannot break anything. | not started |
+| b | **`js/track.js` — virtual page views.** On click of the WhatsApp, phone and email links, `history.pushState()` to `/enquiry/whatsapp`, `/enquiry/phone`, `/enquiry/email`, then restore the real URL a moment later. Cloudflare's beacon watches History API changes, so each registers as a page view in the top-pages list. | none — **the links themselves do not change**. They stay plain `<a href="https://wa.me/...">`, so if the script fails or is blocked the enquiry still goes through exactly as today. Tracking is additive and cannot break anything. | ✅ **built and live (2026-09-04)**; see «Counting the taps» below — **the dashboard needs a look the next day** |
 
 Two things to be honest about. The virtual views are counted in the total page
 views, so that total stops being purely «pages read» — the `/enquiry/` prefix
-keeps it legible. And that Cloudflare's beacon picks up `pushState` needs
-**verifying rather than assuming**: the safe way is to ship it and check the
-dashboard the next day, which costs nothing because the links work regardless.
+keeps it legible. And that Cloudflare's beacon picks up `pushState` needed
+**verifying rather than assuming** — see below; half of it is now settled by
+reading the beacon itself, and the other half still wants a look at the
+dashboard.
+
+##### Counting the taps (`js/track.js`, 2026-09-04)
+
+`beacon.min.js` was downloaded and read rather than trusted. What it actually
+does: it patches **`history.pushState`** and listens for **`popstate`**, and
+where the browser has the Navigation API (Chrome) it uses that instead. It does
+**not** patch `replaceState`. So the virtual view has to be a real `pushState`
+— a `replaceState` would go uncounted on Safari and Firefox, which is most of
+the phones this site is read on.
+
+That settles the mechanism but not the outcome: whether these views come
+through as their own rows is still worth **checking in the dashboard the day
+after** — <https://dash.cloudflare.com> → Web Analytics → top pages, looking
+for `/enquiry/whatsapp`, `/enquiry/phone` and `/enquiry/email`. If they never
+appear, deleting the one `<script>` tag removes the whole thing.
+
+The one cost, stated plainly: `pushState` adds a history entry, so after
+tapping WhatsApp the visitor's **first press of Back does nothing** and the
+second one leaves. The alternative — `history.back()` to restore — fires
+`popstate`, which the beacon counts, so every enquiry would also inflate the
+page's own view count. An accurate number against one dead press; the number
+won. Nothing else changes: no link is touched, no click is cancelled, and if
+the script is blocked or removed every enquiry still goes through.
 
 Worth knowing before spending effort on (b): WhatsApp enquiries already
 half-report themselves. The pre-filled message differs per page — the products
