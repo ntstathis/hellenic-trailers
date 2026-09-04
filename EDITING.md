@@ -54,6 +54,7 @@ The pages themselves:
 | News | `news.html` |
 | Gallery | `gallery.html` |
 | Contact | `contact.html` |
+| «Thank you» — shown after the contact form is sent | `thank-you.html` |
 
 ---
 

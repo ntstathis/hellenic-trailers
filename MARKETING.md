@@ -42,9 +42,9 @@ actually has to sit down and do it:
 | 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ done (2026-09-01): created as `@hellenictrailers`, wired into the site, confirmed to be a Business account and linked to the Page in Meta Business Suite. Step A is unblocked | Iosif | done |
 | 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
-| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site now hands out that address, so campaigns must come from it; nothing can be sent to the 11 subscribers until a sender is verified, and the account is registered to `stathis@stathis.com.gr`. The confirmation email goes to `info@`, so that mailbox has to be readable | Stathis | ~5 min |
+| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet | Stathis + Iosif, together | ~10 min |
 | 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list | Iosif | ~10 min |
-| 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
+| 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program. Everything around it is now ready: `thank-you.html` is built and the success path is wired to it (2026-09-04), so this is one account, one id, one line changed | either | ~15 min |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
 | 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
 
@@ -54,7 +54,7 @@ Send Claude any URL, id or token as you get it and it wires it into the site.
 
 Things the owner has asked to be reminded about. None is site setup — they are
 new capabilities, and most need a decision about **where the data lives** before
-any work starts. Item 1 is now done, and is kept here as the record.
+any work starts. Items 1 and 2b are done, and are kept here as the record.
 
 ### 1. Import the existing customers into the mailing list — ✅ done (2026-08-23)
 
@@ -115,15 +115,17 @@ Whichever is chosen, the skill should write to it automatically at the moment
 an offer is sent, rather than relying on anyone to update it afterwards — a
 record kept by hand stops being kept within a month.
 
-### 2b. The Dropbox reorganisation (agreed structure)
+### 2b. The Dropbox reorganisation — ✅ done (2026-09-01)
 
-The owner created a private folder, **`/Efstathios Ntounas/Hellenic Trailers`**,
-and asked for everything to be **copied** there and reorganised. The original
-supplier folder must be left **exactly as it is** — Iosif works from it and any
-move or rename would break his sync. Copy only: never move, rename or delete
-anything in the source.
+The private folder **`/Efstathios Ntounas/Hellenic Trailers`** is now the working
+folder: it is reorganised, and **Iosif works from it**. The old source folder no
+longer needs protecting — the "copy only, never move or rename" rule that used
+to govern this section is spent, and is gone with it.
 
-Agreed target structure (customer names are deliberately not listed here — this
+The structure below is kept as the **standing convention**, not as a plan: it is
+where new files go, and what future folders are named after.
+
+Structure in place (customer names are deliberately not listed here — this
 repository is public):
 
 ```
@@ -180,18 +182,13 @@ Rules:
   `_with-ferry-rings`, `_galvanised-chassis`, `_protected`. These distinguish
   real alternatives that were sent to the customer and must survive.
 - **`v<N>` is the sequence within one customer**, oldest = v1, ordered by date.
-- Renaming happens **only in the copy**. The originals keep their names.
 
-Renaming also silently fixes the misspellings baked into the current
-filenames — three customer and company names are spelt wrong at source,
-as is `Προσοφρά` for `Προσφορά`.
-
-Two things found while surveying the source, worth fixing in the copy:
-- **One customer has two folders** under different spellings of the same
-  company name — merge them into one.
-- Four top-level folders are not customers at all (a component supplier, offer
-  templates, stock, and type-approval paperwork) and belong in their own
-  sections rather than mixed in with the customer list.
+The rename also fixed the misspellings baked into the old filenames — three
+customer and company names were spelt wrong, as was `Προσοφρά` for `Προσφορά`.
+The customer that had two folders under two spellings of the same company name
+is merged, and the four top-level folders that were not customers at all (a
+component supplier, offer templates, stock and type-approval paperwork) now sit
+in their own sections instead of among the customers.
 
 ### 3. Give Claude the full picture of the business
 
@@ -227,10 +224,12 @@ which of these channels deserves the next hour.
 
 ### Iosif's list
 
-Two to go, plus one parked on a decision that is not his — and the sender
+One to go, plus one parked on a decision that is not his. The sender
 verification that used to sit here has moved to Stathis, since the MailerLite
-account is registered to his address. The new Instagram account (step A0) is
-his too:
+account is registered to his address — as of 2026-09-04 it is back on both
+their desks, to be done together (item 5 of «To do next»), because the same
+missing access blocks item 3 below. The Instagram account (step A0) and the
+YouTube channel (step I) were both his, and both are done:
 
 1. **WhatsApp Business** on **+30 695 704 5716** (step G): set up and rolled
    back on 2026-09-01 — the number is his personal one. Nothing is left for him
@@ -252,10 +251,11 @@ his too:
    landing page — either Stathis shares the login, or Iosif is invited as a
    second user (MailerLite's free plan may not allow extra users; if it does
    not, either share the login or Stathis does this step instead).
-4. **YouTube channel** (step I): create the channel and fill in the profile.
-   Least urgent of the four, but the one with the longest runway — a channel
-   with nothing on it is worth nothing, so the sooner it exists the sooner
-   footage from deliveries starts accumulating somewhere useful.
+4. **YouTube channel** (step I): ✅ done — created 2026-09-01 as
+   `@HellenicTrailers` and linked from the footer of all 7 pages. What is left
+   is not setup but footage: the first delivery clip. A channel with nothing on
+   it is worth nothing, so the sooner filming starts the sooner it earns its
+   place.
 
 ---
 
@@ -464,6 +464,24 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    so whoever reads that mailbox has to click it. (Step 7 domain
    authentication also covers this.) The older plan was to verify
    `ikaragiotis@`; it was dropped when the site moved to `info@`.
+
+   **Where that mailbox is** (checked 2026-09-04): the domain's MX is
+   `hellenictrailers-gr.mail.protection.outlook.com`, so mail for `info@` is a
+   Microsoft 365 mailbox on the `stathis` tenant. Read it at
+   <https://outlook.office.com> with an account that has rights to it — if
+   `info@` is a shared mailbox, a tenant admin grants those in the Microsoft
+   365 admin centre (Teams & groups → Shared mailboxes → Members), which takes
+   a minute and is the usual blocker here. The confirmation link must be
+   clicked from that mailbox; it expires, so add the sender in MailerLite only
+   once someone can read `info@`.
+
+   **Status 2026-09-04 — pending, parked on purpose.** Iosif started this step
+   and got as far as establishing what it needs. He is not an admin on the
+   Microsoft 365 tenant, so he cannot grant himself the mailbox, and the
+   MailerLite account is not his either. Rather than chase the two accesses
+   separately, the step waits until he and Stathis go through it together:
+   add the sender, then click the link in `info@` within the same couple of
+   minutes. No message about it has been sent to anyone yet.
 5. ~~Import existing contacts~~ — **done 2026-08-23**: 10 contacts imported,
    group now at 11, nothing emailed. Tagged with `deal_stage` and
    `consent_source` as GDPR requires. **The consent test still applies at send
@@ -473,6 +491,20 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
 7. Optional but recommended for deliverability: authenticate the
    `hellenictrailers.gr` domain in MailerLite (two DNS records — do this if you
    have access to the domain's DNS; emails then stop showing "via mailerlite").
+
+   **What the DNS holds today** (checked 2026-09-04): the zone is hosted at
+   **Papaki** (`dns1.papaki.gr`, `dns2.papaki.gr`) — that is where the records
+   go. Already in place, for the Microsoft 365 mail:
+   `v=spf1 include:spf.protection.outlook.com -all` and Microsoft's DKIM
+   (`selector1._domainkey`). Missing: MailerLite's own records
+   (`ml._domainkey` and its return-path CNAME) and any **DMARC** record.
+   MailerLite signs with its own domain, so the `-all` in SPF does not stop
+   campaigns going out from `info@`; adding MailerLite's two CNAMEs is what
+   removes the "via mailerlite" line. A DMARC record
+   (`_dmarc`, starting at `v=DMARC1; p=none; rua=mailto:info@hellenictrailers.gr`)
+   is worth having either way — the domain has none, so nothing reports
+   spoofing of it. Adding records at Papaki does not disturb the Microsoft 365
+   ones.
 
 Fallback if the connector ever proves insufficient: create a MailerLite API key
 (Integrations → API), store it as env var `MAILERLITE_API_KEY`, and allow
@@ -491,7 +523,7 @@ happens once they are here*, and one of the four is not measurement at all.
 |---|---|---|---|
 | **Sitemap** | A plain XML file listing every page | «Google, these are all my pages — do not miss one» | ✅ `sitemap.xml`, submitted |
 | **Google Search Console** | Google's free SEO dashboard | Which searches show us, how often, who clicks, what is broken | ✅ verified 2026-08-21 |
-| **Cloudflare Web Analytics** | A tiny cookieless visitor counter | How many visitors, which pages, where they came from | ✅ on all 7 pages |
+| **Cloudflare Web Analytics** | A tiny cookieless visitor counter | How many visitors, which pages, where they came from | ✅ on every page |
 | **Google Analytics 4** | Google's full behaviour-tracking platform | All of the above **plus** events, funnels, conversions, ad attribution | ❌ not installed — deliberately, see below |
 
 **The sitemap measures nothing.** It is a table of contents handed to search
@@ -550,7 +582,7 @@ What to build instead, in order of value:
 
 | | What | Risk | Status |
 |---|---|---|---|
-| a | **`thank-you.html`** — Formspree's `_next` parameter sends the visitor there after a successful submit. A real page load, so the Cloudflare beacon fires and the submission is counted. Also gives the visitor a proper confirmation, which the form does not do well today. | none — pure gain | page can be built now; **wiring blocked on the Formspree form id** (step D) |
+| a | **`thank-you.html`** — a real page load after a successful submit, so the Cloudflare beacon fires and the enquiry is counted. Also gives the visitor a proper confirmation, which the form did not do well before. | none — pure gain | ✅ **built and wired (2026-09-04)**; inert until the Formspree form id exists. See «The confirmation page» below |
 | b | **`js/track.js` — virtual page views.** On click of the WhatsApp, phone and email links, `history.pushState()` to `/enquiry/whatsapp`, `/enquiry/phone`, `/enquiry/email`, then restore the real URL a moment later. Cloudflare's beacon watches History API changes, so each registers as a page view in the top-pages list. | none — **the links themselves do not change**. They stay plain `<a href="https://wa.me/...">`, so if the script fails or is blocked the enquiry still goes through exactly as today. Tracking is additive and cannot break anything. | not started |
 
 Two things to be honest about. The virtual views are counted in the total page
@@ -568,26 +600,48 @@ the *denominator*: how many people tapped. Real, but less valuable than (a).
 None of this sets a cookie or stores an identifier, so no consent banner is
 required.
 
+##### The confirmation page (`thank-you.html`, 2026-09-04)
+
+Built, translated and wired; it changes nothing on the live site until the
+Formspree id is filled in, because the form still falls back to the visitor's
+mail client until then.
+
+One thing worth knowing, because the earlier plan above said otherwise: the
+form does **not** post natively — `initContactForm()` submits it with `fetch`
+and shows the result inline. Formspree's `_next` never fires on that path, so
+the navigation is ours: on a successful response the handler goes to the URL in
+the form's `data-success-url`. That is better than `_next` in one respect worth
+keeping — a *failed* submit stays on `contact.html` with the error message,
+where `_next` would have thrown the visitor at a Formspree page. `_next` is
+still set as a hidden field, for the one case that does post natively: a
+visitor with JavaScript switched off.
+
+The page is `noindex, follow` and deliberately absent from `sitemap.xml` — it
+has nothing to offer a search result, and Search Console would flag an indexed
+one. It carries the same header, footer, WhatsApp button and analytics beacon
+as every other page, and both languages.
+
 **2. The gallery page is an unfinished stub — and correctly hidden.**
 `gallery.html` exists but it is **not** simply «missing from the sitemap»:
 
-- it carries `<meta name="robots" content="noindex, follow">` — the only page
-  on the site that does;
+- it carries `<meta name="robots" content="noindex, follow">` — as does
+  `thank-you.html`, and no other page;
 - it is linked from **nowhere** — no nav item, no footer link, nothing on the
   other six pages;
 - its «photos» are **emoji placeholders** (🏭 🚛 ❄ 🚚 🔧). The three real
   photographs in `images/` do not appear on it.
 
-So `sitemap.xml` listing six of the seven pages is **correct as it stands** —
-submitting a `noindex` URL would show up in Search Console as the error
-«Submitted URL marked 'noindex'». Do not «fix» the sitemap.
+So `sitemap.xml` listing six of the site's eight pages is **correct as it
+stands** — the two it leaves out are exactly the two marked `noindex`, and
+submitting either would show up in Search Console as the error «Submitted URL
+marked 'noindex'». Do not «fix» the sitemap.
 
 The real task is to **finish the gallery**, and it starts with the owner: it
 needs roughly 8–12 real photographs — the facilities, a delivered SR2, an
 interior, the workshop, a genuine Lamberet part being fitted. For a trailer
 dealer these are the sales pitch; a fleet manager wants to see the doors open
 and the floor. Once the photos exist, the rest is Claude's: put the real images
-in, drop the `noindex`, add the page to the nav on all seven pages, and add it
+in, drop the `noindex`, add the page to the nav on every page, and add it
 to `sitemap.xml`. Until the photos exist, leaving it hidden is the right state.
 
 **3. ~~Bing Webmaster Tools~~ — ✅ done (2026-08-29).** See step J.
@@ -1027,16 +1081,16 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 
 | # | Value | Placeholder to replace | Where it lives |
 |---|---|---|---|
-| 1 | Facebook Page URL | ✅ wired (2026-09-01): `facebook.com/hellenictrailers.gr` | footer of all 7 `*.html` |
-| 2 | Instagram profile URL | ✅ wired (2026-09-01): `instagram.com/hellenictrailers` | footer of all 7 `*.html` |
-| 3 | LinkedIn page URL | ✅ wired (2026-08-21) | footer of all 7 `*.html` |
-| 4 | MailerLite hosted signup URL | `REPLACE-WITH-MAILERLITE-SIGNUP-URL` | footer of all 7 `*.html` + signup section in `news.html` |
-| 5 | Cloudflare Analytics token | ✅ wired (2026-08-21) | before `</body>` in all 7 `*.html` |
-| 6 | Formspree form ID | `YOUR_FORM_ID` | `contact.html` form `action` |
-| 7 | Social URLs in structured data | ✅ done (2026-09-01): `sameAs` carries LinkedIn, Facebook and Instagram | JSON-LD block in `index.html` |
-| 8 | Meta IDs + MailerLite group in the skill | `TO-BE-FILLED` markers | `.claude/skills/publish-news/SKILL.md` |
-| 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 7 `*.html` |
-| 10 | YouTube channel URL | ✅ wired (2026-09-01): `youtube.com/@HellenicTrailers`, with a new footer icon and an `a11y.youtube` label | footer of all 7 `*.html` + JSON-LD in `index.html` |
+| 1 | Facebook Page URL | ✅ wired (2026-09-01): `facebook.com/hellenictrailers.gr` | footer of all 8 `*.html` |
+| 2 | Instagram profile URL | ✅ wired (2026-09-01): `instagram.com/hellenictrailers` | footer of all 8 `*.html` |
+| 3 | LinkedIn page URL | ✅ wired (2026-08-21) | footer of all 8 `*.html` |
+| 4 | MailerLite hosted signup URL | `REPLACE-WITH-MAILERLITE-SIGNUP-URL` | footer of all 8 `*.html` + signup section in `news.html` |
+| 5 | Cloudflare Analytics token | ✅ wired (2026-08-21) | before `</body>` in all 8 `*.html` |
+| 6 | Formspree form ID | `YOUR_FORM_ID` | `contact.html` form `action` — and nothing else: the confirmation page it sends people to (`thank-you.html`) is already built and wired |
+| 7 | Social URLs in structured data | ✅ done (2026-09-01): `sameAs` carries LinkedIn, Facebook, Instagram and YouTube | JSON-LD block in `index.html` |
+| 8 | Channel URLs + Meta IDs + MailerLite group in the skill | ✅ Facebook, Instagram, LinkedIn and YouTube URLs filled in (2026-09-01); still `TO-BE-FILLED`: the MailerLite signup URL. The Meta IDs live in env vars, not here | `.claude/skills/publish-news/SKILL.md` |
+| 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 8 `*.html` |
+| 10 | YouTube channel URL | ✅ wired (2026-09-01): `youtube.com/@HellenicTrailers`, with a new footer icon and an `a11y.youtube` label | footer of all 8 `*.html` + JSON-LD in `index.html` |
 | 11 | Bing `msvalidate.01` content string (step J) | ✅ not needed — verification came across with the Search Console import (2026-08-29) | `<head>` of `index.html` |
 
 ## Where credentials live

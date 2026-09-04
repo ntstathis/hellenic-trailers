@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=16">
+  <link rel="stylesheet" href="css/style.css?v=17">
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="a11y.skip">Μετάβαση στο περιεχόμενο</a>
@@ -97,8 +97,14 @@
                 action="https://formspree.io/f/YOUR_FORM_ID"
                 method="POST"
                 novalidate
+                data-success-url="thank-you.html"
                 data-fallback-email="info@hellenictrailers.gr"
                 data-fallback-phone="+30 210 3471032">
+
+            <!-- The JS submit path navigates to data-success-url itself. This
+                 covers the other case: with JavaScript off the browser POSTs
+                 natively, and _next is what Formspree redirects to. -->
+            <input type="hidden" name="_next" value="https://hellenictrailers.gr/thank-you.html">
 
             <div class="form-status" role="status" aria-live="polite"></div>
 
@@ -297,7 +303,7 @@
     </a>
   </div>
 
-  <script src="js/translations.js?v=16"></script>
+  <script src="js/translations.js?v=17"></script>
   <!-- Cloudflare Web Analytics (cookieless) -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "32787cacf1cb44068e51c728ad9a984d"}'></script>
 </body>
