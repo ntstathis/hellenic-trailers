@@ -44,7 +44,7 @@ actually has to sit down and do it:
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
 | 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet | Stathis + Iosif, together | ~10 min |
 | 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list | Iosif | ~10 min |
-| 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program. Everything around it is now ready: `thank-you.html` is built and the success path is wired to it (2026-09-04), so this is one account, one id, one line changed | either | ~15 min |
+| 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program. Everything on the site is ready: `thank-you.html` is built and the success path wired to it (2026-09-04), so this is one account, one id, one line changed. ⏸ **Deliberately queued behind item 5 (2026-09-04):** Formspree emails the recipient address to confirm it, so registering the form with `info@` needs that mailbox readable — the same unlock. Doing it now with a personal address would work, but would mean changing the recipient again afterwards, so it waits and gets done in the same sitting | either, once `info@` is readable | ~15 min |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
 | 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
 
@@ -743,6 +743,19 @@ Claude's — ask in a chat on this repository.
   (the part after `/f/` in its endpoint URL) → Wiring checklist #6. The site's
   JavaScript already detects a real ID and switches from the mail-client
   fallback automatically.
+
+  Two things learned on 2026-09-04, before this is attempted again:
+
+  1. **It waits for `info@`.** Formspree emails the recipient address to
+     confirm it before it forwards anything, so this needs the same mailbox
+     access as the MailerLite sender (item 5 of «To do next»). The owner's
+     decision, made deliberately: register the form with `info@` from the
+     start rather than point it at a personal address and have to move it
+     later. So do this step in the same sitting as the MailerLite one.
+  2. **Turn reCAPTCHA off** in the form's settings. The site submits by
+     `fetch`, and a captcha on that path can fail the submission with nothing
+     shown to the visitor. Spam is already handled: the form carries a `_gotcha`
+     honeypot, which Formspree recognises and drops silently.
 
 ## E. LinkedIn company page — ✅ done
 
