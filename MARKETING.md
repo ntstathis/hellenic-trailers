@@ -42,7 +42,7 @@ actually has to sit down and do it:
 | 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ done (2026-09-01): created as `@hellenictrailers`, wired into the site, confirmed to be a Business account and linked to the Page in Meta Business Suite. Step A is unblocked | Iosif | done |
 | 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
-| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site now hands out that address, so campaigns must come from it; nothing can be sent to the 11 subscribers until a sender is verified, and the account is registered to `stathis@stathis.com.gr`. The confirmation email goes to `info@`, so that mailbox has to be readable | Stathis | ~5 min |
+| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet | Stathis + Iosif, together | ~10 min |
 | 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list | Iosif | ~10 min |
 | 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program | either | ~15 min |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
@@ -226,7 +226,9 @@ which of these channels deserves the next hour.
 
 One to go, plus one parked on a decision that is not his. The sender
 verification that used to sit here has moved to Stathis, since the MailerLite
-account is registered to his address. The Instagram account (step A0) and the
+account is registered to his address — as of 2026-09-04 it is back on both
+their desks, to be done together (item 5 of «To do next»), because the same
+missing access blocks item 3 below. The Instagram account (step A0) and the
 YouTube channel (step I) were both his, and both are done:
 
 1. **WhatsApp Business** on **+30 695 704 5716** (step G): set up and rolled
@@ -472,6 +474,14 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    a minute and is the usual blocker here. The confirmation link must be
    clicked from that mailbox; it expires, so add the sender in MailerLite only
    once someone can read `info@`.
+
+   **Status 2026-09-04 — pending, parked on purpose.** Iosif started this step
+   and got as far as establishing what it needs. He is not an admin on the
+   Microsoft 365 tenant, so he cannot grant himself the mailbox, and the
+   MailerLite account is not his either. Rather than chase the two accesses
+   separately, the step waits until he and Stathis go through it together:
+   add the sender, then click the link in `info@` within the same couple of
+   minutes. No message about it has been sent to anyone yet.
 5. ~~Import existing contacts~~ — **done 2026-08-23**: 10 contacts imported,
    group now at 11, nothing emailed. Tagged with `deal_stage` and
    `consent_source` as GDPR requires. **The consent test still applies at send
