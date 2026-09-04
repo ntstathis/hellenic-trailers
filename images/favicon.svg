@@ -1,19 +1,19 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" role="img" aria-label="Hellenic Trailers">
   <defs>
     <radialGradient id="fb" cx="35%" cy="28%" r="72%">
-      <stop offset="0%"   stop-color="#6FC0F2"/>
-      <stop offset="35%"  stop-color="#2E93DD"/>
-      <stop offset="75%"  stop-color="#0E63B4"/>
-      <stop offset="100%" stop-color="#08386B"/>
+      <stop offset="0%"   stop-color="#6A6FC4"/>
+      <stop offset="35%"  stop-color="#3A3F96"/>
+      <stop offset="75%"  stop-color="#252A6B"/>
+      <stop offset="100%" stop-color="#191748"/>
     </radialGradient>
     <radialGradient id="fs" cx="35%" cy="28%" r="72%">
-      <stop offset="0%"   stop-color="#FFFFFF"/>
-      <stop offset="45%"  stop-color="#DCE1E5"/>
-      <stop offset="100%" stop-color="#8F979E"/>
+      <stop offset="0%"   stop-color="#CFCBC8"/>
+      <stop offset="45%"  stop-color="#8E8A89"/>
+      <stop offset="100%" stop-color="#4A4747"/>
     </radialGradient>
   </defs>
   <rect width="48" height="48" rx="10" fill="#FFFFFF"/>
-  <circle cx="24" cy="24" r="11" fill="url(#fs)"/>
   <circle cx="13.5" cy="24" r="11" fill="url(#fb)"/>
   <circle cx="34.5" cy="24" r="11" fill="url(#fb)"/>
+  <circle cx="24" cy="24" r="11" fill="url(#fs)"/>
 </svg>
