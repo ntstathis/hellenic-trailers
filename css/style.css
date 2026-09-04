@@ -1251,6 +1251,20 @@ nav ul li a.active {
   border: none;
 }
 
+/* --- Thank-you page --- */
+.thanks-panel {
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.thanks-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
 /* --- Partners Banner --- */
 .partners-banner {
   padding: 48px 0;

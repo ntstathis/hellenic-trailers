@@ -308,6 +308,26 @@ const translations = {
     en: 'Please tick the box so that we may reply to you',
     el: 'Επιλέξτε το πεδίο για να μπορέσουμε να σας απαντήσουμε'
   },
+
+  // Thank-you page (thank-you.html)
+  'thanks.banner.title': { en: 'Thank you', el: 'Ευχαριστούμε' },
+  'thanks.banner.text': { en: 'We have received your message', el: 'Λάβαμε το μήνυμά σας' },
+  'thanks.title': { en: 'Your message has been sent', el: 'Το μήνυμα στάλθηκε' },
+  'thanks.text': {
+    en: 'Your enquiry has reached us and has been recorded. There is no need to send it again.',
+    el: 'Το αίτημά σας έφτασε σε εμάς και καταγράφηκε. Δεν χρειάζεται να το στείλετε ξανά.'
+  },
+  'thanks.next.title': { en: 'What happens next', el: 'Τι ακολουθεί' },
+  'thanks.next.text': {
+    en: 'We reply within one working day, to the email address or the phone number you gave us. If your enquiry is about a quotation, we will ask for anything still missing before we prepare it.',
+    el: 'Απαντάμε εντός μίας εργάσιμης ημέρας, στο email ή στο τηλέφωνο που μας δώσατε. Αν το αίτημα αφορά προσφορά, θα σας ζητήσουμε τυχόν στοιχεία που λείπουν πριν την ετοιμάσουμε.'
+  },
+  'thanks.urgent.title': { en: 'Is it urgent?', el: 'Είναι επείγον;' },
+  'thanks.urgent.text': {
+    en: 'Call us directly — it is the fastest way.',
+    el: 'Καλέστε μας απευθείας — είναι ο γρηγορότερος τρόπος.'
+  },
+  'thanks.home': { en: 'Back to the home page', el: 'Επιστροφή στην Αρχική' },
 };
 
 // ============================================
@@ -597,6 +617,15 @@ function initContactForm() {
           const f = fieldOf(n);
           if (f) clearFieldError(f);
         });
+
+        // Send the visitor to a real confirmation page rather than leaving them
+        // on a form with a green line above it. Because it is a genuine page
+        // load, the Cloudflare beacon fires and the enquiry gets counted —
+        // which nothing measured before. The inline success message above stays
+        // as it is: it is what a visitor sees if this navigation is slow, and
+        // the only thing they see if data-success-url is ever removed.
+        const successUrl = form.getAttribute('data-success-url');
+        if (successUrl) window.location.href = successUrl;
       })
       .catch(err => {
         setStatus('error', 'form.failure');
