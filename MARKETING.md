@@ -462,6 +462,16 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    so whoever reads that mailbox has to click it. (Step 7 domain
    authentication also covers this.) The older plan was to verify
    `ikaragiotis@`; it was dropped when the site moved to `info@`.
+
+   **Where that mailbox is** (checked 2026-09-04): the domain's MX is
+   `hellenictrailers-gr.mail.protection.outlook.com`, so mail for `info@` is a
+   Microsoft 365 mailbox on the `stathis` tenant. Read it at
+   <https://outlook.office.com> with an account that has rights to it — if
+   `info@` is a shared mailbox, a tenant admin grants those in the Microsoft
+   365 admin centre (Teams & groups → Shared mailboxes → Members), which takes
+   a minute and is the usual blocker here. The confirmation link must be
+   clicked from that mailbox; it expires, so add the sender in MailerLite only
+   once someone can read `info@`.
 5. ~~Import existing contacts~~ — **done 2026-08-23**: 10 contacts imported,
    group now at 11, nothing emailed. Tagged with `deal_stage` and
    `consent_source` as GDPR requires. **The consent test still applies at send
@@ -471,6 +481,20 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
 7. Optional but recommended for deliverability: authenticate the
    `hellenictrailers.gr` domain in MailerLite (two DNS records — do this if you
    have access to the domain's DNS; emails then stop showing "via mailerlite").
+
+   **What the DNS holds today** (checked 2026-09-04): the zone is hosted at
+   **Papaki** (`dns1.papaki.gr`, `dns2.papaki.gr`) — that is where the records
+   go. Already in place, for the Microsoft 365 mail:
+   `v=spf1 include:spf.protection.outlook.com -all` and Microsoft's DKIM
+   (`selector1._domainkey`). Missing: MailerLite's own records
+   (`ml._domainkey` and its return-path CNAME) and any **DMARC** record.
+   MailerLite signs with its own domain, so the `-all` in SPF does not stop
+   campaigns going out from `info@`; adding MailerLite's two CNAMEs is what
+   removes the "via mailerlite" line. A DMARC record
+   (`_dmarc`, starting at `v=DMARC1; p=none; rua=mailto:info@hellenictrailers.gr`)
+   is worth having either way — the domain has none, so nothing reports
+   spoofing of it. Adding records at Papaki does not disturb the Microsoft 365
+   ones.
 
 Fallback if the connector ever proves insufficient: create a MailerLite API key
 (Integrations → API), store it as env var `MAILERLITE_API_KEY`, and allow
