@@ -311,11 +311,11 @@ const translations = {
 
   // Thank-you page (thank-you.html)
   'thanks.banner.title': { en: 'Thank you', el: 'Ευχαριστούμε' },
-  'thanks.banner.text': { en: 'We have received your message', el: 'Λάβαμε το μήνυμά σας' },
-  'thanks.title': { en: 'Your message has been sent', el: 'Το μήνυμα στάλθηκε' },
+  'thanks.banner.text': { en: 'Your message has been sent', el: 'Το μήνυμά σας στάλθηκε' },
+  'thanks.title': { en: 'Thank you for your message', el: 'Σας ευχαριστούμε για το μήνυμά σας' },
   'thanks.text': {
-    en: 'Your enquiry has reached us and has been recorded. There is no need to send it again.',
-    el: 'Το αίτημά σας έφτασε σε εμάς και καταγράφηκε. Δεν χρειάζεται να το στείλετε ξανά.'
+    en: 'We will be in touch with you shortly.',
+    el: 'Σύντομα θα επικοινωνήσουμε μαζί σας.'
   },
   'thanks.next.title': { en: 'What happens next', el: 'Τι ακολουθεί' },
   'thanks.next.text': {
