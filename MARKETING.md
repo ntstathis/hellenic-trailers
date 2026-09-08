@@ -42,7 +42,7 @@ actually has to sit down and do it:
 | 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ done (2026-09-01): created as `@hellenictrailers`, wired into the site, confirmed to be a Business account and linked to the Page in Meta Business Suite. Step A is unblocked | Iosif | done |
 | 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
-| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet. **Updated 2026-09-08 — half the blocker is gone:** Iosif reads `info@` normally, so the expiring confirmation link is no longer a problem and no joint sitting is needed. **And then the other half, hours later:** he signed into MailerLite with `info@` and it is the company account — 11 subscribers, existing group — so the login was never his to wait for either. The step has no blocker left and belongs to one person | Iosif | ~5 min |
+| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet. **Updated 2026-09-08 — half the blocker is gone:** Iosif reads `info@` normally, so the expiring confirmation link is no longer a problem and no joint sitting is needed. **And then the other half, hours later:** he signed into MailerLite with `info@` and it is the company account — 11 subscribers, existing group — so the login was never his to wait for either. **But the step is not what it looked like:** MailerLite no longer verifies a single address — it requires full domain authentication (three DNS records at Papaki, see step C item 7), so this is now a DNS job and waits on whoever holds the Papaki login | Iosif, if he has the Papaki login | ~20 min |
 | 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list. **Access confirmed 2026-09-08:** he is signed in to the company account, so the «check access first» caveat below is spent | Iosif | ~10 min |
 | 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program. Everything on the site is ready: `thank-you.html` is built and the success path wired to it (2026-09-04), so this is one account, one id, one line changed. ⏸ **Deliberately queued behind item 5 (2026-09-04):** Formspree emails the recipient address to confirm it, so registering the form with `info@` needs that mailbox readable — the same unlock. Doing it now with a personal address would work, but would mean changing the recipient again afterwards, so it waits and gets done in the same sitting. ▶ **Unblocked 2026-09-08:** the condition is met — Iosif reads `info@` — so the queue-behind reason is spent. This no longer depends on item 5 or on anyone else; it is his to do alone, `info@` as the recipient from the start | Iosif | ~15 min |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
@@ -535,6 +535,21 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    The signup page (item 3 above) is unblocked by the same login, and step D
    by the same mailbox. Nothing in this step now waits on Stathis.
 
+   **And then the step turned out to be a different step (2026-09-08).** The
+   sender was added and the confirmation link clicked — and MailerLite did not
+   verify anything. It asked to connect the DNS provider instead, detecting
+   **Papaki**. The single-address confirmation route no longer exists:
+   MailerLite now **requires full domain authentication** for any sender on a
+   custom domain, a consequence of the Google/Yahoo bulk-sender rules. Only
+   accounts inside their 14-day trial can send without it.
+
+   **So item 4 and item 7 are one step, and it is a DNS job.** What used to be
+   "optional but recommended" is now the thing that blocks the first campaign.
+   Everything about doing it is in item 7 below — including the one way to get
+   it badly wrong, which is the SPF record. Whoever holds the **Papaki login**
+   is who this step now waits for; that question was never asked, because until
+   today the step looked like an email click.
+
    Two things that used to be bundled into the sitting and no longer need it:
    **step D (Formspree)** is now Iosif's to do by himself, since the address it
    confirms to is one he can read; and the **domain authentication** records of
@@ -546,9 +561,33 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    time** — only 3 of the 10 are covered by soft opt-in, so segment on
    `deal_stage` before any marketing campaign. See "Asked for, not started" §1.
 6. ~~Authorize the MailerLite connector in claude.ai~~ — **done**.
-7. Optional but recommended for deliverability: authenticate the
-   `hellenictrailers.gr` domain in MailerLite (two DNS records — do this if you
-   have access to the domain's DNS; emails then stop showing "via mailerlite").
+7. **Required as of 2026-09-08** (it was written here as optional, which was
+   true until MailerLite stopped verifying single addresses): authenticate the
+   `hellenictrailers.gr` domain in MailerLite. Nothing can be sent from
+   `info@` until this is done — it *is* item 4 now, not an improvement on it.
+   MailerLite hands over **three** records to add at Papaki: DKIM as a CNAME,
+   SPF as a TXT, and a domain-verification TXT. The names and values are
+   generated per account and must match exactly.
+
+   ⚠️ **The SPF record is where this can break company email.** The domain
+   already carries `v=spf1 include:spf.protection.outlook.com -all` for
+   Microsoft 365, and **two SPF records on the same name are a protocol error**
+   that can take Microsoft's mail down with it. If MailerLite's SPF record is
+   named for the root (`@` / `hellenictrailers.gr`), do not add it as a second
+   record — merge the includes into the existing one:
+   `v=spf1 include:spf.protection.outlook.com include:<MailerLite's include> -all`.
+   If it is named for a subdomain, it is a separate record and goes in as given.
+
+   For the same reason, **prefer the manual route** over MailerLite's automatic
+   provider connection: the automatic flow logs into the DNS host and adds what
+   it thinks is missing, without knowing about the Microsoft record it must not
+   duplicate. Choose "Other"/manual, copy the three records, add them at Papaki
+   by hand. Propagation is usually minutes, up to 24–48 hours at worst.
+
+   Worth adding in the same visit, since the domain still has none: a first
+   DMARC record at `_dmarc`, `v=DMARC1; p=none; rua=mailto:info@hellenictrailers.gr`.
+   The Google/Yahoo rules expect one, and `p=none` only asks for reports —
+   it rejects nothing.
 
    **What the DNS holds today** (checked 2026-09-04): the zone is hosted at
    **Papaki** (`dns1.papaki.gr`, `dns2.papaki.gr`) — that is where the records
