@@ -42,7 +42,7 @@ actually has to sit down and do it:
 | 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ done (2026-09-01): created as `@hellenictrailers`, wired into the site, confirmed to be a Business account and linked to the Page in Meta Business Suite. Step A is unblocked | Iosif | done |
 | 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
-| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet. **Updated 2026-09-08 — half the blocker is gone:** Iosif reads `info@` normally, so the expiring confirmation link is no longer a problem and no joint sitting is needed. **And then the other half, hours later:** he signed into MailerLite with `info@` and it is the company account — 11 subscribers, existing group — so the login was never his to wait for either. **But the step is not what it looked like:** MailerLite no longer verifies a single address — it requires full domain authentication (three DNS records at Papaki, see step C item 7), so this is now a DNS job and waits on whoever holds the Papaki login | Iosif, if he has the Papaki login | ~20 min |
+| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet. **Updated 2026-09-08 — half the blocker is gone:** Iosif reads `info@` normally, so the expiring confirmation link is no longer a problem and no joint sitting is needed. **And then the other half, hours later:** he signed into MailerLite with `info@` and it is the company account — 11 subscribers, existing group — so the login was never his to wait for either. **But the step is not what it looked like:** MailerLite no longer verifies a single address — it requires full domain authentication (three DNS records at Papaki, see step C item 7), so this is now a DNS job. **The three records were read off MailerLite on 2026-09-08 and checked against live DNS — they are in step C item 7, with a fourth for DMARC.** All that is left is typing them at Papaki | whoever holds the Papaki login | ~10 min |
 | 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list. **Access confirmed 2026-09-08:** he is signed in to the company account, so the «check access first» caveat below is spent | Iosif | ~10 min |
 | 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program. Everything on the site is ready: `thank-you.html` is built and the success path wired to it (2026-09-04), so this is one account, one id, one line changed. ⏸ **Deliberately queued behind item 5 (2026-09-04):** Formspree emails the recipient address to confirm it, so registering the form with `info@` needs that mailbox readable — the same unlock. Doing it now with a personal address would work, but would mean changing the recipient again afterwards, so it waits and gets done in the same sitting. ▶ **Unblocked 2026-09-08:** the condition is met — Iosif reads `info@` — so the queue-behind reason is spent. This no longer depends on item 5 or on anyone else; it is his to do alone, `info@` as the recipient from the start | Iosif | ~15 min |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
@@ -588,6 +588,36 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    DMARC record at `_dmarc`, `v=DMARC1; p=none; rua=mailto:info@hellenictrailers.gr`.
    The Google/Yahoo rules expect one, and `p=none` only asks for reports —
    it rejects nothing.
+
+   **The records themselves, read off MailerLite on 2026-09-08.** They are
+   generated per account, so these are this account's and nobody else's — but
+   they do not expire, and the domain sits in «Wait to activate» until they
+   exist. Nothing here is a secret: every one of them is meant to be published
+   in public DNS.
+
+   | # | Type | Name | Value | Action |
+   |---|---|---|---|---|
+   | 1 | TXT | `@` — the root; **leave the Papaki name field blank** | `v=spf1 include:_spf.mlsend.com include:spf.protection.outlook.com -all` | **Edit the existing `v=spf1` record.** Never add a second one |
+   | 2 | CNAME | `litesrv._domainkey` | `litesrv._domainkey.mlsend.com` | Add |
+   | 3 | TXT | `@` — the root | `mailerlite-domain-verification=8651ddde299ee5a790c658b9089e331b16307de7` | Add. A second *TXT* at the root is normal — it is only SPF that must be unique |
+   | 4 | TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:info@hellenictrailers.gr` | Add — the domain still has none |
+
+   All of it was checked against live DNS the same day, before anyone typed
+   anything at Papaki: MailerLite's merged SPF keeps Microsoft's include and
+   the strict `-all` (so company mail is unaffected), the CNAME target
+   `litesrv._domainkey.mlsend.com` answers with a valid `v=DKIM1` key, and
+   Microsoft's own DKIM lives on `selector1`/`selector2._domainkey`, which
+   record 2 does not touch.
+
+   **The two ways to get this wrong at Papaki**, both in the name field: typing
+   a full domain (`litesrv._domainkey.hellenictrailers.gr`) makes Papaki append
+   the zone a second time; and adding record 1 instead of editing the existing
+   SPF leaves two SPF records on one name, which is a protocol error that takes
+   **Microsoft 365 mail down with it**, not just the newsletter.
+
+   When the four are in: MailerLite → Account settings → Domains →
+   **Check status**. Propagation is usually minutes; give it up to 24 hours
+   before suspecting anything.
 
    **What the DNS holds today** (checked 2026-09-04): the zone is hosted at
    **Papaki** (`dns1.papaki.gr`, `dns2.papaki.gr`) — that is where the records
