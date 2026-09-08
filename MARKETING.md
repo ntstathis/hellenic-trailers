@@ -491,6 +491,11 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    add the sender, then click the link in `info@` within the same couple of
    minutes. No message about it has been sent to anyone yet.
 
+   **The message went on 2026-09-08.** Four days after that sentence was
+   written, Iosif sent Stathis the step-by-step for Papaki — the four records,
+   where each goes, which one is an edit rather than an addition, and what not
+   to touch. Waiting on him to type them.
+
    **Re-checked 2026-09-08 — nothing has moved.** The DNS reads exactly as it
    did on 09-04: MX still `hellenictrailers-gr.mail.protection.outlook.com`,
    the `selector1._domainkey` CNAME still resolves into
