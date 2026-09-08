@@ -42,8 +42,8 @@ actually has to sit down and do it:
 | 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ done (2026-09-01): created as `@hellenictrailers`, wired into the site, confirmed to be a Business account and linked to the Page in Meta Business Suite. Step A is unblocked | Iosif | done |
 | 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
-| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet. **Updated 2026-09-08 — half the blocker is gone:** Iosif reads `info@` normally, so the expiring confirmation link is no longer a problem and no joint sitting is needed. All that is left is the MailerLite side: Stathis adds the sender (2 minutes, asynchronously) and Iosif clicks the link in his own mailbox | Stathis adds the sender, Iosif clicks | ~5 min |
-| 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list | Iosif | ~10 min |
+| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet. **Updated 2026-09-08 — half the blocker is gone:** Iosif reads `info@` normally, so the expiring confirmation link is no longer a problem and no joint sitting is needed. **And then the other half, hours later:** he signed into MailerLite with `info@` and it is the company account — 11 subscribers, existing group — so the login was never his to wait for either. The step has no blocker left and belongs to one person | Iosif | ~5 min |
+| 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list. **Access confirmed 2026-09-08:** he is signed in to the company account, so the «check access first» caveat below is spent | Iosif | ~10 min |
 | 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program. Everything on the site is ready: `thank-you.html` is built and the success path wired to it (2026-09-04), so this is one account, one id, one line changed. ⏸ **Deliberately queued behind item 5 (2026-09-04):** Formspree emails the recipient address to confirm it, so registering the form with `info@` needs that mailbox readable — the same unlock. Doing it now with a personal address would work, but would mean changing the recipient again afterwards, so it waits and gets done in the same sitting. ▶ **Unblocked 2026-09-08:** the condition is met — Iosif reads `info@` — so the queue-behind reason is spent. This no longer depends on item 5 or on anyone else; it is his to do alone, `info@` as the recipient from the start | Iosif | ~15 min |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
 | 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
@@ -253,11 +253,12 @@ YouTube channel (step I) were both his, and both are done:
    Also his since 2026-09-08: **the Formspree form** (step D), which stopped
    waiting on anyone the moment `info@` turned out to be readable by him.
 
-   ⚠️ **Check access first.** The MailerLite account is registered to
-   `stathis@stathis.com.gr`. Iosif needs to get into that account to build the
-   landing page — either Stathis shares the login, or Iosif is invited as a
-   second user (MailerLite's free plan may not allow extra users; if it does
-   not, either share the login or Stathis does this step instead).
+   ~~⚠️ **Check access first.**~~ **Settled 2026-09-08:** he signs in with
+   `info@` and lands in the company account — 11 subscribers, the existing
+   group — so nothing has to be shared or granted. If a future session finds an
+   empty account instead, that is a *different, second* account created by
+   signing up rather than signing in; the subscriber count is what distinguishes
+   them, and nothing should be built in the empty one.
 4. **YouTube channel** (step I): ✅ done — created 2026-09-01 as
    `@HellenicTrailers` and linked from the footer of all 7 pages. What is left
    is not setup but footage: the first delivery clip. A channel with nothing on
@@ -517,19 +518,22 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    there is no sitting to arrange. The confirmation link gets clicked by him,
    in his own mailbox, whenever it lands.
 
-   **What is actually left** is one action on the MailerLite side, which is
-   Stathis's only because the account is registered to his address:
-   1. *Stathis:* MailerLite → Account settings → **Senders** → add
-      `info@hellenictrailers.gr`, and say when it is done.
-   2. *Iosif:* click the confirmation link in `info@` — it expires, so within
-      the hour rather than the week.
+   **Then the other half went too, the same day.** Iosif signed into MailerLite
+   with `info@` and sees the company account itself — 11 subscribers, the
+   existing group. (Worth having checked: a fresh sign-up with a new address
+   would have created a *second, empty* account, where verifying a sender does
+   nothing for the real list. The subscriber count is what tells the two
+   apart.) So there is **no access blocker left on this step at all**, and it
+   is nobody's but his:
+   1. Account settings → **Senders** (**Domains** in the newer UI) → add
+      `info@hellenictrailers.gr`.
+   2. Click the confirmation link in `info@` — it expires, so within the hour.
    3. Check the sender shows **verified**. That unblocks the first campaign to
       the 11 subscribers (still segmented on `deal_stage` — only 3 of them are
       covered by soft opt-in).
 
-   Better still: if Stathis shares the MailerLite login or invites Iosif as a
-   second user, this step and the signup page (item 3 above) both become his
-   alone, and neither waits on anyone again.
+   The signup page (item 3 above) is unblocked by the same login, and step D
+   by the same mailbox. Nothing in this step now waits on Stathis.
 
    Two things that used to be bundled into the sitting and no longer need it:
    **step D (Formspree)** is now Iosif's to do by himself, since the address it
