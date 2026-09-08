@@ -635,6 +635,16 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    **Check status**. Propagation is usually minutes; give it up to 24 hours
    before suspecting anything.
 
+   **✅ All four are in, entered by Stathis on 2026-09-08 and verified against
+   live DNS the same evening.** The two things that mattered both came out
+   right: there is **exactly one** `v=spf1` record, carrying MailerLite's and
+   Microsoft's includes and the strict `-all` (so he edited rather than added,
+   and company mail was never at risk); and `litesrv._domainkey` follows its
+   CNAME to a valid `v=DKIM1` key. The verification TXT and `_dmarc` are both
+   present, and Microsoft's MX, `selector1`/`selector2` DKIM, the `www` CNAME
+   and the GitHub Pages A records are untouched. What is left is one click:
+   **Check status** in MailerLite.
+
    **What the DNS holds today** (checked 2026-09-04): the zone is hosted at
    **Papaki** (`dns1.papaki.gr`, `dns2.papaki.gr`) — that is where the records
    go. Already in place, for the Microsoft 365 mail:
