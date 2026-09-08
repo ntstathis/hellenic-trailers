@@ -21,7 +21,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done |
 | Facebook | Claude posts via the Meta Graph API | 🔶 Page live («Hellenic Trailers-Lamberet Partner», 259 likes) and linked from the site; automatic posting still needs steps A + B |
 | Instagram | Claude posts via the Meta Graph API | 🔶 account created, Business, linked to the Page and linked from the site (`@hellenictrailers`, 2026-09-01); automatic posting now needs only steps A + B |
-| Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector, group + first contact import done (11 subscribers) — signup page & sender verification pending (step C) |
+| Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector, group, 11 subscribers, and **the domain authenticated on 2026-09-08 — campaigns can be sent from `info@`**. Only the public signup page is left (step C item 3) |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
@@ -42,7 +42,7 @@ actually has to sit down and do it:
 | 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ done (2026-09-01): created as `@hellenictrailers`, wired into the site, confirmed to be a Business account and linked to the Page in Meta Business Suite. Step A is unblocked | Iosif | done |
 | 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
-| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet. **Updated 2026-09-08 — half the blocker is gone:** Iosif reads `info@` normally, so the expiring confirmation link is no longer a problem and no joint sitting is needed. **And then the other half, hours later:** he signed into MailerLite with `info@` and it is the company account — 11 subscribers, existing group — so the login was never his to wait for either. **But the step is not what it looked like:** MailerLite no longer verifies a single address — it requires full domain authentication (three DNS records at Papaki, see step C item 7), so this is now a DNS job and waits on whoever holds the Papaki login. **Answered 2026-09-08: Stathis holds it** — he opened the Papaki DNS panel the same evening (the zone runs on Papaki's «github» DNS service, A records to GitHub Pages, MX and both DKIM selectors to Microsoft 365, TXT records hidden behind «Εμφάνιση όλων»). **And the hand-over already happened:** Iosif pulled the three records off the manual route the same evening and each was checked against live DNS — they are written out in step C item 7, with a fourth for DMARC. Nothing is left to look up: the four lines only have to be typed at Papaki, the SPF one **replacing** the existing Microsoft record rather than joining it | Stathis (Papaki) | ~10 min |
+| 5 | ~~**MailerLite sender: verify `info@hellenictrailers.gr`**~~ — ✅ **done 2026-09-08.** It took three shapes in one day: a joint sitting nobody needed, then a single-address confirmation MailerLite no longer offers, and finally what it really was — domain authentication. Four DNS records at Papaki (Stathis typed them, Iosif read them off MailerLite), verified against live DNS, and the domain came back **authenticated**. Campaigns can now be sent from `info@`, subject to the `deal_stage` consent segment | Iosif + Stathis | done |
 | 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list. **Access confirmed 2026-09-08:** he is signed in to the company account, so the «check access first» caveat below is spent | Iosif | ~10 min |
 | 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program. Everything on the site is ready: `thank-you.html` is built and the success path wired to it (2026-09-04), so this is one account, one id, one line changed. ⏸ **Deliberately queued behind item 5 (2026-09-04):** Formspree emails the recipient address to confirm it, so registering the form with `info@` needs that mailbox readable — the same unlock. Doing it now with a personal address would work, but would mean changing the recipient again afterwards, so it waits and gets done in the same sitting. ▶ **Unblocked 2026-09-08:** the condition is met — Iosif reads `info@` — so the queue-behind reason is spent. This no longer depends on item 5 or on anyone else; it is his to do alone, `info@` as the recipient from the start | Iosif | ~15 min |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
@@ -454,7 +454,9 @@ Status 2026-08-21: the account exists (stathis@stathis.com.gr), the Claude
 connector is authorized, the group `Hellenic Trailers Newsletter`
 (id `196439632318039915`) is created, and the owner is subscribed to it as a
 built-in QA recipient. The first contact import ran on 2026-08-23 (step 5), so
-the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
+the group now holds 11 subscribers. Steps 4 and 7 were finished on
+2026-09-08 — the domain is authenticated and the sender works. **Remaining:
+step 3, the signup page.**
 
 1. ~~Create a free account at mailerlite.com~~ — **done**.
 2. ~~Create one group named `Hellenic Trailers Newsletter`~~ — **done**
@@ -464,7 +466,9 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    **double opt-in on** — publish it and copy its URL. This goes into the
    site's signup links (Wiring checklist #4). The free plan includes landing
    pages (with MailerLite branding).
-4. **Stathis.** Verify the sender address so campaigns can come from
+4. ✅ **Done 2026-09-08** — see the record of how it turned into item 7 below.
+   The original instruction is kept because it explains *why* `info@`:
+   **Stathis.** Verify the sender address so campaigns can come from
    `info@hellenictrailers.gr` — the address the site has shown since
    2026-09-01, and the one campaigns should come from so a reply lands where
    the enquiries do: MailerLite → Account settings → *Senders* → add it and
@@ -577,7 +581,11 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    time** — only 3 of the 10 are covered by soft opt-in, so segment on
    `deal_stage` before any marketing campaign. See "Asked for, not started" §1.
 6. ~~Authorize the MailerLite connector in claude.ai~~ — **done**.
-7. **Required as of 2026-09-08** (it was written here as optional, which was
+7. ✅ **Done 2026-09-08 — the domain is authenticated.** The four records are
+   in place and were verified against live DNS; the record below stands as the
+   description of what was needed and why.
+
+   **Required as of 2026-09-08** (it was written here as optional, which was
    true until MailerLite stopped verifying single addresses): authenticate the
    `hellenictrailers.gr` domain in MailerLite. Nothing can be sent from
    `info@` until this is done — it *is* item 4 now, not an improvement on it.
