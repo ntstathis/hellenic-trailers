@@ -42,7 +42,7 @@ actually has to sit down and do it:
 | 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ done (2026-09-01): created as `@hellenictrailers`, wired into the site, confirmed to be a Business account and linked to the Page in Meta Business Suite. Step A is unblocked | Iosif | done |
 | 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
-| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet | Stathis + Iosif, together | ~10 min |
+| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet. **Re-checked 2026-09-08:** nothing has moved, and step C4 now carries two things it was missing — a two-minute test that may remove the blocker altogether, and the order the sitting runs in | Stathis + Iosif, together | ~10 min |
 | 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list | Iosif | ~10 min |
 | 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program. Everything on the site is ready: `thank-you.html` is built and the success path wired to it (2026-09-04), so this is one account, one id, one line changed. ⏸ **Deliberately queued behind item 5 (2026-09-04):** Formspree emails the recipient address to confirm it, so registering the form with `info@` needs that mailbox readable — the same unlock. Doing it now with a personal address would work, but would mean changing the recipient again afterwards, so it waits and gets done in the same sitting | either, once `info@` is readable | ~15 min |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
@@ -484,6 +484,43 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
    separately, the step waits until he and Stathis go through it together:
    add the sender, then click the link in `info@` within the same couple of
    minutes. No message about it has been sent to anyone yet.
+
+   **Re-checked 2026-09-08 — nothing has moved.** The DNS reads exactly as it
+   did on 09-04: MX still `hellenictrailers-gr.mail.protection.outlook.com`,
+   the `selector1._domainkey` CNAME still resolves into
+   `stathis.q-v1.dkim.mail.microsoft` (so `info@` is confirmed to be a mailbox
+   on the `stathis` Microsoft 365 tenant), SPF still Microsoft-only with
+   `-all`, nameservers still Papaki, and still **no `ml._domainkey` and no
+   `_dmarc` record at all**. Still no message sent to Stathis about the access.
+
+   **The cheap test first — 2 minutes, Iosif alone, before asking for
+   anything.** `info@` may already be readable from his own account: it is
+   often an alias on an existing mailbox rather than a separate one, and if it
+   is, the whole blocker disappears and this step stops needing two people.
+   1. Send a mail to `info@hellenictrailers.gr` from a private address.
+   2. Open <https://outlook.office.com> signed in as `ikaragiotis@` — check
+      the inbox, then the avatar menu → **Open another mailbox** → `info@`.
+   3. It arrives somewhere he can read → he does step 4 above himself, with
+      Stathis only adding the sender in MailerLite. It does not → the access
+      request is what is actually needed, and it is a tenant admin's to grant
+      (Microsoft 365 admin centre → Teams & groups → Shared mailboxes →
+      Members, or Exchange → mailbox permissions if `info@` is a user mailbox).
+
+   **The sitting itself, in order** (~25 min, and it closes step D too, since
+   Formspree confirms to the same mailbox):
+   1. *Stathis:* MailerLite → Account settings → **Senders** → add
+      `info@hellenictrailers.gr`.
+   2. *Whoever has the mailbox open:* click the confirmation link in `info@`
+      straight away — it expires, and a retry means another email.
+   3. Check the sender shows **verified** in MailerLite. That alone unblocks
+      the first campaign to the 11 subscribers (still segmented on
+      `deal_stage` — only 3 are covered by soft opt-in).
+   4. Same sitting, step D: create the Formspree form on `info@`, click its
+      confirmation mail too, turn **reCAPTCHA off**, hand the form id over.
+   5. While both are there and it costs nothing: MailerLite → domain
+      authentication hands over two CNAMEs for Papaki (step 7), and a first
+      `_dmarc` record (`v=DMARC1; p=none; rua=mailto:info@hellenictrailers.gr`)
+      is worth adding at the same time — the domain has none today.
 5. ~~Import existing contacts~~ — **done 2026-08-23**: 10 contacts imported,
    group now at 11, nothing emailed. Tagged with `deal_stage` and
    `consent_source` as GDPR requires. **The consent test still applies at send
