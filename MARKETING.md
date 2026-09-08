@@ -42,9 +42,9 @@ actually has to sit down and do it:
 | 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ done (2026-09-01): created as `@hellenictrailers`, wired into the site, confirmed to be a Business account and linked to the Page in Meta Business Suite. Step A is unblocked | Iosif | done |
 | 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
-| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet. **Re-checked 2026-09-08:** nothing has moved, and step C4 now carries two things it was missing — a two-minute test that may remove the blocker altogether, and the order the sitting runs in | Stathis + Iosif, together | ~10 min |
+| 5 | **MailerLite sender: verify `info@hellenictrailers.gr`** (step C item 4) — the site hands out that address, so campaigns must come from it, and nothing can be sent to the 11 subscribers until a sender is verified. ⏸ **Pending as of 2026-09-04, to be done by the two of them in one sitting:** Iosif picked it up and stopped on access — the MailerLite login is Stathis's, and Iosif is not an admin on the Microsoft 365 tenant, so he can neither add the sender nor read the confirmation in `info@`. Nothing has been sent or requested yet. **Updated 2026-09-08 — half the blocker is gone:** Iosif reads `info@` normally, so the expiring confirmation link is no longer a problem and no joint sitting is needed. All that is left is the MailerLite side: Stathis adds the sender (2 minutes, asynchronously) and Iosif clicks the link in his own mailbox | Stathis adds the sender, Iosif clicks | ~5 min |
 | 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list | Iosif | ~10 min |
-| 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program. Everything on the site is ready: `thank-you.html` is built and the success path wired to it (2026-09-04), so this is one account, one id, one line changed. ⏸ **Deliberately queued behind item 5 (2026-09-04):** Formspree emails the recipient address to confirm it, so registering the form with `info@` needs that mailbox readable — the same unlock. Doing it now with a personal address would work, but would mean changing the recipient again afterwards, so it waits and gets done in the same sitting | either, once `info@` is readable | ~15 min |
+| 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program. Everything on the site is ready: `thank-you.html` is built and the success path wired to it (2026-09-04), so this is one account, one id, one line changed. ⏸ **Deliberately queued behind item 5 (2026-09-04):** Formspree emails the recipient address to confirm it, so registering the form with `info@` needs that mailbox readable — the same unlock. Doing it now with a personal address would work, but would mean changing the recipient again afterwards, so it waits and gets done in the same sitting. ▶ **Unblocked 2026-09-08:** the condition is met — Iosif reads `info@` — so the queue-behind reason is spent. This no longer depends on item 5 or on anyone else; it is his to do alone, `info@` as the recipient from the start | Iosif | ~15 min |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
 | 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
 
@@ -226,9 +226,10 @@ which of these channels deserves the next hour.
 
 Two live, one waiting on access that is not his to grant. The sender
 verification that used to sit here has moved to Stathis, since the MailerLite
-account is registered to his address — as of 2026-09-04 it is back on both
-their desks, to be done together (item 5 of «To do next»), because the same
-missing access blocks item 3 below. The Instagram account (step A0) and the
+account is registered to his address — as of 2026-09-04 it was back on both
+their desks, and **as of 2026-09-08 it is nearly off them again**: he reads
+`info@`, so only the MailerLite click itself is Stathis's. The contact form
+(step D) came free the same day and is now his alone. The Instagram account (step A0) and the
 YouTube channel (step I) were both his, and both are done:
 
 1. **WhatsApp Business on a new company number** (step G): unblocked on
@@ -246,7 +247,11 @@ YouTube channel (step I) were both his, and both are done:
    signup.
 3. **MailerLite** (step C): build the public signup landing page with double
    opt-in. Sender verification is no longer on this list — it moved to Stathis
-   (item 4 of «To do next»), since the account is registered to his address.
+   (item 5 of «To do next»), since the account is registered to his address;
+   what is left of it on his side is one click in `info@`, which he can read.
+
+   Also his since 2026-09-08: **the Formspree form** (step D), which stopped
+   waiting on anyone the moment `info@` turned out to be readable by him.
 
    ⚠️ **Check access first.** The MailerLite account is registered to
    `stathis@stathis.com.gr`. Iosif needs to get into that account to build the
@@ -506,21 +511,31 @@ the group now holds 11 subscribers. Remaining: steps 3, 4 and 7 below.
       (Microsoft 365 admin centre → Teams & groups → Shared mailboxes →
       Members, or Exchange → mailbox permissions if `info@` is a user mailbox).
 
-   **The sitting itself, in order** (~25 min, and it closes step D too, since
-   Formspree confirms to the same mailbox):
+   **Result, 2026-09-08 — Iosif reads `info@` normally.** The test was run the
+   day it was written and came back positive, so the mailbox half of this
+   blocker never really existed: no tenant admin has to grant anything, and
+   there is no sitting to arrange. The confirmation link gets clicked by him,
+   in his own mailbox, whenever it lands.
+
+   **What is actually left** is one action on the MailerLite side, which is
+   Stathis's only because the account is registered to his address:
    1. *Stathis:* MailerLite → Account settings → **Senders** → add
-      `info@hellenictrailers.gr`.
-   2. *Whoever has the mailbox open:* click the confirmation link in `info@`
-      straight away — it expires, and a retry means another email.
-   3. Check the sender shows **verified** in MailerLite. That alone unblocks
-      the first campaign to the 11 subscribers (still segmented on
-      `deal_stage` — only 3 are covered by soft opt-in).
-   4. Same sitting, step D: create the Formspree form on `info@`, click its
-      confirmation mail too, turn **reCAPTCHA off**, hand the form id over.
-   5. While both are there and it costs nothing: MailerLite → domain
-      authentication hands over two CNAMEs for Papaki (step 7), and a first
-      `_dmarc` record (`v=DMARC1; p=none; rua=mailto:info@hellenictrailers.gr`)
-      is worth adding at the same time — the domain has none today.
+      `info@hellenictrailers.gr`, and say when it is done.
+   2. *Iosif:* click the confirmation link in `info@` — it expires, so within
+      the hour rather than the week.
+   3. Check the sender shows **verified**. That unblocks the first campaign to
+      the 11 subscribers (still segmented on `deal_stage` — only 3 of them are
+      covered by soft opt-in).
+
+   Better still: if Stathis shares the MailerLite login or invites Iosif as a
+   second user, this step and the signup page (item 3 above) both become his
+   alone, and neither waits on anyone again.
+
+   Two things that used to be bundled into the sitting and no longer need it:
+   **step D (Formspree)** is now Iosif's to do by himself, since the address it
+   confirms to is one he can read; and the **domain authentication** records of
+   item 7 below, plus a first `_dmarc` record, only need whoever holds the
+   Papaki DNS login — not this step at all.
 5. ~~Import existing contacts~~ — **done 2026-08-23**: 10 contacts imported,
    group now at 11, nothing emailed. Tagged with `deal_stage` and
    `consent_source` as GDPR requires. **The consent test still applies at send
@@ -785,12 +800,14 @@ Claude's — ask in a chat on this repository.
 
   Two things learned on 2026-09-04, before this is attempted again:
 
-  1. **It waits for `info@`.** Formspree emails the recipient address to
-     confirm it before it forwards anything, so this needs the same mailbox
-     access as the MailerLite sender (item 5 of «To do next»). The owner's
-     decision, made deliberately: register the form with `info@` from the
-     start rather than point it at a personal address and have to move it
-     later. So do this step in the same sitting as the MailerLite one.
+  1. **It confirms to `info@`.** Formspree emails the recipient address before
+     it forwards anything, so the form is registered with `info@` from the
+     start — the owner's deliberate decision, rather than pointing it at a
+     personal address and having to move it later. This used to queue the step
+     behind item 5 of «To do next»; **since 2026-09-08 it does not**, because
+     Iosif reads that mailbox and can click the confirmation himself. Nothing
+     else is waiting on anything: the account, the form and the id are one
+     sitting of fifteen minutes, alone.
   2. **Turn reCAPTCHA off** in the form's settings. The site submits by
      `fetch`, and a captcha on that path can fail the submission with nothing
      shown to the visitor. Spam is already handled: the form carries a `_gotcha`
