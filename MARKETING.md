@@ -26,7 +26,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
 | WhatsApp | Visitors tap a button on the site and message +30 695 704 5716 | 🔶 button live on every page; enquiries still reach a personal account. **Decided 2026-09-04: a new company number is being taken out, with WhatsApp Business on it** — see step G |
-| Contact form | Formspree (the site's JS already supports it) | ⬜ step D below |
+| Contact form | Formspree (the site's JS already supports it) | ✅ done (2026-09-09) — form `xvkovyvd`, delivering to `info@`, with `thank-you.html` as the confirmation page |
 | YouTube | Videos of deliveries and service, embedded on the site and reused on Facebook/Instagram | 🔶 channel created and linked from the site (`@HellenicTrailers`, 2026-09-01) — it has no video on it yet |
 
 ---
@@ -44,7 +44,7 @@ actually has to sit down and do it:
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
 | 5 | ~~**MailerLite sender: verify `info@hellenictrailers.gr`**~~ — ✅ **done 2026-09-08.** It took three shapes in one day: a joint sitting nobody needed, then a single-address confirmation MailerLite no longer offers, and finally what it really was — domain authentication. Four DNS records at Papaki (Stathis typed them, Iosif read them off MailerLite), verified against live DNS, and the domain came back **authenticated**. Campaigns can now be sent from `info@`, subject to the `deal_stage` consent segment | Iosif + Stathis | done |
 | 6 | ~~**MailerLite signup page**~~ — ✅ **done 2026-09-09.** Live at <https://hellenictrailers.subscribepage.io>, double opt-in on, feeding the `Hellenic Trailers Newsletter` group, and wired into the footer of all 8 pages plus the signup section of `news.html`. The list can take new subscribers now | Iosif | done |
-| 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program. Everything on the site is ready: `thank-you.html` is built and the success path wired to it (2026-09-04), so this is one account, one id, one line changed. ⏸ **Deliberately queued behind item 5 (2026-09-04):** Formspree emails the recipient address to confirm it, so registering the form with `info@` needs that mailbox readable — the same unlock. Doing it now with a personal address would work, but would mean changing the recipient again afterwards, so it waits and gets done in the same sitting. ▶ **Unblocked 2026-09-08:** the condition is met — Iosif reads `info@` — so the queue-behind reason is spent. This no longer depends on item 5 or on anyone else; it is his to do alone, `info@` as the recipient from the start | Iosif | ~15 min |
+| 7 | ~~**Formspree form id**~~ — ✅ **done 2026-09-09.** Form `xvkovyvd` sends to `info@hellenictrailers.gr`; the contact form now emails the enquiry instead of opening the visitor's own mail program. CAPTCHA was already off by default, so the one known trap did not apply | Iosif | done |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
 | 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
 
@@ -960,7 +960,26 @@ Claude's — ask in a chat on this repository.
   JavaScript already detects a real ID and switches from the mail-client
   fallback automatically.
 
-  Two things learned on 2026-09-04, before this is attempted again:
+  ✅ **Done 2026-09-09.** The account is registered to `info@hellenictrailers.gr`,
+  the form is «Επικοινωνία hellenictrailers.gr» with id `xvkovyvd`, and the
+  address was confirmed from that mailbox. Two things seen while doing it:
+
+  - **CAPTCHA was already off** — Formspree now ships it disabled by default,
+    so the trap recorded below did not apply. Worth re-checking if the form is
+    ever recreated. **Formshield**, their spam filter, is on by default and was
+    left on: it runs on their side and does not touch the `fetch` path.
+  - **The dashboard's Redirect field is a paid feature, and is not needed.**
+    The site's own JavaScript navigates to `thank-you.html` after a successful
+    submit, so the confirmation page works on the free plan. The `_next` hidden
+    field only matters for a visitor with JavaScript off, who would then land
+    on Formspree's own page instead — the enquiry still arrives either way.
+    Nothing here justifies an upgrade.
+
+  The free plan caps submissions per month (in the region of 50). Ample for
+  this site, but it is the first thing to check if enquiries ever stop
+  arriving.
+
+  Two things learned on 2026-09-04, kept because they explain the shape of it:
 
   1. **It confirms to `info@`.** Formspree emails the recipient address before
      it forwards anything, so the form is registered with `info@` from the
@@ -1367,7 +1386,7 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | 3 | LinkedIn page URL | ✅ wired (2026-08-21) | footer of all 8 `*.html` |
 | 4 | MailerLite hosted signup URL | ✅ wired (2026-09-09): `hellenictrailers.subscribepage.io` | footer of all 8 `*.html` + signup section in `news.html` |
 | 5 | Cloudflare Analytics token | ✅ wired (2026-08-21) | before `</body>` in all 8 `*.html` |
-| 6 | Formspree form ID | `YOUR_FORM_ID` | `contact.html` form `action` — and nothing else: the confirmation page it sends people to (`thank-you.html`) is already built and wired |
+| 6 | Formspree form ID | ✅ wired (2026-09-09): `xvkovyvd` | `contact.html` form `action` — and nothing else: the confirmation page it sends people to (`thank-you.html`) was already built and wired |
 | 7 | Social URLs in structured data | ✅ done (2026-09-01): `sameAs` carries LinkedIn, Facebook, Instagram and YouTube | JSON-LD block in `index.html` |
 | 8 | Channel URLs + Meta IDs + MailerLite group in the skill | ✅ Facebook, Instagram, LinkedIn and YouTube URLs filled in (2026-09-01); MailerLite signup URL filled in (2026-09-09). The Meta IDs live in env vars, not here | `.claude/skills/publish-news/SKILL.md` |
 | 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 8 `*.html` |
