@@ -47,6 +47,7 @@ actually has to sit down and do it:
 | 7 | ~~**Formspree form id**~~ — ✅ **done 2026-09-09.** Form `xvkovyvd` sends to `info@hellenictrailers.gr`; the contact form now emails the enquiry instead of opening the visitor's own mail program. CAPTCHA was already off by default, so the one known trap did not apply | Iosif | done |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
 | 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
+| 10 | **MailerLite API key, so Claude can work the newsletter from a Claude Code session** (2026-09-09) — the owner wants Claude reading the list and drafting campaigns by theme. **Check first whether it is needed at all:** the claude.ai connector is already authorized, so in a claude.ai chat this works today with no token. It is only Claude Code sessions, like the one this was asked in, where the connector does not load. If it is wanted anyway: MailerLite → Integrations → API, read **and write** (a read-only key cannot draft a campaign), then `MAILERLITE_API_KEY` in the environment variables **and** `connect.mailerlite.com` in allowed domains — the key is useless without the domain. Needs a computer, and a fresh session afterwards. **The key goes into the environment dialog, never into a chat message or this repository** | Iosif | ~10 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -221,6 +222,34 @@ website would be generic advice, and the owner already knows more than that.
 With the plan, the cash flow and the customer list, the answer can be specific
 — which segment to push, what the marketing is actually expected to return, and
 which of these channels deserves the next hour.
+
+### 5. A newsletter with an editorial line of its own
+
+Asked for on 2026-09-09, once the signup page was live: Claude to read the
+MailerLite list and draft campaigns **by theme**, rather than only sending
+whatever news item happens to be published. The access this needs is item 10 of
+«To do next»; what it needs beyond access is material, and that is the part
+nobody can hand over in a settings dialog.
+
+`/publish-news` already covers the reactive case — a delivery happens, it goes
+out everywhere including the list. A standing newsletter is a different animal:
+it goes out on a rhythm whether or not something happened, so it needs a stock
+of things worth saying. Candidates, in rough order of how easily they are
+gathered:
+
+- **Deliveries and projects** — a photograph and two lines each, collected as
+  they happen rather than hunted for later.
+- **Lamberet news** — new models, technical developments, anything from the
+  manufacturer worth passing on to a Greek fleet.
+- **Questions customers actually ask**, answered once for everybody. The
+  cheapest content there is, and usually the most read.
+
+**Undecided, and the owner's to decide:** how often it goes out, and who
+approves each one. Monthly is the usual answer for a business with this cadence
+of news; anything more frequent needs more material than the company currently
+generates, and an empty newsletter costs subscribers rather than earning them.
+Sending remains gated on explicit approval per campaign, per the repository's
+working agreements — drafting is Claude's, pressing send is not.
 
 ### Iosif's list
 
