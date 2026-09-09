@@ -269,7 +269,7 @@ const translations = {
   'form.error.email': { en: 'Enter a valid email address', el: 'Συμπληρώστε έγκυρη διεύθυνση email' },
   'form.error.phone': { en: 'Enter a valid phone number', el: 'Συμπληρώστε έγκυρο τηλέφωνο' },
   'form.error.subject': { en: 'Choose a subject', el: 'Επιλέξτε θέμα' },
-  'form.error.message': { en: 'Enter your message', el: 'Γράψτε το μήνυμά σας' },
+  'form.error.message': { en: 'Write your message — at least 10 characters', el: 'Γράψτε το μήνυμά σας — τουλάχιστον 10 χαρακτήρες' },
   'form.sending': { en: 'Sending...', el: 'Αποστολή...' },
   'form.success': {
     en: 'Thank you — your message has been sent. We will get back to you shortly.',
@@ -445,6 +445,26 @@ function initContactForm() {
 
   const fieldOf = (name) => form.querySelector('[name="' + name + '"]');
 
+  // The spam trap is built here rather than in the markup, and deliberately so.
+  // Browsers and password managers autofill every input they find at load, this
+  // one included, and a filled trap means the enquiry is dropped in silence by
+  // us and by Formspree both — the visitor reads "thank you" and nothing ever
+  // arrives. Autofill runs once, at load; a field added afterwards is never
+  // touched by it. Crude bots that only parse the served HTML no longer see the
+  // trap either, which is the price, and a small one: they are what Formspree's
+  // own spam filtering is for, and losing a customer costs more than admitting
+  // a spam message.
+  const honeypotWrap = document.createElement('div');
+  honeypotWrap.className = 'hp-field';
+  honeypotWrap.setAttribute('aria-hidden', 'true');
+  const honeypotInput = document.createElement('input');
+  honeypotInput.type = 'text';
+  honeypotInput.name = '_gotcha';
+  honeypotInput.tabIndex = -1;
+  honeypotInput.autocomplete = 'off';
+  honeypotWrap.appendChild(honeypotInput);
+  form.appendChild(honeypotWrap);
+
   // Deep link from a product card: contact.html?subject=sales&model=Lamberet+SR2
   const params = new URLSearchParams(window.location.search);
   const subjectParam = params.get('subject');
@@ -597,11 +617,21 @@ function initContactForm() {
     submitBtn.setAttribute('aria-busy', 'true');
     submitBtn.textContent = t('form.sending');
 
-    // A readable subject line, so enquiries can be triaged from the inbox list
+    // A readable subject line, so enquiries can be triaged from the inbox list.
+    // The select is renamed on the way out: Formspree titles the email after a
+    // field literally called "subject" in preference to _subject, which made
+    // every enquiry arrive as the bare option value — "sales". Sending the
+    // choice under a human label leaves _subject unopposed, and reads better in
+    // the body as well.
     const payload = new FormData(form);
     const chosen = fieldOf('subject');
+    const chosenLabel = chosen && chosen.selectedIndex > -1
+      ? chosen.options[chosen.selectedIndex].text
+      : '';
+    payload.delete('subject');
+    payload.set('Θέμα', chosenLabel);
     payload.set('_subject', t('form.email.subject')
-      .replace('{subject}', chosen && chosen.selectedIndex > -1 ? chosen.options[chosen.selectedIndex].text : '')
+      .replace('{subject}', chosenLabel)
       .replace('{name}', fieldOf('name').value.trim()));
 
     fetch(endpoint, {
