@@ -979,6 +979,32 @@ Claude's — ask in a chat on this repository.
   this site, but it is the first thing to check if enquiries ever stop
   arriving.
 
+  **Formspree keeps spam out of the Submissions list entirely, and this will
+  waste an hour if it is not known.** During testing a submission reached the
+  confirmation page — which only happens when Formspree answers 200 — and then
+  appeared nowhere: not in the inbox, not in Submissions. It had been filed by
+  **Formshield**, their spam filter, into a separate spam view that the default
+  listing does not show. Marking it «Not spam» delivered it and taught the
+  filter. The trigger was almost certainly the testing itself: half a dozen
+  submissions from one address inside an hour, several of them saying «test».
+  So when an enquiry seems to vanish, the order to check is: the spam view in
+  Formspree, then the Junk folder in `info@`, then the code — the code is the
+  least likely of the three.
+
+  **Two things this ruled out, worth not re-investigating.** The site's own
+  spam trap was suspected first and is innocent: it stops the submission
+  client-side and leaves the visitor on the form, so reaching the thank you
+  page proves the trap did not fire. Browser autofill was suspected second and
+  is also innocent — an autofilled submission goes through exactly like a typed
+  one.
+
+  **Delivery, separately:** the notification arrives from Formspree's own
+  servers, not from `hellenictrailers.gr`, so no DNS record here can vouch for
+  it and Microsoft 365 filed the first one as junk. The fix is Outlook's safe
+  senders list (add `formspree.io`), not a rule — an inbox rule cannot override
+  junk filtering. A rule on the subject would not have matched anyway: see the
+  subject note above.
+
   Two things learned on 2026-09-04, kept because they explain the shape of it:
 
   1. **It confirms to `info@`.** Formspree emails the recipient address before
