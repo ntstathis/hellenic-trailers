@@ -492,6 +492,15 @@ step 3, the signup page.** ✅ **Done 2026-09-09 — nothing is left in step C.*
    «Authentication failed»; it is Stathis's and was left untouched, since it
    turned out not to block anything.
 
+   **The end-to-end test passed the same day.** A signup from a personal
+   address in a private window produced a confirmation email that arrived
+   **from `info@hellenictrailers.gr`, in the inbox and not in spam**, and the
+   confirmation link completed the subscription. That is the first real proof
+   that the SPF, DKIM and DMARC records added on 2026-09-08 do their job —
+   authentication that verifies in MailerLite is not the same as mail that
+   actually lands, and now both are known good. The test subscriber was
+   deleted afterwards, so the group is back to its 11.
+
    **Free plan limits found here:** one published landing page at a time (so
    the unfinished «Hellenic Trailers Newsletter» draft from 2026-08-21 can
    never be published alongside it and should be deleted), and the double
