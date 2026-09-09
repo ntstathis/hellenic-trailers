@@ -710,6 +710,21 @@ step 3, the signup page.** ✅ **Done 2026-09-09 — nothing is left in step C.*
    | 3 | TXT | `@` — the root | `mailerlite-domain-verification=8651ddde299ee5a790c658b9089e331b16307de7` | Add. A second *TXT* at the root is normal — it is only SPF that must be unique |
    | 4 | TXT | `_dmarc` | `v=DMARC1; p=none; rua=mailto:info@hellenictrailers.gr` | Add — the domain still has none |
 
+   **Record 4 makes daily email arrive at `info@`, and that is correct.** The
+   `rua=` part asks every large provider to report who has been sending mail
+   claiming to be this domain. From 2026-09-09 they do: a message a day per
+   provider, subject «Report domain: hellenictrailers.gr Submitter: google.com
+   …», carrying a small zipped XML that is written for machines, not people.
+   Nothing is wrong when one appears, and nobody needs to open them one by one
+   — but do not turn them off either. They are the only warning anyone would
+   get that the domain is being spoofed, and right now they are also the
+   cheapest proof that Microsoft 365, MailerLite and Formspree all authenticate
+   correctly from the one SPF record they share. If they clutter the mailbox,
+   an Outlook rule on «subject contains `Report domain:`» into a `DMARC` folder
+   is the right tool here — unlike junk filtering, which a rule cannot override.
+   Ask Claude to read one when it matters: it unzips the XML and says in plain
+   words who sent, from where, and whether each passed.
+
    All of it was checked against live DNS the same day, before anyone typed
    anything at Papaki: MailerLite's merged SPF keeps Microsoft's include and
    the strict `-all` (so company mail is unaffected), the CNAME target
