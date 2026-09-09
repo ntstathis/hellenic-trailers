@@ -501,6 +501,20 @@ step 3, the signup page.** ✅ **Done 2026-09-09 — nothing is left in step C.*
    actually lands, and now both are known good. The test subscriber was
    deleted afterwards, so the group is back to its 11.
 
+   **Editing a published landing page does not change what visitors get.**
+   The template also drops a footer carrying «© 2024 Your Company, Inc.» and a
+   dummy About/Features/Pricing menu onto *both* the signup page and the thank
+   you page (switch between them with the «Landing page ⌄» dropdown, top left
+   of the editor). Individual elements inside it refuse to delete; the whole
+   section does, by hovering over empty space in it rather than over any text
+   and using the bin in the toolbar at its top-right corner. The blue and
+   silver spheres in that footer are **the company's own logo**, not template
+   filler — do not remove them by mistake. After «Done editing», the live page
+   still served the old version byte for byte until it was unpublished and
+   published again, which is the reliable way to push an edit live. The form's
+   endpoint and signature survive a republish, so a working signup does not
+   need re-testing afterwards.
+
    **Free plan limits found here:** one published landing page at a time (so
    the unfinished «Hellenic Trailers Newsletter» draft from 2026-08-21 can
    never be published alongside it and should be deleted), and the double
