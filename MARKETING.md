@@ -21,7 +21,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done |
 | Facebook | Claude posts via the Meta Graph API | 🔶 Page live («Hellenic Trailers-Lamberet Partner», 259 likes) and linked from the site; automatic posting still needs steps A + B |
 | Instagram | Claude posts via the Meta Graph API | 🔶 account created, Business, linked to the Page and linked from the site (`@hellenictrailers`, 2026-09-01); automatic posting now needs only steps A + B |
-| Newsletter | Claude creates + sends campaigns via the MailerLite connector | 🔶 account, connector, group, 11 subscribers, and **the domain authenticated on 2026-09-08 — campaigns can be sent from `info@`**. Only the public signup page is left (step C item 3) |
+| Newsletter | Claude creates + sends campaigns via the MailerLite connector | ✅ done — account, connector, group, 11 subscribers, domain authenticated (2026-09-08) and the **public signup page live at <https://hellenictrailers.subscribepage.io> (2026-09-09)**, wired into all 8 pages |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
@@ -43,7 +43,7 @@ actually has to sit down and do it:
 | 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
 | 5 | ~~**MailerLite sender: verify `info@hellenictrailers.gr`**~~ — ✅ **done 2026-09-08.** It took three shapes in one day: a joint sitting nobody needed, then a single-address confirmation MailerLite no longer offers, and finally what it really was — domain authentication. Four DNS records at Papaki (Stathis typed them, Iosif read them off MailerLite), verified against live DNS, and the domain came back **authenticated**. Campaigns can now be sent from `info@`, subject to the `deal_stage` consent segment | Iosif + Stathis | done |
-| 6 | **MailerLite signup page** (step C items 3 and 7) — until it exists, nobody new can join the list. **Access confirmed 2026-09-08:** he is signed in to the company account, so the «check access first» caveat below is spent | Iosif | ~10 min |
+| 6 | ~~**MailerLite signup page**~~ — ✅ **done 2026-09-09.** Live at <https://hellenictrailers.subscribepage.io>, double opt-in on, feeding the `Hellenic Trailers Newsletter` group, and wired into the footer of all 8 pages plus the signup section of `news.html`. The list can take new subscribers now | Iosif | done |
 | 7 | **Formspree form id** (step D) — the contact form still falls back to opening the visitor's own mail program. Everything on the site is ready: `thank-you.html` is built and the success path wired to it (2026-09-04), so this is one account, one id, one line changed. ⏸ **Deliberately queued behind item 5 (2026-09-04):** Formspree emails the recipient address to confirm it, so registering the form with `info@` needs that mailbox readable — the same unlock. Doing it now with a personal address would work, but would mean changing the recipient again afterwards, so it waits and gets done in the same sitting. ▶ **Unblocked 2026-09-08:** the condition is met — Iosif reads `info@` — so the queue-behind reason is spent. This no longer depends on item 5 or on anyone else; it is his to do alone, `info@` as the recipient from the start | Iosif | ~15 min |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
 | 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
@@ -224,13 +224,11 @@ which of these channels deserves the next hour.
 
 ### Iosif's list
 
-Two live, one waiting on access that is not his to grant. The sender
-verification that used to sit here has moved to Stathis, since the MailerLite
-account is registered to his address — as of 2026-09-04 it was back on both
-their desks, and **as of 2026-09-08 it is nearly off them again**: he reads
-`info@`, so only the MailerLite click itself is Stathis's. The contact form
-(step D) came free the same day and is now his alone. The Instagram account (step A0) and the
-YouTube channel (step I) were both his, and both are done:
+Two left, both his alone and blocked by nobody. MailerLite came off this list
+on 2026-09-09 when the signup page went live; the sender verification that used
+to sit here had already moved to Stathis and is done. The contact form (step D)
+is his and unblocked. The Instagram account (step A0) and the YouTube channel
+(step I) were both his, and both are done:
 
 1. **WhatsApp Business on a new company number** (step G): unblocked on
    2026-09-04, when the decision was taken to take out a line for the company
@@ -245,8 +243,10 @@ YouTube channel (step I) were both his, and both are done:
    He can edit the website himself following [`EDITING.md`](EDITING.md).
    Worth checking that two-factor authentication is on, if he skipped it at
    signup.
-3. **MailerLite** (step C): build the public signup landing page with double
-   opt-in. Sender verification is no longer on this list — it moved to Stathis
+3. **MailerLite** (step C): ✅ done 2026-09-09 — the public signup landing
+   page is live with double opt-in, at
+   <https://hellenictrailers.subscribepage.io>. What is left of step C is
+   nothing. Sender verification was never his — it moved to Stathis
    (item 5 of «To do next»), since the account is registered to his address;
    what is left of it on his side is one click in `info@`, which he can read.
 
@@ -456,16 +456,71 @@ connector is authorized, the group `Hellenic Trailers Newsletter`
 built-in QA recipient. The first contact import ran on 2026-08-23 (step 5), so
 the group now holds 11 subscribers. Steps 4 and 7 were finished on
 2026-09-08 — the domain is authenticated and the sender works. **Remaining:
-step 3, the signup page.**
+step 3, the signup page.** ✅ **Done 2026-09-09 — nothing is left in step C.**
 
 1. ~~Create a free account at mailerlite.com~~ — **done**.
 2. ~~Create one group named `Hellenic Trailers Newsletter`~~ — **done**
    (id `196439632318039915`).
-3. Create the public signup page: in MailerLite go to **Sites → Landing
-   pages**, create a simple signup page connected to that group — Greek text,
-   **double opt-in on** — publish it and copy its URL. This goes into the
-   site's signup links (Wiring checklist #4). The free plan includes landing
-   pages (with MailerLite branding).
+3. ✅ **Done 2026-09-09.** The public signup page is live at
+   <https://hellenictrailers.subscribepage.io> — Greek text, double opt-in on,
+   connected to the `Hellenic Trailers Newsletter` group, indexing off (the
+   page exists to be linked from the site and the emails, not to be found on
+   Google instead of hellenictrailers.gr). Wired into all 8 pages the same day.
+
+   **What blocked it, worth knowing before touching Sites again.** Publishing
+   was refused with «Sender email domain must be authenticated and verified
+   before you can enable this site», even though `hellenictrailers.gr` was
+   authenticated the day before. Three things were checked, in this order:
+
+   - The DNS was never the problem. All four records resolved correctly from
+     two independent resolvers — the merged SPF, the `litesrv._domainkey`
+     CNAME, the domain-verification TXT and DMARC.
+   - The «Authenticate email domain» link in the banner opens the wizard for
+     **whichever domain failed**, which was `stathis.com.gr`, not ours. Its
+     verification token differs from the one in our DNS — that mismatch is the
+     tell, and it is not an invitation to add more records at Papaki.
+   - The actual blocker was the **sender of the landing page's own double
+     opt-in confirmation email**, which had kept `stathis@stathis.com.gr` from
+     before the account default was changed. Landing page → **Double opt-in**
+     tab → Sender → Edit → `info@hellenictrailers.gr`. The banner cleared on
+     the next reload and Publish went green.
+
+   Changed along the way, and correct regardless: **Account settings → Default
+   settings → Default sender** is now Hellenic Trailers
+   `<info@hellenictrailers.gr>`, so every future campaign leaves from the one
+   authenticated domain. `stathis.com.gr` still sits in Sending domains with
+   «Authentication failed»; it is Stathis's and was left untouched, since it
+   turned out not to block anything.
+
+   **The end-to-end test passed the same day.** A signup from a personal
+   address in a private window produced a confirmation email that arrived
+   **from `info@hellenictrailers.gr`, in the inbox and not in spam**, and the
+   confirmation link completed the subscription. That is the first real proof
+   that the SPF, DKIM and DMARC records added on 2026-09-08 do their job —
+   authentication that verifies in MailerLite is not the same as mail that
+   actually lands, and now both are known good. The test subscriber was
+   deleted afterwards, so the group is back to its 11.
+
+   **Editing a published landing page does not change what visitors get.**
+   The template also drops a footer carrying «© 2024 Your Company, Inc.» and a
+   dummy About/Features/Pricing menu onto *both* the signup page and the thank
+   you page (switch between them with the «Landing page ⌄» dropdown, top left
+   of the editor). Individual elements inside it refuse to delete; the whole
+   section does, by hovering over empty space in it rather than over any text
+   and using the bin in the toolbar at its top-right corner. The blue and
+   silver spheres in that footer are **the company's own logo**, not template
+   filler — do not remove them by mistake. After «Done editing», the live page
+   still served the old version byte for byte until it was unpublished and
+   published again, which is the reliable way to push an edit live. The form's
+   endpoint and signature survive a republish, so a working signup does not
+   need re-testing afterwards.
+
+   **Free plan limits found here:** one published landing page at a time (so
+   the unfinished «Hellenic Trailers Newsletter» draft from 2026-08-21 can
+   never be published alongside it and should be deleted), and the double
+   opt-in confirmation email's subject and body cannot be edited — only its
+   sender. That email therefore still reads «Thank you for your interest in
+   our newsletter!» in English. It is a blemish, not a blocker.
 4. ✅ **Done 2026-09-08** — see the record of how it turned into item 7 below.
    The original instruction is kept because it explains *why* `info@`:
    **Stathis.** Verify the sender address so campaigns can come from
@@ -1310,11 +1365,11 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | 1 | Facebook Page URL | ✅ wired (2026-09-01): `facebook.com/hellenictrailers.gr` | footer of all 8 `*.html` |
 | 2 | Instagram profile URL | ✅ wired (2026-09-01): `instagram.com/hellenictrailers` | footer of all 8 `*.html` |
 | 3 | LinkedIn page URL | ✅ wired (2026-08-21) | footer of all 8 `*.html` |
-| 4 | MailerLite hosted signup URL | `REPLACE-WITH-MAILERLITE-SIGNUP-URL` | footer of all 8 `*.html` + signup section in `news.html` |
+| 4 | MailerLite hosted signup URL | ✅ wired (2026-09-09): `hellenictrailers.subscribepage.io` | footer of all 8 `*.html` + signup section in `news.html` |
 | 5 | Cloudflare Analytics token | ✅ wired (2026-08-21) | before `</body>` in all 8 `*.html` |
 | 6 | Formspree form ID | `YOUR_FORM_ID` | `contact.html` form `action` — and nothing else: the confirmation page it sends people to (`thank-you.html`) is already built and wired |
 | 7 | Social URLs in structured data | ✅ done (2026-09-01): `sameAs` carries LinkedIn, Facebook, Instagram and YouTube | JSON-LD block in `index.html` |
-| 8 | Channel URLs + Meta IDs + MailerLite group in the skill | ✅ Facebook, Instagram, LinkedIn and YouTube URLs filled in (2026-09-01); still `TO-BE-FILLED`: the MailerLite signup URL. The Meta IDs live in env vars, not here | `.claude/skills/publish-news/SKILL.md` |
+| 8 | Channel URLs + Meta IDs + MailerLite group in the skill | ✅ Facebook, Instagram, LinkedIn and YouTube URLs filled in (2026-09-01); MailerLite signup URL filled in (2026-09-09). The Meta IDs live in env vars, not here | `.claude/skills/publish-news/SKILL.md` |
 | 9 | WhatsApp number +30 695 704 5716 | ✅ wired (2026-08-21) | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 8 `*.html` |
 | 10 | YouTube channel URL | ✅ wired (2026-09-01): `youtube.com/@HellenicTrailers`, with a new footer icon and an `a11y.youtube` label | footer of all 8 `*.html` + JSON-LD in `index.html` |
 | 11 | Bing `msvalidate.01` content string (step J) | ✅ not needed — verification came across with the Search Console import (2026-08-29) | `<head>` of `index.html` |
