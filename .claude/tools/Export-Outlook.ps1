@@ -1,4 +1,4 @@
-<#
+﻿<#
     Export-Outlook.ps1
     Βγάζει από το κλασικό Outlook (Windows) όλες τις διευθύνσεις email με τις
     οποίες έχεις αλληλογραφήσει, σε ένα CSV:
@@ -47,6 +47,8 @@ $ErrorActionPreference = 'Stop'
 $PR_SMTP = 'http://schemas.microsoft.com/mapi/proptag/0x39FE001E'
 
 # Φάκελοι που παραλείπονται. Τα ονόματα είναι και στα ελληνικά και στα αγγλικά.
+# Δευτερεύον δίχτυ, για φακέλους που δεν είναι «προεπιλεγμένοι» — όπως το
+# spambucket των IMAP λογαριασμών. Ο κύριος έλεγχος γίνεται με EntryID.
 $skipNames = @(
     'Trash','Deleted Items','Διαγραμμένα','Διαγραμμένα στοιχεία',
     'Junk','Junk Email','spambucket','Ανεπιθύμητα','Ανεπιθύμητη αλληλογραφία',
@@ -86,6 +88,20 @@ foreach ($acct in $mapi.Accounts) {
 }
 Write-Host ("Λογαριασμοί: " + ($mine -join ', ')) -ForegroundColor Cyan
 
+# Οι φάκελοι που δεν θέλουμε, εντοπισμένοι από τον τύπο τους και όχι από το
+# όνομα: 3=Διαγραμμένα, 4=Εξερχόμενα, 16=Πρόχειρα, 19=Conflicts,
+# 20=Sync Issues, 23=Ανεπιθύμητα. (Το 5=Απεσταλμένα ΔΕΝ παραλείπεται.)
+$skipIds = New-Object 'System.Collections.Generic.HashSet[string]'
+foreach ($store in $mapi.Stores) {
+    foreach ($t in @(3, 4, 16, 19, 20, 23)) {
+        try {
+            $df = $store.GetDefaultFolder($t)
+            if ($df) { [void]$skipIds.Add($df.EntryID) }
+        } catch {}
+    }
+}
+Write-Host "Φάκελοι προς παράλειψη: $($skipIds.Count)" -ForegroundColor DarkGray
+
 $messages = New-Object System.Collections.ArrayList
 $people   = @{}
 $scanned  = 0
@@ -123,7 +139,10 @@ function Add-Person($addr, $name, $when, $direction) {
 }
 
 function Walk-Folder($folder, $path) {
-    if ($folder.Name -in $skipNames -and -not $IncludeJunk) {
+    $isSkipped = $false
+    try { $isSkipped = $skipIds.Contains($folder.EntryID) } catch {}
+    if (-not $isSkipped) { $isSkipped = $folder.Name -in $skipNames }
+    if ($isSkipped -and -not $IncludeJunk) {
         Write-Host "  (παράλειψη: $path)" -ForegroundColor DarkGray
         return
     }
