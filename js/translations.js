@@ -123,7 +123,7 @@ const translations = {
 
   'news.5.date': { en: '2 October 2026', el: '2 Οκτωβρίου 2026' },
   'news.5.title': { en: 'You are invited! Official presentation of Hellenic Trailers & Lamberet', el: 'Σας προσκαλούμε! Επίσημη παρουσίαση Hellenic Trailers & Lamberet' },
-  'news.5.text': { en: 'Our doors are open and we would love to see you! We are celebrating the official presentation of Hellenic Trailers and our new partnership with Lamberet, as its exclusive representative in Greece. Friday 2 October 2026, 17:00, at our facilities in Mandra — come and say hello!', el: 'Ανοίγουμε τις πόρτες μας και σας περιμένουμε! Γιορτάζουμε την επίσημη παρουσίαση της Hellenic Trailers και τη νέα μας συνεργασία με τη Lamberet, ως αποκλειστικοί αντιπρόσωποί της στην Ελλάδα. Παρασκευή 2 Οκτωβρίου 2026, 17:00, στις εγκαταστάσεις μας στη Μάνδρα — ελάτε να γνωριστούμε!' },
+  'news.5.text': { en: 'It is our great pleasure to invite you to the official presentation of Hellenic Trailers and to our new partnership with Lamberet, as its exclusive representative in Greece. Friday 2 October 2026, 17:00, at our facilities in Mandra — come and say hello!', el: 'Με μεγάλη μας χαρά σας προσκαλούμε στην επίσημη παρουσίαση της Hellenic Trailers και στη νέα μας συνεργασία με τη Lamberet, ως αποκλειστικοί αντιπρόσωποί της στην Ελλάδα. Παρασκευή 2 Οκτωβρίου 2026, 17:00, στις εγκαταστάσεις μας στη Μάνδρα — ελάτε να γνωριστούμε!' },
 
   'news.4.date': { en: 'May 2026', el: 'Μάιος 2026' },
   'news.4.title': { en: 'Super Beef Meat Chamber Delivery to Farma Mitsopoulos', el: 'Παράδοση Super Beef κρεατάδικου θαλάμου στη Φάρμα Μητσόπουλος' },
