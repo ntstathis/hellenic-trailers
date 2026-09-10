@@ -21,7 +21,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done |
 | Facebook | Claude posts via the Meta Graph API | 🔶 Page live («Hellenic Trailers-Lamberet Partner», 259 likes) and linked from the site; automatic posting still needs steps A + B |
 | Instagram | Claude posts via the Meta Graph API | 🔶 account created, Business, linked to the Page and linked from the site (`@hellenictrailers`, 2026-09-01); automatic posting now needs only steps A + B |
-| Newsletter | Claude creates + sends campaigns via the MailerLite connector | ✅ done — account, connector, group, 11 subscribers, domain authenticated (2026-09-08) and the **public signup page live at <https://hellenictrailers.subscribepage.io> (2026-09-09)**, wired into all 8 pages |
+| Newsletter | Claude creates + sends campaigns via the MailerLite connector | ✅ done and **proven end to end on 2026-09-10**: a real campaign reached Gmail, a Greek business domain and a corporate Microsoft 365 inbox, all three with Greek rendering correctly. Account, connector, group, domain authenticated (2026-09-08), signup page live at <https://hellenictrailers.subscribepage.io> (2026-09-09) and wired into all 8 pages |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
@@ -47,9 +47,51 @@ actually has to sit down and do it:
 | 7 | ~~**Formspree form id**~~ — ✅ **done 2026-09-09.** Form `xvkovyvd` sends to `info@hellenictrailers.gr`; the contact form now emails the enquiry instead of opening the visitor's own mail program. CAPTCHA was already off by default, so the one known trap did not apply | Iosif | done |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
 | 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
-| 10 | **MailerLite API key, so Claude can work the newsletter from a Claude Code session** (2026-09-09) — the owner wants Claude reading the list and drafting campaigns by theme. **Check first whether it is needed at all:** the claude.ai connector is already authorized, so in a claude.ai chat this works today with no token. It is only Claude Code sessions, like the one this was asked in, where the connector does not load. If it is wanted anyway: MailerLite → Integrations → API, read **and write** (a read-only key cannot draft a campaign), then `MAILERLITE_API_KEY` in the environment variables **and** `connect.mailerlite.com` in allowed domains — the key is useless without the domain. Needs a computer, and a fresh session afterwards. **The key goes into the environment dialog, never into a chat message or this repository** | Iosif | ~10 min |
+| 10 | **MailerLite API key, so Claude can work the newsletter from a Claude Code session** (2026-09-09) — the owner wants Claude reading the list and drafting campaigns by theme. **Check first whether it is needed at all:** the claude.ai connector is already authorized, so in a claude.ai chat this works today with no token. It is only Claude Code sessions, like the one this was asked in, where the connector does not load. If it is wanted anyway: MailerLite → Integrations → MailerLite API → Generate new token, then `MAILERLITE_API_KEY` in the environment variables **and** `connect.mailerlite.com` in allowed domains — the key is useless without the domain. Needs a computer, and a fresh session afterwards. **Correction (2026-09-10): MailerLite tokens have no scopes at all** — the earlier «read **and** write» instruction described a choice that does not exist. A token is full account access, bound to the user who created it, and the one issued on 2026-09-10 carried an expiry in the year 2126, so treat it as permanent. Create it from the company login, not a personal one. **The key goes into the environment dialog, never into a chat message or this repository** — see «Getting the key there without it sitting anywhere» below | Iosif | ~10 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
+
+### Getting the key there without it sitting anywhere
+
+Written after 2026-09-10, when a MailerLite token was pasted straight into a
+chat message. Nothing was lost — it never reached this repository, and it was
+deleted and never used — but it is worth writing down why the order of the
+steps matters, because the mistake is an easy one and the instruction above
+(«never into a chat message») plainly was not enough on its own.
+
+**Open the destination first, generate the key second.** The accident happens
+in the gap between having a key and having somewhere to put it: with nowhere
+ready, the key goes into whatever text box is open.
+
+1. On a **computer**, open <https://claude.ai/code>. The cloud icon above the
+   message box opens the environment list; hover a row and click its gear.
+   (The mobile app only displays the environment name — it cannot edit it.)
+2. Find the **Environment variables** field and leave the cursor in it.
+3. *Now*, in another tab, MailerLite → Integrations → MailerLite API →
+   Generate new token.
+4. Copy, switch back, and paste directly after `MAILERLITE_API_KEY=`. No
+   spaces, no quotes, no stop in between.
+5. Same dialog: **Network access → Custom → `connect.mailerlite.com`**, with
+   «include default list of common package managers» ticked.
+6. Save, then start a **new** session — a running one keeps the values it
+   started with.
+
+**No second copy is needed.** MailerLite will not show the token again, but a
+replacement takes thirty seconds, which is cheaper and safer than a copy lying
+around. If a copy is genuinely wanted, a password manager and nowhere else.
+
+**If a key is ever exposed, replace it rather than judging the risk.** Delete
+it in MailerLite and generate another; anything already sent stays sent, and
+nothing else breaks. In particular the claude.ai connector runs on OAuth, not
+on the key, so deleting a key never disturbs it.
+
+Two guards worth knowing about, because they will fire again. Claude Code's own
+classifier **refused to write the pasted token to disk**, which is why the key
+could not simply be used from that session — that refusal is the system working,
+not a fault to route around. And a Claude Code session holds no claude.ai
+connectors: **Dropbox and MailerLite are not readable from here**, only from a
+claude.ai chat. Anything a Claude Code session needs must arrive as an
+environment variable or an attached file.
 
 ## Asked for, not started
 
@@ -483,7 +525,11 @@ Status 2026-08-21: the account exists (stathis@stathis.com.gr), the Claude
 connector is authorized, the group `Hellenic Trailers Newsletter`
 (id `196439632318039915`) is created, and the owner is subscribed to it as a
 built-in QA recipient. The first contact import ran on 2026-08-23 (step 5), so
-the group now holds 11 subscribers. Steps 4 and 7 were finished on
+the group held 11 subscribers. **That number is no longer a safe marker**
+(noticed 2026-09-10): the personal address used to test the signup page on
+2026-09-09 was recorded here as deleted afterwards, but it is still in the
+list — a re-import found it as an existing subscriber, not a new one. Read the
+live count before using it to tell the company account from an empty one. Steps 4 and 7 were finished on
 2026-09-08 — the domain is authenticated and the sender works. **Remaining:
 step 3, the signup page.** ✅ **Done 2026-09-09 — nothing is left in step C.**
 
@@ -765,6 +811,44 @@ step 3, the signup page.** ✅ **Done 2026-09-09 — nothing is left in step C.*
    is worth having either way — the domain has none, so nothing reports
    spoofing of it. Adding records at Papaki does not disturb the Microsoft 365
    ones.
+
+### Sending a campaign: what the first real send taught us (2026-09-10)
+
+Proven on 2026-09-10 with a dry run to three addresses — Gmail, a Greek
+business domain and a corporate Microsoft 365 account — before anything went
+to the 466-contact list. Two faults surfaced that would have hit every
+recipient; both are fixed, and both are the kind that only a real send reveals.
+
+**Use a font with certain Greek coverage — Arial, Verdana, Tahoma or Georgia.**
+The account's brand styles default to **Montserrat**, and in corporate Outlook
+every Greek character arrived as an empty box while Latin text and digits were
+fine. Text failing *only* in Greek means the font lacks the glyphs, not that
+the encoding is broken. The setting is **Font family** in the editor's **Style
+panel** — the green icon in the left-hand strip, not the floating toolbar over
+the text, which restyles only what is selected.
+
+**Keep real text against the image.** A single large image with four lines of
+text reads to a filter as an advertisement, and Microsoft filed the first
+version as junk while Gmail did not. Tripling the body — paragraphs that answer
+why the reader should care, not padding — was part of the fix; a new sending
+domain explains the rest, and the batch ramp below is its remedy.
+
+**Send the dry run as a real campaign to a small group, not with «Send a
+test».** The test button skips part of the delivery path and would have shown
+neither fault. Keep a group of three or four addresses spanning Gmail, a
+corporate Microsoft 365 tenant and a Greek business domain: they filter by
+different rules, and the corporate one is where the biggest customers are.
+
+**Two things that need fixing by hand each time, until the brand style is
+corrected:** the button comes out red and needs `#0A234B`, and pasted text can
+carry stray colours that look like links.
+
+**Warm up a large list in batches.** Going from a handful of subscribers to
+hundreds in one day is the pattern spam filters look for, and what is at stake
+is `info@hellenictrailers.gr` itself — the address the contact form now
+delivers to. Ramp over several days (50, 100, 150, the rest), split so that
+each batch carries the same mix of mail providers as the whole list, and check
+between batches: **stop above 5% bounces or 0.3% spam complaints.**
 
 Fallback if the connector ever proves insufficient: create a MailerLite API key
 (Integrations → API), store it as env var `MAILERLITE_API_KEY`, and allow
