@@ -21,7 +21,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done |
 | Facebook | Claude posts via the Meta Graph API | 🔶 Page live («Hellenic Trailers-Lamberet Partner», 259 likes) and linked from the site; automatic posting still needs steps A + B |
 | Instagram | Claude posts via the Meta Graph API | 🔶 account created, Business, linked to the Page and linked from the site (`@hellenictrailers`, 2026-09-01); automatic posting now needs only steps A + B |
-| Newsletter | Claude creates + sends campaigns via the MailerLite connector | ✅ done — account, connector, group, 11 subscribers, domain authenticated (2026-09-08) and the **public signup page live at <https://hellenictrailers.subscribepage.io> (2026-09-09)**, wired into all 8 pages |
+| Newsletter | Claude creates + sends campaigns via the MailerLite connector | ✅ done and **proven end to end on 2026-09-10**: a real campaign reached Gmail, a Greek business domain and a corporate Microsoft 365 inbox, all three with Greek rendering correctly. Account, connector, group, domain authenticated (2026-09-08), signup page live at <https://hellenictrailers.subscribepage.io> (2026-09-09) and wired into all 8 pages |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
@@ -525,7 +525,11 @@ Status 2026-08-21: the account exists (stathis@stathis.com.gr), the Claude
 connector is authorized, the group `Hellenic Trailers Newsletter`
 (id `196439632318039915`) is created, and the owner is subscribed to it as a
 built-in QA recipient. The first contact import ran on 2026-08-23 (step 5), so
-the group now holds 11 subscribers. Steps 4 and 7 were finished on
+the group held 11 subscribers. **That number is no longer a safe marker**
+(noticed 2026-09-10): the personal address used to test the signup page on
+2026-09-09 was recorded here as deleted afterwards, but it is still in the
+list — a re-import found it as an existing subscriber, not a new one. Read the
+live count before using it to tell the company account from an empty one. Steps 4 and 7 were finished on
 2026-09-08 — the domain is authenticated and the sender works. **Remaining:
 step 3, the signup page.** ✅ **Done 2026-09-09 — nothing is left in step C.**
 
@@ -807,6 +811,44 @@ step 3, the signup page.** ✅ **Done 2026-09-09 — nothing is left in step C.*
    is worth having either way — the domain has none, so nothing reports
    spoofing of it. Adding records at Papaki does not disturb the Microsoft 365
    ones.
+
+### Sending a campaign: what the first real send taught us (2026-09-10)
+
+Proven on 2026-09-10 with a dry run to three addresses — Gmail, a Greek
+business domain and a corporate Microsoft 365 account — before anything went
+to the 466-contact list. Two faults surfaced that would have hit every
+recipient; both are fixed, and both are the kind that only a real send reveals.
+
+**Use a font with certain Greek coverage — Arial, Verdana, Tahoma or Georgia.**
+The account's brand styles default to **Montserrat**, and in corporate Outlook
+every Greek character arrived as an empty box while Latin text and digits were
+fine. Text failing *only* in Greek means the font lacks the glyphs, not that
+the encoding is broken. The setting is **Font family** in the editor's **Style
+panel** — the green icon in the left-hand strip, not the floating toolbar over
+the text, which restyles only what is selected.
+
+**Keep real text against the image.** A single large image with four lines of
+text reads to a filter as an advertisement, and Microsoft filed the first
+version as junk while Gmail did not. Tripling the body — paragraphs that answer
+why the reader should care, not padding — was part of the fix; a new sending
+domain explains the rest, and the batch ramp below is its remedy.
+
+**Send the dry run as a real campaign to a small group, not with «Send a
+test».** The test button skips part of the delivery path and would have shown
+neither fault. Keep a group of three or four addresses spanning Gmail, a
+corporate Microsoft 365 tenant and a Greek business domain: they filter by
+different rules, and the corporate one is where the biggest customers are.
+
+**Two things that need fixing by hand each time, until the brand style is
+corrected:** the button comes out red and needs `#0A234B`, and pasted text can
+carry stray colours that look like links.
+
+**Warm up a large list in batches.** Going from a handful of subscribers to
+hundreds in one day is the pattern spam filters look for, and what is at stake
+is `info@hellenictrailers.gr` itself — the address the contact form now
+delivers to. Ramp over several days (50, 100, 150, the rest), split so that
+each batch carries the same mix of mail providers as the whole list, and check
+between batches: **stop above 5% bounces or 0.3% spam complaints.**
 
 Fallback if the connector ever proves insufficient: create a MailerLite API key
 (Integrations → API), store it as env var `MAILERLITE_API_KEY`, and allow
