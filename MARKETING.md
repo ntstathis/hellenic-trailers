@@ -47,9 +47,51 @@ actually has to sit down and do it:
 | 7 | ~~**Formspree form id**~~ — ✅ **done 2026-09-09.** Form `xvkovyvd` sends to `info@hellenictrailers.gr`; the contact form now emails the enquiry instead of opening the visitor's own mail program. CAPTCHA was already off by default, so the one known trap did not apply | Iosif | done |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
 | 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page exists but is an unfinished stub of emoji placeholders, hidden from Google on purpose. Photos are the only thing blocking it | Iosif or Stathis | ~30 min |
-| 10 | **MailerLite API key, so Claude can work the newsletter from a Claude Code session** (2026-09-09) — the owner wants Claude reading the list and drafting campaigns by theme. **Check first whether it is needed at all:** the claude.ai connector is already authorized, so in a claude.ai chat this works today with no token. It is only Claude Code sessions, like the one this was asked in, where the connector does not load. If it is wanted anyway: MailerLite → Integrations → API, read **and write** (a read-only key cannot draft a campaign), then `MAILERLITE_API_KEY` in the environment variables **and** `connect.mailerlite.com` in allowed domains — the key is useless without the domain. Needs a computer, and a fresh session afterwards. **The key goes into the environment dialog, never into a chat message or this repository** | Iosif | ~10 min |
+| 10 | **MailerLite API key, so Claude can work the newsletter from a Claude Code session** (2026-09-09) — the owner wants Claude reading the list and drafting campaigns by theme. **Check first whether it is needed at all:** the claude.ai connector is already authorized, so in a claude.ai chat this works today with no token. It is only Claude Code sessions, like the one this was asked in, where the connector does not load. If it is wanted anyway: MailerLite → Integrations → MailerLite API → Generate new token, then `MAILERLITE_API_KEY` in the environment variables **and** `connect.mailerlite.com` in allowed domains — the key is useless without the domain. Needs a computer, and a fresh session afterwards. **Correction (2026-09-10): MailerLite tokens have no scopes at all** — the earlier «read **and** write» instruction described a choice that does not exist. A token is full account access, bound to the user who created it, and the one issued on 2026-09-10 carried an expiry in the year 2126, so treat it as permanent. Create it from the company login, not a personal one. **The key goes into the environment dialog, never into a chat message or this repository** — see «Getting the key there without it sitting anywhere» below | Iosif | ~10 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
+
+### Getting the key there without it sitting anywhere
+
+Written after 2026-09-10, when a MailerLite token was pasted straight into a
+chat message. Nothing was lost — it never reached this repository, and it was
+deleted and never used — but it is worth writing down why the order of the
+steps matters, because the mistake is an easy one and the instruction above
+(«never into a chat message») plainly was not enough on its own.
+
+**Open the destination first, generate the key second.** The accident happens
+in the gap between having a key and having somewhere to put it: with nowhere
+ready, the key goes into whatever text box is open.
+
+1. On a **computer**, open <https://claude.ai/code>. The cloud icon above the
+   message box opens the environment list; hover a row and click its gear.
+   (The mobile app only displays the environment name — it cannot edit it.)
+2. Find the **Environment variables** field and leave the cursor in it.
+3. *Now*, in another tab, MailerLite → Integrations → MailerLite API →
+   Generate new token.
+4. Copy, switch back, and paste directly after `MAILERLITE_API_KEY=`. No
+   spaces, no quotes, no stop in between.
+5. Same dialog: **Network access → Custom → `connect.mailerlite.com`**, with
+   «include default list of common package managers» ticked.
+6. Save, then start a **new** session — a running one keeps the values it
+   started with.
+
+**No second copy is needed.** MailerLite will not show the token again, but a
+replacement takes thirty seconds, which is cheaper and safer than a copy lying
+around. If a copy is genuinely wanted, a password manager and nowhere else.
+
+**If a key is ever exposed, replace it rather than judging the risk.** Delete
+it in MailerLite and generate another; anything already sent stays sent, and
+nothing else breaks. In particular the claude.ai connector runs on OAuth, not
+on the key, so deleting a key never disturbs it.
+
+Two guards worth knowing about, because they will fire again. Claude Code's own
+classifier **refused to write the pasted token to disk**, which is why the key
+could not simply be used from that session — that refusal is the system working,
+not a fault to route around. And a Claude Code session holds no claude.ai
+connectors: **Dropbox and MailerLite are not readable from here**, only from a
+claude.ai chat. Anything a Claude Code session needs must arrive as an
+environment variable or an attached file.
 
 ## Asked for, not started
 
