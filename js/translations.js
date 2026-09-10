@@ -122,7 +122,7 @@ const translations = {
   'news.1.text': { en: 'We are proud to announce our partnership with Lamberet as their official representative in Greece.', el: 'Είμαστε υπερήφανοι που ανακοινώνουμε τη συνεργασία μας με τη Lamberet ως επίσημος αντιπρόσωπος στην Ελλάδα.' },
 
   'news.5.date': { en: '2 October 2026', el: '2 Οκτωβρίου 2026' },
-  'news.5.title': { en: 'You are invited! Official presentation of Hellenic Trailers & Lamberet', el: 'Σας προσκαλούμε! Επίσημη παρουσίαση Hellenic Trailers & Lamberet' },
+  'news.5.title': { en: 'Official presentation of Hellenic Trailers & Lamberet', el: 'Επίσημη παρουσίαση Hellenic Trailers & Lamberet' },
   'news.5.text': { en: 'It is our great pleasure to invite you to the official presentation of Hellenic Trailers and to our new partnership with Lamberet, as its exclusive representative in Greece. Friday 2 October 2026, 17:00, at our facilities in Mandra — come and say hello!', el: 'Με μεγάλη μας χαρά σας προσκαλούμε στην επίσημη παρουσίαση της Hellenic Trailers και στη νέα μας συνεργασία με τη Lamberet, ως αποκλειστικοί αντιπρόσωποί της στην Ελλάδα. Παρασκευή 2 Οκτωβρίου 2026, 17:00, στις εγκαταστάσεις μας στη Μάνδρα — ελάτε να γνωριστούμε!' },
 
   'news.4.date': { en: 'May 2026', el: 'Μάιος 2026' },
