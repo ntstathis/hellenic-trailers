@@ -985,6 +985,11 @@ nav ul li a.active {
   font-size: 0.9rem;
 }
 
+/* Only the invitation card carries one, and it needs air under the text */
+.news-cta {
+  margin-top: 18px;
+}
+
 /* --- Contact --- */
 .contact-grid {
   display: grid;

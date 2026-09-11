@@ -333,6 +333,8 @@ const translations = {
   },
   'thanks.home': { en: 'Back to the home page', el: 'Επιστροφή στην Αρχική' },
 
+  'news.5.cta': { en: 'RSVP', el: 'Δηλώστε συμμετοχή' },
+
   // RSVP page (rsvp.html)
   'rsvp.banner.title': { en: 'RSVP', el: 'Δήλωση Συμμετοχής' },
   'rsvp.banner.text': {
