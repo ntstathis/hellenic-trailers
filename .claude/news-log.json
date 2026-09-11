@@ -1,4 +1,23 @@
 {
   "comment": "Publication log written by the /publish-news skill. One entry per news item: website, Facebook, Instagram and newsletter references, so later performance questions can be answered without hunting.",
-  "items": []
+  "items": [
+    {
+      "key": "news.5",
+      "date": "2026-09-10",
+      "event_date": "2026-10-02",
+      "title_el": "Επίσημη παρουσίαση Hellenic Trailers & Lamberet",
+      "title_en": "Official presentation of Hellenic Trailers & Lamberet",
+      "images": [
+        "images/invitation-2026-10-02-el.jpg",
+        "images/invitation-2026-10-02-en.jpg"
+      ],
+      "website": "https://hellenictrailers.gr/news.html",
+      "facebook": null,
+      "instagram": null,
+      "linkedin": null,
+      "google_business": null,
+      "newsletter_campaign": "«Πρόσκληση_Παρτίδα 1» στάλθηκε 2026-09-10 σε 87 παραλήπτες (50 από το ERP export + 37 από την αλληλογραφία του Outlook). Προηγήθηκαν δύο δοκιμαστικά σε group 3 διευθύνσεων. Εκκρεμούν οι παρτίδες 2-4 (100/150/166) και η υπενθύμιση σε όσους δεν άνοιξαν, γύρω στις 28-29 Σεπτεμβρίου.",
+      "note": "Δημοσιεύτηκε με το χέρι, όχι μέσω /publish-news: η πρόσκληση υπήρχε ως γραφικό πριν μπει το skill στη μέση, και το Facebook/Instagram περιμένουν ακόμα το Meta token. Τα πεδία των social μένουν null όσο δεν έχει αναρτηθεί τίποτα."
+    }
+  ]
 }
