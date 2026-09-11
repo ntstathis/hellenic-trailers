@@ -2,6 +2,22 @@
   "comment": "Publication log written by the /publish-news skill. One entry per news item: website, Facebook, Instagram and newsletter references, so later performance questions can be answered without hunting.",
   "items": [
     {
+      "key": "news.6",
+      "date": "2026-09-11",
+      "title_el": "Παράδοση μεταχειρισμένου Lamberet SR2",
+      "title_en": "Delivery of a pre-owned Lamberet SR2",
+      "images": [
+        "images/lamberet-sr2-used-delivery.jpg"
+      ],
+      "website": "https://hellenictrailers.gr/news.html",
+      "facebook": "δημοσιεύτηκε με το χέρι από τον ιδιοκτήτη, URL μη καταγεγραμμένο",
+      "instagram": "δημοσιεύτηκε με το χέρι από τον ιδιοκτήτη, URL μη καταγεγραμμένο",
+      "linkedin": "δημοσιεύτηκε με το χέρι από τον ιδιοκτήτη, URL μη καταγεγραμμένο",
+      "google_business": null,
+      "newsletter_campaign": null,
+      "note": "Δημοσιεύτηκε με το χέρι, όχι μέσω /publish-news: οι μεταβλητές META_PAGE_ACCESS_TOKEN, FB_PAGE_ID και IG_USER_ID δεν υπάρχουν σε αυτό το περιβάλλον και το graph.facebook.com δεν είναι στα επιτρεπόμενα domain, οπότε Facebook και Instagram ήταν τεχνικά αδύνατα από τη συνεδρία. Το κείμενο είναι του ιδιοκτήτη αυτούσιο και ίδιο στα τρία κανάλια και στη σελίδα Νέων. Ανέβηκαν οι δύο από τις τρεις φωτογραφίες: η τρίτη δείχνει τη σήμανση του προηγούμενου ιδιοκτήτη μέσα από τη βαφή και την πινακίδα του τράκτορα, και αφέθηκε έξω. Δεν στάλθηκε newsletter — το group «Hellenic Trailers Newsletter» είχε διαγραφεί από τον ιδιοκτήτη την ίδια ημέρα."
+    },
+    {
       "key": "news.5",
       "date": "2026-09-10",
       "event_date": "2026-10-02",
