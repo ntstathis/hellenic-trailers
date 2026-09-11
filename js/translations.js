@@ -341,21 +341,24 @@ const translations = {
     en: 'Official presentation of Hellenic Trailers & Lamberet',
     el: 'Επίσημη παρουσίαση Hellenic Trailers & Lamberet'
   },
-  'rsvp.event.title': { en: 'We look forward to seeing you in Mandra', el: 'Σας περιμένουμε στη Μάνδρα' },
+  'rsvp.event.title': { en: 'Come and meet us', el: 'Ελάτε να γνωριστούμε' },
   'rsvp.event.text': {
     en: 'An evening to meet our team and representatives of Lamberet, and to see up close the range we are bringing to the Greek market.',
     el: 'Μια βραδιά γνωριμίας με την ομάδα μας και με εκπροσώπους της Lamberet, με την ευκαιρία να δείτε από κοντά τη γκάμα που φέρνουμε στην ελληνική αγορά.'
   },
   'rsvp.event.when': { en: 'When', el: 'Πότε' },
   'rsvp.event.when.value': {
-    en: 'Friday 2 October 2026, 17:00',
-    el: 'Παρασκευή 2 Οκτωβρίου 2026, 17:00'
+    en: 'Friday 2 October 2026',
+    el: 'Παρασκευή 2 Οκτωβρίου 2026'
   },
+  'rsvp.event.when.time': { en: '17:00', el: '17:00' },
+  'rsvp.event.venue': { en: 'HELLENIC TRAILERS', el: 'HELLENIC TRAILERS' },
   'rsvp.event.where': { en: 'Where', el: 'Πού' },
   'rsvp.event.where.value': {
-    en: 'Kato Patima, Mandra 196 00, Attica',
-    el: 'Θέση Κάτω Πάτημα, Μάνδρα 196 00, Αττική'
+    en: 'Kato Patima, Mandra 196&nbsp;00, Attica',
+    el: 'Θέση Κάτω Πάτημα, Μάνδρα 196&nbsp;00, Αττική'
   },
+  'rsvp.event.directions': { en: 'Open in Google Maps', el: 'Άνοιγμα στους χάρτες' },
   'rsvp.form.title': { en: 'Confirm your attendance', el: 'Δηλώστε τη συμμετοχή σας' },
   'rsvp.form.firstname': { en: 'First name', el: 'Όνομα' },
   'rsvp.form.lastname': { en: 'Surname', el: 'Επώνυμο' },
@@ -840,8 +843,11 @@ function initRsvpForm() {
     const payload = new FormData();
     payload.set('Ονοματεπώνυμο', name);
     payload.set('Εταιρεία', val('company'));
-    payload.set('Email', val('email') || '-');
-    payload.set('Τηλέφωνο', val('phone') || '-');
+    // Not plain "Email": Formspree reads any field by that name as the address
+    // to reply to, and rejects the whole submission when it does not parse. A
+    // guest who leaves it blank would otherwise have their answer thrown away.
+    if (val('email')) payload.set('Email επικοινωνίας', val('email'));
+    if (val('phone')) payload.set('Τηλέφωνο επικοινωνίας', val('phone'));
     payload.set('_subject', 'Εκδήλωση 2/10 — Δήλωση συμμετοχής: ' + name + ' (' + val('company') + ')');
     // Lets the answer be replied to straight from the inbox, when it has an
     // address to reply to at all.
@@ -857,11 +863,17 @@ function initRsvpForm() {
       body: payload
     })
       .then(res => {
-        if (!res.ok) throw new Error('HTTP ' + res.status);
+        if (!res.ok) return res.text().then(body => { throw new Error('HTTP ' + res.status + ' — ' + body); });
         showConfirmation();
       })
       .catch(err => {
         setStatus('error', 'form.failure');
+        // ?debug=1 puts the form service's own answer on the screen, so a
+        // failure can be diagnosed without opening the browser console.
+        if (new URLSearchParams(window.location.search).get('debug') === '1') {
+          status.textContent = t('form.failure') + ' [' + err.message + ']';
+          status.removeAttribute('data-i18n');
+        }
         console.error('[hellenictrailers] RSVP submission failed:', err);
       })
       .finally(() => {

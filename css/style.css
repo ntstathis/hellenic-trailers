@@ -1201,7 +1201,9 @@ nav ul li a.active {
 
 /* --- RSVP (rsvp.html) --- */
 .rsvp-container {
-  max-width: 760px;
+  /* Wide enough that the date and the address each hold one line: measured at
+     274px and 359px, against 304px and 396px of column here. */
+  max-width: 860px;
 }
 
 .rsvp-event {
@@ -1224,8 +1226,10 @@ nav ul li a.active {
 
 .rsvp-facts {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  /* The address needs the wider half: the date fits on one line, the venue
+     name, street and postcode do not. */
+  grid-template-columns: 1fr 1.3fr;
+  gap: 20px 24px;
 }
 
 .rsvp-facts dt {
@@ -1238,8 +1242,19 @@ nav ul li a.active {
 }
 
 .rsvp-facts dd {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--primary);
+  line-height: 1.45;
+}
+
+/* Each part of a fact takes its own line, so nothing wraps by accident */
+.rsvp-facts dd > span {
+  display: block;
+}
+
+.rsvp-fact-sub {
+  font-weight: 500;
+  color: var(--text-medium);
 }
 
 .rsvp-form-title {
@@ -1251,6 +1266,29 @@ nav ul li a.active {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0 20px;
+}
+
+.rsvp-directions {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.rsvp-directions:hover {
+  border-bottom-color: var(--accent);
+}
+
+.rsvp-directions svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
 }
 
 .rsvp-optional {
