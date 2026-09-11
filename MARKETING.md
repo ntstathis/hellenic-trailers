@@ -1112,12 +1112,20 @@ Claude's — ask in a chat on this repository.
   comfortable: 336 people are being invited to the 2 October evening, and a
   normal response rate puts the answers in the same range as the monthly
   allowance — on top of the ordinary enquiries, which must not be the ones that
-  get dropped. A second free form would not buy headroom if the allowance is
-  counted per account rather than per form — check which it is in the dashboard
-  before assuming — so the likely answer is a paid month on Formspree around
-  the event, and that is the owner's call. Whatever is decided, watch the
-  month's submission count through late September; `rsvp.html` moves to another
-  endpoint by editing one `action` attribute.
+  get dropped.
+
+  ✅ **Resolved 2026-09-11: the owner took the €10 paid plan.** The numbers
+  that decided it, kept because the same arithmetic will come up again: the
+  free allowance is **50 submissions per account per month**, not per form,
+  and the dashboard showed **4 used with the counter resetting on 9 October**
+  — after the event, so the whole campaign and the evening itself fell inside
+  one cycle with 46 left. Against that, 392 invitations at the 46% open rate
+  the first batch actually achieved, and a fifth to a third of openers
+  answering, project **39 to 62 submissions**. It landed on the line, and the
+  cost of being wrong was not a lost RSVP but a lost request for a quote: both
+  forms share the endpoint, so the enquiries would have been refused silently
+  alongside the answers. Downgrade after 9 October if the traffic does not
+  justify keeping it.
 
   **Formspree keeps spam out of the Submissions list entirely, and this will
   waste an hour if it is not known.** During testing a submission reached the
