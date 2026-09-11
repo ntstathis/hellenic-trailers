@@ -124,6 +124,15 @@ const translations = {
   'news.5.date': { en: '2 October 2026', el: '2 Οκτωβρίου 2026' },
   'news.5.title': { en: 'Official presentation of Hellenic Trailers & Lamberet', el: 'Επίσημη παρουσίαση Hellenic Trailers & Lamberet' },
   'news.5.text': { en: 'It is our great pleasure to invite you to the official presentation of Hellenic Trailers and to our new partnership with Lamberet, as its exclusive representative in Greece. Friday 2 October 2026, 17:00, at our facilities in Mandra — come and say hello!', el: 'Με μεγάλη μας χαρά σας προσκαλούμε στην επίσημη παρουσίαση της Hellenic Trailers και στη νέα μας συνεργασία με τη Lamberet, ως αποκλειστικοί αντιπρόσωποί της στην Ελλάδα. Παρασκευή 2 Οκτωβρίου 2026, 17:00, στις εγκαταστάσεις μας στη Μάνδρα — ελάτε να γνωριστούμε!' },
+  'news.6.date':  { en: 'September 2026', el: 'Σεπτέμβριος 2026' },
+  'news.6.title': {
+    en: 'Delivery of a pre-owned Lamberet SR2',
+    el: 'Παράδοση μεταχειρισμένου Lamberet SR2'
+  },
+  'news.6.text': {
+    en: 'We delivered a pre-owned Lamberet SR2 refrigerated semi-trailer to one of our customers. It was inspected and prepared by Theologis Group and handed over ready to work from day one. A pre-owned Lamberet is no compromise: the insulation and the build keep their performance over time, and the cost becomes significantly more accessible.',
+    el: 'Παραδώσαμε μεταχειρισμένο ψυκτικό ημιρυμουλκούμενο Lamberet SR2 σε πελάτη μας. Ο έλεγχος και η προετοιμασία του έγιναν από την Theologis Group, και παραδόθηκε έτοιμο για δουλειά από την πρώτη μέρα. Ένα μεταχειρισμένο Lamberet δεν είναι συμβιβασμός: η μόνωση και η κατασκευή κρατούν τις επιδόσεις τους στον χρόνο, και το κόστος γίνεται σημαντικά πιο προσιτό.'
+  },
 
   'news.4.date': { en: 'May 2026', el: 'Μάιος 2026' },
   'news.4.title': { en: 'Super Beef Meat Chamber Delivery to Farma Mitsopoulos', el: 'Παράδοση Super Beef κρεατάδικου θαλάμου στη Φάρμα Μητσόπουλος' },
