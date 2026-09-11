@@ -376,8 +376,8 @@ const translations = {
   'rsvp.error.company': { en: 'Enter the company you represent', el: 'Συμπληρώστε την εταιρεία σας' },
   'rsvp.done.title': { en: 'See you on 2 October', el: 'Τα λέμε στις 2 Οκτωβρίου' },
   'rsvp.done.text': {
-    en: 'Your attendance is recorded. We will send you a reminder with directions a few days before the event.',
-    el: 'Η συμμετοχή σας καταγράφηκε. Λίγες ημέρες πριν την εκδήλωση θα σας στείλουμε υπενθύμιση με οδηγίες πρόσβασης.'
+    en: 'Your attendance is recorded.',
+    el: 'Η συμμετοχή σας καταγράφηκε.'
   },
 };
 
