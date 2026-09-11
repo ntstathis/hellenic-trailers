@@ -985,6 +985,11 @@ nav ul li a.active {
   font-size: 0.9rem;
 }
 
+/* Only the invitation card carries one, and it needs air under the text */
+.news-cta {
+  margin-top: 18px;
+}
+
 /* --- Contact --- */
 .contact-grid {
   display: grid;
@@ -1192,6 +1197,102 @@ nav ul li a.active {
 .btn[aria-busy="true"] {
   opacity: 0.7;
   pointer-events: none;
+}
+
+/* --- RSVP (rsvp.html) --- */
+.rsvp-container {
+  max-width: 760px;
+}
+
+.rsvp-event {
+  background: var(--light-bg);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin-bottom: 32px;
+}
+
+.rsvp-event h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.rsvp-event p {
+  color: var(--text-medium);
+  margin-bottom: 20px;
+}
+
+.rsvp-facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.rsvp-facts dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 2px;
+}
+
+.rsvp-facts dd {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.rsvp-form-title {
+  font-size: 1.3rem;
+  margin-bottom: 24px;
+}
+
+.rsvp-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+}
+
+.rsvp-optional {
+  font-weight: 400;
+  color: var(--text-light);
+}
+
+.rsvp-privacy {
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Replaces the form once the answer is recorded */
+.rsvp-done {
+  text-align: center;
+  padding: 16px 0 8px;
+}
+
+.rsvp-done-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f2fbf5;
+  color: var(--success);
+}
+
+.rsvp-done-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.rsvp-done h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.rsvp-done p {
+  color: var(--text-medium);
+  margin-bottom: 24px;
 }
 
 .contact-info-card {
@@ -1719,6 +1820,15 @@ footer h4 {
 
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .rsvp-row,
+  .rsvp-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .rsvp-event {
+    padding: 24px;
   }
 
   .footer-grid {

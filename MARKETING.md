@@ -1107,6 +1107,18 @@ Claude's — ask in a chat on this repository.
   this site, but it is the first thing to check if enquiries ever stop
   arriving.
 
+  **Since 2026-09-11 the same form also takes the event RSVPs**, because
+  `rsvp.html` posts to the same endpoint (`xvkovyvd`). That cap is no longer
+  comfortable: 336 people are being invited to the 2 October evening, and a
+  normal response rate puts the answers in the same range as the monthly
+  allowance — on top of the ordinary enquiries, which must not be the ones that
+  get dropped. A second free form would not buy headroom if the allowance is
+  counted per account rather than per form — check which it is in the dashboard
+  before assuming — so the likely answer is a paid month on Formspree around
+  the event, and that is the owner's call. Whatever is decided, watch the
+  month's submission count through late September; `rsvp.html` moves to another
+  endpoint by editing one `action` attribute.
+
   **Formspree keeps spam out of the Submissions list entirely, and this will
   waste an hour if it is not known.** During testing a submission reached the
   confirmation page — which only happens when Formspree answers 200 — and then
