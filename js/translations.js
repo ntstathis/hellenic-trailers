@@ -356,10 +356,7 @@ const translations = {
     en: 'Kato Patima, Mandra 196 00, Attica',
     el: 'Θέση Κάτω Πάτημα, Μάνδρα 196 00, Αττική'
   },
-  'rsvp.form.title': { en: 'Will you be joining us?', el: 'Θα είστε μαζί μας;' },
-  'rsvp.form.attending': { en: 'Your answer', el: 'Η απάντησή σας' },
-  'rsvp.form.yes': { en: 'Yes, I will attend', el: 'Ναι, θα παρευρεθώ' },
-  'rsvp.form.no': { en: 'Unfortunately I cannot', el: 'Δυστυχώς δεν θα μπορέσω' },
+  'rsvp.form.title': { en: 'Confirm your attendance', el: 'Δηλώστε τη συμμετοχή σας' },
   'rsvp.form.firstname': { en: 'First name', el: 'Όνομα' },
   'rsvp.form.lastname': { en: 'Surname', el: 'Επώνυμο' },
   'rsvp.form.company': { en: 'Company', el: 'Εταιρεία' },
@@ -371,19 +368,13 @@ const translations = {
     en: 'Your details are used only to organise the event and are never shared with third parties.',
     el: 'Τα στοιχεία σας χρησιμοποιούνται μόνο για την οργάνωση της εκδήλωσης και δεν κοινοποιούνται σε τρίτους.'
   },
-  'rsvp.error.attending': { en: 'Please tell us whether you will attend', el: 'Επιλέξτε αν θα παρευρεθείτε' },
   'rsvp.error.firstname': { en: 'Enter your first name', el: 'Συμπληρώστε το όνομά σας' },
   'rsvp.error.lastname': { en: 'Enter your surname', el: 'Συμπληρώστε το επώνυμό σας' },
   'rsvp.error.company': { en: 'Enter the company you represent', el: 'Συμπληρώστε την εταιρεία σας' },
-  'rsvp.done.yes.title': { en: 'See you on 2 October', el: 'Τα λέμε στις 2 Οκτωβρίου' },
-  'rsvp.done.yes.text': {
+  'rsvp.done.title': { en: 'See you on 2 October', el: 'Τα λέμε στις 2 Οκτωβρίου' },
+  'rsvp.done.text': {
     en: 'Your attendance is recorded. We will send you a reminder with directions a few days before the event.',
     el: 'Η συμμετοχή σας καταγράφηκε. Λίγες ημέρες πριν την εκδήλωση θα σας στείλουμε υπενθύμιση με οδηγίες πρόσβασης.'
-  },
-  'rsvp.done.no.title': { en: 'Thank you for letting us know', el: 'Ευχαριστούμε που μας ενημερώσατε' },
-  'rsvp.done.no.text': {
-    en: 'We are sorry to miss you. We will be in touch so that you can see the Lamberet range at another time.',
-    el: 'Κρίμα που δεν θα τα πούμε. Θα επικοινωνήσουμε μαζί σας ώστε να δείτε τη γκάμα Lamberet σε άλλη στιγμή.'
   },
 };
 
@@ -736,18 +727,12 @@ function initContactForm() {
 // ============================================
 
 const RSVP_VALIDATORS = {
-  attending: v => v !== '' || 'rsvp.error.attending',
   firstName: v => v.trim().length >= 2 || 'rsvp.error.firstname',
   lastName: v => v.trim().length >= 2 || 'rsvp.error.lastname',
   company: v => v.trim().length >= 2 || 'rsvp.error.company',
   email: v => v.trim() === '' || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'form.error.email',
   phone: v => v.trim() === '' || /^[+\d][\d\s()\-.]{5,}$/.test(v.trim()) || 'form.error.phone'
 };
-
-// The invitation goes out in Greek and every answer is read from one Greek
-// inbox, so what Formspree emails is Greek whichever language the visitor has
-// the page in. Translating it would only make the replies unsortable.
-const RSVP_ANSWER_EL = { yes: 'ΝΑΙ, θα παρευρεθεί', no: 'ΟΧΙ, δεν θα παρευρεθεί' };
 
 function initRsvpForm() {
   const form = document.getElementById('rsvpForm');
@@ -760,18 +745,7 @@ function initRsvpForm() {
   const submitBtn = form.querySelector('button[type="submit"]');
 
   const fieldOf = (name) => form.querySelector('[name="' + name + '"]');
-
-  // A radio group answers through whichever button is checked, not through the
-  // value of the first one, which is what fieldOf would otherwise hand back.
-  const valueOf = (name) => {
-    const fields = form.querySelectorAll('[name="' + name + '"]');
-    if (!fields.length) return '';
-    if (fields[0].type === 'radio') {
-      const checked = Array.from(fields).find(f => f.checked);
-      return checked ? checked.value : '';
-    }
-    return fields[0].value;
-  };
+  const val = (name) => { const f = fieldOf(name); return f ? f.value.trim() : ''; };
 
   appendSpamTrap(form);
 
@@ -785,7 +759,7 @@ function initRsvpForm() {
   function validateField(name) {
     const field = fieldOf(name);
     if (!field) return true;
-    const result = RSVP_VALIDATORS[name](valueOf(name));
+    const result = RSVP_VALIDATORS[name](field.value);
     if (result === true) {
       clearFieldError(field);
       return true;
@@ -794,17 +768,13 @@ function initRsvpForm() {
     return false;
   }
 
+  // Validate on blur — not on every keystroke, which fights the user mid-entry
   Object.keys(RSVP_VALIDATORS).forEach(name => {
-    const fields = form.querySelectorAll('[name="' + name + '"]');
-    fields.forEach(field => {
-      if (field.type === 'radio') {
-        field.addEventListener('change', () => validateField(name));
-        return;
-      }
-      field.addEventListener('blur', () => validateField(name));
-      field.addEventListener('input', () => {
-        if (field.closest('.form-group').classList.contains('has-error')) validateField(name);
-      });
+    const field = fieldOf(name);
+    if (!field) return;
+    field.addEventListener('blur', () => validateField(name));
+    field.addEventListener('input', () => {
+      if (field.closest('.form-group').classList.contains('has-error')) validateField(name);
     });
   });
 
@@ -815,21 +785,13 @@ function initRsvpForm() {
     status.textContent = t(msgKey);
   }
 
-  // Swap the form for the confirmation. The keys are stamped on the elements so
-  // that switching language afterwards re-translates what is already on screen.
-  function showConfirmation(answer) {
+  // Swap the form for the confirmation, which carries its own data-i18n keys
+  // and so follows a language switch afterwards without any help from here.
+  function showConfirmation() {
     if (!done) {
       setStatus('success', 'form.success');
       return;
     }
-    const suffix = answer === 'yes' ? 'yes' : 'no';
-    [['rsvpDoneTitle', 'rsvp.done.' + suffix + '.title'],
-     ['rsvpDoneText', 'rsvp.done.' + suffix + '.text']].forEach(([id, key]) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.setAttribute('data-i18n', key);
-      el.textContent = t(key);
-    });
     form.hidden = true;
     done.hidden = false;
     done.scrollIntoView({ block: 'center' });
@@ -843,7 +805,7 @@ function initRsvpForm() {
     // being caught teaches them nothing.
     const honeypot = fieldOf('_gotcha');
     if (honeypot && honeypot.value !== '') {
-      showConfirmation(valueOf('attending'));
+      showConfirmation();
       return;
     }
 
@@ -870,18 +832,17 @@ function initRsvpForm() {
 
     if (summary) summary.classList.remove('visible');
 
-    const answer = valueOf('attending');
-    const val = (n) => valueOf(n).trim();
     const name = (val('firstName') + ' ' + val('lastName')).trim();
 
+    // The invitation goes out in Greek and every answer is read from one Greek
+    // inbox, so what Formspree emails is Greek whichever language the visitor
+    // has the page in. Translating it would only make the replies unsortable.
     const payload = new FormData();
-    payload.set('Συμμετοχή', RSVP_ANSWER_EL[answer] || answer);
     payload.set('Ονοματεπώνυμο', name);
     payload.set('Εταιρεία', val('company'));
     payload.set('Email', val('email') || '-');
     payload.set('Τηλέφωνο', val('phone') || '-');
-    payload.set('_subject', 'Εκδήλωση 2/10 — ' + (RSVP_ANSWER_EL[answer] || answer)
-      + ': ' + name + ' (' + val('company') + ')');
+    payload.set('_subject', 'Εκδήλωση 2/10 — Δήλωση συμμετοχής: ' + name + ' (' + val('company') + ')');
     // Lets the answer be replied to straight from the inbox, when it has an
     // address to reply to at all.
     if (val('email')) payload.set('_replyto', val('email'));
@@ -897,7 +858,7 @@ function initRsvpForm() {
     })
       .then(res => {
         if (!res.ok) throw new Error('HTTP ' + res.status);
-        showConfirmation(answer);
+        showConfirmation();
       })
       .catch(err => {
         setStatus('error', 'form.failure');
