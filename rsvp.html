@@ -3,17 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>News - Hellenic Trailers</title>
-  <meta name="description" content="Νέα και παραδόσεις από τη Hellenic Trailers, τον επίσημο αντιπρόσωπο Lamberet στην Ελλάδα.">
-  <link rel="canonical" href="https://hellenictrailers.gr/news.html">
+  <title>Δήλωση Συμμετοχής - Hellenic Trailers</title>
+  <meta name="description" content="Δηλώστε συμμετοχή στην επίσημη παρουσίαση της Hellenic Trailers και της Lamberet, Παρασκευή 2 Οκτωβρίου 2026, στις εγκαταστάσεις μας στη Μάνδρα Αττικής.">
+  <!-- An invitation for a named guest list, not a page for search results. -->
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://hellenictrailers.gr/rsvp.html">
   <link rel="icon" href="images/favicon.svg?v=24" type="image/svg+xml">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Hellenic Trailers">
   <meta property="og:locale" content="el_GR">
   <meta property="og:locale:alternate" content="en_GB">
-  <meta property="og:title" content="News - Hellenic Trailers">
-  <meta property="og:description" content="Νέα και παραδόσεις από τη Hellenic Trailers, τον επίσημο αντιπρόσωπο Lamberet στην Ελλάδα.">
-  <meta property="og:url" content="https://hellenictrailers.gr/news.html">
+  <meta property="og:title" content="Δήλωση Συμμετοχής - Hellenic Trailers">
+  <meta property="og:description" content="Παρασκευή 2 Οκτωβρίου 2026, 17:00 — Θέση Κάτω Πάτημα, Μάνδρα Αττικής.">
+  <meta property="og:url" content="https://hellenictrailers.gr/rsvp.html">
   <meta property="og:image" content="https://hellenictrailers.gr/images/mitsopoulos-super-beef.jpeg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,7 +56,7 @@
           <li><a href="about.html" data-i18n="nav.about">Η Εταιρεία</a></li>
           <li><a href="products.html" data-i18n="nav.products">Προϊόντα</a></li>
           <li><a href="services.html" data-i18n="nav.services">Υπηρεσίες</a></li>
-          <li><a href="news.html" class="active" aria-current="page" data-i18n="nav.news">Νέα</a></li>
+          <li><a href="news.html" data-i18n="nav.news">Νέα</a></li>
           <li><a href="contact.html" data-i18n="nav.contact">Επικοινωνία</a></li>
         </ul>
       </nav>
@@ -69,64 +71,124 @@
       <div class="breadcrumb">
         <a href="/" data-i18n="breadcrumb.home">Αρχική</a>
         <span>/</span>
-        <span data-i18n="nav.news">Νέα</span>
+        <span data-i18n="rsvp.banner.title">Δήλωση Συμμετοχής</span>
       </div>
-      <h1 data-i18n="news.banner.title">Νέα</h1>
-      <p data-i18n="news.banner.text">Τελευταίες ενημερώσεις από την Hellenic Trailers</p>
+      <h1 data-i18n="rsvp.banner.title">Δήλωση Συμμετοχής</h1>
+      <p data-i18n="rsvp.banner.text">Επίσημη παρουσίαση Hellenic Trailers &amp; Lamberet</p>
     </div>
   </section>
 
-  <!-- News -->
   <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2 data-i18n="news.title">Τελευταία Νέα</h2>
-        <p data-i18n="news.subtitle">Μείνετε ενημερωμένοι με τα τελευταία νέα</p>
+    <div class="container rsvp-container">
+
+      <!-- The invitation arrived by email; this repeats the essentials so the
+           page stands on its own when it is forwarded or reopened later. -->
+      <div class="rsvp-event">
+        <h2 data-i18n="rsvp.event.title">Σας περιμένουμε στη Μάνδρα</h2>
+        <p data-i18n="rsvp.event.text">Μια βραδιά γνωριμίας με την ομάδα μας και με εκπροσώπους της Lamberet, με την ευκαιρία να δείτε από κοντά τη γκάμα που φέρνουμε στην ελληνική αγορά.</p>
+        <dl class="rsvp-facts">
+          <div>
+            <dt data-i18n="rsvp.event.when">Πότε</dt>
+            <dd data-i18n="rsvp.event.when.value">Παρασκευή 2 Οκτωβρίου 2026, 17:00</dd>
+          </div>
+          <div>
+            <dt data-i18n="rsvp.event.where">Πού</dt>
+            <dd data-i18n="rsvp.event.where.value">Θέση Κάτω Πάτημα, Μάνδρα 196 00, Αττική</dd>
+          </div>
+        </dl>
       </div>
-      <div class="news-grid">
-        <div class="news-card">
-          <div class="news-image">
-            <div class="news-gallery">
-              <img src="images/mitsopoulos-super-beef.jpeg" alt="Παράδοση Super Beef θαλάμου στη Φάρμα Μητσόπουλος" loading="lazy" decoding="async" width="2000" height="1500">
-              <img src="images/mitsopoulos-super-beef-interior.jpeg" alt="Εσωτερικό Super Beef κρεατάδικου θαλάμου" loading="lazy" decoding="async" width="1500" height="2000">
+
+      <div class="contact-form rsvp-form">
+
+        <!-- Shown in place of the form once the answer is in. -->
+        <div class="rsvp-done" id="rsvpDone" hidden>
+          <div class="rsvp-done-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <h2 id="rsvpDoneTitle">Ευχαριστούμε</h2>
+          <p id="rsvpDoneText"></p>
+          <a class="btn btn-outline" href="/" data-i18n="thanks.home">Επιστροφή στην Αρχική</a>
+        </div>
+
+        <form id="rsvpForm"
+              action="https://formspree.io/f/xvkovyvd"
+              method="POST"
+              novalidate
+              data-fallback-email="info@hellenictrailers.gr"
+              data-fallback-phone="+30 210 3471032">
+
+          <!-- Only reached with JavaScript off, when the browser POSTs natively
+               and Formspree redirects instead of this page showing its own
+               confirmation. -->
+          <input type="hidden" name="_next" value="https://hellenictrailers.gr/thank-you.html">
+
+          <h2 class="rsvp-form-title" data-i18n="rsvp.form.title">Θα είστε μαζί μας;</h2>
+
+          <div class="form-status" role="status" aria-live="polite"></div>
+
+          <div class="error-summary" role="alert" tabindex="-1" aria-labelledby="rsvp-error-title">
+            <h3 id="rsvp-error-title" data-i18n="form.error.title">Υπάρχει κάποιο πρόβλημα</h3>
+            <ul></ul>
+          </div>
+
+          <!-- The spam trap is appended by js/translations.js after load, out of
+               reach of browser autofill. Same reasoning as the contact form. -->
+
+          <fieldset class="form-group rsvp-choice">
+            <legend><span data-i18n="rsvp.form.attending">Η απάντησή σας</span><span class="required-mark" aria-hidden="true">*</span></legend>
+            <div class="rsvp-options">
+              <label class="rsvp-option">
+                <input type="radio" id="rsvp-yes" name="attending" value="yes" required aria-describedby="rsvp-attending-error">
+                <span data-i18n="rsvp.form.yes">Ναι, θα παρευρεθώ</span>
+              </label>
+              <label class="rsvp-option">
+                <input type="radio" id="rsvp-no" name="attending" value="no" aria-describedby="rsvp-attending-error">
+                <span data-i18n="rsvp.form.no">Δυστυχώς δεν θα μπορέσω</span>
+              </label>
+            </div>
+            <p class="field-error" id="rsvp-attending-error"></p>
+          </fieldset>
+
+          <div class="rsvp-row">
+            <div class="form-group">
+              <label for="rsvp-firstname"><span data-i18n="rsvp.form.firstname">Όνομα</span><span class="required-mark" aria-hidden="true">*</span></label>
+              <input type="text" id="rsvp-firstname" name="firstName" autocomplete="given-name" required aria-describedby="rsvp-firstname-error">
+              <p class="field-error" id="rsvp-firstname-error"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="rsvp-lastname"><span data-i18n="rsvp.form.lastname">Επώνυμο</span><span class="required-mark" aria-hidden="true">*</span></label>
+              <input type="text" id="rsvp-lastname" name="lastName" autocomplete="family-name" required aria-describedby="rsvp-lastname-error">
+              <p class="field-error" id="rsvp-lastname-error"></p>
             </div>
           </div>
-          <div class="news-content">
-            <div class="news-date" data-i18n="news.4.date">Μάιος 2026</div>
-            <h3 data-i18n="news.4.title">Παράδοση Super Beef κρεατάδικου θαλάμου στη Φάρμα Μητσόπουλος</h3>
-            <p data-i18n="news.4.text">Με επιτυχία ολοκληρώθηκε η παράδοση ενός ημιρυμουλκούμενου Lamberet SR2 Super Beef στη Φάρμα Μητσόπουλος. Ο θάλαμος είναι ειδικά σχεδιασμένος για τη μεταφορά κρεμαστών κρεάτων με ενισχυμένη δομή οροφής και βελτιστοποιημένη εσωτερική διαμόρφωση.</p>
-          </div>
-        </div>
-        <div class="news-card">
-          <div class="news-image">&#x1F389;</div>
-          <div class="news-content">
-            <div class="news-date" data-i18n="news.1.date">Μάρτιος 2026</div>
-            <h3 data-i18n="news.1.title">Η Hellenic Trailers ξεκινά ως Lamberet Greece</h3>
-            <p data-i18n="news.1.text">Είμαστε υπερήφανοι που ανακοινώνουμε τη συνεργασία μας με τη Lamberet ως επίσημος αντιπρόσωπος στην Ελλάδα.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <h2 data-i18n="newsletter.title">Εγγραφείτε στο Ενημερωτικό μας Δελτίο</h2>
-        <p data-i18n="newsletter.text">Λαμβάνετε τα νέα και τις παραδόσεις μας με email. Μπορείτε να απεγγραφείτε ανά πάσα στιγμή.</p>
-      </div>
-      <p class="newsletter-cta">
-        <a href="https://hellenictrailers.subscribepage.io" target="_blank" rel="noopener" class="btn btn-primary" data-i18n="newsletter.button">Εγγραφή</a>
-      </p>
-    </div>
-  </section>
+          <div class="form-group">
+            <label for="rsvp-company"><span data-i18n="rsvp.form.company">Εταιρεία</span><span class="required-mark" aria-hidden="true">*</span></label>
+            <input type="text" id="rsvp-company" name="company" autocomplete="organization" required aria-describedby="rsvp-company-error">
+            <p class="field-error" id="rsvp-company-error"></p>
+          </div>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="container">
-      <h2 data-i18n="cta.title">Έτοιμοι να Αναβαθμίσετε τον Στόλο σας;</h2>
-      <p data-i18n="cta.text">Επικοινωνήστε μαζί μας σήμερα για εξατομικευμένη προσφορά.</p>
-      <a href="contact.html" class="btn btn-primary" data-i18n="cta.button">Ζητήστε Προσφορά</a>
+          <div class="rsvp-row">
+            <div class="form-group">
+              <label for="rsvp-email"><span data-i18n="rsvp.form.email">Email</span> <span class="rsvp-optional" data-i18n="rsvp.form.optional">(προαιρετικό)</span></label>
+              <input type="email" id="rsvp-email" name="email" autocomplete="email" aria-describedby="rsvp-email-error">
+              <p class="field-error" id="rsvp-email-error"></p>
+            </div>
+
+            <div class="form-group">
+              <label for="rsvp-phone"><span data-i18n="rsvp.form.phone">Τηλέφωνο</span> <span class="rsvp-optional" data-i18n="rsvp.form.optional">(προαιρετικό)</span></label>
+              <input type="tel" id="rsvp-phone" name="phone" autocomplete="tel" aria-describedby="rsvp-phone-error">
+              <p class="field-error" id="rsvp-phone-error"></p>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;" data-i18n="rsvp.form.submit">Αποστολή απάντησης</button>
+
+          <p class="hint rsvp-privacy" data-i18n="rsvp.form.privacy">Τα στοιχεία σας χρησιμοποιούνται μόνο για την οργάνωση της εκδήλωσης και δεν κοινοποιούνται σε τρίτους.</p>
+        </form>
+      </div>
+
     </div>
   </section>
 

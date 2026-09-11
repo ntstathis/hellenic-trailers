@@ -1194,6 +1194,167 @@ nav ul li a.active {
   pointer-events: none;
 }
 
+/* --- RSVP (rsvp.html) --- */
+.rsvp-container {
+  max-width: 760px;
+}
+
+.rsvp-event {
+  background: var(--light-bg);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin-bottom: 32px;
+}
+
+.rsvp-event h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.rsvp-event p {
+  color: var(--text-medium);
+  margin-bottom: 20px;
+}
+
+.rsvp-facts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.rsvp-facts dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 2px;
+}
+
+.rsvp-facts dd {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.rsvp-form-title {
+  font-size: 1.3rem;
+  margin-bottom: 24px;
+}
+
+.rsvp-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+}
+
+/* A fieldset carries the group label for the two radios; it must not pick up
+   the browser's default border or the .form-group input sizing below it. */
+.rsvp-choice {
+  border: 0;
+  padding: 0;
+  margin-bottom: 24px;
+}
+
+.rsvp-choice legend {
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+
+.rsvp-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* The whole card is the label, so the target is a card rather than a dot */
+.rsvp-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 0;
+  padding: 16px;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.rsvp-option:hover {
+  border-color: var(--primary-light);
+}
+
+.rsvp-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  padding: 0;
+  border: 0;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.rsvp-option:has(input:checked) {
+  border-color: var(--primary);
+  background: #f2f6fb;
+}
+
+.rsvp-option:has(input:focus-visible) {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+.rsvp-choice.has-error .rsvp-option {
+  border-color: var(--error);
+}
+
+.rsvp-optional {
+  font-weight: 400;
+  color: var(--text-light);
+}
+
+.rsvp-privacy {
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Replaces the form once the answer is recorded */
+.rsvp-done {
+  text-align: center;
+  padding: 16px 0 8px;
+}
+
+.rsvp-done-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f2fbf5;
+  color: var(--success);
+}
+
+.rsvp-done-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.rsvp-done h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.rsvp-done p {
+  color: var(--text-medium);
+  margin-bottom: 24px;
+}
+
 .contact-info-card {
   display: flex;
   gap: 16px;
@@ -1719,6 +1880,16 @@ footer h4 {
 
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .rsvp-row,
+  .rsvp-options,
+  .rsvp-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .rsvp-event {
+    padding: 24px;
   }
 
   .footer-grid {
