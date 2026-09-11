@@ -1253,6 +1253,29 @@ nav ul li a.active {
   gap: 0 20px;
 }
 
+.rsvp-directions {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.rsvp-directions:hover {
+  border-bottom-color: var(--accent);
+}
+
+.rsvp-directions svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
 .rsvp-optional {
   font-weight: 400;
   color: var(--text-light);
