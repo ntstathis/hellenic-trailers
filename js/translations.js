@@ -348,13 +348,15 @@ const translations = {
   },
   'rsvp.event.when': { en: 'When', el: 'Πότε' },
   'rsvp.event.when.value': {
-    en: 'Friday 2 October 2026, 17:00',
-    el: 'Παρασκευή 2 Οκτωβρίου 2026, 17:00'
+    en: 'Friday 2 October 2026',
+    el: 'Παρασκευή 2 Οκτωβρίου 2026'
   },
+  'rsvp.event.when.time': { en: '17:00', el: '17:00' },
+  'rsvp.event.venue': { en: 'HELLENIC TRAILERS', el: 'HELLENIC TRAILERS' },
   'rsvp.event.where': { en: 'Where', el: 'Πού' },
   'rsvp.event.where.value': {
-    en: 'Kato Patima, Mandra 196 00, Attica',
-    el: 'Θέση Κάτω Πάτημα, Μάνδρα 196 00, Αττική'
+    en: 'Kato Patima, Mandra 196&nbsp;00, Attica',
+    el: 'Θέση Κάτω Πάτημα, Μάνδρα 196&nbsp;00, Αττική'
   },
   'rsvp.event.directions': { en: 'Open in Google Maps', el: 'Άνοιγμα στους χάρτες' },
   'rsvp.form.title': { en: 'Confirm your attendance', el: 'Δηλώστε τη συμμετοχή σας' },
