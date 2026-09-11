@@ -130,8 +130,8 @@ const translations = {
     el: 'Παράδοση μεταχειρισμένου Lamberet SR2'
   },
   'news.6.text': {
-    en: 'We delivered a pre-owned Lamberet SR2 refrigerated semi-trailer to one of our customers. It was inspected and prepared by Theologis Group and handed over ready to work from day one. A pre-owned Lamberet is no compromise: the insulation and the build keep their performance over time, and the cost becomes significantly more accessible.',
-    el: 'Παραδώσαμε μεταχειρισμένο ψυκτικό ημιρυμουλκούμενο Lamberet SR2 σε πελάτη μας. Ο έλεγχος και η προετοιμασία του έγιναν από την Theologis Group, και παραδόθηκε έτοιμο για δουλειά από την πρώτη μέρα. Ένα μεταχειρισμένο Lamberet δεν είναι συμβιβασμός: η μόνωση και η κατασκευή κρατούν τις επιδόσεις τους στον χρόνο, και το κόστος γίνεται σημαντικά πιο προσιτό.'
+    en: 'Delivery of a pre-owned Lamberet SR2 refrigerated semi-trailer to one of our customers.\n\nIt was inspected and prepared by Theologis Group, ready to work from day one!\n\nA pre-owned Lamberet is no compromise: the insulation and the build keep their performance over time, and the cost becomes significantly more accessible.\n\nSafe travels!',
+    el: 'Παράδοση μεταχειρισμένου ψυκτικού ημιρυμουλκούμενου Lamberet SR2 σε πελάτη μας.\n\nΟ έλεγχος και η προετοιμασία του έγιναν από την Theologis Group, έτοιμο για δουλειά από την πρώτη μέρα!\n\nΈνα μεταχειρισμένο Lamberet δεν είναι συμβιβασμός: η μόνωση και η κατασκευή κρατούν τις επιδόσεις τους στον χρόνο, και το κόστος γίνεται σημαντικά πιο προσιτό.\n\nΚαλά χιλιόμετρα!'
   },
 
   'news.4.date': { en: 'May 2026', el: 'Μάιος 2026' },
