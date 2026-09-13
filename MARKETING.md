@@ -521,6 +521,28 @@ a free tier of 1,000 subscribers / 12,000 emails per month, campaign statistics
 Claude can read back for analysis, and it handles the EU-required consent,
 double opt-in and unsubscribe automatically.
 
+**That free tier no longer exists (noticed 2026-09-13).** MailerLite cut the
+free plan on 2026-07-01 to **250 active subscribers and 2,500 emails a month**,
+and raised the paid tiers. The list passed 250 with the September imports (476
+active on 2026-09-13), so the paid plan Iosif took was **required, not
+optional** — the account cannot send at all above the free cap. The choice
+after the 2 October event is therefore between paying MailerLite (roughly
+€12–20 a month at this list size; read the Billing page, the figures here are
+from third-party reviews) and moving the list to a provider whose free tier
+still covers it. Candidates checked on 2026-09-13, all with branding on the
+free plan and all allowing custom-domain DKIM: **Sender.net** (2,500
+subscribers, 15,000 emails a month), **EmailOctopus** (2,500 / 10,000),
+**Brevo** (unlimited contacts, 300 emails a day, so a 500-person send takes
+two days). **Mailchimp is not a candidate**: its free plan is 250 contacts and
+500 sends a month. What a move costs: the Claude connector (Sender and
+EmailOctopus have no native one — Claude would draft, Iosif would paste, or an
+API key goes into the environment variables and the domain into the network
+allow-list), a second domain authentication at Papaki (new DKIM CNAME, and the
+SPF merged again — never a second `v=spf1` record), a new signup page URL in
+the footer of all 8 pages and `news.html`, and a fresh import that the new
+provider will review — clean the bounces out first. Do it after 9 October if
+at all, never mid-campaign.
+
 Status 2026-08-21: the account exists (stathis@stathis.com.gr), the Claude
 connector is authorized, the group `Hellenic Trailers Newsletter`
 (id `196439632318039915`) is created, and the owner is subscribed to it as a
