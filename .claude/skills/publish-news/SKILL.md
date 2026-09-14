@@ -90,6 +90,10 @@ Targets: JPEG, longest side ≤ 2000 px, file < 500 KB, name lowercase-latin-das
     `#HellenicTrailers #Lamberet #ψυκτικάοχήματα #coldchain` plus 2–3
     item-specific tags. No link (links are dead in IG captions).
   - **Newsletter**: subject < 60 chars, Greek; HTML body per step 9.
+    Set the font to **Arial** (or Verdana/Tahoma/Georgia) — the account's
+    brand style is Montserrat, which renders Greek as empty boxes in
+    corporate Outlook (MARKETING.md §C, 2026-09-10). Buttons come out red
+    by default; the brand blue is `#0A234B`.
   - **LinkedIn**: 3–5 sentences, slightly more professional/technical, Greek
     (or bilingual if the owner asks), link to the news page.
   - **Google Business post**: ≤ 1500 chars, Greek, plain factual summary +

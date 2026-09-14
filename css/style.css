@@ -985,6 +985,11 @@ nav ul li a.active {
   font-size: 0.9rem;
 }
 
+/* Only the invitation card carries one, and it needs air under the text */
+.news-cta {
+  margin-top: 18px;
+}
+
 /* --- Contact --- */
 .contact-grid {
   display: grid;
@@ -1192,6 +1197,140 @@ nav ul li a.active {
 .btn[aria-busy="true"] {
   opacity: 0.7;
   pointer-events: none;
+}
+
+/* --- RSVP (rsvp.html) --- */
+.rsvp-container {
+  /* Wide enough that the date and the address each hold one line: measured at
+     274px and 359px, against 304px and 396px of column here. */
+  max-width: 860px;
+}
+
+.rsvp-event {
+  background: var(--light-bg);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin-bottom: 32px;
+}
+
+.rsvp-event h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.rsvp-event p {
+  color: var(--text-medium);
+  margin-bottom: 20px;
+}
+
+.rsvp-facts {
+  display: grid;
+  /* The address needs the wider half: the date fits on one line, the venue
+     name, street and postcode do not. */
+  grid-template-columns: 1fr 1.3fr;
+  gap: 20px 24px;
+}
+
+.rsvp-facts dt {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: 2px;
+}
+
+.rsvp-facts dd {
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.45;
+}
+
+/* Each part of a fact takes its own line, so nothing wraps by accident */
+.rsvp-facts dd > span {
+  display: block;
+}
+
+.rsvp-fact-sub {
+  font-weight: 500;
+  color: var(--text-medium);
+}
+
+.rsvp-form-title {
+  font-size: 1.3rem;
+  margin-bottom: 24px;
+}
+
+.rsvp-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+}
+
+.rsvp-directions {
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  gap: 5px;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.rsvp-directions:hover {
+  border-bottom-color: var(--accent);
+}
+
+.rsvp-directions svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.rsvp-optional {
+  font-weight: 400;
+  color: var(--text-light);
+}
+
+.rsvp-privacy {
+  margin-top: 16px;
+  text-align: center;
+}
+
+/* Replaces the form once the answer is recorded */
+.rsvp-done {
+  text-align: center;
+  padding: 16px 0 8px;
+}
+
+.rsvp-done-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #f2fbf5;
+  color: var(--success);
+}
+
+.rsvp-done-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.rsvp-done h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.rsvp-done p {
+  color: var(--text-medium);
+  margin-bottom: 24px;
 }
 
 .contact-info-card {
@@ -1719,6 +1858,15 @@ footer h4 {
 
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .rsvp-row,
+  .rsvp-facts {
+    grid-template-columns: 1fr;
+  }
+
+  .rsvp-event {
+    padding: 24px;
   }
 
   .footer-grid {

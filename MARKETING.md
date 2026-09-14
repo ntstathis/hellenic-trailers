@@ -21,7 +21,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done |
 | Facebook | Claude posts via the Meta Graph API | 🔶 Page live («Hellenic Trailers-Lamberet Partner», 259 likes) and linked from the site; automatic posting still needs steps A + B |
 | Instagram | Claude posts via the Meta Graph API | 🔶 account created, Business, linked to the Page and linked from the site (`@hellenictrailers`, 2026-09-01); automatic posting now needs only steps A + B |
-| Newsletter | Claude creates + sends campaigns via the MailerLite connector | ✅ done — account, connector, group, 11 subscribers, domain authenticated (2026-09-08) and the **public signup page live at <https://hellenictrailers.subscribepage.io> (2026-09-09)**, wired into all 8 pages |
+| Newsletter | Claude creates + sends campaigns via the MailerLite connector | ✅ done and **proven end to end on 2026-09-10**: a real campaign reached Gmail, a Greek business domain and a corporate Microsoft 365 inbox, all three with Greek rendering correctly. Account, connector, group, domain authenticated (2026-09-08), signup page live at <https://hellenictrailers.subscribepage.io> (2026-09-09) and wired into all 8 pages |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
@@ -518,11 +518,37 @@ a free tier of 1,000 subscribers / 12,000 emails per month, campaign statistics
 Claude can read back for analysis, and it handles the EU-required consent,
 double opt-in and unsubscribe automatically.
 
+**That free tier no longer exists (noticed 2026-09-13).** MailerLite cut the
+free plan on 2026-07-01 to **250 active subscribers and 2,500 emails a month**,
+and raised the paid tiers. The list passed 250 with the September imports (476
+active on 2026-09-13), so the paid plan Iosif took was **required, not
+optional** — the account cannot send at all above the free cap. The choice
+after the 2 October event is therefore between paying MailerLite (roughly
+€12–20 a month at this list size; read the Billing page, the figures here are
+from third-party reviews) and moving the list to a provider whose free tier
+still covers it. Candidates checked on 2026-09-13, all with branding on the
+free plan and all allowing custom-domain DKIM: **Sender.net** (2,500
+subscribers, 15,000 emails a month), **EmailOctopus** (2,500 / 10,000),
+**Brevo** (unlimited contacts, 300 emails a day, so a 500-person send takes
+two days). **Mailchimp is not a candidate**: its free plan is 250 contacts and
+500 sends a month. What a move costs: the Claude connector (Sender and
+EmailOctopus have no native one — Claude would draft, Iosif would paste, or an
+API key goes into the environment variables and the domain into the network
+allow-list), a second domain authentication at Papaki (new DKIM CNAME, and the
+SPF merged again — never a second `v=spf1` record), a new signup page URL in
+the footer of all 8 pages and `news.html`, and a fresh import that the new
+provider will review — clean the bounces out first. Do it after 9 October if
+at all, never mid-campaign.
+
 Status 2026-08-21: the account exists (stathis@stathis.com.gr), the Claude
 connector is authorized, the group `Hellenic Trailers Newsletter`
 (id `196439632318039915`) is created, and the owner is subscribed to it as a
 built-in QA recipient. The first contact import ran on 2026-08-23 (step 5), so
-the group now holds 11 subscribers. Steps 4 and 7 were finished on
+the group held 11 subscribers. **That number is no longer a safe marker**
+(noticed 2026-09-10): the personal address used to test the signup page on
+2026-09-09 was recorded here as deleted afterwards, but it is still in the
+list — a re-import found it as an existing subscriber, not a new one. Read the
+live count before using it to tell the company account from an empty one. Steps 4 and 7 were finished on
 2026-09-08 — the domain is authenticated and the sender works. **Remaining:
 step 3, the signup page.** ✅ **Done 2026-09-09 — nothing is left in step C.**
 
@@ -805,6 +831,44 @@ step 3, the signup page.** ✅ **Done 2026-09-09 — nothing is left in step C.*
    spoofing of it. Adding records at Papaki does not disturb the Microsoft 365
    ones.
 
+### Sending a campaign: what the first real send taught us (2026-09-10)
+
+Proven on 2026-09-10 with a dry run to three addresses — Gmail, a Greek
+business domain and a corporate Microsoft 365 account — before anything went
+to the 466-contact list. Two faults surfaced that would have hit every
+recipient; both are fixed, and both are the kind that only a real send reveals.
+
+**Use a font with certain Greek coverage — Arial, Verdana, Tahoma or Georgia.**
+The account's brand styles default to **Montserrat**, and in corporate Outlook
+every Greek character arrived as an empty box while Latin text and digits were
+fine. Text failing *only* in Greek means the font lacks the glyphs, not that
+the encoding is broken. The setting is **Font family** in the editor's **Style
+panel** — the green icon in the left-hand strip, not the floating toolbar over
+the text, which restyles only what is selected.
+
+**Keep real text against the image.** A single large image with four lines of
+text reads to a filter as an advertisement, and Microsoft filed the first
+version as junk while Gmail did not. Tripling the body — paragraphs that answer
+why the reader should care, not padding — was part of the fix; a new sending
+domain explains the rest, and the batch ramp below is its remedy.
+
+**Send the dry run as a real campaign to a small group, not with «Send a
+test».** The test button skips part of the delivery path and would have shown
+neither fault. Keep a group of three or four addresses spanning Gmail, a
+corporate Microsoft 365 tenant and a Greek business domain: they filter by
+different rules, and the corporate one is where the biggest customers are.
+
+**Two things that need fixing by hand each time, until the brand style is
+corrected:** the button comes out red and needs `#0A234B`, and pasted text can
+carry stray colours that look like links.
+
+**Warm up a large list in batches.** Going from a handful of subscribers to
+hundreds in one day is the pattern spam filters look for, and what is at stake
+is `info@hellenictrailers.gr` itself — the address the contact form now
+delivers to. Ramp over several days (50, 100, 150, the rest), split so that
+each batch carries the same mix of mail providers as the whole list, and check
+between batches: **stop above 5% bounces or 0.3% spam complaints.**
+
 Fallback if the connector ever proves insufficient: create a MailerLite API key
 (Integrations → API), store it as env var `MAILERLITE_API_KEY`, and allow
 `connect.mailerlite.com` in the environment network settings — Claude then uses
@@ -1061,6 +1125,26 @@ Claude's — ask in a chat on this repository.
   The free plan caps submissions per month (in the region of 50). Ample for
   this site, but it is the first thing to check if enquiries ever stop
   arriving.
+
+  **Since 2026-09-11 the same form also takes the event RSVPs**, because
+  `rsvp.html` posts to the same endpoint (`xvkovyvd`). That cap is no longer
+  comfortable: 336 people are being invited to the 2 October evening, and a
+  normal response rate puts the answers in the same range as the monthly
+  allowance — on top of the ordinary enquiries, which must not be the ones that
+  get dropped.
+
+  ✅ **Resolved 2026-09-11: the owner took the €10 paid plan.** The numbers
+  that decided it, kept because the same arithmetic will come up again: the
+  free allowance is **50 submissions per account per month**, not per form,
+  and the dashboard showed **4 used with the counter resetting on 9 October**
+  — after the event, so the whole campaign and the evening itself fell inside
+  one cycle with 46 left. Against that, 392 invitations at the 46% open rate
+  the first batch actually achieved, and a fifth to a third of openers
+  answering, project **39 to 62 submissions**. It landed on the line, and the
+  cost of being wrong was not a lost RSVP but a lost request for a quote: both
+  forms share the endpoint, so the enquiries would have been refused silently
+  alongside the answers. Downgrade after 9 October if the traffic does not
+  justify keeping it.
 
   **Formspree keeps spam out of the Submissions list entirely, and this will
   waste an hour if it is not known.** During testing a submission reached the

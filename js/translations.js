@@ -121,6 +121,19 @@ const translations = {
   'news.1.title': { en: 'Hellenic Trailers Launches as Lamberet Greece', el: 'Η Hellenic Trailers ξεκινά ως Lamberet Greece' },
   'news.1.text': { en: 'We are proud to announce our partnership with Lamberet as their official representative in Greece.', el: 'Είμαστε υπερήφανοι που ανακοινώνουμε τη συνεργασία μας με τη Lamberet ως επίσημος αντιπρόσωπος στην Ελλάδα.' },
 
+  'news.5.date': { en: '2 October 2026', el: '2 Οκτωβρίου 2026' },
+  'news.5.title': { en: 'Official presentation of Hellenic Trailers & Lamberet', el: 'Επίσημη παρουσίαση Hellenic Trailers & Lamberet' },
+  'news.5.text': { en: 'It is our great pleasure to invite you to the official presentation of Hellenic Trailers and to our new partnership with Lamberet, as its exclusive representative in Greece. Friday 2 October 2026, 17:00, at our facilities in Mandra — come and say hello!', el: 'Με μεγάλη μας χαρά σας προσκαλούμε στην επίσημη παρουσίαση της Hellenic Trailers και στη νέα μας συνεργασία με τη Lamberet, ως αποκλειστικοί αντιπρόσωποί της στην Ελλάδα. Παρασκευή 2 Οκτωβρίου 2026, 17:00, στις εγκαταστάσεις μας στη Μάνδρα — ελάτε να γνωριστούμε!' },
+  'news.6.date':  { en: 'September 2026', el: 'Σεπτέμβριος 2026' },
+  'news.6.title': {
+    en: 'Delivery of a pre-owned Lamberet SR2',
+    el: 'Παράδοση μεταχειρισμένου Lamberet SR2'
+  },
+  'news.6.text': {
+    en: 'Delivery of a pre-owned Lamberet SR2 refrigerated semi-trailer to one of our customers.\n\nIt was inspected and prepared by Theologis Group, ready to work from day one!\n\nA pre-owned Lamberet is no compromise: the insulation and the build keep their performance over time, and the cost becomes significantly more accessible.\n\nSafe travels!',
+    el: 'Παράδοση μεταχειρισμένου ψυκτικού ημιρυμουλκούμενου Lamberet SR2 σε πελάτη μας.\n\nΟ έλεγχος και η προετοιμασία του έγιναν από την Theologis Group, έτοιμο για δουλειά από την πρώτη μέρα!\n\nΈνα μεταχειρισμένο Lamberet δεν είναι συμβιβασμός: η μόνωση και η κατασκευή κρατούν τις επιδόσεις τους στον χρόνο, και το κόστος γίνεται σημαντικά πιο προσιτό.\n\nΚαλά χιλιόμετρα!'
+  },
+
   'news.4.date': { en: 'May 2026', el: 'Μάιος 2026' },
   'news.4.title': { en: 'Super Beef Meat Chamber Delivery to Farma Mitsopoulos', el: 'Παράδοση Super Beef κρεατάδικου θαλάμου στη Φάρμα Μητσόπουλος' },
   'news.4.text': { en: 'We successfully delivered a Lamberet SR2 Super Beef semi-trailer to Farma Mitsopoulos. The chamber is specifically designed for hanging meat transport with reinforced roof structure and optimized interior configuration.', el: 'Με επιτυχία ολοκληρώθηκε η παράδοση ενός ημιρυμουλκούμενου Lamberet SR2 Super Beef στη Φάρμα Μητσόπουλος. Ο θάλαμος είναι ειδικά σχεδιασμένος για τη μεταφορά κρεμαστών κρεάτων με ενισχυμένη δομή οροφής και βελτιστοποιημένη εσωτερική διαμόρφωση.' },
@@ -328,6 +341,53 @@ const translations = {
     el: 'Καλέστε μας απευθείας — είναι ο γρηγορότερος τρόπος.'
   },
   'thanks.home': { en: 'Back to the home page', el: 'Επιστροφή στην Αρχική' },
+
+  'news.5.cta': { en: 'RSVP', el: 'Δηλώστε συμμετοχή' },
+
+  // RSVP page (rsvp.html)
+  'rsvp.banner.title': { en: 'RSVP', el: 'Δήλωση Συμμετοχής' },
+  'rsvp.banner.text': {
+    en: 'Official presentation of Hellenic Trailers & Lamberet',
+    el: 'Επίσημη παρουσίαση Hellenic Trailers & Lamberet'
+  },
+  'rsvp.event.title': { en: 'Come and meet us', el: 'Ελάτε να γνωριστούμε' },
+  'rsvp.event.text': {
+    en: 'An evening to meet our team and representatives of Lamberet, and to see up close the range we are bringing to the Greek market.',
+    el: 'Μια βραδιά γνωριμίας με την ομάδα μας και με εκπροσώπους της Lamberet, με την ευκαιρία να δείτε από κοντά τη γκάμα που φέρνουμε στην ελληνική αγορά.'
+  },
+  'rsvp.event.when': { en: 'When', el: 'Πότε' },
+  'rsvp.event.when.value': {
+    en: 'Friday 2 October 2026',
+    el: 'Παρασκευή 2 Οκτωβρίου 2026'
+  },
+  'rsvp.event.when.time': { en: '17:00', el: '17:00' },
+  'rsvp.event.venue': { en: 'HELLENIC TRAILERS', el: 'HELLENIC TRAILERS' },
+  'rsvp.event.where': { en: 'Where', el: 'Πού' },
+  'rsvp.event.where.value': {
+    en: 'Kato Patima, Mandra 196&nbsp;00, Attica',
+    el: 'Θέση Κάτω Πάτημα, Μάνδρα 196&nbsp;00, Αττική'
+  },
+  'rsvp.event.directions': { en: 'Open in Google Maps', el: 'Άνοιγμα στους χάρτες' },
+  'rsvp.form.title': { en: 'Confirm your attendance', el: 'Δηλώστε τη συμμετοχή σας' },
+  'rsvp.form.firstname': { en: 'First name', el: 'Όνομα' },
+  'rsvp.form.lastname': { en: 'Surname', el: 'Επώνυμο' },
+  'rsvp.form.company': { en: 'Company', el: 'Εταιρεία' },
+  'rsvp.form.email': { en: 'Email', el: 'Email' },
+  'rsvp.form.phone': { en: 'Phone', el: 'Τηλέφωνο' },
+  'rsvp.form.optional': { en: '(optional)', el: '(προαιρετικό)' },
+  'rsvp.form.submit': { en: 'Send my answer', el: 'Αποστολή απάντησης' },
+  'rsvp.form.privacy': {
+    en: 'Your details are used only to organise the event and are never shared with third parties.',
+    el: 'Τα στοιχεία σας χρησιμοποιούνται μόνο για την οργάνωση της εκδήλωσης και δεν κοινοποιούνται σε τρίτους.'
+  },
+  'rsvp.error.firstname': { en: 'Enter your first name', el: 'Συμπληρώστε το όνομά σας' },
+  'rsvp.error.lastname': { en: 'Enter your surname', el: 'Συμπληρώστε το επώνυμό σας' },
+  'rsvp.error.company': { en: 'Enter the company you represent', el: 'Συμπληρώστε την εταιρεία σας' },
+  'rsvp.done.title': { en: 'See you on 2 October', el: 'Τα λέμε στις 2 Οκτωβρίου' },
+  'rsvp.done.text': {
+    en: 'Your attendance is recorded.',
+    el: 'Η συμμετοχή σας καταγράφηκε.'
+  },
 };
 
 // ============================================
@@ -425,6 +485,46 @@ function initMobileNav() {
 // ============================================
 // Contact Form
 // ============================================
+// The spam trap is built here rather than in the markup, and deliberately so.
+// Browsers and password managers autofill every input they find at load, this
+// one included, and a filled trap means the enquiry is dropped in silence by
+// us and by Formspree both — the visitor reads "thank you" and nothing ever
+// arrives. Autofill runs once, at load; a field added afterwards is never
+// touched by it. Crude bots that only parse the served HTML no longer see the
+// trap either, which is the price, and a small one: they are what Formspree's
+// own spam filtering is for, and losing a customer costs more than admitting
+// a spam message.
+function appendSpamTrap(form) {
+  const wrap = document.createElement('div');
+  wrap.className = 'hp-field';
+  wrap.setAttribute('aria-hidden', 'true');
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.name = '_gotcha';
+  input.tabIndex = -1;
+  input.autocomplete = 'off';
+  wrap.appendChild(input);
+  form.appendChild(wrap);
+}
+
+// Shared by both forms on the site: the error text lives in the field's group,
+// and carries data-i18n so a language switch re-translates it in place.
+function showFieldError(field, msgKey) {
+  const group = field.closest('.form-group');
+  group.classList.add('has-error');
+  field.setAttribute('aria-invalid', 'true');
+  const err = group.querySelector('.field-error');
+  if (err) {
+    err.setAttribute('data-i18n', msgKey);
+    err.textContent = t(msgKey);
+  }
+}
+
+function clearFieldError(field) {
+  field.closest('.form-group').classList.remove('has-error');
+  field.removeAttribute('aria-invalid');
+}
+
 const VALIDATORS = {
   name: v => v.trim().length >= 2 || 'form.error.name',
   email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'form.error.email',
@@ -445,25 +545,7 @@ function initContactForm() {
 
   const fieldOf = (name) => form.querySelector('[name="' + name + '"]');
 
-  // The spam trap is built here rather than in the markup, and deliberately so.
-  // Browsers and password managers autofill every input they find at load, this
-  // one included, and a filled trap means the enquiry is dropped in silence by
-  // us and by Formspree both — the visitor reads "thank you" and nothing ever
-  // arrives. Autofill runs once, at load; a field added afterwards is never
-  // touched by it. Crude bots that only parse the served HTML no longer see the
-  // trap either, which is the price, and a small one: they are what Formspree's
-  // own spam filtering is for, and losing a customer costs more than admitting
-  // a spam message.
-  const honeypotWrap = document.createElement('div');
-  honeypotWrap.className = 'hp-field';
-  honeypotWrap.setAttribute('aria-hidden', 'true');
-  const honeypotInput = document.createElement('input');
-  honeypotInput.type = 'text';
-  honeypotInput.name = '_gotcha';
-  honeypotInput.tabIndex = -1;
-  honeypotInput.autocomplete = 'off';
-  honeypotWrap.appendChild(honeypotInput);
-  form.appendChild(honeypotWrap);
+  appendSpamTrap(form);
 
   // Deep link from a product card: contact.html?subject=sales&model=Lamberet+SR2
   const params = new URLSearchParams(window.location.search);
@@ -480,22 +562,6 @@ function initContactForm() {
     if (message && !message.value) {
       message.value = t('form.prefill').replace('{model}', modelParam);
     }
-  }
-
-  function showFieldError(field, msgKey) {
-    const group = field.closest('.form-group');
-    group.classList.add('has-error');
-    field.setAttribute('aria-invalid', 'true');
-    const err = group.querySelector('.field-error');
-    if (err) {
-      err.setAttribute('data-i18n', msgKey);
-      err.textContent = t(msgKey);
-    }
-  }
-
-  function clearFieldError(field) {
-    field.closest('.form-group').classList.remove('has-error');
-    field.removeAttribute('aria-invalid');
   }
 
   function validateField(name) {
@@ -669,6 +735,164 @@ function initContactForm() {
 }
 
 // ============================================
+// RSVP form (rsvp.html)
+// ============================================
+
+const RSVP_VALIDATORS = {
+  firstName: v => v.trim().length >= 2 || 'rsvp.error.firstname',
+  lastName: v => v.trim().length >= 2 || 'rsvp.error.lastname',
+  company: v => v.trim().length >= 2 || 'rsvp.error.company',
+  email: v => v.trim() === '' || /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'form.error.email',
+  phone: v => v.trim() === '' || /^[+\d][\d\s()\-.]{5,}$/.test(v.trim()) || 'form.error.phone'
+};
+
+function initRsvpForm() {
+  const form = document.getElementById('rsvpForm');
+  if (!form) return;
+
+  const done = document.getElementById('rsvpDone');
+  const summary = form.querySelector('.error-summary');
+  const summaryList = summary ? summary.querySelector('ul') : null;
+  const status = form.querySelector('.form-status');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  const fieldOf = (name) => form.querySelector('[name="' + name + '"]');
+  const val = (name) => { const f = fieldOf(name); return f ? f.value.trim() : ''; };
+
+  appendSpamTrap(form);
+
+  // The newsletter link carries the recipient's address: rsvp.html?e={$email}.
+  // It saves them retyping what we already know, and ties the answer to the
+  // invitation that produced it.
+  const emailParam = new URLSearchParams(window.location.search).get('e');
+  const emailField = fieldOf('email');
+  if (emailParam && emailField && !emailField.value) emailField.value = emailParam;
+
+  function validateField(name) {
+    const field = fieldOf(name);
+    if (!field) return true;
+    const result = RSVP_VALIDATORS[name](field.value);
+    if (result === true) {
+      clearFieldError(field);
+      return true;
+    }
+    showFieldError(field, result);
+    return false;
+  }
+
+  // Validate on blur — not on every keystroke, which fights the user mid-entry
+  Object.keys(RSVP_VALIDATORS).forEach(name => {
+    const field = fieldOf(name);
+    if (!field) return;
+    field.addEventListener('blur', () => validateField(name));
+    field.addEventListener('input', () => {
+      if (field.closest('.form-group').classList.contains('has-error')) validateField(name);
+    });
+  });
+
+  function setStatus(kind, msgKey) {
+    if (!status) return;
+    status.className = 'form-status visible ' + kind;
+    status.setAttribute('data-i18n', msgKey);
+    status.textContent = t(msgKey);
+  }
+
+  // Swap the form for the confirmation, which carries its own data-i18n keys
+  // and so follows a language switch afterwards without any help from here.
+  function showConfirmation() {
+    if (!done) {
+      setStatus('success', 'form.success');
+      return;
+    }
+    form.hidden = true;
+    done.hidden = false;
+    done.scrollIntoView({ block: 'center' });
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (status) status.className = 'form-status';
+
+    // Caught bots are shown the same confirmation as everyone else, so that
+    // being caught teaches them nothing.
+    const honeypot = fieldOf('_gotcha');
+    if (honeypot && honeypot.value !== '') {
+      showConfirmation();
+      return;
+    }
+
+    const failed = Object.keys(RSVP_VALIDATORS).filter(name => !validateField(name));
+
+    if (failed.length) {
+      if (summary && summaryList) {
+        summaryList.innerHTML = '';
+        failed.forEach(name => {
+          const field = fieldOf(name);
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.href = '#' + field.id;
+          a.textContent = field.closest('.form-group').querySelector('.field-error').textContent;
+          a.addEventListener('click', (ev) => { ev.preventDefault(); field.focus(); });
+          li.appendChild(a);
+          summaryList.appendChild(li);
+        });
+        summary.classList.add('visible');
+        summary.focus();
+      }
+      return;
+    }
+
+    if (summary) summary.classList.remove('visible');
+
+    const name = (val('firstName') + ' ' + val('lastName')).trim();
+
+    // The invitation goes out in Greek and every answer is read from one Greek
+    // inbox, so what Formspree emails is Greek whichever language the visitor
+    // has the page in. Translating it would only make the replies unsortable.
+    const payload = new FormData();
+    payload.set('Ονοματεπώνυμο', name);
+    payload.set('Εταιρεία', val('company'));
+    // Not plain "Email": Formspree reads any field by that name as the address
+    // to reply to, and rejects the whole submission when it does not parse. A
+    // guest who leaves it blank would otherwise have their answer thrown away.
+    if (val('email')) payload.set('Email επικοινωνίας', val('email'));
+    if (val('phone')) payload.set('Τηλέφωνο επικοινωνίας', val('phone'));
+    payload.set('_subject', 'Εκδήλωση 2/10 — Δήλωση συμμετοχής: ' + name + ' (' + val('company') + ')');
+    // Lets the answer be replied to straight from the inbox, when it has an
+    // address to reply to at all.
+    if (val('email')) payload.set('_replyto', val('email'));
+
+    const originalLabel = submitBtn.textContent;
+    submitBtn.setAttribute('aria-busy', 'true');
+    submitBtn.textContent = t('form.sending');
+
+    fetch(form.getAttribute('action'), {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: payload
+    })
+      .then(res => {
+        if (!res.ok) return res.text().then(body => { throw new Error('HTTP ' + res.status + ' — ' + body); });
+        showConfirmation();
+      })
+      .catch(err => {
+        setStatus('error', 'form.failure');
+        // ?debug=1 puts the form service's own answer on the screen, so a
+        // failure can be diagnosed without opening the browser console.
+        if (new URLSearchParams(window.location.search).get('debug') === '1') {
+          status.textContent = t('form.failure') + ' [' + err.message + ']';
+          status.removeAttribute('data-i18n');
+        }
+        console.error('[hellenictrailers] RSVP submission failed:', err);
+      })
+      .finally(() => {
+        submitBtn.removeAttribute('aria-busy');
+        submitBtn.textContent = originalLabel;
+      });
+  });
+}
+
+// ============================================
 // Initialization
 // ============================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -680,6 +904,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   initMobileNav();
   initContactForm();
+  initRsvpForm();
 
   // Smooth scroll for in-page anchors, unless the user opted out of motion
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
