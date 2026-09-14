@@ -179,7 +179,7 @@ const translations = {
   'wa.msg.products': { en: 'Hello, I would like more information about your products.', el: 'Γεια σας, θα ήθελα περισσότερες πληροφορίες για τα προϊόντα σας.' },
   'wa.msg.services': { en: 'Hello, I would like more information about your products.', el: 'Γεια σας, θα ήθελα περισσότερες πληροφορίες για τα προϊόντα σας.' },
   'contact.info.whatsapp.title': { en: 'Message us on WhatsApp', el: 'Γράψτε μας στο WhatsApp' },
-  'contact.info.whatsapp.text': { en: '+30 695 704 5716', el: '+30 695 704 5716' },
+  'contact.info.whatsapp.text': { en: '+30 698 651 4320', el: '+30 698 651 4320' },
 
   // About page
   'about.banner.title': { en: 'The Company', el: 'Η Εταιρεία' },
@@ -336,7 +336,7 @@ const translations = {
 let currentLang = localStorage.getItem('ht-lang') || 'el';
 
 // WhatsApp click-to-chat target; the message after ?text= is filled in per language
-const WHATSAPP_URL = 'https://wa.me/306957045716';
+const WHATSAPP_URL = 'https://wa.me/306986514320';
 
 function t(key) {
   const entry = translations[key];

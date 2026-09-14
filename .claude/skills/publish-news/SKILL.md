@@ -28,7 +28,7 @@ step 5.**
 | LinkedIn page URL | `https://www.linkedin.com/company/hellenic-trailers/` |
 | Newsletter | MailerLite connector (claude.ai, authorized 2026-08-21 as stathis@stathis.com.gr); group `Hellenic Trailers Newsletter` (id `196439632318039915`); sender Hellenic Trailers `<info@hellenictrailers.gr>`; hosted signup URL `https://hellenictrailers.subscribepage.io` |
 | YouTube channel URL | `https://www.youtube.com/@HellenicTrailers` (channel id `UC6mb6akAiDPwRs09J3OKyRA`); nothing is published there automatically — it is a manual upload channel |
-| WhatsApp | +30 695 704 5716, reached from buttons on every page (`WHATSAPP_URL` in `js/translations.js`); nothing to publish there — it is an inbound channel |
+| WhatsApp | +30 698 651 4320, reached from buttons on every page (`WHATSAPP_URL` in `js/translations.js`); nothing to publish there — it is an inbound channel |
 | Owner setup guide | `MARKETING.md` (token creation/regeneration, connector authorization, the current to-do list) |
 
 When a `TO-BE-FILLED` value becomes known during a run, update this file and
