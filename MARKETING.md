@@ -38,7 +38,7 @@ actually has to sit down and do it:
 
 | # | Task | Who | Time |
 |---|---|---|---|
-| 1 | ~~**Decide the WhatsApp number**~~ — ✅ **done 2026-09-14.** Decided on 2026-09-04, then carried out: the company line was taken out, WhatsApp Business activated and confirmed working on it, and the site swapped over to **+30 698 651 4320** in one commit — 18 button `href`s, `WHATSAPP_URL`, the three displayed copies and the channel table of the publish-news skill. The site no longer publishes anyone's personal number | Iosif + Claude | done |
+| 1 | ~~**Decide the WhatsApp number**~~ — ✅ **done 2026-09-14.** Decided on 2026-09-04, then carried out: the company line was taken out, WhatsApp Business activated and confirmed working on it, and the site swapped over to **+30 698 651 4320** in one commit — 20 button `href`s across all 9 pages, `WHATSAPP_URL`, the three displayed copies, the channel table of the publish-news skill and `README.md`. The site no longer publishes anyone's personal number | Iosif + Claude | done |
 | 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ done (2026-09-01): created as `@hellenictrailers`, wired into the site, confirmed to be a Business account and linked to the Page in Meta Business Suite. Step A is unblocked | Iosif | done |
 | 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
@@ -1301,15 +1301,16 @@ link to a number that does not answer yet is worse than one that does. The
 published number is now **+30 698 651 4320**; the old personal one,
 +30 695 704 5716, appears nowhere on the site.
 
-The swap was one commit. It touched 23 places, and this is the map to reuse if
+The swap was one commit. It touched 26 places, and this is the map to reuse if
 the number ever changes again:
 
 | Where | Count | Note |
 |---|---|---|
-| `wa.me/30…` in the page `href`s | 18, across all 8 `*.html` | the pre-JavaScript fallback; each also carries the `?text=` message |
+| `wa.me/30…` in the page `href`s | 20, across all 9 `*.html` | the pre-JavaScript fallback; each also carries the `?text=` message |
 | `WHATSAPP_URL` in `js/translations.js` | 1 | what the buttons are actually rebuilt from at runtime |
 | The number as displayed text | 3 | `contact.html`, `thank-you.html`, and the `contact.info.whatsapp.text` key |
 | `.claude/skills/publish-news/SKILL.md` | 1 | the channel table |
+| `README.md` | 1 | the sentence describing the WhatsApp button |
 | Wiring checklist #9 | — | the number is recorded there |
 
 Also worth doing at the same time: the Google Business Profile and the Facebook
@@ -1588,7 +1589,7 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | 6 | Formspree form ID | ✅ wired (2026-09-09): `xvkovyvd` | `contact.html` form `action` — and nothing else: the confirmation page it sends people to (`thank-you.html`) was already built and wired |
 | 7 | Social URLs in structured data | ✅ done (2026-09-01): `sameAs` carries LinkedIn, Facebook, Instagram and YouTube | JSON-LD block in `index.html` |
 | 8 | Channel URLs + Meta IDs + MailerLite group in the skill | ✅ Facebook, Instagram, LinkedIn and YouTube URLs filled in (2026-09-01); MailerLite signup URL filled in (2026-09-09). The Meta IDs live in env vars, not here | `.claude/skills/publish-news/SKILL.md` |
-| 9 | WhatsApp number +30 698 651 4320 | ✅ wired (2026-08-21); **swapped to the company number 2026-09-14**, replacing the personal +30 695 704 5716 | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 8 `*.html`, the displayed number in `contact.html` / `thank-you.html` / `contact.info.whatsapp.text`, and the channel table in `.claude/skills/publish-news/SKILL.md` |
+| 9 | WhatsApp number +30 698 651 4320 | ✅ wired (2026-08-21); **swapped to the company number 2026-09-14**, replacing the personal +30 695 704 5716 | `WHATSAPP_URL` in `js/translations.js` + button `href` on all 9 `*.html`, the displayed number in `contact.html` / `thank-you.html` / `contact.info.whatsapp.text`, the channel table in `.claude/skills/publish-news/SKILL.md`, and `README.md` |
 | 10 | YouTube channel URL | ✅ wired (2026-09-01): `youtube.com/@HellenicTrailers`, with a new footer icon and an `a11y.youtube` label | footer of all 8 `*.html` + JSON-LD in `index.html` |
 | 11 | Bing `msvalidate.01` content string (step J) | ✅ not needed — verification came across with the Search Console import (2026-08-29) | `<head>` of `index.html` |
 
