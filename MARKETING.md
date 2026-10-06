@@ -1146,6 +1146,11 @@ Claude's — ask in a chat on this repository.
   alongside the answers. Downgrade after 9 October if the traffic does not
   justify keeping it.
 
+  **2026-10-06: the RSVP form is gone.** With the event over, `rsvp.html` is
+  now only a redirect to `news.html` (kept so the links already sent by
+  newsletter and SMS do not 404), and the contact form is once again the only
+  thing posting to the endpoint.
+
   **Formspree keeps spam out of the Submissions list entirely, and this will
   waste an hour if it is not known.** During testing a submission reached the
   confirmation page — which only happens when Formspree answers 200 — and then
