@@ -235,22 +235,26 @@ text for LinkedIn and Google. Channel setup is documented in
 [MARKETING.md](MARKETING.md). The manual procedure above remains valid — the
 two never conflict.
 
-### Add a photo to the gallery
+### Replace a gallery placeholder with a real photo
 
-Each tile on the Gallery page is a link to the full photo, with a smaller
-copy shown in the grid:
+The Gallery page currently shows **emoji placeholders**, not real photos:
 
 ```html
-<a class="gallery-item" href="images/gallery/hall.jpg" target="_blank" rel="noopener">
-  <img src="images/gallery/thumbs/hall.jpg" alt="Οι εγκαταστάσεις μας στη Μάνδρα" data-i18n-alt="gallery.g2" width="1448" height="1086" loading="lazy" decoding="async">
-  <span class="gallery-overlay" data-i18n="gallery.g2">Οι εγκαταστάσεις μας στη Μάνδρα</span>
-</a>
+<div class="gallery-item">
+  <div class="gallery-placeholder">&#x1F69B;</div>
+  <div class="gallery-overlay">SR2 Green Liner</div>
+</div>
 ```
 
-The caption lives in `js/translations.js` under the same key (`gallery.g2`),
-in Greek and English. The easiest way to add one is to upload the photo and
-ask Claude, which also makes the smaller copy and strips the location data
-from the file.
+To use a real photo, upload it to `images/` first, then replace the
+`gallery-placeholder` line with an `<img>`:
+
+```html
+<div class="gallery-item">
+  <img src="images/your-photo.jpg" alt="Περιγραφή" loading="lazy" decoding="async">
+  <div class="gallery-overlay">SR2 Green Liner</div>
+</div>
+```
 
 ---
 
