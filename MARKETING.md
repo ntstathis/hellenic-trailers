@@ -27,7 +27,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
 | WhatsApp | Visitors tap a button on the site and message +30 698 651 4320 | ✅ done — button live on every page, and since **2026-09-14 it reaches the company number +30 698 651 4320**, with WhatsApp Business on it. No personal line is published any more — see step G |
 | Contact form | Formspree (the site's JS already supports it) | ✅ done (2026-09-09) — form `xvkovyvd`, delivering to `info@`, with `thank-you.html` as the confirmation page |
-| YouTube | Videos of deliveries and service, embedded on the site and reused on Facebook/Instagram | 🔶 channel created and linked from the site (`@HellenicTrailers`, 2026-09-01) — it has no video on it yet |
+| YouTube | Videos of deliveries and service, embedded on the site and reused on Facebook/Instagram | ✅ channel created and linked from the site (`@HellenicTrailers`, 2026-09-01); **first video uploaded** (reported by the owner 2026-10-08 — not checked from here, since the session's network policy blocks youtube.com). Not yet embedded anywhere on the site |
 
 ---
 
@@ -45,9 +45,9 @@ actually has to sit down and do it:
 | 5 | ~~**MailerLite sender: verify `info@hellenictrailers.gr`**~~ — ✅ **done 2026-09-08.** It took three shapes in one day: a joint sitting nobody needed, then a single-address confirmation MailerLite no longer offers, and finally what it really was — domain authentication. Four DNS records at Papaki (Stathis typed them, Iosif read them off MailerLite), verified against live DNS, and the domain came back **authenticated**. Campaigns can now be sent from `info@`, subject to the `deal_stage` consent segment | Iosif + Stathis | done |
 | 6 | ~~**MailerLite signup page**~~ — ✅ **done 2026-09-09.** Live at <https://hellenictrailers.subscribepage.io>, double opt-in on, feeding the `Hellenic Trailers Newsletter` group, and wired into the footer of all 8 pages plus the signup section of `news.html`. The list can take new subscribers now | Iosif | done |
 | 7 | ~~**Formspree form id**~~ — ✅ **done 2026-09-09.** Form `xvkovyvd` sends to `info@hellenictrailers.gr`; the contact form now emails the enquiry instead of opening the visitor's own mail program. CAPTCHA was already off by default, so the one known trap did not apply | Iosif | done |
-| 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
+| 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. The first video went up by 2026-10-08 | Iosif | done |
 | 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page is an unfinished stub of emoji placeholders, hidden from Google on purpose. **2026-10-08:** it was filled with 12 photos of the 2 October event and emptied again the same day at the owner's request — event photos belong in the news, not the gallery. Two of them now illustrate the news.7 card. What the gallery still wants is the products and the work: a delivered unit, the interior with the doors open, the workshop | Iosif or Stathis | ~30 min |
-| 10 | **MailerLite API key, so Claude can work the newsletter from a Claude Code session** (2026-09-09) — the owner wants Claude reading the list and drafting campaigns by theme. **Check first whether it is needed at all:** the claude.ai connector is already authorized, so in a claude.ai chat this works today with no token. It is only Claude Code sessions, like the one this was asked in, where the connector does not load. If it is wanted anyway: MailerLite → Integrations → MailerLite API → Generate new token, then `MAILERLITE_API_KEY` in the environment variables **and** `connect.mailerlite.com` in allowed domains — the key is useless without the domain. Needs a computer, and a fresh session afterwards. **Correction (2026-09-10): MailerLite tokens have no scopes at all** — the earlier «read **and** write» instruction described a choice that does not exist. A token is full account access, bound to the user who created it, and the one issued on 2026-09-10 carried an expiry in the year 2126, so treat it as permanent. Create it from the company login, not a personal one. **The key goes into the environment dialog, never into a chat message or this repository** — see «Getting the key there without it sitting anywhere» below | Iosif | ~10 min |
+| 10 | ~~**MailerLite API key, so Claude can work the newsletter from a Claude Code session**~~ — ✅ **done (reported 2026-10-08).** `MAILERLITE_API_KEY` is in the environment and `connect.mailerlite.com` is allowed: a Claude Code session read the account's groups through the API with it (HTTP 200). Claude Code sessions can now read the list and draft campaigns; sending stays gated on the owner's approval per campaign. If the key is ever exposed, replace it — see «Getting the key there without it sitting anywhere» below | Iosif | done |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -328,10 +328,9 @@ is his and unblocked. The Instagram account (step A0) and the YouTube channel
    signing up rather than signing in; the subscriber count is what distinguishes
    them, and nothing should be built in the empty one.
 4. **YouTube channel** (step I): ✅ done — created 2026-09-01 as
-   `@HellenicTrailers` and linked from the footer of all 7 pages. What is left
-   is not setup but footage: the first delivery clip. A channel with nothing on
-   it is worth nothing, so the sooner filming starts the sooner it earns its
-   place.
+   `@HellenicTrailers` and linked from the footer of all 7 pages. The first
+   video was up by 2026-10-08. What keeps it worth having is a steady trickle
+   of footage — every delivery is a clip.
 
 ---
 
