@@ -40,7 +40,7 @@ actually has to sit down and do it:
 |---|---|---|---|
 | 1 | ~~**Decide the WhatsApp number**~~ — ✅ **done 2026-09-14.** Decided on 2026-09-04, then carried out: the company line was taken out, WhatsApp Business activated and confirmed working on it, and the site swapped over to **+30 698 651 4320** in one commit — 20 button `href`s across all 9 pages, `WHATSAPP_URL`, the three displayed copies, the channel table of the publish-news skill and `README.md`. The site no longer publishes anyone's personal number | Iosif + Claude | done |
 | 2 | ~~**Create the company Instagram account** (step A0)~~ — ✅ done (2026-09-01): created as `@hellenictrailers`, wired into the site, confirmed to be a Business account and linked to the Page in Meta Business Suite. Step A is unblocked | Iosif | done |
-| 3 | **Meta app + Page token** (steps A + B) — the last piece before `/publish-news` posts to Facebook and Instagram by itself; the fiddliest item here, and needs a computer. **Nothing blocks it now**: the Page, the Instagram account and the link between them are all in place | Stathis | ~45 min |
+| 3 | **Meta app + Page token** (steps A + B) — 🔶 **configured 2026-10-08, verification pending.** Iosif created the app `Hellenic Trailers Publisher`, generated the Page token and saved `META_PAGE_ACCESS_TOKEN`, `FB_PAGE_ID` and `IG_USER_ID` in the environment, with `graph.facebook.com` and `hellenictrailers.gr` allowed. `me/accounts` returned the Page **with** its `instagram_business_account`, so the Page↔Instagram link is confirmed. What is left: a **new** session confirms the token (Type: Page, Expires: Never) with read-only calls and an unpublished dry-run. See «What step A actually looked like (2026-10-08)» below | Iosif | ~5 min |
 | 4 | ~~**GitHub invitation** for Iosif (step H)~~ — ✅ done (2026-08-29): he accepted, and shows as a `write` collaborator on the repository | Stathis invited, Iosif accepted | done |
 | 5 | ~~**MailerLite sender: verify `info@hellenictrailers.gr`**~~ — ✅ **done 2026-09-08.** It took three shapes in one day: a joint sitting nobody needed, then a single-address confirmation MailerLite no longer offers, and finally what it really was — domain authentication. Four DNS records at Papaki (Stathis typed them, Iosif read them off MailerLite), verified against live DNS, and the domain came back **authenticated**. Campaigns can now be sent from `info@`, subject to the `deal_stage` consent segment | Iosif + Stathis | done |
 | 6 | ~~**MailerLite signup page**~~ — ✅ **done 2026-09-09.** Live at <https://hellenictrailers.subscribepage.io>, double opt-in on, feeding the `Hellenic Trailers Newsletter` group, and wired into the footer of all 8 pages plus the signup section of `news.html`. The list can take new subscribers now | Iosif | done |
@@ -448,6 +448,36 @@ Once it exists and is linked, the rest of this section applies unchanged.
    is configured" — Claude verifies it with read-only calls, looks up and records
    the numeric Page ID and Instagram account ID, and runs a safe dry-run (an
    unpublished draft post that is deleted immediately; nothing appears publicly).
+
+### What step A actually looked like (2026-10-08)
+
+Meta's screens no longer match steps 2–5 above word for word. What worked:
+
+- **Create App** now walks through *App details → Use cases → Business →
+  Requirements → Overview*. Pick the use cases **«Manage everything on your
+  Page»** and **«Manage messaging & content on Instagram»**; «No
+  requirements identified» on the Requirements screen is the good outcome.
+- Each use case has to be **customised** before the Explorer offers its
+  permissions: in the Page one, *Add* `pages_manage_posts` and
+  `pages_read_engagement` (`pages_show_list` is on already); in the
+  Instagram one choose **«API setup with Facebook login»** — not Instagram
+  login — and *Add* `instagram_basic` and `instagram_content_publish`.
+- In the **Graph API Explorer** the app uses *Facebook Login for Business*,
+  so «User or Page» first reads «Get Token» and hovering shows «No
+  configurations available». That is harmless: add the permissions from
+  *Add a Permission* (Pages ones under «Events Groups Pages», Instagram
+  ones under «Other») and the button wakes up.
+- **`business_management` is not optional for this Page.** Without it
+  `me/accounts` came back as an empty `"data": []` — the Page sits in a
+  Business portfolio. With it, the Page and its `instagram_business_account`
+  both appeared.
+- **Order matters for a permanent token.** A Page token read from
+  `me/accounts` with the *1-hour* user token expires with it. Extend the
+  user token in the Debugger first, put the 60-day token back in the
+  Explorer, and only then read `me/accounts`: that Page token shows
+  *Expires: Never*.
+- The Page and Instagram ids live in the environment as `FB_PAGE_ID` and
+  `IG_USER_ID`, not here — this repository is public.
 
 ### If posting ever fails with "Error validating access token" (code 190)
 
