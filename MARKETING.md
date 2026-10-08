@@ -18,7 +18,7 @@ that environment, so keep it personal and scope tokens narrowly).
 
 | Channel | How it publishes | One-time setup |
 |---|---|---|
-| Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done |
+| Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done — latest news item: the 2 October event, «Same Journey, Bigger Tomorrow» (news.7) |
 | Facebook | Claude posts via the Meta Graph API | ✅ **proven end to end on 2026-10-08**: «Same Journey, Bigger Tomorrow – Μέρος 2» went out from a Claude Code session as a 20-photo post. Page «Hellenic Trailers-Lamberet Partner», linked from the site. One loose end: the stored token is a user token, see to-do #3 |
 | Instagram | Claude posts via the Meta Graph API | ✅ **proven end to end on 2026-10-08**: the same item went out as a 20-photo carousel on `@hellenictrailers` (Business, linked to the Page and from the site) |
 | Newsletter | Claude creates + sends campaigns via the MailerLite connector | ✅ done and **proven end to end on 2026-09-10**: a real campaign reached Gmail, a Greek business domain and a corporate Microsoft 365 inbox, all three with Greek rendering correctly. Account, connector, group, domain authenticated (2026-09-08), signup page live at <https://hellenictrailers.subscribepage.io> (2026-09-09) and wired into all 8 pages |
@@ -46,7 +46,7 @@ actually has to sit down and do it:
 | 6 | ~~**MailerLite signup page**~~ — ✅ **done 2026-09-09.** Live at <https://hellenictrailers.subscribepage.io>, double opt-in on, feeding the `Hellenic Trailers Newsletter` group, and wired into the footer of all 8 pages plus the signup section of `news.html`. The list can take new subscribers now | Iosif | done |
 | 7 | ~~**Formspree form id**~~ — ✅ **done 2026-09-09.** Form `xvkovyvd` sends to `info@hellenictrailers.gr`; the contact form now emails the enquiry instead of opening the visitor's own mail program. CAPTCHA was already off by default, so the one known trap did not apply | Iosif | done |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. The first video went up by 2026-10-08 | Iosif | done |
-| 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page is an unfinished stub of emoji placeholders, hidden from Google on purpose. **2026-10-08:** it was filled with 12 photos of the 2 October event and emptied again the same day at the owner's request — event photos belong in the news, not the gallery. Two of them now illustrate the news.7 card. What the gallery still wants is the products and the work: a delivered unit, the interior with the doors open, the workshop | Iosif or Stathis | ~30 min |
+| 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page is an unfinished stub of emoji placeholders, hidden from Google on purpose. **2026-10-08:** it was filled with 12 photos of the 2 October event and emptied again the same day at the owner's request — event photos belong in the news, not the gallery. Two of them now illustrate the news.7 card. What the gallery still wants is the products and the work: a delivered unit, the interior with the doors open, the workshop **Planned for Monday 2026-10-12:** 8–10 product and work photos go in; once they are up, the page can come out from behind `noindex` | Iosif or Stathis | ~30 min |
 | 10 | ~~**MailerLite API key, so Claude can work the newsletter from a Claude Code session**~~ — ✅ **done (reported 2026-10-08).** `MAILERLITE_API_KEY` is in the environment and `connect.mailerlite.com` is allowed: a Claude Code session read the account's groups through the API with it (HTTP 200). Claude Code sessions can now read the list and draft campaigns; sending stays gated on the owner's approval per campaign. If the key is ever exposed, replace it — see «Getting the key there without it sitting anywhere» below | Iosif | done |
 | 11 | **CRM: tidy up and update after the merge** — 🔶 the merge with the CRM is done (reported 2026-10-08), but the merged records still need tidying and bringing up to date. The CRM data itself stays out of this repository (see `CLAUDE.md`, «Secrets and customer data»); only the status is tracked here | Iosif | — |
 | 12 | **Build Claude skills for recurring work** — new skills alongside `/publish-news`, so tasks that come back again and again run as one command. Which ones is still open | Iosif + Claude | — |
@@ -1527,7 +1527,8 @@ either set up his own or leave publishing to you.
 The channel is **<https://www.youtube.com/@HellenicTrailers>** (channel id
 `UC6mb6akAiDPwRs09J3OKyRA`), linked from the footer of all 7 pages and listed
 in the homepage `sameAs`. The setup steps below are kept as the record; what
-the channel needs now is the first video, not more configuration.
+the first video is up (reported 2026-10-08); what is left is embedding videos
+on the site.
 
 Worth confirming if it was rushed: that it was created under the **company
 Google account that owns the Google Business Profile** — same account is what
