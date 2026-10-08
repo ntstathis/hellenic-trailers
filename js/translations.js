@@ -244,7 +244,18 @@ const translations = {
   'services.banner.text': { en: 'Full lifecycle support for your refrigerated fleet', el: 'Πλήρης υποστήριξη κύκλου ζωής για τον ψυκτικό σας στόλο' },
 
   // Gallery page
-  'gallery.placeholder.note': { en: 'Gallery images are placeholders. Replace with actual photos of your facilities, products, and completed projects.', el: 'Οι εικόνες της συλλογής είναι προσωρινές. Αντικαταστήστε τες με πραγματικές φωτογραφίες των εγκαταστάσεων, των προϊόντων και ολοκληρωμένων έργων.' },
+  'gallery.g1': { en: 'Lamberet refrigerated semi-trailer', el: 'Ψυκτικό ημιρυμουλκούμενο Lamberet' },
+  'gallery.g2': { en: 'Our facilities in Mandra', el: 'Οι εγκαταστάσεις μας στη Μάνδρα' },
+  'gallery.g3': { en: 'Lamberet SR2', el: 'Lamberet SR2' },
+  'gallery.g4': { en: 'Lamberet semi-trailer – rear view', el: 'Ημιρυμουλκούμενο Lamberet – πίσω όψη' },
+  'gallery.g5': { en: 'Hellenic Trailers × Lamberet', el: 'Hellenic Trailers × Lamberet' },
+  'gallery.g6': { en: 'Our office reception', el: 'Η υποδοχή των γραφείων μας' },
+  'gallery.g7': { en: 'A Lamberet reefer in our yard', el: 'Ψυκτικό Lamberet στον αύλειο χώρο μας' },
+  'gallery.g8': { en: 'Lamberet at our facilities', el: 'Lamberet στις εγκαταστάσεις μας' },
+  'gallery.g9': { en: 'Our event, 2 October 2026', el: 'Η εκδήλωση της 2ας Οκτωβρίου 2026' },
+  'gallery.g10': { en: 'Our event, 2 October 2026', el: 'Η εκδήλωση της 2ας Οκτωβρίου 2026' },
+  'gallery.g11': { en: 'Our event, 2 October 2026', el: 'Η εκδήλωση της 2ας Οκτωβρίου 2026' },
+  'gallery.g12': { en: 'Our event, 2 October 2026', el: 'Η εκδήλωση της 2ας Οκτωβρίου 2026' },
   'gallery.banner.title': { en: 'Gallery', el: 'Συλλογή' },
   'gallery.banner.text': { en: 'Our facilities, products, and projects', el: 'Οι εγκαταστάσεις, τα προϊόντα και τα έργα μας' },
 
@@ -378,6 +389,10 @@ function setLanguage(lang) {
   // WhatsApp links carry their prefilled message inside the URL, so rebuild it
   document.querySelectorAll('[data-wa-msg]').forEach(el => {
     el.href = WHATSAPP_URL + '?text=' + encodeURIComponent(t(el.getAttribute('data-wa-msg')));
+  });
+
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => {
+    el.setAttribute('alt', t(el.getAttribute('data-i18n-alt')));
   });
 
   document.querySelectorAll('[data-i18n-title]').forEach(el => {
