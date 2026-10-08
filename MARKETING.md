@@ -46,7 +46,7 @@ actually has to sit down and do it:
 | 6 | ~~**MailerLite signup page**~~ — ✅ **done 2026-09-09.** Live at <https://hellenictrailers.subscribepage.io>, double opt-in on, feeding the `Hellenic Trailers Newsletter` group, and wired into the footer of all 8 pages plus the signup section of `news.html`. The list can take new subscribers now | Iosif | done |
 | 7 | ~~**Formspree form id**~~ — ✅ **done 2026-09-09.** Form `xvkovyvd` sends to `info@hellenictrailers.gr`; the contact form now emails the enquiry instead of opening the visitor's own mail program. CAPTCHA was already off by default, so the one known trap did not apply | Iosif | done |
 | 8 | ~~**YouTube channel** (step I)~~ — ✅ created 2026-09-01 as `@HellenicTrailers` and linked from the site. What it needs now is footage, not setup: the first delivery clip | Iosif | done |
-| 9 | ~~**8–12 photographs for the gallery page**~~ — ✅ **done 2026-10-08.** Iosif uploaded 72 photographs from the 2 October event; Claude picked 12 — the trailers, the hall, the reception and wide shots of the evening, avoiding close-ups of guests — and put them on `gallery.html` with Greek and English captions. The page is now indexed, in the nav of every page and in `sitemap.xml`. See section D, «what is still missing» §2 | Iosif + Claude | done |
+| 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page is an unfinished stub of emoji placeholders, hidden from Google on purpose. **2026-10-08:** it was filled with 12 photos of the 2 October event and emptied again the same day at the owner's request — event photos belong in the news, not the gallery. Two of them now illustrate the news.7 card. What the gallery still wants is the products and the work: a delivered unit, the interior with the doors open, the workshop | Iosif or Stathis | ~30 min |
 | 10 | **MailerLite API key, so Claude can work the newsletter from a Claude Code session** (2026-09-09) — the owner wants Claude reading the list and drafting campaigns by theme. **Check first whether it is needed at all:** the claude.ai connector is already authorized, so in a claude.ai chat this works today with no token. It is only Claude Code sessions, like the one this was asked in, where the connector does not load. If it is wanted anyway: MailerLite → Integrations → MailerLite API → Generate new token, then `MAILERLITE_API_KEY` in the environment variables **and** `connect.mailerlite.com` in allowed domains — the key is useless without the domain. Needs a computer, and a fresh session afterwards. **Correction (2026-09-10): MailerLite tokens have no scopes at all** — the earlier «read **and** write» instruction described a choice that does not exist. A token is full account access, bound to the user who created it, and the one issued on 2026-09-10 carried an expiry in the year 2126, so treat it as permanent. Create it from the company login, not a personal one. **The key goes into the environment dialog, never into a chat message or this repository** — see «Getting the key there without it sitting anywhere» below | Iosif | ~10 min |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
@@ -1008,23 +1008,34 @@ has nothing to offer a search result, and Search Console would flag an indexed
 one. It carries the same header, footer, WhatsApp button and analytics beacon
 as every other page, and both languages.
 
-**2. ~~The gallery page is an unfinished stub~~ — ✅ finished 2026-10-08.**
-`gallery.html` now shows 12 real photographs from the 2 October 2026 event at
-Mandra, in `images/gallery/` (full size, ~1500px) with lighter copies in
-`images/gallery/thumbs/` (900px) for the grid; each tile opens the full photo.
-The `noindex` is gone, the page is in the nav of every page and in
-`sitemap.xml`, so the sitemap now lists seven pages and leaves out only
-`thank-you.html`.
+**2. The gallery page is an unfinished stub — and correctly hidden.**
+`gallery.html` exists but it is **not** simply «missing from the sitemap»:
 
-How the 12 were chosen, for the next time photos are added: trailers and the
-premises first, since they are what a fleet manager wants to see; wide shots
-of the event where guests are not individually recognisable; **no close-ups of
-guests**, since they never agreed to be on the site. Photos uploaded to the
-repository are public the moment they land, even before any page uses them, so
-only the chosen ones are kept — the other 60 were removed.
+- it carries `<meta name="robots" content="noindex, follow">` — as does
+  `thank-you.html`, and no other page;
+- it is linked from **nowhere** — no nav item, no footer link, nothing on the
+  other pages;
+- its «photos» are **emoji placeholders** (🏭 🚛 ❄ 🚚 🔧).
 
-Still missing, and worth adding when there is a chance: a delivered unit at a
-customer, the interior with the doors open, and the workshop.
+So `sitemap.xml` leaving it out is **correct as it stands** — submitting a
+`noindex` page shows up in Search Console as the error «Submitted URL marked
+'noindex'». Do not «fix» the sitemap.
+
+On 2026-10-08 the page was briefly finished with 12 photos of the 2 October
+event and then emptied at the owner's request: an event is news, and two of
+those photos went into the news.7 card instead. Two lessons from that day:
+
+- **Uploads to the repository are public at once**, even before a page uses
+  them: 72 photos dropped into the root of `main` were reachable at
+  `hellenictrailers.gr/<n>.jpg` until they were removed. Upload to `dev`, into
+  a folder, and only the chosen photos stay.
+- **No close-ups of guests** on the site without their agreement.
+
+The real task is still to **finish the gallery**, and it starts with the owner:
+roughly 8–12 photographs of the products and the work — a delivered SR2, an
+interior with the doors open, the workshop, a genuine Lamberet part being
+fitted. Once they exist, the rest is Claude's: put the images in, drop the
+`noindex`, add the page to the nav of every page and to `sitemap.xml`.
 
 **3. ~~Bing Webmaster Tools~~ — ✅ done (2026-08-29).** See step J.
 

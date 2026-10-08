@@ -121,6 +121,9 @@ const translations = {
   'news.1.title': { en: 'Hellenic Trailers Launches as Lamberet Greece', el: 'Η Hellenic Trailers ξεκινά ως Lamberet Greece' },
   'news.1.text': { en: 'We are proud to announce our partnership with Lamberet as their official representative in Greece.', el: 'Είμαστε υπερήφανοι που ανακοινώνουμε τη συνεργασία μας με τη Lamberet ως επίσημος αντιπρόσωπος στην Ελλάδα.' },
 
+  'news.7.date':  { en: 'October 2026', el: 'Οκτώβριος 2026' },
+  'news.7.title': { en: 'The official presentation of Hellenic Trailers & Lamberet', el: 'Η επίσημη παρουσίαση της Hellenic Trailers & Lamberet' },
+  'news.7.text':  { en: 'On Friday 2 October we welcomed friends, partners and customers to our facilities in Mandra for the official presentation of Hellenic Trailers and of our partnership with Lamberet, as its exclusive representative in Greece.\n\nA warm thank you to everyone who came and made the evening special. The journey has only just begun!', el: 'Την Παρασκευή 2 Οκτωβρίου υποδεχτήκαμε στις εγκαταστάσεις μας στη Μάνδρα φίλους, συνεργάτες και πελάτες, για την επίσημη παρουσίαση της Hellenic Trailers και της συνεργασίας μας με τη Lamberet ως αποκλειστικοί αντιπρόσωποί της στην Ελλάδα.\n\nΣας ευχαριστούμε θερμά όλους που ήρθατε και κάνατε τη βραδιά ξεχωριστή. Το ταξίδι μόλις ξεκίνησε!' },
   'news.6.date':  { en: 'September 2026', el: 'Σεπτέμβριος 2026' },
   'news.6.title': {
     en: 'Delivery of a pre-owned Lamberet SR2',
@@ -244,18 +247,7 @@ const translations = {
   'services.banner.text': { en: 'Full lifecycle support for your refrigerated fleet', el: 'Πλήρης υποστήριξη κύκλου ζωής για τον ψυκτικό σας στόλο' },
 
   // Gallery page
-  'gallery.g1': { en: 'Lamberet refrigerated semi-trailer', el: 'Ψυκτικό ημιρυμουλκούμενο Lamberet' },
-  'gallery.g2': { en: 'Our facilities in Mandra', el: 'Οι εγκαταστάσεις μας στη Μάνδρα' },
-  'gallery.g3': { en: 'Lamberet SR2', el: 'Lamberet SR2' },
-  'gallery.g4': { en: 'Lamberet semi-trailer – rear view', el: 'Ημιρυμουλκούμενο Lamberet – πίσω όψη' },
-  'gallery.g5': { en: 'Hellenic Trailers × Lamberet', el: 'Hellenic Trailers × Lamberet' },
-  'gallery.g6': { en: 'Our office reception', el: 'Η υποδοχή των γραφείων μας' },
-  'gallery.g7': { en: 'A Lamberet reefer in our yard', el: 'Ψυκτικό Lamberet στον αύλειο χώρο μας' },
-  'gallery.g8': { en: 'Lamberet at our facilities', el: 'Lamberet στις εγκαταστάσεις μας' },
-  'gallery.g9': { en: 'Our event, 2 October 2026', el: 'Η εκδήλωση της 2ας Οκτωβρίου 2026' },
-  'gallery.g10': { en: 'Our event, 2 October 2026', el: 'Η εκδήλωση της 2ας Οκτωβρίου 2026' },
-  'gallery.g11': { en: 'Our event, 2 October 2026', el: 'Η εκδήλωση της 2ας Οκτωβρίου 2026' },
-  'gallery.g12': { en: 'Our event, 2 October 2026', el: 'Η εκδήλωση της 2ας Οκτωβρίου 2026' },
+  'gallery.placeholder.note': { en: 'Gallery images are placeholders. Replace with actual photos of your facilities, products, and completed projects.', el: 'Οι εικόνες της συλλογής είναι προσωρινές. Αντικαταστήστε τες με πραγματικές φωτογραφίες των εγκαταστάσεων, των προϊόντων και ολοκληρωμένων έργων.' },
   'gallery.banner.title': { en: 'Gallery', el: 'Συλλογή' },
   'gallery.banner.text': { en: 'Our facilities, products, and projects', el: 'Οι εγκαταστάσεις, τα προϊόντα και τα έργα μας' },
 
