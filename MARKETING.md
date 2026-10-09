@@ -427,9 +427,14 @@ Once it exists and is linked, the rest of this section applies unchanged.
 1. Go to <https://developers.facebook.com> and log in with the personal Facebook
    account that administers the Page. Accept the developer terms if asked.
 2. **My Apps → Create App**. If asked for a use case choose **Other**, app type
-   **Business**. Name it e.g. `Hellenic Trailers Publisher`. The app can stay in
-   *Development mode* forever — that is enough for posting to your own Page and
-   Instagram account and never requires Meta review.
+   **Business**. Name it e.g. `Hellenic Trailers Publisher`. **Correction
+   (2026-10-09): Development mode is not enough.** The API accepts the post,
+   but a Facebook post created by an app in Development mode is visible only
+   to people with a role on the app — it showed on the Page for its admin and
+   was missing for everyone else. The app has to be switched to **Live** (App
+   settings → Basic: a privacy policy URL, app icon and category, then the App
+   Mode toggle). Live mode needs no Meta review for posting to your own Page
+   with these permissions.
 3. Open the **Graph API Explorer**: <https://developers.facebook.com/tools/explorer>.
    - *Meta App*: select `Hellenic Trailers Publisher`.
    - Under *Permissions* add: `pages_show_list`, `pages_manage_posts`,
