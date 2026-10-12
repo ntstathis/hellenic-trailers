@@ -434,7 +434,11 @@ Once it exists and is linked, the rest of this section applies unchanged.
    was missing for everyone else. The app has to be switched to **Live** (App
    settings → Basic: a privacy policy URL, app icon and category, then the App
    Mode toggle). Live mode needs no Meta review for posting to your own Page
-   with these permissions.
+   with these permissions. **Done 2026-10-12:** privacy policy at
+   <https://hellenictrailers.gr/privacy.html> (also the data-deletion URL),
+   app domain `hellenictrailers.gr`, category «Επιχειρήσεις και Σελίδες», app
+   published — the event-video post of 2026-10-09 became visible to everyone
+   the moment it went Live.
 3. Open the **Graph API Explorer**: <https://developers.facebook.com/tools/explorer>.
    - *Meta App*: select `Hellenic Trailers Publisher`.
    - Under *Permissions* add: `pages_show_list`, `pages_manage_posts`,
