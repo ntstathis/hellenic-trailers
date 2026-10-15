@@ -42,11 +42,24 @@ commit it together with the news item.
 2. `git fetch origin main` and make sure the working tree is clean and up to
    date with `origin/main`.
 3. Channel availability (do all checks read-only, and never print the token):
-   - Meta: `META_PAGE_ACCESS_TOKEN`, `FB_PAGE_ID`, `IG_USER_ID` set, and
-     `curl -sS "https://graph.facebook.com/me?fields=id,name&access_token=$META_PAGE_ACCESS_TOKEN"`
-     returns the Page. An OAuth error with `"code": 190` means the token was
-     invalidated → tell the owner to follow the 5-minute regeneration guide in
-     `MARKETING.md` §A.
+   - Meta: `META_PAGE_ACCESS_TOKEN`, `FB_PAGE_ID`, `IG_USER_ID` set, and the
+     Page token derives and reads the Page feed:
+     ```bash
+     PAGE_TOKEN=$(curl -sS "https://graph.facebook.com/${FB_PAGE_ID}?fields=access_token&access_token=${META_PAGE_ACCESS_TOKEN}" \
+       | python3 -c 'import json,sys;print(json.load(sys.stdin).get("access_token",""))')
+     curl -sS "https://graph.facebook.com/${FB_PAGE_ID}/posts?fields=id&limit=1&access_token=${PAGE_TOKEN}"
+     ```
+     An OAuth error with `"code": 190` (or an empty `PAGE_TOKEN`) means the
+     token was invalidated → tell the owner to follow the 5-minute regeneration
+     guide in `MARKETING.md` §A.
+   - Why the derivation: `META_PAGE_ACCESS_TOKEN` holds a **user** token
+     (never expires). Instagram accepts it, but Facebook Page endpoints
+     reject it with code 190 / subcode 2069032 («requires a Page access
+     token for the new Pages experience»). The Page token is read from it
+     on each run and never stored. Shell variables do not survive between
+     Bash calls, so repeat the `PAGE_TOKEN=…` line in the same call as each
+     Facebook request. Its data access lapses on **2027-01-06**: before then
+     the owner re-authorizes the app (`MARKETING.md` §A).
    - MailerLite: locate its connector tools with ToolSearch (query
      `mailerlite`). If absent, the connector isn't authorized in claude.ai.
    - A channel that isn't ready is **skipped, stated plainly in the step-5
@@ -176,10 +189,12 @@ and the email cannot be unsent.* Apply any requested edits and re-confirm.
 ## 7. Facebook post
 
 ```bash
+PAGE_TOKEN=$(curl -sS "https://graph.facebook.com/${FB_PAGE_ID}?fields=access_token&access_token=${META_PAGE_ACCESS_TOKEN}" \
+  | python3 -c 'import json,sys;print(json.load(sys.stdin).get("access_token",""))')
 curl -sS -X POST "https://graph.facebook.com/${FB_PAGE_ID}/photos" \
   --data-urlencode "url=https://hellenictrailers.gr/images/<file>" \
   --data-urlencode "message=<FB caption>" \
-  --data-urlencode "access_token=${META_PAGE_ACCESS_TOKEN}"
+  --data-urlencode "access_token=${PAGE_TOKEN}"
 ```
 Success returns `{"id": "...", "post_id": "<PAGEID_POSTID>"}` → post URL is
 `https://www.facebook.com/<post_id>`. Never echo the token in output or logs.
