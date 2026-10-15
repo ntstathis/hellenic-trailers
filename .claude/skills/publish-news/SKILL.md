@@ -199,6 +199,25 @@ curl -sS -X POST "https://graph.facebook.com/${FB_PAGE_ID}/photos" \
 Success returns `{"id": "...", "post_id": "<PAGEID_POSTID>"}` → post URL is
 `https://www.facebook.com/<post_id>`. Never echo the token in output or logs.
 
+**Visibility check — pause here before step 8.** An API success does not
+prove the post is public: while the Meta app was in Development mode
+(until 2026-10-12) posts were accepted, reported `privacy: EVERYONE`, and
+were still visible only to the app's admins. Claude cannot check this
+itself (facebook.com is blocked in the sandbox, and the app's mode is not
+readable with this token), so:
+
+1. Give the owner the post URL and ask them to open it in a private /
+   incognito window, or from a profile that is not a Page admin.
+2. Wait for their answer. Do **not** continue to Instagram or the
+   newsletter, and do not report the Facebook post as done, until they
+   confirm it is visible.
+3. If it is not visible: stop the run, leave the post as it is (deleting
+   it is the owner's call), and have the owner check at
+   <https://developers.facebook.com/apps> whether «Hellenic Trailers
+   Publisher» shows **Live** or **Development**. Live needs the privacy
+   page <https://hellenictrailers.gr/privacy.html> to stay online — never
+   remove it from the site.
+
 ## 8. Instagram post
 
 Two calls (use the `-ig.jpg` crop variant's URL if one was made):
