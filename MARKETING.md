@@ -90,10 +90,14 @@ on the key, so deleting a key never disturbs it.
 Two guards worth knowing about, because they will fire again. Claude Code's own
 classifier **refused to write the pasted token to disk**, which is why the key
 could not simply be used from that session — that refusal is the system working,
-not a fault to route around. And a Claude Code session holds no claude.ai
-connectors: **Dropbox and MailerLite are not readable from here**, only from a
-claude.ai chat. Anything a Claude Code session needs must arrive as an
-environment variable or an attached file.
+not a fault to route around. **Correction (2026-10-15):** a Claude Code
+session *does* get claude.ai connectors — but only the ones connected on the
+claude.ai account running that session (connectors are per user: Stathis's
+Dropbox did not show up in Iosif's sessions until Iosif connected his own at
+claude.ai/customize/connectors → Discover). Listing and searching Dropbox then
+works at once; downloading a file's content also needs
+`*.dropboxusercontent.com` in the environment's Allowed domains, and comparing
+against what is already on Instagram needs `*.cdninstagram.com`.
 
 ## Asked for, not started
 
