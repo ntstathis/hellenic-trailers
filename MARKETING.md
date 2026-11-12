@@ -21,7 +21,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Website (hellenictrailers.gr) | Push to `main` → GitHub Pages, live in ~2 min | ✅ done — latest news item: the 2 October event, «Same Journey, Bigger Tomorrow» (news.7) |
 | Facebook | Claude posts via the Meta Graph API | ✅ **proven end to end on 2026-10-08**: «Same Journey, Bigger Tomorrow – Μέρος 2» went out from a Claude Code session as a 20-photo post. Page «Hellenic Trailers-Lamberet Partner», linked from the site. One loose end: the stored token is a user token, see to-do #3 |
 | Instagram | Claude posts via the Meta Graph API | ✅ **proven end to end on 2026-10-08**: the same item went out as a 20-photo carousel on `@hellenictrailers` (Business, linked to the Page and from the site) |
-| Newsletter | Claude creates + sends campaigns via the MailerLite connector | ✅ done and **proven end to end on 2026-09-10**: a real campaign reached Gmail, a Greek business domain and a corporate Microsoft 365 inbox, all three with Greek rendering correctly. Account, connector, group, domain authenticated (2026-09-08), signup page live at <https://hellenictrailers.subscribepage.io> (2026-09-09) and wired into all 8 pages |
+| Newsletter | Claude creates + sends campaigns via the MailerLite connector | ✅ done and **proven end to end on 2026-09-10**: a real campaign reached Gmail, a Greek business domain and a corporate Microsoft 365 inbox, all three with Greek rendering correctly. Account, connector, group, domain authenticated (2026-09-08), signup page live at <https://hellenictrailers.subscribepage.io> (2026-09-09) and wired into all 8 pages. **2026-11-12:** list trimmed to 223 active for the Free plan (250 max); the downgrade itself is the owner's to click — see «Moving to the Free plan» in section C |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
@@ -918,6 +918,41 @@ Fallback if the connector ever proves insufficient: create a MailerLite API key
 `connect.mailerlite.com` in the environment network settings — Claude then uses
 the REST API directly.
 
+### Moving to the Free plan (2026-11-12)
+
+The owner asked to take MailerLite back to the **Free** plan. Its limits on
+that date, read off MailerLite's pricing page: **250 subscribers, 2,500 emails
+a month, 2 user seats**, and «MCP for Claude» — but **not** «Full MCP & API
+access», which only the paid plans list. The cheapest paid plan (Comfort, 500
+subscribers) was offered as the alternative and declined.
+
+**The list was trimmed to fit, by engagement.** It stood at 461 active, almost
+all from the four «Παρτίδα 1–4_Πρόσκληση» groups, each of whom had received the
+same two emails (the 2 October invitation and its reminder). Kept:
+
+| Kept because | Count |
+|---|---|
+| clicked a link, opened both emails, or had not been sent anything yet | 201 |
+| has a `deal_stage` set, or `consent_source` is personal correspondence rather than the ERP export (two contacts are both) | 22 |
+| **Active after the trim** | **223** |
+
+The other **238** — every one of them from the ERP export, having opened at most
+one of the two emails and clicked nothing — were **deleted** through the API
+(deletion, not unsubscribe, so they cannot count towards the limit). 223 rather
+than exactly 250 is deliberate: at the cap, the first signup from the
+subscribe page would push the account over it and stop sending.
+
+**A backup of the 238 exists, in Dropbox only** — four CSVs, one per batch, in
+`05_Marketing/Newsletter/` of the company folder (email, company, city, opens).
+It is customer data and stays out of this repository. To bring someone back,
+re-import them from there.
+
+**Still open, owner only:** the plan change itself — Account settings →
+Billing → Free. The API has no billing endpoint, so Claude cannot do it. After
+the downgrade, expect `MAILERLITE_API_KEY` to stop working from Claude Code
+sessions; the claude.ai connector should keep working. Keep the list under 250
+and the sends under 2,500 a month (roughly five sends to the current list).
+
 ## D. Analytics, Search Console + contact form (once, ~15 min)
 
 ### The four measurement tools, and what the site should have
@@ -1656,7 +1691,7 @@ wire them in — it will also bump the `?v=` cache version and update the JSON-L
 | Meta Page access token | environment variable `META_PAGE_ACCESS_TOKEN` | **never** |
 | Facebook Page ID / IG account ID | env vars `FB_PAGE_ID` / `IG_USER_ID` (public identifiers, also recorded in the skill) | IDs only |
 | MailerLite access | claude.ai connector authorization (OAuth) — no token anywhere | never |
-| MailerLite API key (fallback only) | environment variable `MAILERLITE_API_KEY` | **never** |
+| MailerLite API key (fallback only) | environment variable `MAILERLITE_API_KEY` — expected to stop working once the account is on the Free plan (no API access there) | **never** |
 | Cloudflare beacon token | pasted in the HTML pages (public, write-only — safe by design) | yes |
 | Cloudflare API token (optional, for reading stats) | environment variable `CLOUDFLARE_API_TOKEN` | **never** |
 | Cloudflare account id | environment variable `CLOUDFLARE_ACCOUNT_ID` (an identifier, not a secret, but kept out of the public repo) | **never** |
