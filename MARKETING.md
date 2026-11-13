@@ -22,6 +22,7 @@ that environment, so keep it personal and scope tokens narrowly).
 | Facebook | Claude posts via the Meta Graph API | ✅ **proven end to end on 2026-10-08**: «Same Journey, Bigger Tomorrow – Μέρος 2» went out from a Claude Code session as a 20-photo post. Page «Hellenic Trailers-Lamberet Partner», linked from the site. One loose end: the stored token is a user token, see to-do #3 |
 | Instagram | Claude posts via the Meta Graph API | ✅ **proven end to end on 2026-10-08**: the same item went out as a 20-photo carousel on `@hellenictrailers` (Business, linked to the Page and from the site) |
 | Newsletter | Claude creates + sends campaigns via the MailerLite connector | ✅ done and **proven end to end on 2026-09-10**: a real campaign reached Gmail, a Greek business domain and a corporate Microsoft 365 inbox, all three with Greek rendering correctly. Account, connector, group, domain authenticated (2026-09-08), signup page live at <https://hellenictrailers.subscribepage.io> (2026-09-09) and wired into all 8 pages. **2026-11-12:** list trimmed to 223 active for the Free plan (250 max); the downgrade itself is the owner's to click — see «Moving to the Free plan» in section C |
+| Social-only posts | `/skill-social-media` in a Claude Code session: photos or a video + a few notes → Claude drafts Facebook, Instagram, LinkedIn and Google Business texts, shows them, and posts to Facebook + Instagram **only after an explicit «ΟΚ»** (single photo, multi-photo / carousel, or Reel). Media are hosted under `images/social/` or `videos/` on the site so Meta can fetch them | ✅ skill built 2026-11-13 (first named `/social-post`, renamed the same day at the owner's request); Facebook Page and Instagram access re-checked read-only that day. Not yet used for a real post. For news that also belongs on the site and in the newsletter, `/publish-news` stays the tool |
 | LinkedIn | Claude prepares the post text, you paste it (≈30 sec) | ✅ done (2026-08-21) — page live, profile filled, linked from the site |
 | Google Business Profile | Claude prepares the post text, you paste it | ✅ created + verified (2026-08-21), linked from the site |
 | Site analytics | Cloudflare Web Analytics (cookieless, no cookie banner needed) | ✅ beacon on all pages + Claude can read the numbers via the API (2026-08-21) |
@@ -49,7 +50,7 @@ actually has to sit down and do it:
 | 9 | **8–12 photographs for the gallery page** (section D, «what is still missing» §2) — the page is an unfinished stub of emoji placeholders, hidden from Google on purpose. **2026-10-08:** it was filled with 12 photos of the 2 October event and emptied again the same day at the owner's request — event photos belong in the news, not the gallery. Two of them now illustrate the news.7 card. What the gallery still wants is the products and the work: a delivered unit, the interior with the doors open, the workshop **Planned for Monday 2026-10-12:** 8–10 product and work photos go in; once they are up, the page can come out from behind `noindex` | Iosif or Stathis | ~30 min |
 | 10 | ~~**MailerLite API key, so Claude can work the newsletter from a Claude Code session**~~ — ✅ **done (reported 2026-10-08).** `MAILERLITE_API_KEY` is in the environment and `connect.mailerlite.com` is allowed: a Claude Code session read the account's groups through the API with it (HTTP 200). Claude Code sessions can now read the list and draft campaigns; sending stays gated on the owner's approval per campaign. If the key is ever exposed, replace it — see «Getting the key there without it sitting anywhere» below | Iosif | done |
 | 11 | **CRM: tidy up and update after the merge** — 🔶 the merge with the CRM is done (reported 2026-10-08), but the merged records still need tidying and bringing up to date. The CRM data itself stays out of this repository (see `CLAUDE.md`, «Secrets and customer data»); only the status is tracked here | Iosif | — |
-| 12 | **Build Claude skills for recurring work** — new skills alongside `/publish-news`, so tasks that come back again and again run as one command. Which ones is still open | Iosif + Claude | — |
+| 12 | **Build Claude skills for recurring work** — new skills alongside `/publish-news`, so tasks that come back again and again run as one command. 🔶 **Two built on 2026-11-13:** **`lamberet-offer`** (Lamberet PDF → Greek customer offer in Excel; lives in the claude.ai account, not here — see «Asked for, not started» §2) and **`/skill-social-media`** (Facebook + Instagram post, published only after the owner's OK; in `.claude/skills/skill-social-media/`). More can follow the same way: say what the recurring task is and bring one real example | Iosif + Claude | ongoing |
 
 Send Claude any URL, id or token as you get it and it wires it into the site.
 
@@ -163,6 +164,48 @@ Workable homes, roughly in order of least new machinery:
 Whichever is chosen, the skill should write to it automatically at the moment
 an offer is sent, rather than relying on anyone to update it afterwards — a
 record kept by hand stops being kept within a month.
+
+**Status 2026-11-13 — the offer half is built; the database half is still open.**
+
+The skill is called **`lamberet-offer`**. Iosif uploads a LAMBERET quotation PDF
+(«Quotation n° GRC…», English) in a claude.ai chat and writes «φτιάξε προσφορά
+σε excel». Claude then:
+
+1. reads the PDF and translates the technical specs, dimensions, cell and
+   equipment into Greek, using a glossary built from a real offer Iosif had
+   written by hand;
+2. asks once for the offer number and the customer details the PDF lacks
+   (Greek name, address, email / phone, ΑΦΜ); anything left unanswered stays blank;
+3. builds the Excel in the company layout (both logos, navy section bands,
+   acceptance block). Page 1 holds the specs and page 2 the terms, price and
+   signature.
+
+How it was built, and why:
+
+- **The sales price is never filled in.** Iosif types it himself into the yellow
+  price cell, and the total is a formula. Lamberet's price (our cost) and
+  Lamberet's own terms (payment, indexation, cancellation clauses) are never
+  copied into the customer offer; the company's standard terms go in instead.
+- **The skill lives in the claude.ai account, not in this repository.** Iosif
+  uploaded it as a zip at claude.ai → Settings → Customize → Skills. It carries
+  the company's commercial terms, and this repository is public. Claude.ai is
+  also where Iosif works with PDFs day to day.
+- The template's in-cell logo, `=TODAY()` date and «Data» sheet (dropdown lists,
+  including a customer list) were not carried over. The script draws the logos
+  itself, writes a fixed date and fills every field, so the dropdowns are no
+  longer needed.
+- First fix after go-live: in claude.ai an attached PDF can arrive either as
+  text in the chat or as a file under `/mnt/user-data/uploads/`. The first
+  version looked in only one place, and when no PDF was attached it asked for
+  one. The skill now checks both before asking. **Attach the PDF in the same
+  message as the request.**
+- **Keep a copy of `lamberet-offer.zip` in the private Dropbox folder.** Apart
+  from the copy uploaded to claude.ai, that zip is the only copy of the source.
+  To change the skill, give Claude the zip, say what should change, and upload
+  the new zip in place of the old one.
+- Still open: the customer/potential record described above. The offer skill
+  writes nothing anywhere yet. Once the owner picks a home for the database,
+  the skill can record each offer there as it is made.
 
 ### 2b. The Dropbox reorganisation — ✅ done (2026-09-01)
 
