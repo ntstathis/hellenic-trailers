@@ -1,5 +1,5 @@
 ---
-name: social-post
+name: skill-social-media
 description: Write a social media post (Facebook + Instagram, plus paste-ready LinkedIn and Google Business text) from photos or a video and a few notes, show it to the owner, and publish it only after the owner's explicit OK. For posts that do NOT go on the website's news page or the newsletter (for those use /publish-news). Use when the owner says e.g. "φτιάξε ποστ", "ανάρτηση για…", "ανέβασε στα social", "ποστ στο facebook/instagram", "make a post".
 ---
 
@@ -156,7 +156,7 @@ view, attach the same media); Google Business `https://business.google.com` →
 ## 9. Log and report
 
 Append to `.claude/social-log.json` (create it with
-`{"comment": "Publication log written by /social-post.", "items": []}` if
+`{"comment": "Publication log written by /skill-social-media.", "items": []}` if
 missing):
 ```json
 { "date": "<ISO date>", "topic": "…", "media": ["images/social/…"],

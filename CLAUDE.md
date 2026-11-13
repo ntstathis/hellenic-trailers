@@ -65,6 +65,6 @@ newsletter without the owner's explicit approval for that specific item.
 - [`.claude/skills/publish-news/SKILL.md`](.claude/skills/publish-news/SKILL.md)
   — the `/publish-news` workflow that publishes one news item to the website,
   Facebook, Instagram and the newsletter in a single run.
-- [`.claude/skills/social-post/SKILL.md`](.claude/skills/social-post/SKILL.md)
-  — the `/social-post` workflow: a Facebook + Instagram post (photo, carousel or
+- [`.claude/skills/skill-social-media/SKILL.md`](.claude/skills/skill-social-media/SKILL.md)
+  — the `/skill-social-media` workflow: a Facebook + Instagram post (photo, carousel or
   Reel) drafted, approved by the owner, then published; no website or newsletter.
