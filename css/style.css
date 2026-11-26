@@ -634,6 +634,7 @@ nav ul li a.active {
   object-fit: contain;
   padding: 12px;
   font-size: 0.875rem; /* alt text stays small if an image ever fails to load */
+  filter: drop-shadow(0 10px 12px rgba(10, 31, 68, 0.18));
   transition: transform 0.4s ease;
 }
 
