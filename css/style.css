@@ -633,7 +633,15 @@ nav ul li a.active {
   height: 100%;
   object-fit: contain;
   padding: 12px;
+  font-size: 0.875rem; /* alt text stays small if an image ever fails to load */
   transition: transform 0.4s ease;
+}
+
+/* Temporary stand-in (Lamberet logo) until a real product photo exists */
+.product-image img.img-placeholder {
+  width: 55%;
+  height: auto;
+  opacity: 0.85;
 }
 
 .product-card:hover .product-image img {
