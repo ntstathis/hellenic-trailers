@@ -638,6 +638,12 @@ nav ul li a.active {
   transition: transform 0.4s ease;
 }
 
+/* Wide, flat subjects (the Kerstner roof unit) would otherwise fill the whole card */
+.product-image img.img-compact {
+  width: 62%;
+  height: auto;
+}
+
 .product-card:hover .product-image img {
   transform: scale(1.05);
 }
